@@ -1,0 +1,718 @@
+
+%% Basierend auf einer TeXnicCenter-Vorlage von Tino Weinkauf.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+\documentclass[a4paper,oneside,11pt]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alternative Optionen:
+%	Papiergr��e: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Grundlegende Fontgr��en: 10pt / 11pt / 12pt
+
+
+
+
+%% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[ansinew]{inputenc}
+%\usepackage[latin1]{inputenc}
+
+\usepackage{caption}
+\usepackage{float}
+\restylefloat{figure}
+
+%\usepackage[section]{placeins}
+\usepackage{placeins}
+
+\usepackage{here} 
+
+\usepackage{lmodern} %Type1-Schriftart f�r nicht-englische Texte
+%\usepackage{textcomp}
+%\usepackage{helvet}
+%\usepackage{bookman}
+%\usepackage{mathptmx}
+%\usepackage[scaled]{uarial}
+
+\renewcommand{\rmdefault}{cmr}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\ttdefault}{lmtt}
+
+%% Packages f�r Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%Zum Laden von Grafiken
+%\usepackage{subfig} %%Teilabbildungen in einer Abbildung
+%\usepackage{pst-all} %%PSTricks - nicht verwendbar mit pdfLaTeX
+
+%% Beachten Sie:
+%% Die Einbindung einer Grafik erfolgt mit \includegraphics{Dateiname}
+%% bzw. �ber den Dialog im Einf�gen-Men�.
+%% 
+%% Im Modus "LaTeX => PDF" k�nnen Sie u.a. folgende Grafikformate verwenden:
+%%   .jpg  .png  .pdf  .mps
+%% 
+%% In den Modi "LaTeX => DVI", "LaTeX => PS" und "LaTeX => PS => PDF"
+%% k�nnen Sie u.a. folgende Grafikformate verwenden:
+%%   .eps  .ps  .bmp  .pict  .pntg
+
+
+%% Packages f�r Formeln %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage{tikz}
+
+%% Unterstreichen
+\usepackage{ulem}
+
+%Hyperref Package f�r Links in der PDF
+\usepackage[pdftex,
+linktoc = all,			%Verlinkt sowohl text als auch Nummer im Inhaltsverzeichnis
+colorlinks=true,    %Bei false macht er einen h��lcihen roten Rahmen um die Links
+linkcolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
+citecolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
+bookmarks=true,     %Inhaltsverzeichnis auf der linken Seite beim �ffnen der PDF
+bookmarksopen=true,     	%Das Verzeichnis �ffnen
+bookmarksopenlevel=1,   	%�ffnungstiefe (chapter, section, subsection)
+pagebackref=false,      	%Aus Literaturverzeichnissen etc. auf die entsprechende Seite springen- NEINEINEIN!!1elf
+bookmarksnumbered=false, 	%Eintr�ge im Verzeichnis nummerieren
+pdfstartpage=1,         	%Startseite f�r die Anzeige festlegen
+pdfpagemode=UseOutlines,
+pdfstartview={XYZ null null 1.00}
+]{hyperref} 
+
+%% Zeilenabstand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+%\singlespacing        %% 1-zeilig (Standard)
+\onehalfspacing       %% 1,5-zeilig
+%\doublespacing        %% 2-zeilig
+
+
+%% Andere Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{a4wide} %%Kleinere Seitenr�nder = mehr Text pro Zeile.
+%\usepackage{fancyhdr} %%Fancy Kopf- und Fu�zeilen
+%\usepackage{longtable} %%F�r Tabellen, die eine Seite �berschreiten
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\bfseries\Huge}{\thechapter.\quad}{0em}{}
+
+%% Packages f�r Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%Zum Laden von Grafiken
+
+\usepackage{microtype}
+
+\usepackage{geometry}
+\geometry{
+  left=3cm,
+  right=2.5cm,
+  top=2.5cm,
+  bottom=3cm,
+  bindingoffset=0mm
+}
+
+
+\makeatletter
+\newcommand\frontmatter{%
+    \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+
+\newcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+ % \@mainmatterfalse
+   }
+\makeatother
+
+%TIKZ
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{circuitikz}
+
+\usetikzlibrary{shapes,arrows}
+
+\usepackage{mfirstuc}
+\usepackage{glossaries}
+
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{positioning}
+\tikzset{
+    state/.style={rectangle,rounded corners,draw=black, very thick,minimum height=2em,inner sep=2pt,text centered,},
+}
+
+\usepackage{subcaption}
+
+\usepackage[]{ragged2e}
+\usepackage[]{blindtext}
+
+\usepackage{smartdiagram}
+%%topdown arrow smartdiagram
+\makeatletter
+\NewDocumentCommand{\smartdiagramx}{r[] m}{%
+    \StrCut{#1}{:}\diagramtype\option
+    \IfStrEq{\diagramtype}{priority descriptive diagram}{% true-priority descriptive diagram
+        \pgfmathparse{subtract(\sm@core@priorityarrowwidth,\sm@core@priorityarrowheadextend)}
+        \pgfmathsetmacro\sm@core@priorityticksize{\pgfmathresult/2}
+        \pgfmathsetmacro\arrowtickxshift{(\sm@core@priorityarrowwidth-\sm@core@priorityticksize)/2}
+        \begin{tikzpicture}[every node/.style={align=center,let hypenation}]
+        \foreach \smitem [count=\xi] in {#2}{\global\let\maxsmitem\xi}
+        \foreach \smitem [count=\xi] in {#2}{%
+            \edef\col{\@nameuse{color@\xi}}
+            \node[description,drop shadow](module\xi)
+            at (0,0+\xi*\sm@core@descriptiveitemsysep) {\smitem};
+            \draw[line width=\sm@core@prioritytick,\col]
+            ([xshift=-\arrowtickxshift pt]module\xi.base west)--
+            ($([xshift=-\arrowtickxshift pt]module\xi.base west)-(\sm@core@priorityticksize pt,0)$);
+        }%
+        \coordinate (A) at (module1);
+        \coordinate (B) at (module\maxsmitem);
+        \CalcHeight(A,B){heightmodules}
+        \pgfmathadd{\heightmodules}{\sm@core@priorityarrowheightadvance}
+        \pgfmathsetmacro{\distancemodules}{\pgfmathresult}
+        \pgfmathsetmacro\arrowxshift{\sm@core@priorityarrowwidth/2}
+        \begin{pgfonlayer}{background}
+        \node[priority arrow,rotate=180,transform shape] at ([xshift=-\arrowxshift pt]module\maxsmitem.north west){};
+        \end{pgfonlayer}
+        \end{tikzpicture}
+    }{}% end-priority descriptive diagram
+}%
+
+\makeatother
+
+%%gl�ttet die Schrift
+\usepackage{ae}
+
+%Tabbingabstand
+\setlength{\parindent}{0mm}
+\newlength{\oldskip}
+\setlength{\oldskip}{\baselineskip}
+
+%\usepackage{cite}
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+\bibliography{literatur}
+\usepackage{ragged2e}
+\AtBeginBibliography{\RaggedRight}
+\renewcommand*{\bibsetup}{\RaggedRight}
+
+\usepackage{listings}             % Include the listings-package
+
+\usepackage{graphicx} 
+\usepackage{wallpaper} 
+\usepackage{amsmath} 
+\usepackage[miktex]{gnuplottex}   
+
+\begin{document}
+\pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
+
+%\rmfamily
+%\sffamily
+
+%\title{Bachelorarbeit}
+%\author{Johannes Schoder}
+%\date{13.05.2016}
+%\maketitle
+
+%DECKBLATT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\textbf{Faculty of Mathematics and Computer Sciences\\}
+\end{center}
+\ \\
+\ \\
+\ \\
+\begin{minipage}{\textwidth}
+	\centering
+		%\captionsetup{type=figure}
+		\includegraphics[width=0.60\textwidth]{Images/Logo_fsu.jpg}
+		%\caption{Java Terminal}
+		\label{fig:Javaterm}
+\end{minipage}
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\begin{center}
+\begin{LARGE}
+\textbf{Master's Thesis\\}
+\end{LARGE}
+\end{center}
+
+\begin{center}
+%\textbf{Masterarbeit\\
+%\ \\
+%\ \\}
+%Bachelor of Engineering (B.Eng.)
+\end{center}
+\begin{center}
+\begin{Large}
+\textbf{Music Similarity Analysis using Big Data approaches}
+\end{Large}
+\end{center}
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\flushleft
+\begin{tabbing}
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\= bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\kill
+presented by: \>Johannes Schoder\\
+born: \>03. September 1994\\
+ID: \>169197\\
+course of studies: \>M.Sc. Informatik\\
+supervisors: \>Ralf Seidler, Prof. Dr. Martin B\"ucker\\
+\end{tabbing}
+
+%Johannes Schoder, Hermsdorf, {\today}\\
+
+%\sffamily
+
+
+\pagenumbering{roman}
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Inhaltsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\clearpage
+\newpage
+\tableofcontents %Inhaltsverzeichnis
+%%\cleardoublepage 
+\pagestyle{plain} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Glossar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\addtocontents{toc}{\protect\vspace*{\baselineskip}}
+%%\cleardoublepage
+%\phantomsection
+%\%newpage
+%\addcontentsline{toc}{chapter}{Glossar}
+%\begin{flushleft}
+%\begin{Huge}
+%\textbf{Glossar}
+%\end{Huge}
+%\end{flushleft}
+%% Must be issued before \printglossaries
+%\setglossarystyle{altlist}
+%\printglossaries
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Symbolverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Symbolverzeichnis}
+%
+%\begin{flushleft}
+%\begin{Huge}
+%\textbf{Symbolverzeichnis}
+%\end{Huge}
+%\end{flushleft}
+%
+%\begin{tabbing}
+%placeholderplaceplaceholder \= placeholder \kill
+%
+%\ \\
+%\ \\
+%\ \\
+%
+%\textbf{$\Sigma $} \> Alphabet\\
+%\textbf{$\sigma $} \> Zeichen eines Alphabets\\
+%\textbf{$\omega $} \> Wort �ber $\Sigma $\\
+%\textbf{$L $} \> formale Sprache �ber $\Sigma $\\
+%\ \\
+%\textbf{$G(V, \Sigma, P, S) $} \> Grammatik\\
+%\textbf{$V $} \> endliche Variablenmenge (Nonterminale)\\
+%\textbf{$P $} \> Menge von Produktionen (Regeln)\\
+%\textbf{$S $} \> Startvariable\\
+%
+%
+%\end{tabbing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Abk�rzungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbreviations}
+
+\begin{flushleft}
+\begin{Huge}
+\textbf{Abbreviations}
+\end{Huge}
+\end{flushleft}
+
+\ \\
+\ \\
+\ \\
+
+\begin{tabbing}
+placeholderplaceplaceholder \= placeholder \kill
+\textbf{MIR} \> music information retrieval\\
+\textbf{MFCC} \> mel frequency cepstral coefficients\\
+\textbf{FFT} \> fast fourier transformation\\
+\textbf{DCT} \> discrete cosine transformation\\
+\textbf{MSD} \> million song dataset\\
+\textbf{MIDI} \> musical instrument digital interface\\
+
+
+\end{tabbing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Abbildungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tabellenverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\ \\ 
+\ \\ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Einleitung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Anhang
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ==> Schreiben Sie hier Ihren Text oder f�gen Sie externe Dateien ein.
+%\input{Dateiname} %Eine Datei 'Dateiname.tex' wird hierf�r ben�tigt.
+
+%\cleardoublepage
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Anhang}
+%\appendix
+\justifying
+
+\include{CH1}
+
+\include{CH2}
+
+\include{CH3}
+
+\include{CH4}
+
+%\begin{flushleft}
+%\begin{Huge}
+%\textbf{Anhang}
+%\end{Huge}
+%\end{flushleft}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Literaturverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%break long titles etc.
+
+\DeclareFieldFormat*{title}{#1}
+
+\DeclareFieldFormat*{titlecase}{%
+	\ifdef{\currentfield}
+	{\ifcurrentfield{title}
+		{\usefield{\uline}{\currentfield}}%
+		{#1}}
+	{#1}}
+
+\DeclareFieldFormat*{journal}{#1}
+
+\DeclareFieldFormat*{journalcase}{%
+	\ifdef{\currentfield}
+	{\ifcurrentfield{journal}
+		{\usefield{\uline}{\currentfield}}%
+		{#1}}
+	{#1}}
+
+\DeclareFieldFormat*{booktitle}{#1}
+
+\DeclareFieldFormat*{booktitlecase}{%
+	\ifdef{\currentfield}
+	{\ifcurrentfield{booktitle}
+		{\usefield{\uline}{\currentfield}}%
+		{#1}}
+	{#1}}
+
+
+
+\newpage
+\phantomsection
+% Literaturverzeichnis
+% ==> Eine Datei 'literatur.bib' wird hierf�r ben�tigt.
+% ==> Sie m�ssen hierf�r BibTeX verwenden (Projekt | Eigenschaften... | BibTeX)
+\newpage
+\addcontentsline{toc}{chapter}{References}
+%\renewcommand*{\bibtitle{References}}
+%\nocite{*} %Auch nicht-zitierte BibTeX-Eintr�ge werden angezeigt.
+%\bibliographystyle{unsrt} %Art der Ausgabe: plain / apalike / amsalpha / ...
+%\bibliographystyle{alpha} %Art der Ausgabe: plain / apalike / amsalpha / ...
+%\bibliography{literatur,websites,datasheet} %Eine Datei 'literatur.bib' wird hierf�r ben�tigt.
+%\bibliography{literatur,websites} %Eine Datei 'literatur.bib' wird hierf�r ben�tigt.
+\printbibliography[title={References}]
+
+%\input{Anhang}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thesen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Thesen}
+%\begin{flushleft}
+%\begin{Huge}
+%\textbf{Thesen}
+%\end{Huge}
+%\end{flushleft}
+%
+%\begin{enumerate}
+	%\item Die Pr�fadaptersteuerung bietet eine kosteng�nstige Alternative zu teuren Messger�ten.
+	%\item Die Testbeschreibungssprache kann sowohl von einem Interpreter, als auch von einem Compiler �bersetzt werden. 
+	%\item Die Testbeschreibungssprache l�sst sich schneller erlernen als eine konventionelle Programmiersprache.
+	%\item Die Testbeschreibungssprache schr�nkt die Leistungsf�higkeit der Testplattform, im Hinblick auf die Performance, nicht ein.
+	%\item Die �bersetzung einer typenlosen Quellsprache in eine typisierte Zielsprache erfolgt problemlos.
+	%\item Eine Testbeschreibungssprache eignet sich gut als Grundlage f�r weitere Testautomatisierungskonzepte.
+	%\item Eine Capture \& Replay-L�sung ist zur Erzeugung von Testf�llen besser geeignet und einfacher zu bedienen. 
+%\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Selbstst�ndigkeitserkl�rung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Selbstst�ndigkeitserkl�rung}
+%\begin{flushleft}
+%\begin{Huge}
+%\textbf{Selbstst�ndigkeitserkl�rung}
+%\end{Huge}
+%\end{flushleft}
+%Ich erkl�re hiermit, dass ich die vorliegende Abschlussarbeit selbstst�ndig und nur unter
+%Verwendung der angegebenen Quellen und Hilfsmittel angefertigt habe. Diese Arbeit
+%lag in gleicher oder �hnlicher Weise noch keiner Pr�fungsbeh�rde vor und wurde bisher
+%noch nicht ver�ffentlicht.\\
+%\ \\
+%\ \\
+%\ \\
+%Jena, den 
+
+%\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+% on the last page of the document manually. It shortens
+% the textheight of the last page by a suitable amount.
+% This command does not take effect until the next page
+% so it should come on the page before the last. Make
+% sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Appendix}
+
+\section{Spotipy Crawler}\label{spotcrawl}
+
+\lstset{language=Python,
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	commentstyle=\color{green},
+	morecomment=[l][\color{magenta}]{\#}
+	tabsize=1
+	basicstyle=\footnotesize,      % font size
+	numbers=none,                  % where to put line numbers
+	numberstyle=\footnotesize,     % numbers size
+	numbersep=5pt,                 % how far the line numbers are from the code
+	backgroundcolor=\color{white}, % background color
+	showspaces=false,              % show spaces (with underscores)
+	showstringspaces=false,        % underline spaces within strings
+	showtabs=false,                % show tabs using underscores
+	tabsize=2,                     % default tabsize
+	breaklines=true,               % automatic line breaking
+	columns=fullflexible,
+	breakautoindent=false,
+	framerule=1pt,
+	xleftmargin=0pt,
+	xrightmargin=0pt,
+	breakindent=0pt,
+	resetmargins=true,
+}
+%\newpage
+\FloatBarrier
+
+\begin{lstlisting}
+from __future__ import print_function 
+from spotipy.oauth2 import SpotifyClientCredentials
+import json, sys, spotipy, time, os.path
+import requests, urllib
+import matplotlib.pyplot as pl
+import h5json, scipy
+import numpy as np
+from scipy.spatial import distance
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+if len(sys.argv) > 1:
+	uri = sys.argv[1]
+else:
+	uri = 'spotify:user:bqpd:playlist:5oF8D71X38WwzeRUdyvpmd'
+username = uri.split(':')[2]
+playlist_id = uri.split(':')[4]
+playlist = sp.user_playlist(username, playlist_id)
+results = sp.user_playlists(username, limit=50)
+playlist_length = playlist['tracks']['total']
+path = os.getcwd() 
+path = path + "/crawled_data" 
+playlist_name = playlist['name']
+directory = path + "/" + playlist_name
+if not os.path.exists(directory):
+os.makedirs(directory)
+t_start = time.time()
+f_feat = open(path + "/" + playlist_name + "/featurevector.txt","w")
+f_feat.write("Features: \n")
+f_feat.close()
+feat_vec = []
+feat_num = []
+feat_name = []
+
+for num in range(0, playlist_length, 100):
+	results = sp.user_playlist_tracks(username, playlist_id, limit=100, offset=int(num))
+	tracks = results
+	for i, item in enumerate(tracks['items']):
+		track = item['track']
+		track_id = str(track['id'])
+		path = os.getcwd() 
+		path = path + "/crawled_data"
+		artist = str(track['artists'][0]['name'])
+		songtitle = str(track['name'])
+		artist = artist.replace("/", "")
+		songtitle = songtitle.replace("/", "")
+		artist = artist.replace("$", "")
+		songtitle = songtitle.replace("$", "")
+		number = i + num
+		name = str(number) + " - " + artist + " - " + songtitle
+		directory = path + "/" + playlist_name + "/" + name
+		prev_url = track['preview_url']
+		if not prev_url == None:
+			if not os.path.exists(directory):
+				os.makedirs(directory)
+			filename = directory + "/" + artist + " - " + songtitle + ".mp3"         
+			urllib.urlretrieve(prev_url, filename)			
+			
+			tid = 'spotify:track:' + track['id']
+			
+			analysis = sp.audio_analysis(tid)	
+			with open(directory + "/" + songtitle + '_analysis.json', 'w') as outfile:
+				json.dump(analysis, outfile)
+			outfile.close()            
+			segments = analysis["segments"]
+			bars = analysis["bars"]
+			beats = analysis["beats"]            
+			
+			tid = str(tid)
+
+			features = sp.audio_features(tid)
+			with open(directory + "/" + songtitle + '_features.json', 'w') as outfile:
+				json.dump(features, outfile)
+			outfile.close()    
+			acousticness = features[0]['acousticness']
+			danceability = features[0]['danceability']
+			energy = features[0]['energy']
+			instrumentalness = features[0]['instrumentalness']
+			liveness = features[0]['liveness']
+			loudness = features[0]['loudness']
+			speechiness = features[0]['speechiness']
+			valence = features[0]['valence']
+			feat_vec.append(scipy.array([acousticness, danceability, instrumentalness, liveness, loudness, speechiness, valence]))	
+
+		else: 
+			print("no url - entry: " + artist + " - " + songtitle)
+			print(track_id + "\n")
+			
+t_delta = time.time() - t_start
+print ("features retrieved in %.2f seconds" % (t_delta,))   
+dist = distance.euclidean(feat_vec[0], feat_vec[1])
+\end{lstlisting}
+
+
+\chapter*{Acknowledgement}
+
+\chapter*{Declaration of Authorship}
+
+I hereby declare that the thesis submitted is my own unaided work. All direct or indirect
+sources used are acknowledged as references.
+This paper was not previously presented to another examination board and has not been
+published in German, English or any other language.\\
+\ \\
+Hermsdorf, \today
+\ \\
+\ \\
+\ \\
+Johannes Schoder
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Abbildungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tabellenverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\ \\ 
+\ \\ 
+

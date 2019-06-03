@@ -1,0 +1,142 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Abbreviations}{iii}{section*.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Figures}{iv}{section*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Tables}{v}{section*.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Why and how?}{1}{section.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Overview}{2}{section.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}MIR Toolkits and Data Aggregation}{3}{chapter.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Music Information Retrieval}{3}{section.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Audio Features and Music Similarity Measurements}{3}{subsection.2.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Frequency based}}\mathsurround \z@ $\relax }{3}{subsection.2.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {MFCC}}\mathsurround \z@ $\relax }{6}{figure.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Rhythm based}}\mathsurround \z@ $\relax }{7}{equation.2.1.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Metadata based}}\mathsurround \z@ $\relax }{7}{equation.2.1.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Pitch based}}\mathsurround \z@ $\relax }{7}{equation.2.1.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Note based}}\mathsurround \z@ $\relax }{7}{equation.2.1.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Genre specific features}}\mathsurround \z@ $\relax }{8}{equation.2.1.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}MIR Toolkits}{8}{subsection.2.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Music Similarity}}\mathsurround \z@ $\relax }{8}{subsection.2.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Audio features}}\mathsurround \z@ $\relax }{9}{lstnumber.-1.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Melody/ pitch extraction}}\mathsurround \z@ $\relax }{9}{lstnumber.-1.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Spotify API/ Echonest}}\mathsurround \z@ $\relax }{11}{figure.2.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\relax $\@@underline {\hbox {Cover song identification}}\mathsurround \z@ $\relax }{11}{figure.2.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Datasets}{11}{section.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Free Music Archive}{12}{subsection.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Musicnet and 1517 artists}{12}{subsection.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}MedleyDB}{12}{subsection.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}Private music collection}{13}{subsection.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.5}Overview and other sources}{13}{subsection.2.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Spotipy}{14}{section.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Apache Hadoop and Spark}{15}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Timbre Similarity}{16}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Gaussian Mixture Models of MFCCs}{16}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Construction Noise}{16}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Different recordings and cover versions}{17}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Conclusions}{18}{section.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Rhythmic Similarity}{19}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Cross Correlation}{19}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}fluctuation patterns}{19}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Tempo Estimation}{19}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Beat and Tatum Estimation}{19}{section.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Pitch estimation/ Chroma Features}{20}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Pitch Curve}{20}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}MIDI representation}{20}{section.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Graph representation}{20}{section.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Chroma Features}{20}{section.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.1}Bandpass filter}{20}{subsection.5.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.2}Key invariance}{20}{subsection.5.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.3}Beat alignment}{20}{subsection.5.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.4}Validation}{20}{subsection.5.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Similarity metrics}{22}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Definition of similarity}{22}{section.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}Rhythm}{22}{subsection.6.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.2}Timbre}{22}{subsection.6.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.3}Melodic}{22}{subsection.6.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.4}Genre and metadata}{22}{subsection.6.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.5}Genre specific features}{22}{subsection.6.1.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.6}Combinations and variable model}{22}{subsection.6.1.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Gaussian Mixture Models using MFCC}{22}{section.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}Melodic similarity using text retrieval methods}{22}{section.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.4}Rhythmic Similarity}{22}{section.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.5}Collaborative Filtering}{22}{section.6.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Big Data approaches}{23}{chapter.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Data aggregation}{23}{section.7.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.2}MapReduce tasks}{23}{section.7.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Results}{24}{chapter.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}Cover song identification}{24}{section.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.2}Genre similarity}{24}{section.8.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{25}{section*.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}Appendix}{29}{chapter.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Spotipy Crawler}{29}{section.9.1}

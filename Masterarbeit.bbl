@@ -1,0 +1,1177 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{mussim2}{book}{}
+    \name{author}{2}{}{%
+      {{hash=KP}{%
+         family={Knees},
+         familyi={K\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Schedl},
+         familyi={S\bibinitperiod},
+         given={Markus},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Publishing Company, Incorporated}%
+    }
+    \strng{namehash}{KPSM1}
+    \strng{fullhash}{KPSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{1st}
+    \field{isbn}{3662497204, 9783662497203}
+    \field{title}{Music Similarity and Retrieval: An Introduction to Audio- and
+  Web-based Strategies}
+    \field{year}{2016}
+  \endentry
+
+  \entry{schnitzer1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SDD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dr.\bibnamedelima Dominik},
+         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SDD1}
+    \strng{fullhash}{SDD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{isbn}{9781477494158}
+    \field{title}{Dealing with the Music of the World: Indexing Content-Based
+  Music Similarity Models for Fast Retrieval in Massive Databases, 1st ed.}
+    \field{year}{2012}
+  \endentry
+
+  \entry{musly1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SDD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dr.\bibnamedelima Dominik},
+         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SDD1}
+    \strng{fullhash}{SDD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Audio Music Similarity}
+    \verb{url}
+    \verb http://www.musly.org/index.html
+    \endverb
+  \endentry
+
+  \entry{librosa1}{inproceedings}{}
+    \name{author}{7}{}{%
+      {{hash=MB}{%
+         family={McFee},
+         familyi={M\bibinitperiod},
+         given={Brian},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=RC}{%
+         family={Raffel},
+         familyi={R\bibinitperiod},
+         given={Colin},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={Liang},
+         familyi={L\bibinitperiod},
+         given={Dawen},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=EDP}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={Daniel\bibnamedelima PW},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={McVicar},
+         familyi={M\bibinitperiod},
+         given={Matt},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BE}{%
+         family={Battenberg},
+         familyi={B\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=NO}{%
+         family={Nieto},
+         familyi={N\bibinitperiod},
+         given={Oriol},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MB+2}
+    \strng{fullhash}{MBRCLDEDPMMBENO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 14th Python in Science Conference}
+    \field{title}{LibROSA: Audio and Music Signal Analysis in Python}
+  \endentry
+
+  \entry{rm1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Prélude cis-Moll (Rachmaninow)}
+    \verb{url}
+    \verb https://imslp.org/wiki/Morceaux\_de\_fantaisie\%2C\_Op.3\_(Rachmanino
+    \verb ff\%2C\_Sergei)
+    \endverb
+  \endentry
+
+  \entry{rhythm1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FJ}{%
+         family={Foote},
+         familyi={F\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CM}{%
+         family={Cooper},
+         familyi={C\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NU}{%
+         family={Nam},
+         familyi={N\bibinitperiod},
+         given={Unjung},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FJCMNU1}
+    \strng{fullhash}{FJCMNU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Audio Retrieval by Rhythmic Similarity.}
+    \field{month}{01}
+    \field{year}{2002}
+  \endentry
+
+  \entry{metadat1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=YZ}{%
+         family={Yufeng},
+         familyi={Y\bibinitperiod},
+         given={Zhao},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=XL}{%
+         family={Xinwei},
+         familyi={X\bibinitperiod},
+         given={Li},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YZXL1}
+    \strng{fullhash}{YZXL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.2991/icsnce-18.2018.36.
+    \endverb
+    \field{title}{Design and Implementation of Music Recommendation System
+  Based on Hadoop}
+    \field{year}{2018}
+  \endentry
+
+  \entry{msd4}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=MB}{%
+         family={McFee},
+         familyi={M\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lanckriet},
+         familyi={L\bibinitperiod},
+         given={G.R.G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MBLG1}
+    \strng{fullhash}{MBLG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR '11}
+    \field{title}{Large-scale music similarity search with spatial trees}
+    \verb{url}
+    \verb http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.226.5060
+    \endverb
+  \endentry
+
+  \entry{msd1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=BMT}{%
+         family={Bertin-Mahieux},
+         familyi={B\bibinitperiod-M\bibinitperiod},
+         given={Thierry},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=EDP}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={Daniel\bibnamedelima P.W.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=WB}{%
+         family={Whitman},
+         familyi={W\bibinitperiod},
+         given={Brian},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Lamere},
+         familyi={L\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BMT+1}
+    \strng{fullhash}{BMTEDPWBLP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{{Proceedings of the 12th International Conference on
+  Music Information Retrieval ({ISMIR} 2011)}}
+    \field{title}{The Million Song Dataset}
+    \field{year}{2011}
+  \endentry
+
+  \entry{pitch1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=MM}{%
+         family={Marolt},
+         familyi={M\bibinitperiod},
+         given={Matija},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MM1}
+    \strng{fullhash}{MM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR 2006, 7th International Conference on Music
+  Information Retrieval, Victoria, Canada, 8-12 October 2006}
+    \field{title}{A Mid-level Melody-based Representation for Calculating Audio
+  Similarity}
+    \field{year}{2006}
+  \endentry
+
+  \entry{midi1}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=XG}{%
+         family={Xia},
+         familyi={X\bibinitperiod},
+         given={Guangyu},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Huang},
+         familyi={H\bibinitperiod},
+         given={Tongbo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MY}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Yifei},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dannenberg},
+         familyi={D\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FC}{%
+         family={Faloutsos},
+         familyi={F\bibinitperiod},
+         given={Christos},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XG+1}
+    \strng{fullhash}{XGHTMYDRFC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-3-319-12976-1\_17.
+    \endverb
+    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
+  MIDI Databases, 259-276}
+    \field{year}{2013}
+  \endentry
+
+  \entry{crepe1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=KJW}{%
+         family={Kim},
+         familyi={K\bibinitperiod},
+         given={Jong\bibnamedelima Wook},
+         giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Salamon},
+         familyi={S\bibinitperiod},
+         given={Justin},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BJP}{%
+         family={Bello},
+         familyi={B\bibinitperiod},
+         given={Juan\bibnamedelima Pablo},
+         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KJW+1}
+    \strng{fullhash}{KJWSJLPBJP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the IEEE International Conference on
+  Acoustics, Speech, and Signal Processing (ICASSP), 2018}
+    \field{title}{CREPE: A Convolutional Representation for Pitch Estimation}
+  \endentry
+
+  \entry{mussim1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=GS}{%
+         family={Gulati},
+         familyi={G\bibinitperiod},
+         given={Sankalp},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Serra},
+         familyi={S\bibinitperiod},
+         given={Joan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SX}{%
+         family={Serra},
+         familyi={S\bibinitperiod},
+         given={Xavier},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GSSJSX1}
+    \strng{fullhash}{GSSJSX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ICASSP.2015.7178055.
+    \endverb
+    \field{title}{An evaluation of methodologies for melodic similarity in
+  audio recordings of Indian art music, 678-682}
+    \field{year}{2015}
+  \endentry
+
+  \entry{guitext1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=EC}{%
+         family={Erkut},
+         familyi={E\bibinitperiod},
+         given={Cumhur},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=VV}{%
+         family={Välimäki},
+         familyi={V\bibinitperiod},
+         given={Vesa},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Karjalainen},
+         familyi={K\bibinitperiod},
+         given={Matti},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Laurson},
+         familyi={L\bibinitperiod},
+         given={Mikael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EC+1}
+    \strng{fullhash}{ECVVKMLM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Extraction of Physical and Expressive Parameters for
+  Model-based Sound Synthesis of the Classical Guitar}
+    \field{year}{2002}
+  \endentry
+
+  \entry{mandelellis1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=MM}{%
+         family={Mandel},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ED}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMED1}
+    \strng{fullhash}{MMED1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 6th International Conference on Music
+  Information Retrieval, ISMIR, 2005}
+    \field{title}{Song-level features and support vector machines for music
+  classification}
+  \endentry
+
+  \entry{musly2}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=eaDS}{%
+         prefix={et},
+         prefixi={e\bibinitperiod},
+         family={al},
+         familyi={a\bibinitperiod},
+         given={D.\bibnamedelima Schnitzer},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{aDSe1}
+    \strng{fullhash}{aDSe1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 12th International Society for Music
+  Information Retrieval Conference, ISMIR, 2011}
+    \field{title}{Using mutual proximity to improve content-based audio
+  similarity}
+  \endentry
+
+  \entry{mirtoolbox1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=LO}{%
+         family={Lartillot},
+         familyi={L\bibinitperiod},
+         given={Olivier},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=TP}{%
+         family={Toiviainen},
+         familyi={T\bibinitperiod},
+         given={Petri},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LOTP1}
+    \strng{fullhash}{LOTP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 8th International Conference on Music
+  Information Retrieval, ISMIR 2007, Vienna, Austria, September 23-27, 2007}
+    \field{title}{MIR in Matlab (II): A Toolbox for Musical Feature Extraction
+  from Audio}
+  \endentry
+
+  \entry{matl1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{MATLAB}
+    \verb{url}
+    \verb https://de.mathworks.com/help/matlab/index.html
+    \endverb
+  \endentry
+
+  \entry{octave1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=EJW}{%
+         family={Eaton},
+         familyi={E\bibinitperiod},
+         given={John\bibnamedelima W.},
+         giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Bateman},
+         familyi={B\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Hauberg},
+         familyi={H\bibinitperiod},
+         given={Sören},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=WR}{%
+         family={Wehbring},
+         familyi={W\bibinitperiod},
+         given={Rik},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EJW+1}
+    \strng{fullhash}{EJWBDHSWR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{GNU Octave version 4.2.0 manual: a high-level interactive
+  language for numerical computations}
+    \verb{url}
+    \verb http://www.gnu.org/software/octave/doc/interpreter/
+    \endverb
+    \field{year}{2016}
+  \endentry
+
+  \entry{mirtoolbox2}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=HMA}{%
+         family={Hartmann},
+         familyi={H\bibinitperiod},
+         given={Martin\bibnamedelima Ariel},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HMA1}
+    \strng{fullhash}{HMA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{A port of MIRToolbox for Octave}
+    \verb{url}
+    \verb https://github.com/martinarielhartmann/mirtooloct
+    \endverb
+    \field{year}{2016}
+  \endentry
+
+  \entry{yaafe1}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=B}{%
+         family={B.Mathieu},
+         familyi={B\bibinitperiod},
+      }}%
+      {{hash=S}{%
+         family={S.Essid},
+         familyi={S\bibinitperiod},
+      }}%
+      {{hash=T}{%
+         family={T.Fillon},
+         familyi={T\bibinitperiod},
+      }}%
+      {{hash=J}{%
+         family={J.Prado},
+         familyi={J\bibinitperiod},
+      }}%
+      {{hash=G}{%
+         family={G.Richard},
+         familyi={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{B+1}
+    \strng{fullhash}{BSTJG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 11th ISMIR conference, Utrecht,
+  Netherlands, 2010}
+    \field{title}{YAAFE, an Easy to Use and Efficient Audio Feature Extraction
+  Software}
+  \endentry
+
+  \entry{essentia1}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=BD}{%
+         family={Bogdanov},
+         familyi={B\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WN}{%
+         family={Wack},
+         familyi={W\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=GE}{%
+         family={Gómez},
+         familyi={G\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gulati},
+         familyi={G\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HP}{%
+         family={Herrera},
+         familyi={H\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=eaOM}{%
+         prefix={et},
+         prefixi={e\bibinitperiod},
+         family={al.},
+         familyi={a\bibinitperiod},
+         given={O.\bibnamedelima Mayor},
+         giveni={O\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BD+1}
+    \strng{fullhash}{BDWNGEGSHPaOMe1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{International Society for Music Information Retrieval
+  Conference (ISMIR'13)}
+    \field{pages}{493\bibrangedash 498}
+    \field{title}{ESSENTIA: an Audio Analysis Library for Music Information
+  Retrieval}
+    \field{year}{2013}
+  \endentry
+
+  \entry{labrosa1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=MMI}{%
+         family={Mandel},
+         familyi={M\bibinitperiod},
+         given={Michael\bibnamedelima I.},
+         giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=EDPW}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={Daniel P.\bibnamedelima W.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMIEDPW1}
+    \strng{fullhash}{MMIEDPW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Labrosa's audio music similarity and classification
+  submissions}
+    \field{year}{2007}
+  \endentry
+
+  \entry{jupyter}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Jupyter}
+    \verb{url}
+    \verb https://jupyter.org/index.html
+    \endverb
+  \endentry
+
+  \entry{fe1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Für Elise}
+    \verb{url}
+    \verb https://upload.wikimedia.org/wikipedia/commons/a/a9/BH\_116\_Vergleic
+    \verb h.png
+    \endverb
+  \endentry
+
+  \entry{aubio1}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=BP}{%
+         family={Brossier},
+         familyi={B\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=T}{%
+         family={Tintamar},
+         familyi={T\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={Müller},
+         familyi={M\bibinitperiod},
+         given={Eduard},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PN}{%
+         family={Philippsen},
+         familyi={P\bibinitperiod},
+         given={Nils},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Seaver},
+         familyi={S\bibinitperiod},
+         given={Tres},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=CHF�A}{%
+         family={Cruz},
+         familyi={C\bibinitperiod},
+         given={Hannes Fritz …\bibnamedelima Ancor},
+         giveni={H\bibinitperiod\bibinitdelim F\bibinitperiod
+  �\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BP+1}
+    \strng{fullhash}{BPTMEPNSTCHF�A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{aubio/aubio: 0.4.8 (Version 0.4.8)}
+    \verb{url}
+    \verb http://doi.org/10.5281/zenodo.1494152
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{melodia1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=SJ}{%
+         family={Salamon},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GE}{%
+         family={Gómez},
+         familyi={G\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SJGE1}
+    \strng{fullhash}{SJGE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{IEEE Transactions on Audio, Speech and Language
+  Processing, 20(6):1759-1770}
+    \field{title}{Melody Extraction from Polyphonic Music Signals using Pitch
+  Contour Characteristics}
+    \field{year}{2012}
+  \endentry
+
+  \entry{sonviz1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=CC}{%
+         family={Cannam},
+         familyi={C\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=LC}{%
+         family={Landone},
+         familyi={L\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Sandler},
+         familyi={S\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CCLCSM1}
+    \strng{fullhash}{CCLCSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the ACM Multimedia 2010 International
+  Conference}
+    \field{pages}{1467\bibrangedash 1468}
+    \field{title}{Sonic Visualiser: An Open Source Application for Viewing,
+  Analysing, and Annotating Music Audio Files}
+    \list{location}{1}{%
+      {Firenze, Italy}%
+    }
+    \field{year}{2010}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{spotifyapi1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify API}
+    \verb{url}
+    \verb https://developer.spotify.com/documentation/
+    \endverb
+  \endentry
+
+  \entry{echonest1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{The Echo Nest}
+    \verb{url}
+    \verb http://the.echonest.com/
+    \endverb
+  \endentry
+
+  \entry{spotipy1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotipy - a Python client for The Spotify Web API}
+    \verb{url}
+    \verb https://github.com/plamere/spotipy
+    \endverb
+  \endentry
+
+  \entry{fma1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=DM}{%
+         family={Defferrard},
+         familyi={D\bibinitperiod},
+         given={Michäel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BK}{%
+         family={Benzi},
+         familyi={B\bibinitperiod},
+         given={Kirell},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=VP}{%
+         family={Vandergheynst},
+         familyi={V\bibinitperiod},
+         given={Pierre},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BX}{%
+         family={Bresson},
+         familyi={B\bibinitperiod},
+         given={Xavier},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DM+1}
+    \strng{fullhash}{DMBKVPBX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{18th International Society for Music Information
+  Retrieval Conference, 2017}
+    \field{title}{FMA: A Dataset for Music Analysis}
+    \verb{url}
+    \verb https://arxiv.org/abs/1612.01840
+    \endverb
+  \endentry
+
+  \entry{musicnet1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=TJ}{%
+         family={Thickstun},
+         familyi={T\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=HZ}{%
+         family={Harchaoui},
+         familyi={H\bibinitperiod},
+         given={Zaid},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=KSM}{%
+         family={Kakadetitle},
+         familyi={K\bibinitperiod},
+         given={Sham\bibnamedelima M.},
+         giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TJHZKSM1}
+    \strng{fullhash}{TJHZKSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{International Conference on Learning Representations
+  (ICLR)}
+    \field{title}{Learning Features of Music from Scratch}
+    \verb{url}
+    \verb https://arxiv.org/abs/1611.09827
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{1517artists1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SK}{%
+         family={Seyerlehner},
+         familyi={S\bibinitperiod},
+         given={Klaus},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SK1}
+    \strng{fullhash}{SK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{1517-Artists Dataset}
+    \verb{url}
+    \verb http://www.seyerlehner.info/index.php?p=1\_3\_Download
+    \endverb
+    \field{year}{2010}
+  \endentry
+
+  \entry{medleydb1}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=BR}{%
+         family={Bittner},
+         familyi={B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Salamon},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=TM}{%
+         family={Tierney},
+         familyi={T\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mauch},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={Cannam},
+         familyi={C\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BJP}{%
+         family={Bello},
+         familyi={B\bibinitperiod},
+         given={J.\bibnamedelima P.},
+         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BR+1}
+    \strng{fullhash}{BRSJTMMMCCBJP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{15th International Society for Music Information
+  Retrieval Conference, 2014}
+    \field{title}{"MedleyDB: A Multitrack Dataset for Annotation-Intensive MIR
+  Research"}
+  \endentry
+
+  \entry{medleydb2}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=BR}{%
+         family={Bittner},
+         familyi={B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wilkins},
+         familyi={W\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=YH}{%
+         family={Yip},
+         familyi={Y\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Bello},
+         familyi={B\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BR+1}
+    \strng{fullhash}{BRWJYHBJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{New York, NY, USA: International Conference on Music
+  Information Retrieval (ISMIR-16)}
+    \field{title}{MedleyDB 2.0: New Data and a System for Sustainable Data
+  Collection}
+    \field{year}{2016}
+  \endentry
+
+  \entry{openmult1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=MBD}{%
+         family={Man},
+         familyi={M\bibinitperiod},
+         given={B.\bibnamedelima De},
+         giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=MMM}{%
+         family={Mora-Mcginity},
+         familyi={M\bibinitperiod-M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=FG}{%
+         family={Fazekas},
+         familyi={F\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Reiss},
+         familyi={R\bibinitperiod},
+         given={J.D.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MBD+1}
+    \strng{fullhash}{MBDMMMFGRJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{137th Convention of the Audio Engineering Society, 2014}
+    \field{title}{The Open Multitrack Testbed}
+  \endentry
+
+  \entry{bqpd1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Soundcloud bqpd}
+    \verb{url}
+    \verb https://soundcloud.com/bq\_pd
+    \endverb
+  \endentry
+
+  \entry{msd5}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SH}{%
+         family={Schreiber},
+         familyi={S\bibinitperiod},
+         given={Hendrik},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SH1}
+    \strng{fullhash}{SH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{In Proceedings of the 16th International Society for
+  Music Information Retrieval Conference (ISMIR), pages 241-247, Málaga,
+  Spain, Oct. 2015}
+    \field{title}{Improving Genre Annotations for the Million Song Dataset}
+  \endentry
+
+  \entry{msd2}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Last.fm dataset, the official song tags and song similarity
+  collection for the Million Song Dataset}
+    \verb{url}
+    \verb http://labrosa.ee.columbia.edu/millionsong/lastfm
+    \endverb
+  \endentry
+
+  \entry{msd3}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{The Echo Nest Taste profile subset, the official user data
+  collection for the Million Song Dataset}
+    \verb{url}
+    \verb http://labrosa.ee.columbia.edu/millionsong/tasteprofile
+    \endverb
+  \endentry
+
+  \entry{msd6}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{SecondHandSongs dataset, the official list of cover songs
+  within the Million Song Dataset}
+    \verb{url}
+    \verb http://labrosa.ee.columbia.edu/millionsong/secondhand
+    \endverb
+  \endentry
+
+  \entry{spotmin1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Playlist Miner}
+    \verb{url}
+    \verb https://developer.spotify.com/community/showcase/playlist-miner-spoti
+    \verb fy/
+    \endverb
+  \endentry
+
+  \entry{spottac1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Terms and Conditions of Use}
+    \verb{url}
+    \verb https://www.spotify.com/lt/legal/end-user-agreement/plain/#s9
+    \endverb
+  \endentry
+
+  \entry{spottac2}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Developer Terms of Service}
+    \verb{url}
+    \verb https://developer.spotify.com/terms/
+    \endverb
+  \endentry
+
+  \entry{spottac3}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Commercial Restrictions}
+    \verb{url}
+    \verb https://developer.spotify.com/legal/commercial-restrictions/
+    \endverb
+  \endentry
+
+  \entry{msdchallenge1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=MB}{%
+         family={McFee},
+         familyi={M\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=BMT}{%
+         family={Bertin-Mahieux},
+         familyi={B\bibinitperiod-M\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ED}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lanckriet},
+         familyi={L\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MB+1}
+    \strng{fullhash}{MBBMTEDLG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The Million Song Dataset Challenge, AdMIRe '12}
+  \endentry
+\enddatalist
+\endinput
