@@ -33,7 +33,7 @@ Collecting this data for large amounts of songs results in big datasets that nee
 \underline{What to improve?}
 \ \\
 \ \\
-"... Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{mussim2}
+"[...] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}
 The goal of this work is, to propose a transparent music similarity retrieval method based on various weighted contextual and content-based data. 
 Applying different weights to different features allows similarity retrieval methods to search for different kind of similarity. 
 E.g. weighing the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, whilst melodic/ timbre etc. similarities allows to search for similar songs from musical subgenres. 
@@ -89,7 +89,7 @@ X_m = \sum_{k=0}^{K-1}{x_k \cdot e^ { - \frac{K}{ 2 \cdot \pi \cdot i}\cdot k\cd
 Figure \ref{laylaspec} shows the spectrogram of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar to avoid copyright infringements. 
 Due to the fact that the human ear perceives sound in a non-linear matter, a logarithmic or Mel-scale is better to represent different pitches.\\ 
 For example the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. 
-The Mel-scale \cite[pp. 53f]{mussim2} was introduced to resemble the human perception of frequency (equation \ref{eq:mel})
+The Mel-scale \cite[pp. 53f]{knees1} was introduced to resemble the human perception of frequency (equation \ref{eq:mel})
 
 \begin{equation} \label{eq:mel}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
@@ -126,7 +126,7 @@ Given a sample rate of $f_s = 44,1kHz$ (usual CD sample-rate) and a length of a 
 K = f_s \cdot t
 \end{equation}
 
-Calculating a FFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \ref{eq:hop})\cite{mussim2}, the full resulting spectrogram would contain 11627 frames with 1024 frequency values per frame. (eq: \ref{eq:hop}) 
+Calculating a FFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \ref{eq:hop})\cite{knees1}, the full resulting spectrogram would contain 11627 frames with 1024 frequency values per frame. (eq: \ref{eq:hop}) 
 
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
@@ -195,7 +195,7 @@ The Plot in figure \ref{laylacbeat} shows the onsets (beginning of musical notes
 
 \subsubsection{\underline{MFCC}}\label{mfccsim}
 
-This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{mussim2}.
+This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
 Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal.
 
 \begin{figure}[htbp]
@@ -251,26 +251,21 @@ Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel b
 \end{figure}
 \FloatBarrier
 
-
-To reduce the dimensionality of the data even further, a statistical model like a Gaussian Mixture Model (GMM) can be calculated. 
-For each of the Mel- Bands (12 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 12 mean values, a 12 by 12 co-variance matrix (actually $\frac{12*11}{2}$ values, because of the triangular shape - the upper triangle contains the co-variances and the main diagonal contains the variances) and 12 variances. These vectors are therefore not dependent on the length of the actual song. 
-Using such a model, the distance between two songs can be calculated as in equation \ref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
-
-\begin{equation} \label{eq:distGmm}
-%p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}
-\end{equation}
-
-also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real world scenarios. 
-
-
 \subsubsection{\underline{Rhythm based}}
 
 As done by: \cite{rhythm1}\\
 Rhythm based music similarity algorithms use timing information of various events. The so called rhythm spectrum can be used as a feature vector.
 For example the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval.
+An in depth overview is given in chapter \ref{rhythmsimc}
 
-\subsubsection{\underline{Metadata based}}
+\subsubsection{\underline{Pitch based}}
+
+As done by: \cite{pitch1}\\
+The proposed approach by \cite{pitch1} is, to take mid-level features like chroma or pitch instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
+A more detailed analysis of this topic is given in chapter \ref{melsimc}
+
+
+\subsubsection{\underline{Metadata based/ Collaborative Filtering}}
 
 As done by: \cite{metadat1} and \cite{msd4} using the Million Song Dataset (MSD) \cite{msd1}\\
 In 2012 the MSD Challenge was brought to the MIR community. The researches were challenged to give a list of song recommendations based on a large set of user data.\\ 
@@ -278,11 +273,6 @@ So if user X listened a lot to artist A and artist B and user Y listens mostly t
 These kind of metadata based recommendations are pretty common in large music streaming services, although not necessarily representing direct musical similarity.
 These kind of recommendation systems tend to propose commonly well known artists rather than not so well known ones biasing the result. 
 On the other hand these kind of similarity algorithms can work very fast and efficient.  
-
-\subsubsection{\underline{Pitch based}}
-
-As done by: \cite{pitch1}\\
-The proposed approach by \cite{pitch1} is, to take mid-level features like chroma or pitch instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
 
 \subsubsection{\underline{Note based}}
 
@@ -299,7 +289,7 @@ As done by: \cite{mussim1} for indian art music, by using 560 different combinat
 In Rock, Pop and Metal music, extraction of different guitar playstyles would be imaginable. Guitar Tab Extraction \cite{guitext1} Toolkits could be used to extract information if the guitar in a song is mostly plucked or strummed for instance. Or if there are Hammer-on/ Pull-off/ side bending or tapping techniques used.
 In classical music, the play style of the string section of an orchestra could be taken into consideration. 
 
-\subsection{MIR Toolkits}
+\subsection{MIR Toolkits}\label{mirtoolkit}
 \subsubsection{\underline{Music Similarity}}
 
 The easiest way to test state of the art music similarity algorithms is to use the open source toolkit Musly \cite{musly1}\\ 
@@ -609,7 +599,7 @@ The audio features and analysis data ist saved as a JSON file containing informa
 as well as pitch and timbre information, beats and bars.\\
 \ \\
 Together with the 30 second audio sample from which more data like MFCCs could be extracted, these crawler could provide all the information needed to build a large dataset for MIR. However the terms and conditions explicitly prohibits crawling the Spotify service. As stated by the Spotify Terms and Conditions of Use, section 9 (User guidelines):\\
-"\textit{The following is not permitted for any reason whatsoever: (...)\\
+"\textit{The following is not permitted for any reason whatsoever: [...]\\
 12. “crawling” the Spotify Service or otherwise using any automated means (including bots, scrapers, and spiders) to view, access, or collect information from Spotify or the Spotify Service;}" \cite{spottac1}\\
 Therefore a larger user created dataset can not be used without the risk of legal infringements. However one could argue, that there is a difference between data mining and data crawling and for small datasets with the purpose of creating Spotify playlists, these restrictions may not apply.\\ 
 In the sense of the Spotify Developer Terms of Service \cite{spottac2} there may be no legal infringements by creating a non-commercial playlist creation tool. \cite{spottac3} states, that by creating algorithmically-generated playlists similar to the "Discover Weekly" Playlists one may run into challenges if using such features commercially. 
