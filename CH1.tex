@@ -51,14 +51,14 @@ Lastly, a big data approach to efficiently use the gathered features is proposed
 
 \section{Overview}
 
-\textit{Structure: 
-Basically ->\\
-\textbf{PART I: Data Aggregation\\
-PART II: Feature Extraction\\
-PART III: Similarity Estimation}
-}
+\textit{Structure: \\}
+\ \\
+\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
+\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
+\smartdiagram[priority descriptive diagram]{PART IV: Performance Tuning, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
 
-\chapter{MIR Toolkits and Data Aggregation}
+
+\chapter{MIR Toolkits and audio features}
 
 \section{Music Information Retrieval}
 The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study.
@@ -66,12 +66,12 @@ The algorithm used in this paper is described in \cite[pp. 17ff]{schnitzer1} and
 The framework used to determine the song similarity in chapter \ref{musly} is the MUSLY toolkit \cite{musly1}
 To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits and approaches to music similarity.
 
-\subsection{Audio Features and Music Similarity Measurements}
+\section{Audio Features and Music Similarity Measurements}
 
 This section provides an overview about different music similarity measurements and metrics.\\
 More in-depth information about the different metrics is given in chapter \ref{simmet}
 
-\subsubsection{\underline{Frequency based}}\label{featsec}
+\subsection{Frequency based}\label{featsec}
 
 As done by: \cite[pp. 17ff]{schnitzer1}\\
 Most of the algorithms start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then compute the power spectrum (equation \ref{eq:absfft})
@@ -130,7 +130,7 @@ Calculating a FFT with a window size of 1024 samples and a hop size of 512 sampl
 
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-N_fv = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
+N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
 \end{equation}
 
 To reduce the dimensionality of the feature vector, a typical approach in MIR would be to calculate the so called Mel Frequency Cepstral Coefficients (MFCCs). They are described in more detail in the next section.
@@ -193,7 +193,7 @@ The Plot in figure \ref{laylacbeat} shows the onsets (beginning of musical notes
 	\label{fig:feat2}
 \end{figure}
 
-\subsubsection{\underline{MFCC}}\label{mfccsim}
+\subsection{MFCC}\label{mfccsim}
 
 This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
 Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal.
@@ -251,21 +251,20 @@ Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel b
 \end{figure}
 \FloatBarrier
 
-\subsubsection{\underline{Rhythm based}}
-
+\subsection{Rhythm based}
 As done by: \cite{rhythm1}\\
 Rhythm based music similarity algorithms use timing information of various events. The so called rhythm spectrum can be used as a feature vector.
 For example the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval.
 An in depth overview is given in chapter \ref{rhythmsimc}
 
-\subsubsection{\underline{Pitch based}}
+\subsection{Pitch based}
 
 As done by: \cite{pitch1}\\
 The proposed approach by \cite{pitch1} is, to take mid-level features like chroma or pitch instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
 A more detailed analysis of this topic is given in chapter \ref{melsimc}
 
 
-\subsubsection{\underline{Metadata based/ Collaborative Filtering}}
+\subsection{Metadata based/ Collaborative Filtering}
 
 As done by: \cite{metadat1} and \cite{msd4} using the Million Song Dataset (MSD) \cite{msd1}\\
 In 2012 the MSD Challenge was brought to the MIR community. The researches were challenged to give a list of song recommendations based on a large set of user data.\\ 
@@ -274,7 +273,7 @@ These kind of metadata based recommendations are pretty common in large music st
 These kind of recommendation systems tend to propose commonly well known artists rather than not so well known ones biasing the result. 
 On the other hand these kind of similarity algorithms can work very fast and efficient.  
 
-\subsubsection{\underline{Note based}}
+\subsection{Note based}
 
 As done by: \cite{midi1}\\
 For comparing musical pieces by their symbolic represenation (notes, tabulatures etc.) different text retrieval methods could be used. The MIDI datatype could be used, as it is a form of digital representation of music information. 
@@ -283,17 +282,17 @@ The problem with notation based algorithms is, that there are not many datasets 
 As shown in \ref{midiest} the automatic transcription of notes from raw audio does not work flawlessly. 
 There is ongoing research to automatically annotate musical notes with the help of neural networks.\cite{crepe1}
 
-\subsubsection{\underline{Genre specific features}}
+\subsection{Genre specific features}
 
 As done by: \cite{mussim1} for indian art music, by using 560 different combinations of different features. They state that: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation discussed in Section 2.  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed, that the choice of features and parameters for music similarity measurement is a critical point.\\
 In Rock, Pop and Metal music, extraction of different guitar playstyles would be imaginable. Guitar Tab Extraction \cite{guitext1} Toolkits could be used to extract information if the guitar in a song is mostly plucked or strummed for instance. Or if there are Hammer-on/ Pull-off/ side bending or tapping techniques used.
 In classical music, the play style of the string section of an orchestra could be taken into consideration. 
 
-\subsection{MIR Toolkits}\label{mirtoolkit}
-\subsubsection{\underline{Music Similarity}}
+\section{MIR Toolkits}\label{mirtoolkit}
+\subsection{Music Similarity}
 
 The easiest way to test state of the art music similarity algorithms is to use the open source toolkit Musly \cite{musly1}\\ 
-It is based on gaussian mixture models of MFCC features and calculates the distances between songs very fast, supporting OpenMP acceleration. It offers the classical mandel-ellis similarity method \cite{mandelellis1} and a timbre based improved version of the mandel-ellis algorithm \cite{musly2}\\
+It is based on statistical models of MFCC features and calculates the distances between songs very fast, supporting OpenMP acceleration. It offers the classical mandel-ellis similarity method \cite{mandelellis1} and a timbre based improved version of the mandel-ellis algorithm \cite{musly2}\\
 The MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \cite{matl1}. A port to GNU Octave \cite{octave1} is also available \cite{mirtoolbox2}\\
 The short code snippet below is all it takes to compute a similarity matrix based on MFCC features, but the calculation takes quite some time.
 
@@ -325,13 +324,13 @@ endfor
 
 \FloatBarrier
 
-\subsubsection{\underline{Audio features}}
+\subsection{Audio feature extraction}
 To extract audio features, 
 The YAAFE toolkit \cite{yaafe1} is able to extract a lot of different audio features like energy, mfcc or loudness directly into the hadoop file format h5 making it ideal for big data frameworks to use. It can be used with C++, Python or Matlab.\\
 The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of the rhythm decriptors, bpm etc. It can also be used in C++ and Python\\
 The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. The plots from section \ref{featsec} were created using librosa\\
 
-\subsubsection{\underline{Melody/ pitch extraction}} \label{midiest}
+\subsection{Melody/ pitch extraction}\label{midiest}
 To test the various pitch extraction toolkits, a piece by Rachmaninoff and by Beethoven was used. The first three bars of Rachmaninoffs Prelude can be found in figure \ref{rm}
 Figure \ref{fe} shows the first five bars of Beethovens Bagatelle in A Minor (Für Elise).
 
@@ -430,7 +429,7 @@ Figure \ref{femm} shows the output of a python script using the Melodia VAMP plu
 
 Work in progress: A script to convert Aubio Pitch to MIDI and the output shown in figure \ref{feam}
 
-\subsubsection{\underline{Spotify API/ Echonest}}\label{spotipy}
+\subsection{Spotify API/ Echonest}\label{spotipy}
 
 Another way of getting music information, audio analysis and metadata is by using the Spotify API\cite{spotifyapi1}
 Part of the available audio features comes from the Echo Nest\cite{echonest1}
@@ -466,13 +465,15 @@ The pitch graph has one significant downside, because it is reduced to one octav
 
 \FloatBarrier
 
-\subsubsection{\underline{Cover song identification}}
+\subsection{Cover song identification}
 
 The ability to detect cover songs or different versions/ recording of a musical piece could be a good measurement for the efficiency of music similarity algorithms. In the next section one test case is presented, showing, that a MFCC based music similarity algorithm isn't able to detect different recordings of the same piano piece as most similar to each other. 
 
-\section{Datasets}
+\chapter{Data aggregation}
+
 To evaluate the music similarity algorithms and metrics a lot of music data is needed.
-For this paper different sources of music were used. 
+
+\section{Datasets}
 
 \subsection{Free Music Archive}
 
@@ -603,7 +604,4 @@ Together with the 30 second audio sample from which more data like MFCCs could b
 12. “crawling” the Spotify Service or otherwise using any automated means (including bots, scrapers, and spiders) to view, access, or collect information from Spotify or the Spotify Service;}" \cite{spottac1}\\
 Therefore a larger user created dataset can not be used without the risk of legal infringements. However one could argue, that there is a difference between data mining and data crawling and for small datasets with the purpose of creating Spotify playlists, these restrictions may not apply.\\ 
 In the sense of the Spotify Developer Terms of Service \cite{spottac2} there may be no legal infringements by creating a non-commercial playlist creation tool. \cite{spottac3} states, that by creating algorithmically-generated playlists similar to the "Discover Weekly" Playlists one may run into challenges if using such features commercially. 
-However it does not prohibit it for non-commercial cases.  
-
-
-\section{Apache Hadoop and Spark}
+However it does not prohibit the usage for non-commercial cases.  
