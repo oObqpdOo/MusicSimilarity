@@ -132,7 +132,8 @@ The whole workflow to extract the chroma features for this thesis is shown in fi
 	\framebox{\parbox{1\textwidth}{ 	
 		\centering
 		\ \\
-		\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white, blue!40!white}}
+		%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white, blue!40!white}}
+		\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}			
 		\smartdiagram[priority descriptive diagram]{6) key shifting, 5) beat alignment, 4) extract most dominant pitches, 3) filter silence, 2) calculate chromagram, 1) filter audio (bandpass)} \\
 		\caption{Workflow chroma feature extraction}
 		\label{workflowchrom}

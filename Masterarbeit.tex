@@ -4,7 +4,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% HEADER
-\documentclass[a4paper,oneside,11pt]{report}
+\documentclass[a4paper,oneside,12pt]{report}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Alternative Optionen:
 %	Papiergr��e: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
@@ -65,6 +65,11 @@
 \usepackage{amsfonts}
 
 \usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{caption}
+\newcommand*{\h}{\hspace{5pt}}% for indentation
+\newcommand*{\hh}{\h\h}% double indentation
+
 
 %% Unterstreichen
 \usepackage{ulem}
@@ -386,6 +391,8 @@ placeholderplaceplaceholder \= placeholder \kill
 \textbf{MP} \> mutual proximity\\
 \textbf{DTW} \> dynamic time warping\\
 \textbf{ESA} \> explicit semantic analysis\\
+\textbf{BPM} \> beats per minute\\
+
 
 
 \end{tabbing}

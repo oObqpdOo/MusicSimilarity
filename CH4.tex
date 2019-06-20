@@ -1,13 +1,16 @@
 
 \chapter{Rhythmic Similarity}\label{rhythmsimc}
 
-This chapter provides an overview over some of the possibilities of computing music similarity by focusing on rhythmic features of different songs. \\
-\textit{Tempo Estimation}
+This chapter provides an overview over some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
+Nearly every MIR Toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution to computing very low level rhythmic similarities is by sorting and comparing songs by their tempo. Of course there are far better and more accurate solutions. By just comparing the tempo of songs a lot of rhythm information is lost e.g. the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
+This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a big data framework.\\
 
-\section{Beat Histogram}
+\section{Beat histogram}\label{beathist}
 
-\textit{\textbf{Beat Histogram}}\\
-Simple usage of beat histogram using euclidean distance \cite{rhythm1}. 
+Other similarity measurements are e.g. the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. These are relatively similar to the later evaluated Rhythm Histograms.
+Gruhne (et al.) further improved the beat histograms and suggested an additional post processing step for the beat histogram before calculating the similarity between songs with the euclidean distance, to improve a comparison of two songs with different tempi by transforming the beat histograms into the logarithmic lag domain. They found, that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further \cite[182]{rbh1}.
+The essentia toolkit offers methods to extract the beat histogram. The different detected potential bpms are normalized to 1. If a song changes its tempo then multiple peaks can be seen.\\ 
+Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as a singer in 1999. The 1994 version changes its tempo in the outro of the song as can be seen in the figure.
 
 \begin{figure}[htbp]
 	\centering
@@ -42,12 +45,14 @@ Simple usage of beat histogram using euclidean distance \cite{rhythm1}.
 	\label{fig:bh1}
 \end{figure}
 
-Gruhne (et al.) suggests an additional post processing step for the beat histogram. They found, that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of the similarity measurement further \cite[182]{rbh1}. 
+\FloatBarrier
+ 
+Another feature that will just be mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1}.
 
 \section{Rhythm patterns}
 
-\textit{\textbf{Fluctuation Pattern, Onset Patterns, Rhythm Pattern}}\\
-Using: rp\_extractor library from TU Vienna \cite{rp_extract}, Paper: \cite{rp1}, \cite{rp2}
+A more state-of-the-art feature is the so called rhythm pattern, also known as fluctuation patterns for instance mentioned by \cite{rp1}. 
+To extract these features the rp\_extractor library \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible while at the same time substantial differences between the different songs are recognizable.
 
 \begin{figure}[htbp]
 	\centering
@@ -74,7 +79,7 @@ Using: rp\_extractor library from TU Vienna \cite{rp_extract}, Paper: \cite{rp1}
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_a_rp.png}
-				\caption{99' Version Stanne}
+				\caption{99' Version Anders}
 				\label{sarp}
 			\end{subfigure}%			
 	}}
@@ -82,14 +87,124 @@ Using: rp\_extractor library from TU Vienna \cite{rp_extract}, Paper: \cite{rp1}
 	\label{fig:rp1}
 \end{figure}
 
-\section{Cross Correlation}
+The x-axis represents the frequency band converted to the bark scale (a scale representing the human auditory system comparable to the mel scale) and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (600 BPM).
+The Bark of a frequency $f$ can be determined using formula \ref{eq:bark}.
+\begin{equation} \label{eq:bark}
+Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
+\end{equation}
+The algorithm to extract the rhythm patterns as well as the rhythm histogram and statistical spectrum descriptors measuring the variations over the critical frequency bands can be seen in figure \ref{fig:rpe}.
 
-\textit{\textbf{Onset signal}}\\
+\begin{center}
+  % setting the typeface to sans serif and the font size to small
+  % the scope local to the environment
+  \sffamily
+  \footnotesize
+  \begin{tikzpicture}[auto,
+    %decision/.style={diamond, draw=black, thick, fill=white,
+    %text width=8em, text badly centered,
+    %inner sep=1pt, font=\sffamily\small},
+    block_center/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text centered,
+      minimum height=3em},
+    block_left/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=4em, inner sep=6pt},
+    block_noborder/.style ={rectangle, draw=none, thick, fill=none,
+      text width=18em, text centered, minimum height=1em},
+    block_assign/.style ={rectangle, draw=black, thick, fill=white,
+      text width=18em, text ragged, minimum height=3em, inner sep=6pt},
+    block_lost/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=3em, inner sep=6pt},
+      line/.style ={draw, thick, -latex', shorten >=0pt}]
+    % outlining the flowchart using the PGF/TikZ matrix funtion
+    \matrix [column sep=5mm,row sep=3mm] {
+      % enrollment - row 1
+      \node [block_center] (audiosig) {Audio Signal};\\
+      % enrollment - row 2
+      \node [block_center] (pre) {Pre-Processing};\\
+      % enrollment - row 3
+      \node [block_center] (stft) {Power Spectrum (STFT)};\\ 
+      % follow-up - row 4
+      \node [block_center] (bark) {Critical Bands (Bark scale)};\\
+      % follow-up - row 5
+      \node [block_center] (phon) {Equal Loudness (Phon)};\\
+      % follow-up - row 6
+      \node [block_center] (sone) {Specific Loudness Sens. (Sone)};
+	  & \node [block_assign] (stat) {Statistical Spectrum Descriptor $\rightarrow$ \textit{\textbf{SSD}}};\\
+      % follow-up - row 7
+	  \node [block_center] (fft) {Modulation Amplitude (FFT)};
+ 	  & \node [block_assign] (rh) {Rhythm Histogram $\rightarrow$ \textit{\textbf{RH}}};\\
+       % follow-up - row 8
+      \node [block_center] (fsw) {Fluctuation Strength Weighting};\\
+      % follow-up - row 9
+      \node [block_center] (filt) {Filtering/ Blurring};
+   	  & \node [block_assign] (rp) {Rhythmic Patterns $\rightarrow$ \textit{\textbf{RP}}};\\
+    };% end matrix
+    % connecting nodes with paths
+    \begin{scope}[every path/.style=line]
+      % paths for enrollemnt rows
+      \path (audiosig)   -- (pre);
+      \path (pre)  -- (stft);
+      \path (stft) -- (bark);
+      \path (bark) -- (phon);
+      \path (phon) -- (sone);
+      \path (sone) -- (stat);
+      \path (sone) -- (fft);
+      \path (fft) -- (rh);
+      \path (fft) -- (fsw);
+      \path (fsw) -- (filt);
+      \path (filt) -- (rp);
+    \end{scope}
+  \end{tikzpicture}
+  	\captionof{figure}{Rhythm Pattern extraction \cite{rp_extract2}}
+	\label{fig:rpe}
+\end{center}
 
-- simple approach using only onset and beat features extracted with librosa
-- cross correlation of 2 songs
+So in conclusion the Rhythm Patterns basically represent the BPM of various frequency bands.
+To compare two different songs the euclidean distance between the vectorized rhythm pattern matrices can be calculated as Pampalk suggests \cite[p. 40]{fp1}\\
+Pohle, Schnitzer et al. refined Fluctuation Patterns into Onset Patterns e.g. by using semitone bands instead of fewer critical bands to detect onsets. \cite{rp2}\\
+This thesis however focuses on Fluctuation/ Rhythm patterns extracted with the rp\_extractor library. 
 
-dependent on beat extraction and onset detection algorithms
+\section{Rhythm Histogram}
+
+A more simplistic and lower dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
+The difference in comparison to the beat histogram mentioned earlier in section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefor the sub-rhythms of single instruments into account. 
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.25]{Images/Beat/h_o_rh.png}
+				\caption{Scorpions}
+				\label{horh}
+			\end{subfigure}%
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.25]{Images/Beat/h_c_rh.png}
+				\caption{Knightsbridge}
+				\label{hcrh}
+			\end{subfigure}% 
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.25]{Images/Beat/s_s_rh.png}
+				\caption{94' Version Stanne}
+				\label{ssrh}
+			\end{subfigure}%
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.25]{Images/Beat/s_a_rh.png}
+				\caption{99' Version Stanne}
+				\label{sarh}
+			\end{subfigure}%			
+	}}
+	\caption{Rhythm Histogram}
+	\label{fig:rh1}
+\end{figure}
+
+\section{cross-correlation}
+
+Estimating the onset strength per beat and creating a discrete-time signal for each song is an other option. Similar to the chroma features the cross-correlation of the onset functions could be used as a similarity measurement. 
 
 \begin{figure}[htbp]
 	\centering
@@ -105,8 +220,25 @@ dependent on beat extraction and onset detection algorithms
 				\includegraphics[scale=0.3]{Images/Beat/h_c_on.png}
 				\caption{Knightsbridge}
 				\label{hcon}
+			\end{subfigure}%	
+				
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Beat/s_s_on.png}
+				\caption{94' Version Stanne}
+				\label{saon}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Beat/s_a_on.png}
+				\caption{99' Version Stanne}
+				\label{sson}
 			\end{subfigure}%			
+				
 	}}
 	\caption{Detected Onsets (first 30 seconds)}
 	\label{fig:ons1}
 \end{figure}	
+
+Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
+In conclusion this approach is discarded and not further considered and tested in this thesis.  

@@ -1428,12 +1428,66 @@
     \field{year}{2007}
   \endentry
 
-  \entry{rp_extract}{inproceedings}{}
+  \entry{rhythm3}{article}{}
+    \name{author}{2}{}{%
+      {{hash=TG}{%
+         family={Tzanetakis},
+         familyi={T\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=CP}{%
+         family={Cook},
+         familyi={C\bibinitperiod},
+         given={Perry},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TGCP1}
+    \strng{fullhash}{TGCP1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Rhythm Patterns}
-    \verb{url}
-    \verb http://ifs.tuwien.ac.at/mir/audiofeatureextraction.html
+    \verb{doi}
+    \verb 10.1109/TSA.2002.800560
     \endverb
+    \field{pages}{293 \bibrangedash  302}
+    \field{title}{Musical Genre Classification of Audio Signals}
+    \field{volume}{10}
+    \field{journaltitle}{IEEE Transactions on Speech and Audio Processing}
+    \field{month}{08}
+    \field{year}{2002}
+  \endentry
+
+  \entry{rbh1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=GM}{%
+         family={Gruhne},
+         familyi={G\bibinitperiod},
+         given={Matthias},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DC}{%
+         family={Dittmar},
+         familyi={D\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=GD}{%
+         family={Gärtner},
+         familyi={G\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GMDCGD1}
+    \strng{fullhash}{GMDCGD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{177\bibrangedash 182}
+    \field{title}{Improving Rhythmic Similarity Computation by Beat Histogram
+  Transformations.}
+    \field{month}{01}
+    \field{year}{2009}
   \endentry
 
   \entry{rp1}{inproceedings}{}
@@ -1460,6 +1514,40 @@
   Transformations for Music Genre Classification.}
     \field{month}{01}
     \field{year}{2005}
+  \endentry
+
+  \entry{rp_extract}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Audio Feature Extraction}
+    \verb{url}
+    \verb https://github.com/tuwien-musicir/rp_extract
+    \endverb
+  \endentry
+
+  \entry{rp_extract2}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Audio Feature Extraction - Rhythm Patterns}
+    \verb{url}
+    \verb http://www.ifs.tuwien.ac.at/mir/audiofeatureextraction.html
+    \endverb
+  \endentry
+
+  \entry{fp1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=PE}{%
+         family={Pampalk},
+         familyi={P\bibinitperiod},
+         given={Elias},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PE1}
+    \strng{fullhash}{PE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Computational Models of Music Similarity and their
+  Application in Music Information Retrieval}
+    \field{year}{2006}
   \endentry
 
   \entry{rp2}{inproceedings}{}
@@ -1501,38 +1589,6 @@
     \field{labeltitlesource}{title}
     \field{pages}{525\bibrangedash 530}
     \field{title}{On Rhythm and General Music Similarity.}
-    \field{month}{01}
-    \field{year}{2009}
-  \endentry
-
-  \entry{rbh1}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=GM}{%
-         family={Gruhne},
-         familyi={G\bibinitperiod},
-         given={Matthias},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=DC}{%
-         family={Dittmar},
-         familyi={D\bibinitperiod},
-         given={Christian},
-         giveni={C\bibinitperiod},
-      }}%
-      {{hash=GD}{%
-         family={Gärtner},
-         familyi={G\bibinitperiod},
-         given={Daniel},
-         giveni={D\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{GMDCGD1}
-    \strng{fullhash}{GMDCGD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{177\bibrangedash 182}
-    \field{title}{Improving Rhythmic Similarity Computation by Beat Histogram
-  Transformations.}
     \field{month}{01}
     \field{year}{2009}
   \endentry

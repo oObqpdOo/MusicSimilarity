@@ -53,10 +53,12 @@ Lastly, a big data approach to efficiently use the gathered features is proposed
 
 \textit{Structure: \\}
 \ \\
-\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
-\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
-\smartdiagram[priority descriptive diagram]{PART IV: Performance Tuning, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
-
+\begin{figure}[htbp]
+	\centering
+	%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
+	\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
+	\smartdiagram[priority descriptive diagram]{PART IV: Performance Tuning, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
+\end{figure}
 
 \chapter{MIR Toolkits and audio features}
 
@@ -250,6 +252,9 @@ Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel b
 	\label{fig:mfcc}
 \end{figure}
 \FloatBarrier
+\ \\
+\ \\
+\textit{\textbf{Onset and Chroma signal explained!!!!}}\\
 
 \subsection{Rhythm based}
 As done by: \cite{rhythm1}\\
