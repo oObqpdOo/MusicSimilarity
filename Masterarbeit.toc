@@ -13,67 +13,67 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Overview}{2}{section.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}MIR Toolkits and audio features}{3}{chapter.2}
+\contentsline {section}{\numberline {1.3}Conclusions}{3}{section.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Music Information Retrieval}{3}{section.2.1}
+\contentsline {chapter}{\numberline {2}MIR Toolkits and audio features}{4}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Audio Features and Music Similarity Measurements}{3}{section.2.2}
+\contentsline {section}{\numberline {2.1}Music Information Retrieval}{4}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}Frequency based}{3}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.2}Audio Features and Music Similarity Measurements}{4}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}MFCC}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Frequency based}{4}{subsection.2.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}Rhythm based}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.2}MFCC}{7}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Pitch based}{7}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.3}Pitch based}{8}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.5}Metadata based/ Collaborative Filtering}{7}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.4}Rhythm based}{8}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.6}Note based}{7}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.5}Metadata based/ Collaborative Filtering}{8}{subsection.2.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.7}Genre specific features}{8}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.6}Note based}{8}{subsection.2.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}MIR Toolkits}{8}{section.2.3}
+\contentsline {subsection}{\numberline {2.2.7}Genre specific features}{9}{subsection.2.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Music Similarity}{8}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.3}MIR Toolkits}{9}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Audio feature extraction}{9}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.1}Music Similarity}{9}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}Melody/ pitch extraction}{9}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.2}Audio feature extraction}{10}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.4}Spotify API/ Echonest}{11}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.3}Melody/ pitch extraction}{10}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.5}Cover song identification}{12}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.4}Spotify API/ Echonest}{12}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Data aggregation}{13}{chapter.3}
+\contentsline {subsection}{\numberline {2.3.5}Cover song identification}{13}{subsection.2.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Datasets}{13}{section.3.1}
+\contentsline {chapter}{\numberline {3}Data aggregation}{14}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Free Music Archive}{13}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.1}Datasets}{14}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Musicnet and 1517 artists}{13}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.1}Free Music Archive}{14}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.3}MedleyDB}{14}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.2}Musicnet and 1517 artists}{14}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.4}Private music collection}{14}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.3}MedleyDB}{15}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.5}Overview and other sources}{15}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.4}Private music collection}{15}{subsection.3.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Spotipy}{16}{section.3.2}
+\contentsline {subsection}{\numberline {3.1.5}Overview and other sources}{16}{subsection.3.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Timbre Similarity}{18}{chapter.4}
+\contentsline {section}{\numberline {3.2}Spotipy}{17}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Single Gaussian Model}{18}{section.4.1}
+\contentsline {chapter}{\numberline {4}Timbre Similarity}{19}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Other Similarity Metrics}{19}{section.4.2}
+\contentsline {section}{\numberline {4.1}Single Gaussian Model}{19}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Validation}{20}{section.4.3}
+\contentsline {section}{\numberline {4.2}Other Similarity Metrics}{20}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Construction Noise}{20}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.3}Validation}{21}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Different recordings and cover versions}{21}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.1}Construction Noise}{21}{subsection.4.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Conclusions}{22}{section.4.4}
+\contentsline {subsection}{\numberline {4.3.2}Different recordings and cover versions}{22}{subsection.4.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Melodic Similarity}{24}{chapter.5}
 \defcounter {refsection}{0}\relax 
@@ -99,54 +99,68 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.4}cross-correlation}{34}{section.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Other Similarity metrics}{36}{chapter.7}
+\contentsline {chapter}{\numberline {7}Other Similarity metrics and Performance}{36}{chapter.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7.1}Definition of similarity}{36}{section.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1.1}Rhythm, Timbre, Melodic}{36}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Test Datasets}{36}{section.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1.2}Genre and metadata}{36}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.3}Feature Extraction Performance}{37}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1.3}Genre specific features}{36}{subsection.7.1.3}
+\contentsline {subsection}{\numberline {7.3.1}Librosa}{37}{subsection.7.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1.4}Combinations and variable model}{36}{subsection.7.1.4}
+\contentsline {subsection}{\numberline {7.3.2}Essentia}{37}{subsection.7.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Collaborative Filtering}{36}{section.7.2}
+\contentsline {subsubsection}{Essentia Standard}{38}{subsection.7.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Big Data Framework Spark}{37}{chapter.8}
+\contentsline {subsubsection}{Essentia Streaming}{38}{lstnumber.-3.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.1}Apache Hadoop and Spark}{37}{section.8.1}
+\contentsline {subsection}{\numberline {7.3.3}Essentia parallel}{39}{subsection.7.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.2}Data aggregation}{37}{section.8.2}
+\contentsline {subsection}{\numberline {7.3.4}rp\_extractor}{39}{subsection.7.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.3}Euclidean Distance}{37}{section.8.3}
+\contentsline {chapter}{\numberline {8}Big Data Framework Spark}{40}{chapter.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.4}Alternating Least Squares}{37}{section.8.4}
+\contentsline {section}{\numberline {8.1}Apache Hadoop and Spark}{40}{section.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.5}DIMSUM all-pairs similarity}{37}{section.8.5}
+\contentsline {subsection}{\numberline {8.1.1}Hadoop and Map Reduce}{41}{subsection.8.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.6}Levenshtein distance}{37}{section.8.6}
+\contentsline {subsection}{\numberline {8.1.2}Spark and RDDs}{41}{subsection.8.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.7}TF-IDF weights}{37}{section.8.7}
+\contentsline {section}{\numberline {8.2}Data aggregation}{41}{section.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.8}MapReduce tasks}{37}{section.8.8}
+\contentsline {section}{\numberline {8.3}Euclidean Distance}{41}{section.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.8.1}Cross-correlation}{37}{subsection.8.8.1}
+\contentsline {section}{\numberline {8.4}Alternating Least Squares}{41}{section.8.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.8.2}Kullback-Leibler Divergence}{37}{subsection.8.8.2}
+\contentsline {section}{\numberline {8.5}DIMSUM all-pairs similarity}{41}{section.8.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Results}{38}{chapter.9}
+\contentsline {section}{\numberline {8.6}Levenshtein distance}{41}{section.8.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Runtime}{38}{section.9.1}
+\contentsline {section}{\numberline {8.7}TF-IDF weights}{41}{section.8.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.2}Cover song identification}{38}{section.9.2}
+\contentsline {section}{\numberline {8.8}MapReduce tasks}{41}{section.8.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.3}Genre similarity}{38}{section.9.3}
+\contentsline {subsection}{\numberline {8.8.1}Cross-correlation}{41}{subsection.8.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.4}Improvements and outlook}{38}{section.9.4}
+\contentsline {subsection}{\numberline {8.8.2}Kullback-Leibler Divergence}{41}{subsection.8.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{39}{section*.8}
+\contentsline {subsection}{\numberline {8.8.3}Jensen-Shannon Divergence}{41}{subsection.8.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}Appendix}{44}{chapter.10}
+\contentsline {section}{\numberline {8.9}Combining different measurements}{41}{section.8.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.1}Spotipy Crawler}{44}{section.10.1}
+\contentsline {chapter}{\numberline {9}Results}{42}{chapter.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Runtime}{42}{section.9.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.2}Cover song identification}{42}{section.9.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.3}Genre similarity}{42}{section.9.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.4}Improvements and outlook}{42}{section.9.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{43}{section*.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {10}Appendix}{48}{chapter.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.1}Spotipy Crawler}{48}{section.10.1}

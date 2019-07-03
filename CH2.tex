@@ -24,7 +24,11 @@ As a second step the result has to be symmetrized.
 \begin{equation} \label{eq:KL2}
 d_{KL}(P, Q) = \frac{1}{2} (KL_{(P||Q)} + KL_{(Q||P)}) 
 \end{equation}
-This approach is one of the two available similarity metrics of the musly \cite{musly1} toolkit introduced in section \ref{mirtoolkit}
+This approach is one of the two available similarity metrics of the musly \cite{musly1} toolkit introduced in section \ref{mirtoolkit}.
+This can be simplified and written as a closed form:
+\begin{equation} \label{eq:SKL}
+d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
+\end{equation}
 
 \section{Other Similarity Metrics}
 \textit{different similarity metrics, we use easiest one}\\
@@ -142,30 +146,8 @@ The top ten most similar songs to the 3 minutes and 33 seconds version are liste
 The interesting conclusion is that only 2 out of the 3 other versions were considered as most similar songs.
 The slower recording wasn't even in the top 30 list of the most similar songs. 
 The same was observable for other cover versions of songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. 
-This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches.
+This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches and melody movements.
 
-\section{Conclusions}
-
-Why using a big data framework would help: 
-music similarity is not well defined. It is a rather subjective value that differs from listener to listener. 
-Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics or a combination of more than a few of these features. The usage of a big data framework allows to create a variable/ fuzzy metric definition. Various parameters could easily be taken into consideration when calculating the musical distance of two different pieces. 
-Using a Big Data framework, the problem of the fuzzy definition of music similarity could be avoided, if a metric can be found, that takes multiple of the accounted features of this paper into consideration.
-Available information includes metadata, user data, audio features, sheet music and more.\\
-\textit{\ \\
-The idea of using genre specific features could be evaluated any further
-\ \\
-Another important question is how to measure similarity algorithms. 
-There are a few possibilities like genre, composer/ interpret or cover song identification. Or actual user data. MSD Challenge Dataset usable?\cite{msdchallenge1}\\
-\ \\
-TODO:\\
-\ \\
-Comparison of Echo Nest Pitch Features vs. Full MIDI notation?\\
-\ \\
-Using genre specific features\\
-\ \\
-Use extracted MIDI vs. professionally annotated sheet music\\
-\ \\
-Echo Nest Features invariant to key\\}
 
 
 

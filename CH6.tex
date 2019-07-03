@@ -1,10 +1,23 @@
 %==============================================================
 
-\chapter{Big Data Framework Spark}
+\chapter{Big Data Framework Spark}\label{bds1}
+
+After accumulating the Data and presenting various methods to extract different audio features, the following chapters describe the data analysis with Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
 
 \section{Apache Hadoop and Spark} 
 
+First of all a small introduction to Big Data processing with Spark is given.
+With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. Map-Reduce as a 
+
+\subsection{Hadoop and Map Reduce}
+
+
+
+\subsection{Spark and RDDs}
+
 \section{Data aggregation}
+
+
 
 \section{Euclidean Distance}
 
@@ -17,14 +30,20 @@
 \section{TF-IDF weights}
 
 \section{MapReduce tasks}
+
 \subsection{Cross-correlation}
 
 \subsection{Kullback-Leibler Divergence}
 
+\subsection{Jensen-Shannon Divergence}
+
+\underline{\textit{\textbf{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit}}}\cite[p.45]{schnitzer1}
+
+\section{Combining different measurements}
 
 %==============================================================
 
-\chapter{Results}
+\chapter{Results}\label{bds2}
 
 \section{Runtime}
 

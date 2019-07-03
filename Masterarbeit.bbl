@@ -45,6 +45,40 @@
     \field{year}{2016}
   \endentry
 
+  \entry{msdchallenge1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=MB}{%
+         family={McFee},
+         familyi={M\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=BMT}{%
+         family={Bertin-Mahieux},
+         familyi={B\bibinitperiod-M\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ED}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lanckriet},
+         familyi={L\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MB+1}
+    \strng{fullhash}{MBBMTEDLG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The Million Song Dataset Challenge, AdMIRe '12}
+  \endentry
+
   \entry{schnitzer1}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=SDD}{%
@@ -145,6 +179,26 @@
     \endverb
   \endentry
 
+  \entry{pitch1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=MM}{%
+         family={Marolt},
+         familyi={M\bibinitperiod},
+         given={Matija},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MM1}
+    \strng{fullhash}{MM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR 2006, 7th International Conference on Music
+  Information Retrieval, Victoria, Canada, 8-12 October 2006}
+    \field{title}{A Mid-level Melody-based Representation for Calculating Audio
+  Similarity}
+    \field{year}{2006}
+  \endentry
+
   \entry{rhythm1}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=FJ}{%
@@ -173,26 +227,6 @@
     \field{title}{Audio Retrieval by Rhythmic Similarity.}
     \field{month}{01}
     \field{year}{2002}
-  \endentry
-
-  \entry{pitch1}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=MM}{%
-         family={Marolt},
-         familyi={M\bibinitperiod},
-         given={Matija},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MM1}
-    \strng{fullhash}{MM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{ISMIR 2006, 7th International Conference on Music
-  Information Retrieval, Victoria, Canada, 8-12 October 2006}
-    \field{title}{A Mid-level Melody-based Representation for Calculating Audio
-  Similarity}
-    \field{year}{2006}
   \endentry
 
   \entry{metadat1}{inproceedings}{}
@@ -1162,40 +1196,6 @@
     \field{year}{2009}
   \endentry
 
-  \entry{msdchallenge1}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=MB}{%
-         family={McFee},
-         familyi={M\bibinitperiod},
-         given={B.},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=BMT}{%
-         family={Bertin-Mahieux},
-         familyi={B\bibinitperiod-M\bibinitperiod},
-         given={T.},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=ED}{%
-         family={Ellis},
-         familyi={E\bibinitperiod},
-         given={D.},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=LG}{%
-         family={Lanckriet},
-         familyi={L\bibinitperiod},
-         given={G.},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MB+1}
-    \strng{fullhash}{MBBMTEDLG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{The Million Song Dataset Challenge, AdMIRe '12}
-  \endentry
-
   \entry{graph1}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=ON}{%
@@ -1591,6 +1591,152 @@
     \field{title}{On Rhythm and General Music Similarity.}
     \field{month}{01}
     \field{year}{2009}
+  \endentry
+
+  \entry{audiofeattoolb}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=MD}{%
+         family={Moffat},
+         familyi={M\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Ronan},
+         familyi={R\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Reiss},
+         familyi={R\bibinitperiod},
+         given={Joshua},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MDRDRJ1}
+    \strng{fullhash}{MDRDRJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.13140/RG.2.1.1471.4640
+    \endverb
+    \field{title}{An Evaluation of Audio Feature Extraction Toolboxes}
+    \field{month}{11}
+    \field{year}{2015}
+  \endentry
+
+  \entry{spark}{article}{}
+    \name{author}{14}{}{%
+      {{hash=ZM}{%
+         family={Zaharia},
+         familyi={Z\bibinitperiod},
+         given={Matei},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=XRS}{%
+         family={Xin},
+         familyi={X\bibinitperiod},
+         given={Reynold\bibnamedelima S.},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=WP}{%
+         family={Wendell},
+         familyi={W\bibinitperiod},
+         given={Patrick},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=DT}{%
+         family={Das},
+         familyi={D\bibinitperiod},
+         given={Tathagata},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=AM}{%
+         family={Armbrust},
+         familyi={A\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Dave},
+         familyi={D\bibinitperiod},
+         given={Ankur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MX}{%
+         family={Meng},
+         familyi={M\bibinitperiod},
+         given={Xiangrui},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Rosen},
+         familyi={R\bibinitperiod},
+         given={Josh},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Venkataraman},
+         familyi={V\bibinitperiod},
+         given={Shivaram},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=FMJ}{%
+         family={Franklin},
+         familyi={F\bibinitperiod},
+         given={Michael\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Ghodsi},
+         familyi={G\bibinitperiod},
+         given={Ali},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Gonzalez},
+         familyi={G\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Shenker},
+         familyi={S\bibinitperiod},
+         given={Scott},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SI}{%
+         family={Stoica},
+         familyi={S\bibinitperiod},
+         given={Ion},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{ZM+1}
+    \strng{fullhash}{ZMXRSWPDTAMDAMXRJVSFMJGAGJSSSI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1145/2934664
+    \endverb
+    \field{issn}{0001-0782}
+    \field{number}{11}
+    \field{pages}{56\bibrangedash 65}
+    \field{title}{Apache Spark: A Unified Engine for Big Data Processing}
+    \verb{url}
+    \verb http://doi.acm.org/10.1145/2934664
+    \endverb
+    \field{volume}{59}
+    \list{location}{1}{%
+      {New York, NY, USA}%
+    }
+    \field{journaltitle}{Commun. ACM}
+    \field{month}{10}
+    \field{year}{2016}
   \endentry
 \enddatalist
 \endinput

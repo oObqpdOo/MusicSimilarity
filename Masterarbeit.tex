@@ -425,6 +425,41 @@ placeholderplaceplaceholder \= placeholder \kill
 %Einleitung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lstnewenvironment{pythonCode}[1][]
+{
+  \lstset{  
+    backgroundcolor=\color{gray!40},
+   	morecomment=[l][\color{magenta}]{\#}
+    breaklines=true,
+    basicstyle=\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green}\textit,
+    numbers=left,
+    numberstyle=\footnotesize,
+    stringstyle=\color{red},
+    showspaces = false,
+    showstringspaces = false,
+    tabsize = 2,
+    %numbers=left,
+    %numbersyle=\tiny
+	breaklines=true,               % automatic line breaking
+	columns=fullflexible,
+	breakautoindent=false,
+	framerule=1pt,
+	xleftmargin=0pt,
+	xrightmargin=0pt,
+	breakindent=0pt,
+	resetmargins=true,    
+    frame=single,
+    xleftmargin=5pt,
+    xrightmargin=3pt,
+    language =  Pascal,
+    aboveskip = 20pt,
+    rulecolor=\color{black},
+    #1
+  }
+}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Anhang
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

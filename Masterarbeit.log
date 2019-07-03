@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.28)  20 JUN 2019 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.28)  2 JUL 2019 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2031,9 +2031,9 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
 )
 \verbatim@out=\write6
-runsystem(echo t > "w18-test-20196201068.tex")...disabled (restricted).
+runsystem(echo t > "w18-test-201972740.tex")...disabled (restricted).
 
-runsystem(del "w18-test-20196201068.tex")...disabled (restricted).
+runsystem(del "w18-test-201972740.tex")...disabled (restricted).
 
 
 
@@ -2211,7 +2211,7 @@ Package biblatex Warning: BibTeX reported the following issues
 Package biblatex Info: Reference section=0 on input line 224.
 Package biblatex Info: Reference segment=0 on input line 224.
 \c@lstlisting=\count487
-<Images/Logo_fsu.jpg, id=335, 1778.645pt x 593.21625pt>
+<Images/Logo_fsu.jpg, id=355, 1778.645pt x 593.21625pt>
 File: Images/Logo_fsu.jpg Graphic file (type jpg)
 <use Images/Logo_fsu.jpg>
 Package pdftex.def Info: Images/Logo_fsu.jpg  used on input line 246.
@@ -2367,7 +2367,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 273--283
 (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.58 ...te music collection}{14}{subsection.3.1.4}
+l.58 ...ine {3.1.3}MedleyDB}{15}{subsection.3.1.3}
                                                    [1
 
 
@@ -2434,282 +2434,317 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--62
 
  []
 
-[2]
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--85
+
+ []
+
+[2] [3]
 Chapter 2.
-[3
+[4
 
 ]
-<Images/Layla/laylacfft.png, id=673, 699.61375pt x 497.86pt>
+<Images/Layla/laylacfft.png, id=713, 699.61375pt x 497.86pt>
 File: Images/Layla/laylacfft.png Graphic file (type png)
 <use Images/Layla/laylacfft.png>
-Package pdftex.def Info: Images/Layla/laylacfft.png  used on input line 108.
+Package pdftex.def Info: Images/Layla/laylacfft.png  used on input line 132.
 (pdftex.def)             Requested size: 174.903pt x 124.46469pt.
-<Images/Layla/laylacfftlog.png, id=675, 693.59125pt x 497.86pt>
+<Images/Layla/laylacfftlog.png, id=715, 693.59125pt x 497.86pt>
 File: Images/Layla/laylacfftlog.png Graphic file (type png)
 <use Images/Layla/laylacfftlog.png>
-Package pdftex.def Info: Images/Layla/laylacfftlog.png  used on input line 115.
+Package pdftex.def Info: Images/Layla/laylacfftlog.png  used on input line 139.
 
 (pdftex.def)             Requested size: 173.39738pt x 124.46469pt.
-<Images/Layla/laylacmfccHR.png, id=681, 645.41125pt x 484.81125pt>
+<Images/Layla/laylacmfccHR.png, id=721, 645.41125pt x 484.81125pt>
 File: Images/Layla/laylacmfccHR.png Graphic file (type png)
 <use Images/Layla/laylacmfccHR.png>
-Package pdftex.def Info: Images/Layla/laylacmfccHR.png  used on input line 155.
+Package pdftex.def Info: Images/Layla/laylacmfccHR.png  used on input line 179.
 
 (pdftex.def)             Requested size: 193.62486pt x 145.44449pt.
-<Images/Layla/laylacmfccscaled.png, id=682, 632.3625pt x 484.81125pt>
+<Images/Layla/laylacmfccscaled.png, id=722, 632.3625pt x 484.81125pt>
 File: Images/Layla/laylacmfccscaled.png Graphic file (type png)
 <use Images/Layla/laylacmfccscaled.png>
 Package pdftex.def Info: Images/Layla/laylacmfccscaled.png  used on input line 
-155.
+179.
 (pdftex.def)             Requested size: 189.7102pt x 145.44449pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 155--156
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 179--180
  [][] 
  []
 
-[4 <./Images/Layla/laylacfft.png> <./Images/Layla/laylacfftlog.png>]
-<Images/Layla/laylacmfcc.png, id=702, 662.475pt x 484.81125pt>
+[5 <./Images/Layla/laylacfft.png> <./Images/Layla/laylacfftlog.png>]
+<Images/Layla/laylacmfcc.png, id=741, 662.475pt x 484.81125pt>
 File: Images/Layla/laylacmfcc.png Graphic file (type png)
 <use Images/Layla/laylacmfcc.png>
-Package pdftex.def Info: Images/Layla/laylacmfcc.png  used on input line 193.
+Package pdftex.def Info: Images/Layla/laylacmfcc.png  used on input line 217.
 (pdftex.def)             Requested size: 198.74403pt x 145.44449pt.
-<Images/Layla/laylachroma.png, id=703, 648.4225pt x 281.05pt>
+<Images/Layla/laylachroma.png, id=742, 648.4225pt x 281.05pt>
 File: Images/Layla/laylachroma.png Graphic file (type png)
 <use Images/Layla/laylachroma.png>
-Package pdftex.def Info: Images/Layla/laylachroma.png  used on input line 193.
+Package pdftex.def Info: Images/Layla/laylachroma.png  used on input line 217.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Layla/laylapitch.png, id=704, 653.44125pt x 281.05pt>
+<Images/Layla/laylapitch.png, id=743, 653.44125pt x 281.05pt>
 File: Images/Layla/laylapitch.png Graphic file (type png)
 <use Images/Layla/laylapitch.png>
-Package pdftex.def Info: Images/Layla/laylapitch.png  used on input line 193.
+Package pdftex.def Info: Images/Layla/laylapitch.png  used on input line 217.
 (pdftex.def)             Requested size: 196.03387pt x 84.31564pt.
-<Images/Layla/laylabeat.png, id=705, 570.13pt x 281.05pt>
+<Images/Layla/laylabeat.png, id=744, 570.13pt x 281.05pt>
 File: Images/Layla/laylabeat.png Graphic file (type png)
 <use Images/Layla/laylabeat.png>
-Package pdftex.def Info: Images/Layla/laylabeat.png  used on input line 193.
+Package pdftex.def Info: Images/Layla/laylabeat.png  used on input line 217.
 (pdftex.def)             Requested size: 171.04031pt x 84.31564pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 193--194
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 217--218
  [][] 
  []
 
-<Images/MFCC/sweep.png, id=708, 693.59125pt x 497.86pt>
+<Images/MFCC/sweep.png, id=747, 693.59125pt x 497.86pt>
 File: Images/MFCC/sweep.png Graphic file (type png)
 <use Images/MFCC/sweep.png>
-Package pdftex.def Info: Images/MFCC/sweep.png  used on input line 218.
+Package pdftex.def Info: Images/MFCC/sweep.png  used on input line 242.
 (pdftex.def)             Requested size: 173.39738pt x 124.46469pt.
-<Images/MFCC/sweeplog.png, id=709, 699.61375pt x 497.86pt>
+<Images/MFCC/sweeplog.png, id=748, 699.61375pt x 497.86pt>
 File: Images/MFCC/sweeplog.png Graphic file (type png)
 <use Images/MFCC/sweeplog.png>
-Package pdftex.def Info: Images/MFCC/sweeplog.png  used on input line 218.
+Package pdftex.def Info: Images/MFCC/sweeplog.png  used on input line 242.
 (pdftex.def)             Requested size: 174.903pt x 124.46469pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 218--219
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 242--243
  [][] 
  []
 
-[5 <./Images/Layla/laylacmfccHR.png> <./Images/Layla/laylacmfccscaled.png> <./I
+[6 <./Images/Layla/laylacmfccHR.png> <./Images/Layla/laylacmfccscaled.png> <./I
 mages/Layla/laylacmfcc.png> <./Images/Layla/laylachroma.png> <./Images/Layla/la
 ylapitch.png> <./Images/Layla/laylabeat.png>]
-<Images/MFCC/mfccscaled.png, id=727, 632.3625pt x 484.81125pt>
+<Images/MFCC/mfccscaled.png, id=766, 632.3625pt x 484.81125pt>
 File: Images/MFCC/mfccscaled.png Graphic file (type png)
 <use Images/MFCC/mfccscaled.png>
-Package pdftex.def Info: Images/MFCC/mfccscaled.png  used on input line 250.
+Package pdftex.def Info: Images/MFCC/mfccscaled.png  used on input line 274.
 (pdftex.def)             Requested size: 158.09024pt x 121.20251pt.
-<Images/MFCC/mfccnorm.png, id=728, 662.475pt x 484.81125pt>
+<Images/MFCC/mfccnorm.png, id=767, 662.475pt x 484.81125pt>
 File: Images/MFCC/mfccnorm.png Graphic file (type png)
 <use Images/MFCC/mfccnorm.png>
-Package pdftex.def Info: Images/MFCC/mfccnorm.png  used on input line 250.
+Package pdftex.def Info: Images/MFCC/mfccnorm.png  used on input line 274.
 (pdftex.def)             Requested size: 165.61835pt x 121.20251pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 250--251
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 274--275
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--258
+Underfull \hbox (badness 10000) in paragraph at lines 279--282
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--258
+Underfull \hbox (badness 10000) in paragraph at lines 279--282
 
  []
 
-[6 <./Images/MFCC/sweep.png> <./Images/MFCC/sweeplog.png> <./Images/MFCC/mfccsc
-aled.png> <./Images/MFCC/mfccnorm.png>] [7]
+[7 <./Images/MFCC/sweep.png> <./Images/MFCC/sweeplog.png> <./Images/MFCC/mfccsc
+aled.png> <./Images/MFCC/mfccnorm.png>] [8]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 310.
+nput line 333.
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 310
+Package Listings Warning: Text dropped after begin of listing on input line 333
 .
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 333--337
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 356--360
 
  []
 
-<Images/rachm.png, id=804, 487.8225pt x 220.825pt>
+<Images/rachm.png, id=843, 487.8225pt x 220.825pt>
 File: Images/rachm.png Graphic file (type png)
 <use Images/rachm.png>
-Package pdftex.def Info: Images/rachm.png  used on input line 358.
+Package pdftex.def Info: Images/rachm.png  used on input line 381.
 (pdftex.def)             Requested size: 121.95532pt x 55.2061pt.
-<Images/felise.png, id=807, 521.7894pt x 298.4751pt>
+<Images/felise.png, id=846, 521.7894pt x 298.4751pt>
 File: Images/felise.png Graphic file (type png)
 <use Images/felise.png>
-Package pdftex.def Info: Images/felise.png  used on input line 358.
+Package pdftex.def Info: Images/felise.png  used on input line 381.
 (pdftex.def)             Requested size: 208.71205pt x 119.38792pt.
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 358--359
- [][] 
- []
-
-<Images/feliseaubio.png, id=813, 462.528pt x 346.896pt>
-File: Images/feliseaubio.png Graphic file (type png)
-<use Images/feliseaubio.png>
-Package pdftex.def Info: Images/feliseaubio.png  used on input line 381.
-(pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-<Images/rachaubio.png, id=814, 462.528pt x 346.896pt>
-File: Images/rachaubio.png Graphic file (type png)
-<use Images/rachaubio.png>
-Package pdftex.def Info: Images/rachaubio.png  used on input line 381.
-(pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 381--382
  [][] 
  []
 
-[9] [10 <./Images/rachm.png> <./Images/felise.png (PNG copy)> <./Images/felisea
-ubio.png> <./Images/rachaubio.png>]
-<Images/femelodia.png, id=852, 1643.13875pt x 1052.93375pt>
-File: Images/femelodia.png Graphic file (type png)
-<use Images/femelodia.png>
-Package pdftex.def Info: Images/femelodia.png  used on input line 406.
-(pdftex.def)             Requested size: 213.61554pt x 136.88618pt.
-<Images/rmmelodia.png, id=853, 1643.13875pt x 1058.95625pt>
-File: Images/rmmelodia.png Graphic file (type png)
-<use Images/rmmelodia.png>
-Package pdftex.def Info: Images/rmmelodia.png  used on input line 406.
-(pdftex.def)             Requested size: 213.61554pt x 137.66914pt.
+<Images/feliseaubio.png, id=852, 462.528pt x 346.896pt>
+File: Images/feliseaubio.png Graphic file (type png)
+<use Images/feliseaubio.png>
+Package pdftex.def Info: Images/feliseaubio.png  used on input line 404.
+(pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
+<Images/rachaubio.png, id=853, 462.528pt x 346.896pt>
+File: Images/rachaubio.png Graphic file (type png)
+<use Images/rachaubio.png>
+Package pdftex.def Info: Images/rachaubio.png  used on input line 404.
+(pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 406--407
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 404--405
  [][] 
  []
 
-<Images/femelodiamidi.png, id=855, 618.31pt x 136.51pt>
-File: Images/femelodiamidi.png Graphic file (type png)
-<use Images/femelodiamidi.png>
-Package pdftex.def Info: Images/femelodiamidi.png  used on input line 429.
-(pdftex.def)             Requested size: 216.41174pt x 47.7792pt.
-<Images/feam.png, id=856, 656.4525pt x 104.39pt>
-File: Images/feam.png Graphic file (type png)
-<use Images/feam.png>
-Package pdftex.def Info: Images/feam.png  used on input line 429.
-(pdftex.def)             Requested size: 216.62999pt x 34.44879pt.
+[10] [11 <./Images/rachm.png> <./Images/felise.png (PNG copy)> <./Images/felise
+aubio.png> <./Images/rachaubio.png>]
+<Images/femelodia.png, id=891, 1643.13875pt x 1052.93375pt>
+File: Images/femelodia.png Graphic file (type png)
+<use Images/femelodia.png>
+Package pdftex.def Info: Images/femelodia.png  used on input line 429.
+(pdftex.def)             Requested size: 213.61554pt x 136.88618pt.
+<Images/rmmelodia.png, id=892, 1643.13875pt x 1058.95625pt>
+File: Images/rmmelodia.png Graphic file (type png)
+<use Images/rmmelodia.png>
+Package pdftex.def Info: Images/rmmelodia.png  used on input line 429.
+(pdftex.def)             Requested size: 213.61554pt x 137.66914pt.
 
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 429--430
  [][] 
  []
 
-[11 <./Images/femelodia.png (PNG copy)> <./Images/rmmelodia.png (PNG copy)> <./
+<Images/femelodiamidi.png, id=894, 618.31pt x 136.51pt>
+File: Images/femelodiamidi.png Graphic file (type png)
+<use Images/femelodiamidi.png>
+Package pdftex.def Info: Images/femelodiamidi.png  used on input line 452.
+(pdftex.def)             Requested size: 216.41174pt x 47.7792pt.
+<Images/feam.png, id=895, 656.4525pt x 104.39pt>
+File: Images/feam.png Graphic file (type png)
+<use Images/feam.png>
+Package pdftex.def Info: Images/feam.png  used on input line 452.
+(pdftex.def)             Requested size: 216.62999pt x 34.44879pt.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 452--453
+ [][] 
+ []
+
+[12 <./Images/femelodia.png (PNG copy)> <./Images/rmmelodia.png (PNG copy)> <./
 Images/femelodiamidi.png> <./Images/feam.png>]
-<Images/spot1.png, id=878, 1037.7972pt x 346.896pt>
+<Images/spot1.png, id=918, 1037.7972pt x 346.896pt>
 File: Images/spot1.png Graphic file (type png)
 <use Images/spot1.png>
-Package pdftex.def Info: Images/spot1.png  used on input line 463.
+Package pdftex.def Info: Images/spot1.png  used on input line 486.
 (pdftex.def)             Requested size: 228.31609pt x 76.31735pt.
 
-Overfull \hbox (7.80722pt too wide) in paragraph at lines 463--463
+Overfull \hbox (7.80722pt too wide) in paragraph at lines 486--486
  [][] 
  []
 
-<Images/spot2.png, id=879, 814.4829pt x 301.3659pt>
+<Images/spot2.png, id=919, 814.4829pt x 301.3659pt>
 File: Images/spot2.png Graphic file (type png)
 <use Images/spot2.png>
-Package pdftex.def Info: Images/spot2.png  used on input line 463.
+Package pdftex.def Info: Images/spot2.png  used on input line 486.
 (pdftex.def)             Requested size: 228.05365pt x 84.38187pt.
 
-Overfull \hbox (7.54478pt too wide) in paragraph at lines 463--463
+Overfull \hbox (7.54478pt too wide) in paragraph at lines 486--486
  [][] 
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 463--464
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 486--487
  [][] 
  []
 
-[12 <./Images/spot1.png> <./Images/spot2.png>]
+[13 <./Images/spot1.png> <./Images/spot2.png>]
 Chapter 3.
-<Images/fma_genre.JPG, id=887, 635.37375pt x 245.41687pt>
+<Images/fma_genre.JPG, id=927, 635.37375pt x 245.41687pt>
 File: Images/fma_genre.JPG Graphic file (type jpg)
 <use Images/fma_genre.JPG>
-Package pdftex.def Info: Images/fma_genre.JPG  used on input line 490.
+Package pdftex.def Info: Images/fma_genre.JPG  used on input line 513.
 (pdftex.def)             Requested size: 222.38414pt x 85.89719pt.
 
-Overfull \hbox (5.57414pt too wide) in paragraph at lines 490--490
+Overfull \hbox (5.57414pt too wide) in paragraph at lines 513--513
 [][] 
  []
 
-<Images/1517genre.png, id=890, 740.7675pt x 293.59688pt>
+<Images/1517genre.png, id=930, 740.7675pt x 293.59688pt>
 File: Images/1517genre.png Graphic file (type png)
 <use Images/1517genre.png>
-Package pdftex.def Info: Images/1517genre.png  used on input line 504.
+Package pdftex.def Info: Images/1517genre.png  used on input line 527.
 (pdftex.def)             Requested size: 214.81706pt x 85.1409pt.
-[13
+[14
 
  <./Images/fma_genre.JPG>]
-<Images/MedleyDB1.png, id=902, 661.47125pt x 315.1775pt>
+<Images/MedleyDB1.png, id=941, 661.47125pt x 315.1775pt>
 File: Images/MedleyDB1.png Graphic file (type png)
 <use Images/MedleyDB1.png>
-Package pdftex.def Info: Images/MedleyDB1.png  used on input line 518.
+Package pdftex.def Info: Images/MedleyDB1.png  used on input line 541.
 (pdftex.def)             Requested size: 231.5184pt x 110.31377pt.
 
-Overfull \hbox (14.7084pt too wide) in paragraph at lines 518--518
+Overfull \hbox (14.7084pt too wide) in paragraph at lines 541--541
 [][] 
  []
 
-<Images/privmus.jpg, id=904, 455.45157pt x 258.65053pt>
+<Images/privmus.jpg, id=943, 455.45157pt x 258.65053pt>
 File: Images/privmus.jpg Graphic file (type jpg)
 <use Images/privmus.jpg>
-Package pdftex.def Info: Images/privmus.jpg  used on input line 531.
+Package pdftex.def Info: Images/privmus.jpg  used on input line 554.
 (pdftex.def)             Requested size: 204.95131pt x 116.39165pt.
-[14 <./Images/1517genre.png (PNG copy)> <./Images/MedleyDB1.png> <./Images/priv
+[15 <./Images/1517genre.png (PNG copy)> <./Images/MedleyDB1.png> <./Images/priv
 mus.jpg>]
-<Images/MSD_Tagtraum.JPG, id=921, 478.78876pt x 347.79938pt>
+<Images/MSD_Tagtraum.JPG, id=960, 478.78876pt x 347.79938pt>
 File: Images/MSD_Tagtraum.JPG Graphic file (type jpg)
 <use Images/MSD_Tagtraum.JPG>
-Package pdftex.def Info: Images/MSD_Tagtraum.JPG  used on input line 577.
+Package pdftex.def Info: Images/MSD_Tagtraum.JPG  used on input line 601.
 (pdftex.def)             Requested size: 239.39378pt x 173.89926pt.
 
-Overfull \hbox (22.58379pt too wide) in paragraph at lines 577--577
+Overfull \hbox (22.58379pt too wide) in paragraph at lines 601--601
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 582--584
+Underfull \hbox (badness 10000) in paragraph at lines 606--608
 
  []
 
-[15 <./Images/MSD_Tagtraum.JPG>]
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 594.
+[16 <./Images/MSD_Tagtraum.JPG>]
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 618.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 594.
+LaTeX Font Info:    No file TS1aer.fd. on input line 618.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textbullet' on input line 594.
+(Font)              for symbol `textbullet' on input line 618.
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 605--442
+Underfull \hbox (badness 10000) in paragraph at lines 629--477
 
  []
 
-[16] [17]
+[17] [18]
 \openout2 = `CH2.aux'.
 
  (./CH2.tex
@@ -2719,82 +2754,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-[18
+[19
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--38
 
  []
 
-[19] [20]
-<Images/cnoise1.png, id=995, 341.02406pt x 191.9672pt>
+[20] [21]
+<Images/cnoise1.png, id=1036, 341.02406pt x 191.9672pt>
 File: Images/cnoise1.png Graphic file (type png)
 <use Images/cnoise1.png>
-Package pdftex.def Info: Images/cnoise1.png  used on input line 95.
+Package pdftex.def Info: Images/cnoise1.png  used on input line 99.
 (pdftex.def)             Requested size: 153.4594pt x 86.38443pt.
-<Images/cnoise2.png, id=996, 455.45157pt x 255.95625pt>
+<Images/cnoise2.png, id=1037, 455.45157pt x 255.95625pt>
 File: Images/cnoise2.png Graphic file (type png)
 <use Images/cnoise2.png>
-Package pdftex.def Info: Images/cnoise2.png  used on input line 95.
+Package pdftex.def Info: Images/cnoise2.png  used on input line 99.
 (pdftex.def)             Requested size: 204.95131pt x 115.17923pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 95--96
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 99--100
  [][] 
  []
 
-[21 <./Images/cnoise1.png (PNG copy)> <./Images/cnoise2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--169
-
- []
-
-[22]) [23]
+[22 <./Images/cnoise1.png (PNG copy)> <./Images/cnoise2.png (PNG copy)>])
+[23]
 \openout2 = `CH3.aux'.
 
  (./CH3.tex
 Chapter 5.
-<Images/Chroma/sia.png, id=1022, 648.4225pt x 281.05pt>
+<Images/Chroma/sia.png, id=1057, 648.4225pt x 281.05pt>
 File: Images/Chroma/sia.png Graphic file (type png)
 <use Images/Chroma/sia.png>
 Package pdftex.def Info: Images/Chroma/sia.png  used on input line 31.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Chroma/pvris.png, id=1023, 648.4225pt x 281.05pt>
+<Images/Chroma/pvris.png, id=1058, 648.4225pt x 281.05pt>
 File: Images/Chroma/pvris.png Graphic file (type png)
 <use Images/Chroma/pvris.png>
 Package pdftex.def Info: Images/Chroma/pvris.png  used on input line 31.
@@ -2804,17 +2805,17 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 31--32
  [][] 
  []
 
-<Images/Chroma/siahp.png, id=1025, 824.07875pt x 279.0425pt>
+<Images/Chroma/siahp.png, id=1060, 824.07875pt x 279.0425pt>
 File: Images/Chroma/siahp.png Graphic file (type png)
 <use Images/Chroma/siahp.png>
 Package pdftex.def Info: Images/Chroma/siahp.png  used on input line 65.
 (pdftex.def)             Requested size: 206.01918pt x 69.76045pt.
-<Images/Chroma/sialp.png, id=1026, 824.07875pt x 279.0425pt>
+<Images/Chroma/sialp.png, id=1061, 824.07875pt x 279.0425pt>
 File: Images/Chroma/sialp.png Graphic file (type png)
 <use Images/Chroma/sialp.png>
 Package pdftex.def Info: Images/Chroma/sialp.png  used on input line 65.
 (pdftex.def)             Requested size: 206.01918pt x 69.76045pt.
-<Images/Chroma/siafft.png, id=1027, 770.88pt x 279.0425pt>
+<Images/Chroma/siafft.png, id=1062, 770.88pt x 279.0425pt>
 File: Images/Chroma/siafft.png Graphic file (type png)
 <use Images/Chroma/siafft.png>
 Package pdftex.def Info: Images/Chroma/siafft.png  used on input line 65.
@@ -2824,7 +2825,7 @@ Overfull \hbox (12.96416pt too wide) in paragraph at lines 65--65
  [][] 
  []
 
-<Images/Chroma/chroma_bp.png, id=1028, 648.4225pt x 281.05pt>
+<Images/Chroma/chroma_bp.png, id=1063, 648.4225pt x 281.05pt>
 File: Images/Chroma/chroma_bp.png Graphic file (type png)
 <use Images/Chroma/chroma_bp.png>
 Package pdftex.def Info: Images/Chroma/chroma_bp.png  used on input line 65.
@@ -2834,12 +2835,12 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 65--66
  [][] 
  []
 
-<Images/Chroma/sia_1_max.png, id=1031, 648.4225pt x 281.05pt>
+<Images/Chroma/sia_1_max.png, id=1066, 648.4225pt x 281.05pt>
 File: Images/Chroma/sia_1_max.png Graphic file (type png)
 <use Images/Chroma/sia_1_max.png>
 Package pdftex.def Info: Images/Chroma/sia_1_max.png  used on input line 88.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Chroma/sia_2_max.png, id=1032, 648.4225pt x 281.05pt>
+<Images/Chroma/sia_2_max.png, id=1067, 648.4225pt x 281.05pt>
 File: Images/Chroma/sia_2_max.png Graphic file (type png)
 <use Images/Chroma/sia_2_max.png>
 Package pdftex.def Info: Images/Chroma/sia_2_max.png  used on input line 88.
@@ -2856,25 +2857,25 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 88--89
 ] [25 <./Images/Chroma/sia.png> <./Images/Chroma/pvris.png> <./Images/Chroma/si
 ahp.png> <./Images/Chroma/sialp.png> <./Images/Chroma/siafft.png> <./Images/Chr
 oma/chroma_bp.png>]
-<Images/Chroma/pvrisunfiltered.png, id=1056, 648.4225pt x 281.05pt>
+<Images/Chroma/pvrisunfiltered.png, id=1090, 648.4225pt x 281.05pt>
 File: Images/Chroma/pvrisunfiltered.png Graphic file (type png)
 <use Images/Chroma/pvrisunfiltered.png>
 Package pdftex.def Info: Images/Chroma/pvrisunfiltered.png  used on input line 
 124.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Chroma/pvrisfiltered.png, id=1057, 648.4225pt x 281.05pt>
+<Images/Chroma/pvrisfiltered.png, id=1091, 648.4225pt x 281.05pt>
 File: Images/Chroma/pvrisfiltered.png Graphic file (type png)
 <use Images/Chroma/pvrisfiltered.png>
 Package pdftex.def Info: Images/Chroma/pvrisfiltered.png  used on input line 12
 4.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Chroma/siaunfiltered.png, id=1058, 648.4225pt x 281.05pt>
+<Images/Chroma/siaunfiltered.png, id=1092, 648.4225pt x 281.05pt>
 File: Images/Chroma/siaunfiltered.png Graphic file (type png)
 <use Images/Chroma/siaunfiltered.png>
 Package pdftex.def Info: Images/Chroma/siaunfiltered.png  used on input line 12
 4.
 (pdftex.def)             Requested size: 194.52824pt x 84.31564pt.
-<Images/Chroma/siafiltered.png, id=1059, 648.4225pt x 281.05pt>
+<Images/Chroma/siafiltered.png, id=1093, 648.4225pt x 281.05pt>
 File: Images/Chroma/siafiltered.png Graphic file (type png)
 <use Images/Chroma/siafiltered.png>
 Package pdftex.def Info: Images/Chroma/siafiltered.png  used on input line 124.
@@ -2890,7 +2891,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 140--141
  [][] 
  []
 
-<Images/Chroma/nomax.png, id=1068, 648.4225pt x 281.05pt>
+<Images/Chroma/nomax.png, id=1102, 648.4225pt x 281.05pt>
 File: Images/Chroma/nomax.png Graphic file (type png)
 <use Images/Chroma/nomax.png>
 Package pdftex.def Info: Images/Chroma/nomax.png  used on input line 159.
@@ -2909,7 +2910,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 159--160
 hroma/pvrisunfiltered.png> <./Images/Chroma/pvrisfiltered.png> <./Images/Chroma
 /siaunfiltered.png> <./Images/Chroma/siafiltered.png>] [27 <./Images/Chroma/nom
 ax.png>] [28]
-<Images/Chroma/correlation.png, id=1113, 859.21pt x 425.59pt>
+<Images/Chroma/correlation.png, id=1147, 859.21pt x 425.59pt>
 File: Images/Chroma/correlation.png Graphic file (type png)
 <use Images/Chroma/correlation.png>
 Package pdftex.def Info: Images/Chroma/correlation.png  used on input line 201.
@@ -2930,7 +2931,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
  []
 
-<Images/Beat/h_o_bh.png, id=1128, 894.34125pt x 388.45125pt>
+<Images/Beat/h_o_bh.png, id=1163, 894.34125pt x 388.45125pt>
 File: Images/Beat/h_o_bh.png Graphic file (type png)
 <use Images/Beat/h_o_bh.png>
 Package pdftex.def Info: Images/Beat/h_o_bh.png  used on input line 43.
@@ -2940,7 +2941,7 @@ Overfull \hbox (5.28314pt too wide) in paragraph at lines 43--43
  [][] 
  []
 
-<Images/Beat/h_c_bh.png, id=1129, 894.34125pt x 388.45125pt>
+<Images/Beat/h_c_bh.png, id=1164, 894.34125pt x 388.45125pt>
 File: Images/Beat/h_c_bh.png Graphic file (type png)
 <use Images/Beat/h_c_bh.png>
 Package pdftex.def Info: Images/Beat/h_c_bh.png  used on input line 43.
@@ -2950,7 +2951,7 @@ Overfull \hbox (5.28314pt too wide) in paragraph at lines 43--43
  [][] 
  []
 
-<Images/Beat/s_s_bh.png, id=1130, 901.3675pt x 388.45125pt>
+<Images/Beat/s_s_bh.png, id=1165, 901.3675pt x 388.45125pt>
 File: Images/Beat/s_s_bh.png Graphic file (type png)
 <use Images/Beat/s_s_bh.png>
 Package pdftex.def Info: Images/Beat/s_s_bh.png  used on input line 43.
@@ -2960,7 +2961,7 @@ Overfull \hbox (7.03969pt too wide) in paragraph at lines 43--43
  [][] 
  []
 
-<Images/Beat/s_a_bh.png, id=1131, 901.3675pt x 388.45125pt>
+<Images/Beat/s_a_bh.png, id=1166, 901.3675pt x 388.45125pt>
 File: Images/Beat/s_a_bh.png Graphic file (type png)
 <use Images/Beat/s_a_bh.png>
 Package pdftex.def Info: Images/Beat/s_a_bh.png  used on input line 43.
@@ -2980,22 +2981,22 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 43--44
 
 
 ]
-<Images/Beat/h_o_rp.png, id=1143, 848.16875pt x 277.035pt>
+<Images/Beat/h_o_rp.png, id=1178, 848.16875pt x 277.035pt>
 File: Images/Beat/h_o_rp.png Graphic file (type png)
 <use Images/Beat/h_o_rp.png>
 Package pdftex.def Info: Images/Beat/h_o_rp.png  used on input line 85.
 (pdftex.def)             Requested size: 212.04166pt x 69.25858pt.
-<Images/Beat/h_c_rp.png, id=1144, 848.16875pt x 277.035pt>
+<Images/Beat/h_c_rp.png, id=1179, 848.16875pt x 277.035pt>
 File: Images/Beat/h_c_rp.png Graphic file (type png)
 <use Images/Beat/h_c_rp.png>
 Package pdftex.def Info: Images/Beat/h_c_rp.png  used on input line 85.
 (pdftex.def)             Requested size: 212.04166pt x 69.25858pt.
-<Images/Beat/s_s_rp.png, id=1145, 848.16875pt x 277.035pt>
+<Images/Beat/s_s_rp.png, id=1180, 848.16875pt x 277.035pt>
 File: Images/Beat/s_s_rp.png Graphic file (type png)
 <use Images/Beat/s_s_rp.png>
 Package pdftex.def Info: Images/Beat/s_s_rp.png  used on input line 85.
 (pdftex.def)             Requested size: 212.04166pt x 69.25858pt.
-<Images/Beat/s_a_rp.png, id=1146, 848.16875pt x 277.035pt>
+<Images/Beat/s_a_rp.png, id=1181, 848.16875pt x 277.035pt>
 File: Images/Beat/s_a_rp.png Graphic file (type png)
 <use Images/Beat/s_a_rp.png>
 Package pdftex.def Info: Images/Beat/s_a_rp.png  used on input line 85.
@@ -3035,22 +3036,22 @@ See the caption package documentation for explanation.
 [32 <./Images/Beat/h_o_bh.png> <./Images/Beat/h_c_bh.png> <./Images/Beat/s_s_bh
 .png> <./Images/Beat/s_a_bh.png>] [33 <./Images/Beat/h_o_rp.png> <./Images/Beat
 /h_c_rp.png> <./Images/Beat/s_s_rp.png> <./Images/Beat/s_a_rp.png>]
-<Images/Beat/h_o_rh.png, id=1186, 829.0975pt x 294.09875pt>
+<Images/Beat/h_o_rh.png, id=1220, 829.0975pt x 294.09875pt>
 File: Images/Beat/h_o_rh.png Graphic file (type png)
 <use Images/Beat/h_o_rh.png>
 Package pdftex.def Info: Images/Beat/h_o_rh.png  used on input line 200.
 (pdftex.def)             Requested size: 207.27386pt x 73.5245pt.
-<Images/Beat/h_c_rh.png, id=1187, 844.15375pt x 294.09875pt>
+<Images/Beat/h_c_rh.png, id=1221, 844.15375pt x 294.09875pt>
 File: Images/Beat/h_c_rh.png Graphic file (type png)
 <use Images/Beat/h_c_rh.png>
 Package pdftex.def Info: Images/Beat/h_c_rh.png  used on input line 200.
 (pdftex.def)             Requested size: 211.03792pt x 73.5245pt.
-<Images/Beat/s_s_rh.png, id=1188, 844.15375pt x 294.09875pt>
+<Images/Beat/s_s_rh.png, id=1222, 844.15375pt x 294.09875pt>
 File: Images/Beat/s_s_rh.png Graphic file (type png)
 <use Images/Beat/s_s_rh.png>
 Package pdftex.def Info: Images/Beat/s_s_rh.png  used on input line 200.
 (pdftex.def)             Requested size: 211.03792pt x 73.5245pt.
-<Images/Beat/s_a_rh.png, id=1189, 829.0975pt x 294.09875pt>
+<Images/Beat/s_a_rh.png, id=1223, 829.0975pt x 294.09875pt>
 File: Images/Beat/s_a_rh.png Graphic file (type png)
 <use Images/Beat/s_a_rh.png>
 Package pdftex.def Info: Images/Beat/s_a_rh.png  used on input line 200.
@@ -3060,22 +3061,22 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 200--201
  [][] 
  []
 
-<Images/Beat/h_o_on.png, id=1190, 557.08125pt x 268.00125pt>
+<Images/Beat/h_o_on.png, id=1224, 557.08125pt x 268.00125pt>
 File: Images/Beat/h_o_on.png Graphic file (type png)
 <use Images/Beat/h_o_on.png>
 Package pdftex.def Info: Images/Beat/h_o_on.png  used on input line 238.
 (pdftex.def)             Requested size: 167.12566pt x 80.40099pt.
-<Images/Beat/h_c_on.png, id=1191, 557.08125pt x 268.00125pt>
+<Images/Beat/h_c_on.png, id=1225, 557.08125pt x 268.00125pt>
 File: Images/Beat/h_c_on.png Graphic file (type png)
 <use Images/Beat/h_c_on.png>
 Package pdftex.def Info: Images/Beat/h_c_on.png  used on input line 238.
 (pdftex.def)             Requested size: 167.12566pt x 80.40099pt.
-<Images/Beat/s_s_on.png, id=1192, 557.08125pt x 268.00125pt>
+<Images/Beat/s_s_on.png, id=1226, 557.08125pt x 268.00125pt>
 File: Images/Beat/s_s_on.png Graphic file (type png)
 <use Images/Beat/s_s_on.png>
 Package pdftex.def Info: Images/Beat/s_s_on.png  used on input line 238.
 (pdftex.def)             Requested size: 167.12566pt x 80.40099pt.
-<Images/Beat/s_a_on.png, id=1193, 557.08125pt x 268.00125pt>
+<Images/Beat/s_a_on.png, id=1227, 557.08125pt x 268.00125pt>
 File: Images/Beat/s_a_on.png Graphic file (type png)
 <use Images/Beat/s_a_on.png>
 Package pdftex.def Info: Images/Beat/s_a_on.png  used on input line 238.
@@ -3093,30 +3094,43 @@ at/h_c_on.png> <./Images/Beat/s_s_on.png> <./Images/Beat/s_a_on.png>]
 
 (./CH5.tex
 Chapter 7.
-) [36
+
+Overfull \hbox (6.42252pt too wide) in paragraph at lines 3--3
+|[]\T1/aer/bx/n/24.88 Other Sim-i-lar-ity met-rics and Per-
+ []
+
+[36
 
 
 
-]
+] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [37]
+[38]) [39]
 \openout2 = `CH6.aux'.
 
  (./CH6.tex
 Chapter 8.
-[37
+
+Overfull \hbox (243.62506pt too wide) in paragraph at lines 40--41
+$[]$\T1/aer/m/n/12 (-20) [[][]3[][],
+ []
+
+[40
 
 
 
-]
+] [41]
 Chapter 9.
-) [38
+) [42
 
 ]
-Overfull \hbox (33.35564pt too wide) in paragraph at lines 510--510
+Overfull \hbox (33.35564pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) Dr. Do-minik Schnitzer. |   []   |   []   |   []   |   [
 ]   |   []   |   []   |   []   |   []   |   [] 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 510.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 545.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -3126,162 +3140,162 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (9.4044pt too wide) in paragraph at lines 510--510
+Overfull \hbox (9.4044pt too wide) in paragraph at lines 545--545
 []|   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: \T1/aer/m/sc/12 (-20) url\
 T1/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 https : / / imslp . org / wiki / Mor
 ceaux \ 
  []
 
 
-Overfull \hbox (14.5214pt too wide) in paragraph at lines 510--510
-[]\T1/aer/m/n/12 (-20) Jonathan Foote, Matthew Cooper, and Un-jung Nam. |   [] 
-  |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (0.11345pt too wide) in paragraph at lines 510--510
+Overfull \hbox (0.11345pt too wide) in paragraph at lines 545--545
 |   []\T1/aer/m/n/12 (+5) . In: IS-MIR 2006, 7th In-ter-na-tional Con-fer-ence 
 on Mu-sic In-for-ma-tion 
  []
 
 
-Overfull \hbox (18.20825pt too wide) in paragraph at lines 510--510
+Overfull \hbox (14.5214pt too wide) in paragraph at lines 545--545
+[]\T1/aer/m/n/12 (-20) Jonathan Foote, Matthew Cooper, and Un-jung Nam. |   [] 
+  |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (18.20825pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) Zhao Yufeng and Li Xin-wei. |   []   |   []   |   []   |
    []   |   []   |   [] 
  []
 
 
-Overfull \hbox (1.12514pt too wide) in paragraph at lines 510--510
+Overfull \hbox (1.12514pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) B. McFee and G.R.G. Lanck-riet. |   []   |   []   |   []
    |   []   |   []   |   [] 
  []
 
 
-Overfull \hbox (6.84512pt too wide) in paragraph at lines 510--510
+Overfull \hbox (6.84512pt too wide) in paragraph at lines 545--545
 |   []\T1/aer/m/n/12 (-20) . In: IS-MIR '11. \T1/aer/m/sc/12 (-20) url\T1/aer/m
 /n/12 (-20) : [][]$\T1/aett/m/n/12 http : / / citeseerx . ist . psu . edu / vie
 wdoc / summary ? 
  []
 
-[39
+[43
 
 
 ]
-Overfull \hbox (0.20396pt too wide) in paragraph at lines 510--510
+Overfull \hbox (0.20396pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) John W. Eaton et al. |   []   |   []   |   []   |   []  
  |   []   |   []   |   []   |   [] 
  []
 
 
-Overfull \hbox (6.60028pt too wide) in paragraph at lines 510--510
+Overfull \hbox (6.60028pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) B.Mathieu et al. |   []   |   []   |   []   |   []   |  
  []   |   []   |   []   |   []   |   []   |   [] 
  []
 
 
-Overfull \hbox (0.10805pt too wide) in paragraph at lines 510--510
+Overfull \hbox (0.10805pt too wide) in paragraph at lines 545--545
 |   []\T1/aer/m/n/12 (+19) . In: Pro-ceed-ings of the 11th IS-MIR con-fer-ence,
  Utrecht, Nether-lands, 
  []
 
 
-Overfull \hbox (7.74065pt too wide) in paragraph at lines 510--510
+Overfull \hbox (7.74065pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) D. Bog-danov et al. |   []   |   []   |   []   |   []   
 |   []   |   []   |   []   |   [] 
  []
 
-[40]
-Overfull \hbox (18.52959pt too wide) in paragraph at lines 510--510
+[44]
+Overfull \hbox (18.52959pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) Klaus Sey-er-lehner. |   []   |   []. In: 2010. \T1/aer/
 m/sc/12 (-20) url\T1/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 http : / / www . s
 eyerlehner . 
  []
 
 
-Overfull \hbox (0.13818pt too wide) in paragraph at lines 510--510
+Overfull \hbox (0.13818pt too wide) in paragraph at lines 545--545
 |   []   |   []\T1/aer/m/n/12 (+18) . In: 15th International Society for Music 
 Information Retrieval 
  []
 
-
-Overfull \hbox (17.42036pt too wide) in paragraph at lines 510--510
-|   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: \T1/aer/m/sc/12 (-20) url\T1
-/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 http : / / labrosa . ee . columbia . e
-du / millionsong / 
- []
-
-[41]
-Overfull \hbox (17.42036pt too wide) in paragraph at lines 510--510
+[45]
+Overfull \hbox (17.42036pt too wide) in paragraph at lines 545--545
 |   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: \T1/aer/m/sc/12 (-20) url\T1
 /aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 http : / / labrosa . ee . columbia . e
 du / millionsong / 
  []
 
 
-Overfull \hbox (4.12425pt too wide) in paragraph at lines 510--510
+Overfull \hbox (17.42036pt too wide) in paragraph at lines 545--545
+|   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: \T1/aer/m/sc/12 (-20) url\T1
+/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 http : / / labrosa . ee . columbia . e
+du / millionsong / 
+ []
+
+
+Overfull \hbox (4.12425pt too wide) in paragraph at lines 545--545
 []|   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: \T1/aer/m/sc/12 (-20) url\
 T1/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 https : / / developer . spotify . co
 m / community / 
  []
 
 
-Overfull \hbox (77.28683pt too wide) in paragraph at lines 510--510
+Overfull \hbox (77.28683pt too wide) in paragraph at lines 545--545
 |   []   |   []   |   []\T1/aer/m/n/12 (-20) . In: |   [] 
  []
 
-
-Overfull \hbox (1.12164pt too wide) in paragraph at lines 510--510
+[46]
+Overfull \hbox (1.12164pt too wide) in paragraph at lines 545--545
 |   []\T1/aer/m/n/12 (-20) . In: |   [] 10 (Aug. 2002), 
  []
 
-[42]
-Overfull \hbox (9.49734pt too wide) in paragraph at lines 510--510
+
+Overfull \hbox (9.49734pt too wide) in paragraph at lines 545--545
 []|   []   |   []   |   []   |   []   |   []   |   []\T1/aer/m/n/12 (-20) . In:
  \T1/aer/m/sc/12 (-20) url\T1/aer/m/n/12 (-20) : [][]$\T1/aett/m/n/12 http : / 
 / www . ifs . tuwien . 
  []
 
 
-Overfull \hbox (3.50972pt too wide) in paragraph at lines 510--510
+Overfull \hbox (3.50972pt too wide) in paragraph at lines 545--545
 []\T1/aer/m/n/12 (-20) Elias Pam-palk. |   []   |   []   |   []   |   []   |   
 []   |   []   |   []   |   [] 
  []
 
-[43]
+[47]
 Chapter 10.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [44
+) [48
 
-] [45]
-[46] [47
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 701--711
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 701--711
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 701--711
-
- []
-
-[48
+] [49]
+[50] [51
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 712.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 712.
+Underfull \hbox (badness 10000) in paragraph at lines 736--746
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 736--746
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 736--746
+
+ []
+
+[52
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 747.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 747.
  (./Masterarbeit.aux (./CH1.aux) (./CH2.aux) (./CH3.aux) (./CH4.aux)
 (./CH5.aux) (./CH6.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 712.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 712.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 747.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 747.
 Package rerunfilecheck Info: File `Masterarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 538DB58AC454710A074E266EF340D7E2;4934.
+(rerunfilecheck)             Checksum: 5FDB89ABBFAE07CF78D702078A9609DA;5270.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -3289,14 +3303,14 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package logreq Info: Writing requests to 'Masterarbeit.run.xml'.
 \openout1 = `Masterarbeit.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 712.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 747.
  ) 
 Here is how much of TeX's memory you used:
- 55673 strings out of 492982
- 1135730 string characters out of 6134896
- 1797992 words of memory out of 5000000
- 57398 multiletter control sequences out of 15000+600000
- 636433 words of font info for 481 fonts, out of 8000000 for 9000
+ 55981 strings out of 492982
+ 1139792 string characters out of 6134896
+ 1817992 words of memory out of 5000000
+ 57614 multiletter control sequences out of 15000+600000
+ 637279 words of font info for 487 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,87p,10401b,2896s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf
@@ -3305,26 +3319,29 @@ c}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-csc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
-8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfrm1200.pfb>
-Output written on Masterarbeit.pdf (57 pages, 3064027 bytes).
+csc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/type1/publi
+c/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.
+pfb>
+Output written on Masterarbeit.pdf (61 pages, 3110796 bytes).
 PDF statistics:
- 1595 PDF objects out of 1728 (max. 8388607)
- 1362 compressed objects within 14 object streams
- 409 named destinations out of 1000 (max. 500000)
- 68653 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 1756 PDF objects out of 2073 (max. 8388607)
+ 1514 compressed objects within 16 object streams
+ 489 named destinations out of 1000 (max. 500000)
+ 73301 words of extra memory for PDF output out of 74296 (max. 10000000)
 

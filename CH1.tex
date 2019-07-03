@@ -60,7 +60,31 @@ Lastly, a big data approach to efficiently use the gathered features is proposed
 	\smartdiagram[priority descriptive diagram]{PART IV: Performance Tuning, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
 \end{figure}
 
-\chapter{MIR Toolkits and audio features}
+\section{Conclusions}
+
+Why using a big data framework would help: 
+music similarity is not well defined. It is a rather subjective value that differs from listener to listener. 
+Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics or a combination of more than a few of these features. The usage of a big data framework allows to create a variable/ fuzzy metric definition. Various parameters could easily be taken into consideration when calculating the musical distance of two different pieces. 
+Using a Big Data framework, the problem of the fuzzy definition of music similarity could be avoided, if a metric can be found, that takes multiple of the accounted features of this paper into consideration.
+Available information includes metadata, user data, audio features, sheet music and more.\\
+\textit{\ \\
+The idea of using genre specific features could be evaluated any further
+\ \\
+Another important question is how to measure similarity algorithms. 
+There are a few possibilities like genre, composer/ interpret or cover song identification. Or actual user data. MSD Challenge Dataset usable?\cite{msdchallenge1}\\
+\ \\
+TODO:\\
+\ \\
+Comparison of Echo Nest Pitch Features vs. Full MIDI notation?\\
+\ \\
+Using genre specific features\\
+\ \\
+Use extracted MIDI vs. professionally annotated sheet music\\
+\ \\
+Echo Nest Features invariant to key\\}
+
+
+\chapter{MIR Toolkits and audio features}\label{audiofeat}
 
 \section{Music Information Retrieval}
 The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study.
@@ -256,18 +280,17 @@ Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel b
 \ \\
 \textit{\textbf{Onset and Chroma signal explained!!!!}}\\
 
-\subsection{Rhythm based}
-As done by: \cite{rhythm1}\\
-Rhythm based music similarity algorithms use timing information of various events. The so called rhythm spectrum can be used as a feature vector.
-For example the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval.
-An in depth overview is given in chapter \ref{rhythmsimc}
-
 \subsection{Pitch based}
 
 As done by: \cite{pitch1}\\
 The proposed approach by \cite{pitch1} is, to take mid-level features like chroma or pitch instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
 A more detailed analysis of this topic is given in chapter \ref{melsimc}
 
+\subsection{Rhythm based}
+As done by: \cite{rhythm1}\\
+Rhythm based music similarity algorithms use timing information of various events. The so called rhythm spectrum can be used as a feature vector.
+For example the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval.
+An in depth overview is given in chapter \ref{rhythmsimc}
 
 \subsection{Metadata based/ Collaborative Filtering}
 
@@ -478,7 +501,7 @@ The ability to detect cover songs or different versions/ recording of a musical 
 
 To evaluate the music similarity algorithms and metrics a lot of music data is needed.
 
-\section{Datasets}
+\section{Datasets}\label{datasets}
 
 \subsection{Free Music Archive}
 
@@ -535,12 +558,13 @@ The private music collection used in this work consist mainly of metal music. Th
 \FloatBarrier
 
 Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud\cite{bqpd1}
-The music sources and amounts of songs used for the task at hand is listed in table \ref{table_dsets}.
 
 \subsection{Overview and other sources}
 
+The music sources and amounts of songs used for the task at hand is listed in table \ref{table_dsets}.
+
 \begin{table}[h]
-	\caption{Music Datasets used}
+	\caption{available music datasets}
 	\label{table_dsets}
 	\begin{center}
 		\begin{tabular}{|c||c|}

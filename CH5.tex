@@ -1,17 +1,153 @@
 %==============================================================
 
-\chapter{Other Similarity metrics}\label{simmet}
+\chapter{Other Similarity metrics and Performance}\label{simmet}
 
 \section{Definition of similarity}
+\textbf{\textit{Rhythm, Timbre, Melodic, Genre and metadata, Genre specific features, combinations and variable model\\}}
+\textit{\underline{\textbf{Collaborative Filtering, Lyrics}}}
 
-\subsection{Rhythm, Timbre, Melodic}
+\section{Test Datasets}
 
-\subsection{Genre and metadata}
+Chapter \ref{datasets} introduced a range of MIR datasets but not all are fitting to the problems this thesis evaluates. To test the algorithms on the one hand a lot of data is needed, so the Free Music Archive with its over 100000 songs is a solid option for performance tests. However on the other hand the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental or rock. Also this dataset may not be really representative for actual popular music, a lot of the songs are live recordings with poor audio quality, possibly influencing the results.
+The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal.
+The last source used in this thesis is the private music collection. This collection is biased towards metal music but due to the match with personal taste, it offers a subjective evaluation of the results of the similarity analysis. 
+In conclusion that sums up to about 117000 songs for performance tests and about 12000 songs for a detailed evaluation of the algorithms
 
-\subsection{Genre specific features}
+\begin{table}[h]
+	\caption{used music datasets}
+	\label{used_dsets}
+	\begin{center}
+		\begin{tabular}{|c||c|}
+			\hline
+			fma & 106.733 Songs\\
+			\hline
+			private & 8484 Songs\\
+			\hline
+			1517 artists & 3180 Songs\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-\subsection{Combinations and variable model}
 
-\section{Collaborative Filtering}
+\section{Feature Extraction Performance}
 
-%
+After evaluating the different features in the last three chapters, this one discusses the feature extraction process in detail. The post processing of the features like note estimation from the chroma features was already explained in the previous chapters and is left out here. The full code is in the appendices. 
+
+\subsection{Librosa}
+
+For most of the plots in the introduction section \ref{audiofeat} the python toolkit librosa was used because of its ease of use and very good documentation. The code example shows the necessary methods to extract the most important features like mfcc, chromagram and beats/ onsets.
+
+\FloatBarrier
+\begin{pythonCode}
+path = ('music/guitar2.mp3')
+x, fs = librosa.load(path)
+mfcc = librosa.feature.mfcc(y=x, sr=fs, n_mfcc=12)
+onset_env = librosa.onset.onset_strength(x, fs, aggregate=np.median)
+tempo, beats = librosa.beat.beat_track(onset_envelope=onset_env,sr=fs)
+hop_length = 512
+times = librosa.frames_to_time(np.arange(len(onset_env)), sr=fs, hop_length=hop_length)
+chroma = librosa.feature.chroma_stft(x, fs)
+\end{pythonCode}	
+\FloatBarrier
+
+But when extracting features from batches of audio data the librosa library showed to be very slow. For a very small dataset of 23 Files, the extraction of mfcc, rhythm histogram, chroma features and estimated notes took about 580 seconds. 
+For larger datasets like the 1517 artists dataset the feature extraction process would have taken about 22 hours. 
+
+\subsection{Essentia}
+
+\cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that essentia is a much faster alternative due to the underlying C++ Code and provides even more features, but is bit less well documented and requires more effort in implementation.\\ 
+In the end the Code to extract the necessary features had to be rewritten for the usage of essentia. Essentia offers two different ways to handle audio files. The first one is to use the essentia standard library. It offers similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and preprocessed by hand. 
+The second way is to use essentia streaming. Basically a network of connected algorithms is created and they handle and schedule the "how and when" a process is called.
+
+\subsubsection{Essentia Standard}
+
+In the final extractor code the mfcc calculation and beat histogram estimation is done with the essenia standard library, because it offers a fast way to implement feature extraction. 
+
+\FloatBarrier
+\begin{pythonCode}
+audio = es.MonoLoader(filename=path, sampleRate=fs)()
+hamming_window = es.Windowing(type='hamming')
+spectrum = es.Spectrum()
+mfcc = es.MFCC(numberCoefficients=13)
+frame_sz = 2048
+hop_sz = 1024
+mfccs = numpy.array([mfcc(spectrum(hamming_window(frame)))[1] 
+	for frame in es.FrameGenerator(audio, frameSize=frame_sz, hopSize=hop_sz)])
+rhythm_extractor = es.RhythmExtractor2013(method="multifeature")
+bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
+peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, histogram =
+	es.BpmHistogramDescriptors()(beats_intervals)
+\end{pythonCode}
+\FloatBarrier
+
+\subsubsection{Essentia Streaming}
+
+The essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with a high- and a lowpass filter. 
+
+\FloatBarrier
+\begin{pythonCode}
+loader = ess.MonoLoader(filename=path, sampleRate=44100)
+HP = ess.HighPass(cutoffFrequency=128)
+LP = ess.LowPass(cutoffFrequency=4096)
+framecutter = ess.FrameCutter(frameSize=frameSize, hopSize=hopSize, silentFrames='noise')
+windowing = ess.Windowing(type='blackmanharris62')
+spectrum = ess.Spectrum()
+spectralpeaks = ess.SpectralPeaks(orderBy='magnitude', magnitudeThreshold=0.00001, 
+	minFrequency=20, maxFrequency=3500, maxPeaks=60)
+hpcp = ess.HPCP()
+hpcp_key = ess.HPCP(size=36, referenceFrequency=440, bandPreset=False, minFrequency=20,
+	maxFrequency=3500, weightType='cosine', nonLinear=False, windowSize=1.)
+key = ess.Key(profileType='edma', numHarmonics=4, pcpSize=36, slope=0.6, 
+	usePolyphony=True, useThreeChords=True)
+pool = essentia.Pool()
+loader.audio >> HP.signal
+HP.signal >> LP.signal
+LP.signal >> framecutter.signal    
+framecutter.frame >> windowing.frame >> spectrum.frame
+spectrum.spectrum >> spectralpeaks.spectrum
+spectralpeaks.magnitudes >> hpcp.magnitudes
+spectralpeaks.frequencies >> hpcp.frequencies
+spectralpeaks.magnitudes >> hpcp_key.magnitudes
+spectralpeaks.frequencies >> hpcp_key.frequencies
+hpcp_key.hpcp >> key.pcp
+hpcp.hpcp >> (pool, 'tonal.hpcp')
+key.key >> (pool, 'tonal.key_key')
+key.scale >> (pool, 'tonal.key_scale')
+key.strength >> (pool, 'tonal.key_strength')
+essentia.run(loader)
+chroma = pool['tonal.hpcp'].T
+key = pool['tonal.key_key'] 
+scale = pool['tonal.key_scale']
+\end{pythonCode}	
+\FloatBarrier
+
+\subsection{Essentia parallel}
+
+The calculation with the essentia library for 23 songs took less than half of the time librosa needed. This is significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet. Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel. 
+
+\FloatBarrier
+\begin{pythonCode}
+job_server = pp.Server()
+job_server.set_ncpus(ncpus)
+jobs = [ ]
+for index in xrange(startjob, parts):
+	starti = start+index*step
+	endi = min(start+(index+1)*step, end)
+	jobs.append(job_server.submit(parallel_python_process, (index, filelist[starti:endi],1,1,1,1,1)))
+	gc.collect()
+times = sum([job() for job in jobs])
+job_server.print_stats()
+\end{pythonCode}
+
+The computation time takes about 33 seconds for batches of 4 songs from the list on one CPU core. 
+Using 4 CPU cores for 32 songs, the overall processing time could be reduced to one minute.
+
+\begin{equation} \label{eq:parallelp}
+time = \frac{\#songs}{4 \cdot \#CPUs} \cdot 33s
+\end{equation}
+ 
+Parallel python also opens up the possibility to use a cluster instead of a single node PC. 
+
+\subsection{rp\_extractor}
+
