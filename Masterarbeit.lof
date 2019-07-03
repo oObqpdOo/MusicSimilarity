@@ -43,33 +43,39 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{25}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{26}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{25}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{26}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{26}{figure.5.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{27}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{26}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{27}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{27}{figure.5.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{28}{figure.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{27}{figure.5.6}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{28}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{29}{figure.5.7}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{30}{figure.5.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{31}{figure.5.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{32}{figure.5.9}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{34}{figure.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{35}{figure.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{35}{figure.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{36}{figure.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{37}{figure.6.5}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{32}{figure.6.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{33}{figure.6.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{33}{figure.6.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{34}{figure.6.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{35}{figure.6.5}
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{43}{figure.7.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

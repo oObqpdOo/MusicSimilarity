@@ -242,3 +242,21 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 
 Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
 In conclusion this approach is discarded and not further considered and tested in this thesis.  
+
+\section{summary}
+Three different similarity metrics are chosen: 
+\begin{itemize}
+	\item euclidean distance between beat histograms
+	\item euclidean distance between rhythm histograms
+	\item euclidean distance between rhythm patterns
+\end{itemize}
+These are stored in three different output text files.
+\begin{itemize}
+	\item out.bh (containing the estimated overall bpm and a vector for the beat histogram normalized to one (length $250$))
+	\item out.rh (containing a vector for the rhythm histogram extracted with rp\_extract (length $60$))
+	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (length $24 \cdot 60$))
+\end{itemize}
+The text files contain strings like:\\
+\textit{music/CHANDELIER2.mp3; 86.9380264282; [0. ... 0.01453488 ...  0.  0.]}\\
+\textit{music/CHANDELIER2.mp3,15.2521291416,10.10441871, ... ,2.2519330706}\\
+\textit{music/CHANDELIER2.mp3,0.0237481782333,0.0208784207788, ... ,0.00204177442894}\\

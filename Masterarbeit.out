@@ -35,46 +35,54 @@
 \BOOKMARK [1][-]{section.4.3}{Validation}{chapter.4}% 35
 \BOOKMARK [2][-]{subsection.4.3.1}{Construction Noise}{section.4.3}% 36
 \BOOKMARK [2][-]{subsection.4.3.2}{Different recordings and cover versions}{section.4.3}% 37
-\BOOKMARK [0][]{chapter.5}{Melodic Similarity}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Representation}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Chroma Features}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{similarity of chroma features}{chapter.5}% 41
-\BOOKMARK [2][-]{subsection.5.3.1}{text retrieval}{section.5.3}% 42
-\BOOKMARK [2][-]{subsection.5.3.2}{cross-correlation}{section.5.3}% 43
-\BOOKMARK [1][-]{section.5.4}{Validation}{chapter.5}% 44
-\BOOKMARK [0][]{chapter.6}{Rhythmic Similarity}{}% 45
-\BOOKMARK [1][-]{section.6.1}{Beat histogram}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.2}{Rhythm patterns}{chapter.6}% 47
-\BOOKMARK [1][-]{section.6.3}{Rhythm Histogram}{chapter.6}% 48
-\BOOKMARK [1][-]{section.6.4}{cross-correlation}{chapter.6}% 49
-\BOOKMARK [0][]{chapter.7}{Other Similarity metrics and Performance}{}% 50
-\BOOKMARK [1][-]{section.7.1}{Definition of similarity}{chapter.7}% 51
-\BOOKMARK [1][-]{section.7.2}{Test Datasets}{chapter.7}% 52
-\BOOKMARK [1][-]{section.7.3}{Feature Extraction Performance}{chapter.7}% 53
-\BOOKMARK [2][-]{subsection.7.3.1}{Librosa}{section.7.3}% 54
-\BOOKMARK [2][-]{subsection.7.3.2}{Essentia}{section.7.3}% 55
-\BOOKMARK [2][-]{subsection.7.3.3}{Essentia parallel}{section.7.3}% 56
-\BOOKMARK [2][-]{subsection.7.3.4}{rp\137extractor}{section.7.3}% 57
-\BOOKMARK [0][]{chapter.8}{Big Data Framework Spark}{}% 58
-\BOOKMARK [1][-]{section.8.1}{Apache Hadoop and Spark}{chapter.8}% 59
-\BOOKMARK [2][-]{subsection.8.1.1}{Hadoop and Map Reduce}{section.8.1}% 60
-\BOOKMARK [2][-]{subsection.8.1.2}{Spark and RDDs}{section.8.1}% 61
-\BOOKMARK [1][-]{section.8.2}{Data aggregation}{chapter.8}% 62
-\BOOKMARK [1][-]{section.8.3}{Euclidean Distance}{chapter.8}% 63
-\BOOKMARK [1][-]{section.8.4}{Alternating Least Squares}{chapter.8}% 64
-\BOOKMARK [1][-]{section.8.5}{DIMSUM all-pairs similarity}{chapter.8}% 65
-\BOOKMARK [1][-]{section.8.6}{Levenshtein distance}{chapter.8}% 66
-\BOOKMARK [1][-]{section.8.7}{TF-IDF weights}{chapter.8}% 67
-\BOOKMARK [1][-]{section.8.8}{MapReduce tasks}{chapter.8}% 68
-\BOOKMARK [2][-]{subsection.8.8.1}{Cross-correlation}{section.8.8}% 69
-\BOOKMARK [2][-]{subsection.8.8.2}{Kullback-Leibler Divergence}{section.8.8}% 70
-\BOOKMARK [2][-]{subsection.8.8.3}{Jensen-Shannon Divergence}{section.8.8}% 71
-\BOOKMARK [1][-]{section.8.9}{Combining different measurements}{chapter.8}% 72
-\BOOKMARK [0][]{chapter.9}{Results}{}% 73
-\BOOKMARK [1][-]{section.9.1}{Runtime}{chapter.9}% 74
-\BOOKMARK [1][-]{section.9.2}{Cover song identification}{chapter.9}% 75
-\BOOKMARK [1][-]{section.9.3}{Genre similarity}{chapter.9}% 76
-\BOOKMARK [1][-]{section.9.4}{Improvements and outlook}{chapter.9}% 77
-\BOOKMARK [0][]{section*.9}{References}{}% 78
-\BOOKMARK [0][]{chapter.10}{Appendix}{}% 79
-\BOOKMARK [1][-]{section.10.1}{Spotipy Crawler}{chapter.10}% 80
+\BOOKMARK [1][-]{section.4.4}{summary}{chapter.4}% 38
+\BOOKMARK [0][]{chapter.5}{Melodic Similarity}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Representation}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{Chroma Features}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{similarity of chroma features}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.3.1}{text retrieval}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.2}{cross-correlation}{section.5.3}% 44
+\BOOKMARK [1][-]{section.5.4}{Validation}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.5}{TODO}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.6}{summary}{chapter.5}% 47
+\BOOKMARK [0][]{chapter.6}{Rhythmic Similarity}{}% 48
+\BOOKMARK [1][-]{section.6.1}{Beat histogram}{chapter.6}% 49
+\BOOKMARK [1][-]{section.6.2}{Rhythm patterns}{chapter.6}% 50
+\BOOKMARK [1][-]{section.6.3}{Rhythm Histogram}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.4}{cross-correlation}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.5}{summary}{chapter.6}% 53
+\BOOKMARK [0][]{chapter.7}{Other Similarity metrics and Performance}{}% 54
+\BOOKMARK [1][-]{section.7.1}{Definition of similarity}{chapter.7}% 55
+\BOOKMARK [1][-]{section.7.2}{Test Datasets}{chapter.7}% 56
+\BOOKMARK [1][-]{section.7.3}{Feature Extraction Performance}{chapter.7}% 57
+\BOOKMARK [2][-]{subsection.7.3.1}{Librosa}{section.7.3}% 58
+\BOOKMARK [2][-]{subsection.7.3.2}{Essentia}{section.7.3}% 59
+\BOOKMARK [2][-]{subsection.7.3.3}{Essentia parallel}{section.7.3}% 60
+\BOOKMARK [2][-]{subsection.7.3.4}{rp\137extractor}{section.7.3}% 61
+\BOOKMARK [2][-]{subsection.7.3.5}{performance}{section.7.3}% 62
+\BOOKMARK [0][]{chapter.8}{Big Data Framework Spark}{}% 63
+\BOOKMARK [1][-]{section.8.1}{Apache Hadoop and Spark}{chapter.8}% 64
+\BOOKMARK [2][-]{subsection.8.1.1}{Hadoop and Map Reduce}{section.8.1}% 65
+\BOOKMARK [2][-]{subsection.8.1.2}{Spark and RDDs}{section.8.1}% 66
+\BOOKMARK [2][-]{subsection.8.1.3}{Spark DataFrame}{section.8.1}% 67
+\BOOKMARK [1][-]{section.8.2}{Data aggregation}{chapter.8}% 68
+\BOOKMARK [1][-]{section.8.3}{Euclidean Distance}{chapter.8}% 69
+\BOOKMARK [1][-]{section.8.4}{Bucketed Random Projection}{chapter.8}% 70
+\BOOKMARK [1][-]{section.8.5}{Cross-correlation}{chapter.8}% 71
+\BOOKMARK [1][-]{section.8.6}{Kullback-Leibler Divergence}{chapter.8}% 72
+\BOOKMARK [1][-]{section.8.7}{Jensen-Shannon Divergence}{chapter.8}% 73
+\BOOKMARK [1][-]{section.8.8}{Levenshtein distance}{chapter.8}% 74
+\BOOKMARK [1][-]{section.8.9}{Andere MapReduce tasks}{chapter.8}% 75
+\BOOKMARK [2][-]{subsection.8.9.1}{Alternating Least Squares}{section.8.9}% 76
+\BOOKMARK [2][-]{subsection.8.9.2}{TF-IDF weights}{section.8.9}% 77
+\BOOKMARK [2][-]{subsection.8.9.3}{DIMSUM all-pairs similarity}{section.8.9}% 78
+\BOOKMARK [1][-]{section.8.10}{Combining different measurements}{chapter.8}% 79
+\BOOKMARK [1][-]{section.8.11}{performance}{chapter.8}% 80
+\BOOKMARK [0][]{chapter.9}{Results}{}% 81
+\BOOKMARK [1][-]{section.9.1}{Runtime}{chapter.9}% 82
+\BOOKMARK [1][-]{section.9.2}{Cover song identification}{chapter.9}% 83
+\BOOKMARK [1][-]{section.9.3}{Genre similarity}{chapter.9}% 84
+\BOOKMARK [1][-]{section.9.4}{Improvements and outlook}{chapter.9}% 85
+\BOOKMARK [0][]{section*.9}{References}{}% 86
+\BOOKMARK [0][]{chapter.10}{Appendix}{}% 87
+\BOOKMARK [1][-]{section.10.1}{Spotipy Crawler}{chapter.10}% 88

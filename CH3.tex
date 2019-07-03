@@ -213,3 +213,77 @@ This shows that there is still room for improvement of the algorithm used in thi
 
 \section{Validation}
 A good measure for the efficiency of a melodic similarity algorithm is the ability to find cover songs, remixes and recordings of the same song from different artists. 
+
+\section{TODO}
+
+\textit{\underline{\textbf{rewrite cross-correlation part}}}
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma.png}
+				\caption{beat aligned chroma sound1}
+				\label{c1}
+			\end{subfigure}				
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_ks.png}
+				\caption{beat aligned chroma sound1 key shifted}
+				\label{cks1}
+			\end{subfigure}		
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma2_ks.png}
+				\caption{beat aligned chroma sound2 key shifted}
+				\label{cks2}
+			\end{subfigure}%	
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_corr.png}
+				\caption{cross-correlation}
+				\label{c2}
+			\end{subfigure}%			
+	}}
+	\caption{beat-aligned chromagram}
+	\label{fig:beatalign}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Chroma/cross_hurricane.png}
+				\caption{cross-correlation of cover songs}
+				\label{cc1}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Chroma/cross_hurricane_africa.png}
+				\caption{cross-correlation of unrelated songs}
+				\label{cc2}
+			\end{subfigure}%			
+	}}
+	\caption{Cross-correlation}
+	\label{fig:crosscorr}
+\end{figure}
+
+\section{summary}
+
+Two different similarity metrics are chosen: 
+\begin{itemize}
+	\item Levenshtein Distance
+	\item cross-correlation on full beat aligned chroma features
+\end{itemize}
+These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
+\begin{itemize}
+	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
+	\item out.chroma (full beat aligned chromagram, containing a $12 x n$ matrix)
+\end{itemize}
+The output files contain strings like follows:\\
+\textit{music/guitar2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
+\textit{music/guitar3.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}
+for the out.notes files and out.chroma files. 

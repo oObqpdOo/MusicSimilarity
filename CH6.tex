@@ -12,53 +12,132 @@ With the ever growing availability of huge amounts of high dimensional data the 
 \subsection{Hadoop and Map Reduce}
 
 
-
 \subsection{Spark and RDDs}
+
+\subsection{Spark DataFrame}
 
 \section{Data aggregation}
 
-
+To work with the features a few transformations have to be done first. 
+\begin{pythonCode}
+song = "music/TURCA1.wav"
+chroma = sc.textFile("features/out[0-9]*.notes")
+chroma = chroma.map(lambda x: x.split(';'))
+chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("10",'K').replace("11",'L').replace("0",'A').replace("1",'B').replace("2",'C').replace("3",'D').replace("4",'E').replace("5",'F').replace("6",'G').replace("7",'H').replace("8",'I').replace("9",'J')))
+chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace(',','').replace(' ','')))
+df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
+\end{pythonCode}
 
 \section{Euclidean Distance}
 
-\section{Alternating Least Squares}
+\begin{pythonCode}
+distance_udf = F.udf(lambda x: float(distance.euclidean(x, comparator_value)), FloatType())
+result = df_vec.withColumn('distances', distance_udf(F.col('features')))
+result = result.select("id", "distances").orderBy('distances', ascending=True)
+result = result.rdd.flatMap(list).collect()
+\end{pythonCode}
 
-\section{DIMSUM all-pairs similarity}
+\section{Bucketed Random Projection}
+
+\begin{pythonCode}
+brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=1.0)
+model = brp.fit(df_vec)
+comparator_value = Vectors.dense(comparator[0])
+result = model.approxNearestNeighbors(df_vec, comparator_value, df_vec.count()).collect()
+rf = spark.createDataFrame(result)
+result = rf.select("id", "distCol").rdd.flatMap(list).collect()
+\end{pythonCode}
+
+
+\section{Cross-correlation}
+
+\begin{pythonCode}
+def chroma_cross_correlate(chroma1, chroma2):
+    corr = sc.signal.correlate2d(chroma1, chroma2, mode='full') 
+    transposed_chroma = np.transpose(corr)
+    mean_line = transposed_chroma[12]
+    return np.max(mean_line)
+distance_udf = F.udf(lambda x: float(chroma_cross_correlate(x, comparator_value)), DoubleType())
+result = df_vec.withColumn('distances', distance_udf(F.col('chroma')))
+result = result.select("id", "distances").orderBy('distances', ascending=False)
+result = result.rdd.flatMap(list).collect()
+\end{pythonCode}
+
+
+\section{Kullback-Leibler Divergence}
+
+\begin{pythonCode}
+def symmetric_kullback_leibler(vec1, vec2):
+    mean1 = np.empty([13, 1])
+    mean1 = vec1[0:13]
+    cov1 = np.empty([13,13])
+    cov1 = vec1[13:].reshape(13, 13)
+    mean2 = np.empty([13, 1])
+    mean2 = vec2[0:13]
+    cov2 = np.empty([13,13])
+    cov2 = vec2[13:].reshape(13, 13)
+    d = 13
+    div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + np.trace(cov2 * np.linalg.inv(cov1)) + np.trace( (np.linalg.inv(cov1) + np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
+    return div
+distance_udf = F.udf(lambda x: float(symmetric_kullback_leibler(x, comparator_value)), DoubleType())
+result = df_vec.withColumn('distances', distance_udf(F.col('features')))
+result = result.select("id", "distances").orderBy('distances', ascending=True)
+result = result.rdd.flatMap(list).collect()
+\end{pythonCode}
+
+
+\section{Jensen-Shannon Divergence}
+
+\begin{pythonCode}
+def jensen_shannon(vec1, vec2):
+    mean1 = np.empty([13, 1])
+    mean1 = vec1[0:13]
+    cov1 = np.empty([13,13])
+    cov1 = vec1[13:].reshape(13, 13)
+    mean2 = np.empty([13, 1])
+    mean2 = vec2[0:13]
+    cov2 = np.empty([13,13])
+    cov2 = vec2[13:].reshape(13, 13)
+    mean_m = 0.5 * (mean1 + mean2)
+    cov_m = 0.5 * (cov1 + mean1 * np.transpose(mean1)) + 0.5 * (cov2 + mean2 * np.transpose(mean2)) - (mean_m * np.transpose(mean_m))
+    div = 0.5 * np.log(np.linalg.det(cov_m)) - 0.25 * np.log(np.linalg.det(cov1)) - 0.25 * np.log(np.linalg.det(cov2))  
+    if np.isnan(div):
+        div = np.inf
+    return div
+distance_udf = F.udf(lambda x: float(jensen_shannon(x, comparator_value)), DoubleType())
+result = df_vec.withColumn('distances', distance_udf(F.col('features')))
+result = result.select("id", "distances").orderBy('distances', ascending=True)
+result = result.rdd.flatMap(list).collect()
+
+\end{pythonCode}
+
+\textit{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit}\cite[p.45]{schnitzer1}
 
 \section{Levenshtein distance}
 
-\section{TF-IDF weights}
+\begin{pythonCode}
+def get_neighbors_notes(song):
+    filterDF = df.filter(df.id == song)
+    filterDF.first()
+    comparator_value = filterDF.collect()[0][3] 
+    print comparator_value
+    df_merged = df.withColumn("compare", lit(comparator_value))
+    df_levenshtein = df_merged.withColumn("word1_word2_levenshtein", levenshtein(col("notes"), col("compare")))
+    df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
+\end{pythonCode}
 
-\section{MapReduce tasks}
+\section{Andere MapReduce tasks}
 
-\subsection{Cross-correlation}
+\subsection{Alternating Least Squares}
 
-\subsection{Kullback-Leibler Divergence}
+\subsection{TF-IDF weights}
 
-\subsection{Jensen-Shannon Divergence}
-
-\underline{\textit{\textbf{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit}}}\cite[p.45]{schnitzer1}
+\subsection{DIMSUM all-pairs similarity}
 
 \section{Combining different measurements}
 
-%==============================================================
+\section{performance}
 
-\chapter{Results}\label{bds2}
+\textit{high data locality, full parallelizable, very low replication rate}
 
-\section{Runtime}
-
-\section{Cover song identification}
-
-\section{Genre similarity}
-
-\section{Improvements and outlook}
-
-\textit{reduce hubness}
-
-%\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
-% on the last page of the document manually. It shortens
-% the textheight of the last page by a suitable amount.
-% This command does not take effect until the next page
-% so it should come on the page before the last. Make
-% sure that you do not shorten the textheight too much.
 

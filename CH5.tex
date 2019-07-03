@@ -32,13 +32,11 @@ In conclusion that sums up to about 117000 songs for performance tests and about
 
 \section{Feature Extraction Performance}
 
-After evaluating the different features in the last three chapters, this one discusses the feature extraction process in detail. The post processing of the features like note estimation from the chroma features was already explained in the previous chapters and is left out here. The full code is in the appendices. 
+After evaluating the different features in the last three chapters, this one discusses the feature extraction process in detail. The post processing of the features like the note estimation from the chroma features and the calculation of statistic features from the mfccs was already explained in the previous chapters and is left out here. The full code is in the appendices. For the post processing part the python numpy library was used.  
 
 \subsection{Librosa}
 
 For most of the plots in the introduction section \ref{audiofeat} the python toolkit librosa was used because of its ease of use and very good documentation. The code example shows the necessary methods to extract the most important features like mfcc, chromagram and beats/ onsets.
-
-\FloatBarrier
 \begin{pythonCode}
 path = ('music/guitar2.mp3')
 x, fs = librosa.load(path)
@@ -49,22 +47,18 @@ hop_length = 512
 times = librosa.frames_to_time(np.arange(len(onset_env)), sr=fs, hop_length=hop_length)
 chroma = librosa.feature.chroma_stft(x, fs)
 \end{pythonCode}	
-\FloatBarrier
-
-But when extracting features from batches of audio data the librosa library showed to be very slow. For a very small dataset of 23 Files, the extraction of mfcc, rhythm histogram, chroma features and estimated notes took about 580 seconds. 
+But when extracting features from batches of audio data the librosa library showed to be very slow. For a very small dataset of 100 songs, the extraction of just the mean, variance and covariance of the mfccs and the estimated notes from the chromagram took about 48 minutes. 
 For larger datasets like the 1517 artists dataset the feature extraction process would have taken about 22 hours. 
 
 \subsection{Essentia}
 
-\cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that essentia is a much faster alternative due to the underlying C++ Code and provides even more features, but is bit less well documented and requires more effort in implementation.\\ 
-In the end the Code to extract the necessary features had to be rewritten for the usage of essentia. Essentia offers two different ways to handle audio files. The first one is to use the essentia standard library. It offers similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and preprocessed by hand. 
+\cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that essentia is a much faster alternative due to the underlying C++ Code and provides even more features, but it is a bit less well documented and requires more effort in implementation at the same time.\\ 
+In the end the code to extract the necessary features had to be rewritten for the usage of essentia due to the slow performance of librosa. Essentia offers two different ways to handle audio files. The first one is to use the essentia standard library. It offers similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and preprocessed by hand. 
 The second way is to use essentia streaming. Basically a network of connected algorithms is created and they handle and schedule the "how and when" a process is called.
 
 \subsubsection{Essentia Standard}
 
 In the final extractor code the mfcc calculation and beat histogram estimation is done with the essenia standard library, because it offers a fast way to implement feature extraction. 
-
-\FloatBarrier
 \begin{pythonCode}
 audio = es.MonoLoader(filename=path, sampleRate=fs)()
 hamming_window = es.Windowing(type='hamming')
@@ -79,13 +73,10 @@ bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
 peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, histogram =
 	es.BpmHistogramDescriptors()(beats_intervals)
 \end{pythonCode}
-\FloatBarrier
 
 \subsubsection{Essentia Streaming}
 
 The essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with a high- and a lowpass filter. 
-
-\FloatBarrier
 \begin{pythonCode}
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
 HP = ess.HighPass(cutoffFrequency=128)
@@ -112,21 +103,17 @@ spectralpeaks.magnitudes >> hpcp_key.magnitudes
 spectralpeaks.frequencies >> hpcp_key.frequencies
 hpcp_key.hpcp >> key.pcp
 hpcp.hpcp >> (pool, 'tonal.hpcp')
-key.key >> (pool, 'tonal.key_key')
-key.scale >> (pool, 'tonal.key_scale')
-key.strength >> (pool, 'tonal.key_strength')
 essentia.run(loader)
 chroma = pool['tonal.hpcp'].T
-key = pool['tonal.key_key'] 
-scale = pool['tonal.key_scale']
 \end{pythonCode}	
-\FloatBarrier
+
+\subsubsection{Essentia performance}
+
+The calculation with the essentia library for 100 songs took less than half of the time librosa needed. This is significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet.
 
 \subsection{Essentia parallel}
 
-The calculation with the essentia library for 23 songs took less than half of the time librosa needed. This is significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet. Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel. 
-
-\FloatBarrier
+Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel. 
 \begin{pythonCode}
 job_server = pp.Server()
 job_server.set_ncpus(ncpus)
@@ -139,15 +126,87 @@ for index in xrange(startjob, parts):
 times = sum([job() for job in jobs])
 job_server.print_stats()
 \end{pythonCode}
-
 The computation time takes about 33 seconds for batches of 4 songs from the list on one CPU core. 
 Using 4 CPU cores for 32 songs, the overall processing time could be reduced to one minute.
 
 \begin{equation} \label{eq:parallelp}
 time = \frac{\#songs}{4 \cdot \#CPUs} \cdot 33s
 \end{equation}
- 
 Parallel python also opens up the possibility to use a cluster instead of a single node PC. 
 
 \subsection{rp\_extractor}
 
+For the extraction of the rhythm patterns and rhythm histrogram features as described in chapter \ref{rhythmsimc} the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 29 songs takes about 90 seconds.
+
+\subsection{performance}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+	\centering
+	\begin{axis}[
+	    %title={Performance of various toolkits},
+		x label style={at={(axis description cs:0.5,-0.05)},anchor=north},
+		y label style={at={(axis description cs:-0.05,.5)},rotate=0,anchor=south},
+	    xlabel={\#songs},
+	    ylabel={time [sec]},
+	    xmin=0, xmax=120,
+	    ymin=0, ymax=3000,
+	    xtick={0,20,40,60,80,100,120},
+	    ytick={0,500,1000,1500,2000,2500,3000},
+	    legend pos=north west,
+	    ymajorgrids=true,
+	    grid style=dashed,
+	    height=8cm,
+	    width=12cm,
+	    grid=major,
+	]
+	\addplot[
+		color=red,
+		mark=square,
+		]
+		coordinates {
+		(10,52)(100,385)
+		};
+		\addlegendentry{essentia parallel}
+	\addplot[
+	    color=blue,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (10,37)(100,442)
+	    };
+	    \addlegendentry{rp\_extract}
+	\addplot[
+	    color=orange,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (10,265)(100,2907)
+	    };
+	    \addlegendentry{librosa}
+	  
+	\addplot[
+	    color=green,
+	    mark=square,
+	    ]
+	    coordinates {
+		(10,94)(100,1024)
+	    };
+	    \addlegendentry{essentia}
+	    
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Performance of various toolkits}
+	\label{perfex}
+\end{figure}
+
+In summary the estimated time based on the performance measurements can be calculated leading to the conclusion that the extraction of the features for the full dataset including the FMA dataset can only be done with the help of a computing cluster or the FMA has to be left out. For this thesis the extracted features from the private music collection and the 1517 artists dataset summing up to over 10000 songs is more than sufficient and the FMA dataset is left out. For future work and performance testing however the inclusion of larger datasets has to be considered. 
+
+\begin{itemize}
+	\item 3h24 - 1517 artists - essentia parallel single node
+	\item 3h54 - 1517 artists - rp\_extract
+	\item 9h06 - private dataset - essentia parallel single node
+	\item 10h24 - private dataset - rp\_extract
+	\item 125h - full dataset - essentia parallel single node
+	\item 143h - full dataset - rp\_extract
+\end{itemize}

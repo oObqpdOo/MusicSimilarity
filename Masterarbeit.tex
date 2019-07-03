@@ -220,6 +220,10 @@ pdfstartview={XYZ null null 1.00}
 \usepackage[miktex]{gnuplottex}   
 
 \usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{pgfplotstable}
+
 
 \begin{document}
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
@@ -427,7 +431,11 @@ placeholderplaceplaceholder \= placeholder \kill
 
 \lstnewenvironment{pythonCode}[1][]
 {
-  \lstset{  
+  \lstset{
+  	language=Python,
+  	keywordstyle=\color{blue},
+  	stringstyle=\color{red},
+  	commentstyle=\color{green}, 
     backgroundcolor=\color{gray!40},
    	morecomment=[l][\color{magenta}]{\#}
     breaklines=true,
@@ -485,6 +493,8 @@ placeholderplaceplaceholder \= placeholder \kill
 \include{CH5}
 
 \include{CH6}
+
+\include{CH7}
 
 %\begin{flushleft}
 %\begin{Huge}
@@ -735,7 +745,7 @@ dist = distance.euclidean(feat_vec[0], feat_vec[1])
 
 I hereby declare that the thesis submitted is my own unaided work. All direct or indirect
 sources used are acknowledged as references.
-This paper was not previously presented to another examination board and has not been
+This thesis was not previously presented to another examination board and has not been
 published in German, English or any other language.\\
 \ \\
 Hermsdorf, \today
