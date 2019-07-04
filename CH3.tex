@@ -219,12 +219,16 @@ The cross-correlation is normalized by the length of the shorter song segment to
 Additionally they filtered the result of the correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample" \cite[p. 1431]{chroma3}\\
 Serra (et al.) discussed various effects of pre-processing steps. E.g they note that a higher chroma resolution of 3 octaves gives better results. Also a key detection and transposition before cross-correlation gives slightly worse results in comparison to the method Ellis and Poliner used.
 This shows that there is still room for improvement of the algorithm used in this thesis.
-In summary, the implementation of Ellis and Poliners method in this thesis differs slightly from the approach by Ellis and Poliner. The chroma features are beat aligned, averaged per beat and normalized to unit length as well but additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $l$ run from $-(Q - 1) \leq l \leq N - 1$ is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these are not necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results. 
+In summary, the implementation of Ellis and Poliners method in this thesis differs slightly from the approach by Ellis and Poliner. The chroma features are beat aligned, averaged per beat and normalized to unit length as well but additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these are not necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results. 
 \begin{equation} \label{eq:conv5}
-C(k) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{H}(m - k, n)}}
+C(l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{H}(m, n - l)}}
 \end{equation}
 \begin{equation} \label{eq:conv6}
--(P - 1) \leq k \leq M - 1
+-(Q - 1) \leq l \leq N - 1
+\end{equation}
+or even faster without calculating the edges of the matrix.
+\begin{equation} \label{eq:conv7}
+0 \leq l \leq N - Q
 \end{equation}
 The post-processing step from Ellis and Poliner, namely the high-pass filtering of the result are left out in the implementation of this thesis as well.\\
 Figure \ref{fig:beatalign} shows two beat aligned, key shifted and per beat averaged chroma features of two short guitar snippets and their cross-correlation. The interesting row of the cross-correlation matrix is the middle row marked with the C key. It shows that both already key shifted melodies do not correlate well.  
