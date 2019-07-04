@@ -31,9 +31,6 @@ d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1
 \end{equation}
 
 \section{Other Similarity Metrics}
-\textit{different similarity metrics, we use easiest one}\\
-\ \\
-\ \\
 The second available metric in the musly toolkit by Schnitzer is using the Jenson-Shannon Divergence (in an slightly adapted way). "The Jensen-Shannon (JS) divergence is another symmetric divergence derived from the Kullback-Leibler divergence. To compute it, a mixture $X_m$ of the two distributions is defined" \cite[p. 43]{schnitzer1}. "To use the Jensen-Shannon divergence [...] to estimate similarities between Gaussians, an approximation of $X_m$ as a single multivariate Gaussian can be used [...] This approximation of $X_m$ is exactly the same as the left-type Kullback-Leibler centroid of the two Gaussian distributions [...]" \cite[p. 44]{schnitzer1} 
 \begin{equation} \label{eq:jsl1}
 \mu_m = \frac{1}{2} \mu_P + \frac{1}{2} \mu_Q

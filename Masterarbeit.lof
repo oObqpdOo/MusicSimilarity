@@ -55,27 +55,29 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{28}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{30}{figure.5.7}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{31}{figure.5.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{31}{figure.5.8}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{32}{figure.5.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{32}{figure.5.9}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{34}{figure.6.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{35}{figure.6.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{35}{figure.6.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{36}{figure.6.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{37}{figure.6.5}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{33}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{43}{figure.7.1}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{35}{figure.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{36}{figure.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{36}{figure.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{37}{figure.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{38}{figure.6.5}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{44}{figure.7.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

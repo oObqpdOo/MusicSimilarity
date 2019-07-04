@@ -1428,6 +1428,23 @@
     \field{year}{2007}
   \endentry
 
+  \entry{mathcorr}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={Mathworks},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{xcorr2}
+    \verb{url}
+    \verb https://www.mathworks.com/help/signal/ref/xcorr2.html
+    \endverb
+  \endentry
+
   \entry{rhythm3}{article}{}
     \name{author}{2}{}{%
       {{hash=TG}{%
