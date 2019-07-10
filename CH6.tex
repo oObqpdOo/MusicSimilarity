@@ -11,14 +11,16 @@ With the ever growing availability of huge amounts of high dimensional data the 
 
 \subsection{Hadoop and Map Reduce}
 
-
 \subsection{Spark and RDDs}
 
 \subsection{Spark DataFrame}
 
+\subsection{Performance Comparison of RDD vs DataFrame}
+
 \section{Data aggregation}
 
 To work with the features a few transformations have to be done first. 
+
 \begin{pythonCode}
 song = "music/TURCA1.wav"
 chroma = sc.textFile("features/out[0-9]*.notes")
@@ -136,8 +138,17 @@ def get_neighbors_notes(song):
 
 \section{Combining different measurements}
 
+\textit{\textbf{Pre- merge feature sets, broadcast comparator, descending importance pre-filtering}}
+
+\textit{\textbf{statistic normalization of similarities}}
+
 \section{performance}
 
-\textit{high data locality, full parallelizable, very low replication rate}
+\textit{\textbf{high data locality, full parallelizable, very low replication rate}}
+
+\textit{\textbf{insert data locality scheme here}}
+
+Very small 100 Song Dataset plus 20 Cover Songs to evaluate and compare similarity metrics. Full similarity matrices. 
+High performance/ throughput tests with full 12000 song testset to evaluate full load performance.\\
 
 

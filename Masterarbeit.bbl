@@ -1086,6 +1086,28 @@
     \field{title}{The Open Multitrack Testbed}
   \endentry
 
+  \entry{cover80}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=EDPW}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={D.\bibnamedelima P.\bibnamedelima W.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EDPW1}
+    \strng{fullhash}{EDPW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The "covers80" cover song data set}
+    \verb{url}
+    \verb available: http://labrosa.ee.columbia.edu/projects/coversongs/covers8
+    \verb 0/
+    \endverb
+    \field{year}{2007}
+  \endentry
+
   \entry{bqpd1}{inproceedings}{}
     \field{labeltitlesource}{title}
     \field{title}{Soundcloud bqpd}

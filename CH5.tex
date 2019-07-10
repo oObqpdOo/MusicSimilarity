@@ -5,7 +5,7 @@
 \section{Test Datasets}
 
 Chapter \ref{datasets} introduced a range of MIR datasets but not all are fitting to the problems this thesis evaluates. To test the algorithms on the one hand a lot of data is needed, so the Free Music Archive with its over 100000 songs is a solid option for performance tests. However on the other hand the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental or rock. Also this dataset may not be really representative for actual popular music, a lot of the songs are live recordings with poor audio quality, possibly influencing the results.
-The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal.
+The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
 The last source used in this thesis is the private music collection. This collection is biased towards metal music but due to the match with personal taste, it offers a subjective evaluation of the results of the similarity analysis. 
 In conclusion that sums up to about 117000 songs for performance tests and about 12000 songs for a detailed evaluation of the algorithms
 
@@ -21,10 +21,11 @@ In conclusion that sums up to about 117000 songs for performance tests and about
 			\hline
 			1517 artists & 3180 Songs\\
 			\hline
+			covers80 & 160 Songs (80 originals + 80 covers)\\
+			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
-
 
 \section{Feature Extraction Performance}
 
