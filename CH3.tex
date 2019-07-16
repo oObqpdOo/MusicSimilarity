@@ -215,11 +215,11 @@ An example for the one dimensional cross-correlation is shown in figure \ref{fig
 \end{figure}
 Ellis and Poliner did not transpose the songs in the pre-processing step to match the keys of both audio files. Instead they calculated the full cross-correlation for all 12 possible transpositions and chose the best one. 
 As input matrices they averaged all notes of the chroma features per beat and scaled them to have unit norm at each time slice/ beat frame.
-The cross-correlation is normalized by the length of the shorter song segment to bind the correlation result to an interval between 0 and 1. 
-Additionally they filtered the result of the correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample" \cite[p. 1431]{chroma3}\\
-Serra (et al.) discussed various effects of pre-processing steps. E.g they note that a higher chroma resolution of 3 octaves gives better results. Also a key detection and transposition before cross-correlation gives slightly worse results in comparison to the method Ellis and Poliner used.
-This shows that there is still room for improvement of the algorithm used in this thesis.
-In summary, the implementation of Ellis and Poliners method in this thesis differs slightly from the approach by Ellis and Poliner. The chroma features are beat aligned, averaged per beat and normalized to unit length as well but additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these are not necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results. 
+In the original paper the cross-correlation is normalized by the length of the shorter song segment to bind the correlation result to an interval between 0 and 1. But in a later published work from Ellis and Cotton this step was left out, as it seemingly resulted in slightly worse detection ratios of cover songs \cite{cover802}. 
+Additionally they filtered the result of the correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample" \cite[p. 1431]{chroma3}. The later published paper \cite{cover802} also states, that changes to the filter parameters improved the cover song recognition rate further, however the exact values e.g. for the cutoff frequency weren't give, so this thesis uses the older parameters for the filter\\
+Serra (et al.) discussed various effects of pre-processing steps that improve the algorithm even more. E.g they note that a higher chroma resolution of 3 octaves gives better results. Also a key detection and transposition before cross-correlation gives slightly worse results in comparison to the method Ellis and Poliner used.\\ 
+In this thesis a versions where the songs are all key aligned before the cross-correlation was tested, but due to the fact, that the key detection algorithm in the labrosa and essentia frameworks weren't always correct a second version where addionally the cross-correlation for all key transpositions is calculated, was also implemented. 
+In summary, the implementation of Ellis and Poliners method in this thesis is similar to the approach by Ellis and Poliner.\\ The chroma features are beat aligned, averaged per beat and normalized to unit length as well. Additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ in equation \ref{eq:conv2} is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these aren't ultimately necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results without additional key-shifting but this version is reliant on an accurate key detection of the songs.
 \begin{equation} \label{eq:conv5}
 C(l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{H}(m, n - l)}}
 \end{equation}
@@ -230,7 +230,7 @@ or even faster without calculating the edges of the matrix.
 \begin{equation} \label{eq:conv7}
 0 \leq l \leq N - Q
 \end{equation}
-The post-processing step from Ellis and Poliner, namely the high-pass filtering of the result are left out in the implementation of this thesis as well.\\
+The post-processing step from Ellis and Poliner, namely the high-pass filtering of the result was also implemented.\\
 Figure \ref{fig:beatalign} shows two beat aligned, key shifted and per beat averaged chroma features of two short guitar snippets and their cross-correlation. The interesting row of the cross-correlation matrix is the middle row marked with the C key. It shows that both already key shifted melodies do not correlate well.  
 \begin{figure}[htbp]
 	\centering
@@ -264,10 +264,24 @@ Figure \ref{fig:beatalign} shows two beat aligned, key shifted and per beat aver
 	\caption{beat-aligned chromagram}
 	\label{fig:beatalign}
 \end{figure}
-In figure \ref{fig:crosscorr} the cross-correlation of the song "Rock you like a Hurricane" by the Scorpions and covered by Knightsbridge are shown in \ref{cc1} and in contrast to this the cross-correlation of "Rock you like a Hurricane" with the song "Africa" by Toto are shown. The relevant middling line in the resulting matrix shows, that the covers do correlate much better than the unrelated songs. The other rows of the resulting matrix in \ref{cc2} show that if one song would be key shifted again (possibly resulting in a manipulation of the melody line, which is not wanted) better correlations could be achieved.
+In figure \ref{fig:crosscorr} the cross-correlation of the song "Rock you like a Hurricane" by the Scorpions and covered by Knightsbridge are shown in \ref{cc1} and in contrast to this the cross-correlation of "Rock you like a Hurricane" with the song "Chandelier" by Sia are shown. Due to the previous key shifting plot \ref{cch1} shows the maximum peak right in the center row.\\
+The unrelated songs result in much smaller correlation values, especially when looking at the middling row of the matrix (marked as the B-key), but also if the songs are transposed additionally even then they do not correlate well. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Chroma/hurr1chrom.png}
+				\caption{Scorpions}
+				\label{cch1}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Chroma/hurr2chrom.png}
+				\caption{Knightsbridge}
+				\label{cch2}
+			\end{subfigure}%
+				
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/cross_hurricane.png}
@@ -276,7 +290,7 @@ In figure \ref{fig:crosscorr} the cross-correlation of the song "Rock you like a
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
-				\includegraphics[scale=0.3]{Images/Chroma/cross_hurricane_africa.png}
+				\includegraphics[scale=0.3]{Images/Chroma/cross_hurricane_sia.png}
 				\caption{cross-correlation of unrelated songs}
 				\label{cc2}
 			\end{subfigure}%			
@@ -284,7 +298,8 @@ In figure \ref{fig:crosscorr} the cross-correlation of the song "Rock you like a
 	\caption{Cross-correlation}
 	\label{fig:crosscorr}
 \end{figure}
-The important C-key row of the cross-correlation matrices from figure \ref{fig:crosscorr} are separately pictured in figure \ref{fig:crosscorr2}. The peak in \ref{cc3} when cross-correlating the cover songs is clearly visible. 
+The row with the maximum correlation value is extracted and the resulting plot shows, that the covers do correlate much better than the unrelated songs (\ref{cc3} and \ref{cc4}).
+The important row of the cross-correlation matrices from figure \ref{fig:crosscorr} are separately pictured in figure \ref{fig:crosscorr2}. After applying the high-pass filter to the extracted row with the maximum correlation value, the peak in \ref{cc3} when cross-correlating the cover songs is clearly visible compared to the unrelated songs.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -299,11 +314,25 @@ The important C-key row of the cross-correlation matrices from figure \ref{fig:c
 				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_corr_mean2.png}
 				\caption{cross-correlation of unrelated songs}
 				\label{cc4}
-			\end{subfigure}%			
+			\end{subfigure}%		
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_corr_mean_filt.png}
+				\caption{cover songs filtered}
+				\label{ccf3}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_corr_mean2_filt.png}
+				\caption{unrelated songs filtered}
+				\label{ccf4}
+			\end{subfigure}%		
 	}}
 	\caption{Cross-correlation}
 	\label{fig:crosscorr2}
 \end{figure}
+An interesting detail that can be pointed out is that the song structure is also visible in plot \ref{ccf3} with recurring peaks when the refrain is repeated.
 
 \section{Validation}
 A good measure for the efficiency of a melodic similarity algorithm is the ability to find cover songs, remixes and recordings of the same song from different artists. 

@@ -94,10 +94,10 @@ To get started, a brief overview is given in the next section providing the most
 
 \section{Audio Features and Music Similarity Measurements}
 
-This section provides an overview about different music similarity measurements and metrics.\\
-More in-depth information about the different metrics is given in chapter \ref{simmet}
+This section provides an overview about different music similarity measurements, audio features and metrics.\\
+More in-depth information about the different metrics is given in chapter \ref{musly}, \ref{melsimc} and \ref{rhythmsimc}
 
-\subsection{Frequency based}\label{featsec}
+\subsection{Fourier Transformation}\label{featsec}
 
 As done by: \cite[pp. 17ff]{schnitzer1}\\
 Most of the algorithms start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then compute the power spectrum (equation \ref{eq:absfft})
@@ -161,64 +161,6 @@ N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
 
 To reduce the dimensionality of the feature vector, a typical approach in MIR would be to calculate the so called Mel Frequency Cepstral Coefficients (MFCCs). They are described in more detail in the next section.
 
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 
-			\begin{subfigure}{.495\textwidth}
-				\centering 
-				\includegraphics[scale=0.3]{Images/Layla/laylacmfccHR.png}
-				\caption{MFCC High Resolution}
-				\label{laylacmfcchr}
-			\end{subfigure}%
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.3]{Images/Layla/laylacmfccscaled.png}
-				\caption{MFCC High Resolution Scaled}
-				\label{laylacmfccscaled}
-			\end{subfigure}%
-	}}
-	\caption{Features}
-	\label{fig:feat1}
-\end{figure}
-
-As another, better comprehensible feature set, the chroma features represent the tonal properties of a song. The chroma plot (Figure \ref{laylachroma}) shows the distribution of the different pitches mapped to the various keys in one octave. The values are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there is only noise at that frame in the recording, as depicted in the first frames of figure \ref{laylachroma}.
-Figure \ref{laylapitch} figures the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in \ref{midiest}. 
-The Plot in figure \ref{laylacbeat} shows the onsets (beginning of musical notes) and estimated beats.
-%In the last picture the chroma plot is cleaned up, filtered for the most dominant pitches and pictured alongside the detected beats. 
-
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 
-			\begin{subfigure}{.495\textwidth}
-				\centering 
-				\includegraphics[scale=0.3]{Images/Layla/laylacmfcc.png}
-				\caption{MFCC}
-				\label{laylacmfcc}
-			\end{subfigure}%
-			\begin{subfigure}{.495\textwidth}
-				\centering    
-				\includegraphics[scale=0.3]{Images/Layla/laylachroma.png}
-				\caption{Chroma Features}
-				\label{laylachroma}
-			\end{subfigure}%
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.3]{Images/Layla/laylapitch.png}
-				\caption{Pitch}
-				\label{laylapitch}
-			\end{subfigure}%
-			\begin{subfigure}{.495\textwidth}
-				\centering     
-				\includegraphics[scale=0.3]{Images/Layla/laylabeat.png}
-				\caption{Rhythm/ Beat}
-				\label{laylacbeat}
-			\end{subfigure}%
-	}}
-	\caption{Features}
-	\label{fig:feat2}
-\end{figure}
-
 \subsection{MFCC}\label{mfccsim}
 
 This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
@@ -275,21 +217,67 @@ Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel b
 	\caption{MFCCs}	
 	\label{fig:mfcc}
 \end{figure}
+
 \FloatBarrier
-\ \\
-\ \\
-\textit{\textbf{Onset and Chroma signal explained!!!!}}\\
+
+\subsection{other audio features}
+
+As another, better comprehensible, higher-level feature set, the chroma features represent the tonal properties of a song. The chroma plot (Figure \ref{laylachroma}) shows the distribution of the different pitches mapped to the various keys in one octave. The values are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there is only noise or silence at that frame in the recording, as depicted in the first frames of figure \ref{laylachroma}. The chromagram has one significant downside, because it is reduced to one octave and thus can not represent the melody of a song to its full extend.\\
+Figure \ref{laylapitch} figures the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in \ref{midiest}.\\
+The rhythmic low-level features of a song include the estimation of the overall tempo, beats and  onset events. 
+The Plot in figure \ref{laylacbeat} shows the onsets (beginning and strength of musical notes) and estimated beats in the first 10 seconds of a classical song (Rachmaninoff, prelude in c sharp minor op.3 no. 2).
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 
+			\begin{subfigure}{.495\textwidth}
+				\centering 
+				\includegraphics[scale=0.3]{Images/Layla/laylacmfcc.png}
+				\caption{MFCC}
+				\label{laylacmfcc}
+			\end{subfigure}%
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/Layla/laylachroma.png}
+				\caption{Chroma Features}
+				\label{laylachroma}
+			\end{subfigure}%
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.3]{Images/Layla/laylapitch.png}
+				\caption{Pitch}
+				\label{laylapitch}
+			\end{subfigure}%
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/Layla/laylabeat.png}
+				\caption{Rhythm/ Beat}
+				\label{laylacbeat}
+			\end{subfigure}%
+	}}
+	\caption{Features}
+	\label{fig:feat2}
+\end{figure}
+
+\section{Similarity Analysis}
+
+\subsection{Timbre based}
+
+As done by: \cite{schnitzer1}\\
+The proposed approach by \cite{schnitzer1} is, to take mfccs as low level features and compute statistical features like mean, standard deviation and covariance of the different mfccs to reduce dimensionality before computing similarities.
+Various similarity measurements are proposed and evaluated in chapter \ref{musly}
 
 \subsection{Pitch based}
 
 As done by: \cite{pitch1}\\
-The proposed approach by \cite{pitch1} is, to take mid-level features like chroma or pitch instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
+The proposed approach by \cite{pitch1} is, to take mid-level features like the chromagram or estimated main pitchline instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
 A more detailed analysis of this topic is given in chapter \ref{melsimc}
 
 \subsection{Rhythm based}
 As done by: \cite{rhythm1}\\
-Rhythm based music similarity algorithms use timing information of various events. The so called rhythm spectrum can be used as a feature vector.
-For example the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval.
+Rhythm based music similarity algorithms use timing information of various events as a baseline. 
+For example low-level features like the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. More advanced approaches make use of the beat histogram, rhythm histogram and rhythm patterns. 
 An in depth overview is given in chapter \ref{rhythmsimc}
 
 \subsection{Metadata based/ Collaborative Filtering}
@@ -311,6 +299,7 @@ For comparing musical pieces by their symbolic represenation (notes, tabulatures
 The problem with notation based algorithms is, that there are not many datasets available containing audio and MIDI information.
 As shown in \ref{midiest} the automatic transcription of notes from raw audio does not work flawlessly. 
 There is ongoing research to automatically annotate musical notes with the help of neural networks.\cite{crepe1}
+In chapter \ref{rhythmsimc} an attempt to extract note information as text features from chromagrams and calculating the similarity by using the levinshtein distance is shown and evaluated.
 
 \subsection{Genre specific features}
 
@@ -466,8 +455,7 @@ Part of the available audio features comes from the Echo Nest\cite{echonest1}
 For each song available in Spotify, there are audiofeatures like loudness, speechiness, liveness, instrumentalness, energy, danceability, acousticness, pitch, rhythm bars etc. 
 With a small Python library named Spotipy, the available information can very easily be used and accessed. \cite{spotipy1}\\
 In figure \ref{spp} the pitch of the piano piece Für Elise by Beethoven is shown and figure \ref{spp2} shows the beginning of the piece in more detail, including green dots, that resemble estimated bar markings. The blue dots represent the note values of one octave. That means they can resemble a value between zero and eleven with zero representing the key C and 11 is representing a B.
-The Spotify API actually returns a value for every single one of the keys per segment, while one segment is a section of samples that are relatively uniform in timbre and harmony. In the plots only the most dominant key per segment is shown. 
-The pitch values in one segment are normalized to one by their strongest dimension, so the more evenly distributed the pitch values are and the closer they all get to the value one, the more likely it is, that the sample contains only noise.
+The Spotify API actually returns a chroma feature value for every single one of the keys per segment, where one segment is a section of samples that are relatively uniform in timbre and harmony. In the plots only the most dominant key per segment is shown. 
 The Downside using the Spotify API is, that there is no packed and ready to use test dataset containing the relevant features. So for scientific purposes, a test dataset would have to be created first. 
 
 \begin{figure}[htbp]
@@ -489,10 +477,6 @@ The Downside using the Spotify API is, that there is no packed and ready to use 
 	\caption{Spotify API}
 	\label{fig:spotify}
 \end{figure}
-\FloatBarrier
-
-The pitch graph has one significant downside, because it is reduced to one octave and thus can not represent the melody of a song to its full extend. 
-
 \FloatBarrier
 
 \subsection{Cover song identification}
@@ -564,6 +548,7 @@ The private music collection used in this work consist mainly of metal music. Th
 \FloatBarrier
 
 Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud\cite{bqpd1}
+The private music collection is fully cataloged and the according pdf is the appendices.
 
 \subsection{Overview and other sources}
 

@@ -8,82 +8,88 @@
 \BOOKMARK [0][]{chapter.2}{MIR Toolkits and audio features}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Music Information Retrieval}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.2}{Audio Features and Music Similarity Measurements}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.1}{Frequency based}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.1}{Fourier Transformation}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.2}{MFCC}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.3}{Pitch based}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.4}{Rhythm based}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.5}{Metadata based/ Collaborative Filtering}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.6}{Note based}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.7}{Genre specific features}{section.2.2}% 17
-\BOOKMARK [1][-]{section.2.3}{MIR Toolkits}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.3.1}{Music Similarity}{section.2.3}% 19
-\BOOKMARK [2][-]{subsection.2.3.2}{Audio feature extraction}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.3}{Melody/ pitch extraction}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.4}{Spotify API/ Echonest}{section.2.3}% 22
-\BOOKMARK [2][-]{subsection.2.3.5}{Cover song identification}{section.2.3}% 23
-\BOOKMARK [0][]{chapter.3}{Data aggregation}{}% 24
-\BOOKMARK [1][-]{section.3.1}{Datasets}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.1.1}{Free Music Archive}{section.3.1}% 26
-\BOOKMARK [2][-]{subsection.3.1.2}{Musicnet and 1517 artists}{section.3.1}% 27
-\BOOKMARK [2][-]{subsection.3.1.3}{MedleyDB}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.4}{covers80}{section.3.1}% 29
-\BOOKMARK [2][-]{subsection.3.1.5}{Private music collection}{section.3.1}% 30
-\BOOKMARK [2][-]{subsection.3.1.6}{Overview and other sources}{section.3.1}% 31
-\BOOKMARK [1][-]{section.3.2}{Spotipy}{chapter.3}% 32
-\BOOKMARK [0][]{chapter.4}{Timbre Similarity}{}% 33
-\BOOKMARK [1][-]{section.4.1}{Single Gaussian Model}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.2}{Other Similarity Metrics}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.3}{Validation}{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.3.1}{Construction Noise}{section.4.3}% 37
-\BOOKMARK [2][-]{subsection.4.3.2}{Different recordings and cover versions}{section.4.3}% 38
-\BOOKMARK [1][-]{section.4.4}{summary}{chapter.4}% 39
-\BOOKMARK [0][]{chapter.5}{Melodic Similarity}{}% 40
-\BOOKMARK [1][-]{section.5.1}{Representation}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.2}{Chroma Features}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.3}{similarity of chroma features}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.3.1}{text retrieval}{section.5.3}% 44
-\BOOKMARK [2][-]{subsection.5.3.2}{cross-correlation}{section.5.3}% 45
-\BOOKMARK [1][-]{section.5.4}{Validation}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.5}{summary}{chapter.5}% 47
-\BOOKMARK [0][]{chapter.6}{Rhythmic Similarity}{}% 48
-\BOOKMARK [1][-]{section.6.1}{Beat histogram}{chapter.6}% 49
-\BOOKMARK [1][-]{section.6.2}{Rhythm patterns}{chapter.6}% 50
-\BOOKMARK [1][-]{section.6.3}{Rhythm Histogram}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.4}{cross-correlation}{chapter.6}% 52
-\BOOKMARK [1][-]{section.6.5}{summary}{chapter.6}% 53
-\BOOKMARK [0][]{chapter.7}{Other Similarity metrics and Performance}{}% 54
-\BOOKMARK [1][-]{section.7.1}{Test Datasets}{chapter.7}% 55
-\BOOKMARK [1][-]{section.7.2}{Feature Extraction Performance}{chapter.7}% 56
-\BOOKMARK [2][-]{subsection.7.2.1}{Librosa}{section.7.2}% 57
-\BOOKMARK [2][-]{subsection.7.2.2}{Essentia}{section.7.2}% 58
-\BOOKMARK [2][-]{subsection.7.2.3}{Essentia parallel}{section.7.2}% 59
-\BOOKMARK [2][-]{subsection.7.2.4}{rp\137extractor}{section.7.2}% 60
-\BOOKMARK [2][-]{subsection.7.2.5}{performance}{section.7.2}% 61
-\BOOKMARK [0][]{chapter.8}{Big Data Framework Spark}{}% 62
-\BOOKMARK [1][-]{section.8.1}{Apache Hadoop and Spark}{chapter.8}% 63
-\BOOKMARK [2][-]{subsection.8.1.1}{Hadoop and Map Reduce}{section.8.1}% 64
-\BOOKMARK [2][-]{subsection.8.1.2}{Spark and RDDs}{section.8.1}% 65
-\BOOKMARK [2][-]{subsection.8.1.3}{Spark DataFrame}{section.8.1}% 66
-\BOOKMARK [2][-]{subsection.8.1.4}{Performance Comparison of RDD vs DataFrame}{section.8.1}% 67
-\BOOKMARK [1][-]{section.8.2}{Data aggregation}{chapter.8}% 68
-\BOOKMARK [1][-]{section.8.3}{Euclidean Distance}{chapter.8}% 69
-\BOOKMARK [1][-]{section.8.4}{Bucketed Random Projection}{chapter.8}% 70
-\BOOKMARK [1][-]{section.8.5}{Cross-correlation}{chapter.8}% 71
-\BOOKMARK [1][-]{section.8.6}{Kullback-Leibler Divergence}{chapter.8}% 72
-\BOOKMARK [1][-]{section.8.7}{Jensen-Shannon Divergence}{chapter.8}% 73
-\BOOKMARK [1][-]{section.8.8}{Levenshtein distance}{chapter.8}% 74
-\BOOKMARK [1][-]{section.8.9}{Andere MapReduce tasks}{chapter.8}% 75
-\BOOKMARK [2][-]{subsection.8.9.1}{Alternating Least Squares}{section.8.9}% 76
-\BOOKMARK [2][-]{subsection.8.9.2}{TF-IDF weights}{section.8.9}% 77
-\BOOKMARK [2][-]{subsection.8.9.3}{DIMSUM all-pairs similarity}{section.8.9}% 78
-\BOOKMARK [1][-]{section.8.10}{Combining different measurements}{chapter.8}% 79
-\BOOKMARK [1][-]{section.8.11}{performance}{chapter.8}% 80
-\BOOKMARK [0][]{chapter.9}{Results}{}% 81
-\BOOKMARK [1][-]{section.9.1}{Runtime}{chapter.9}% 82
-\BOOKMARK [1][-]{section.9.2}{Cover song identification}{chapter.9}% 83
-\BOOKMARK [1][-]{section.9.3}{Genre similarity}{chapter.9}% 84
-\BOOKMARK [1][-]{section.9.4}{Improvements and outlook}{chapter.9}% 85
-\BOOKMARK [1][-]{section.9.5}{Definition of similarity}{chapter.9}% 86
-\BOOKMARK [0][]{section*.9}{References}{}% 87
-\BOOKMARK [0][]{chapter.10}{Appendix}{}% 88
-\BOOKMARK [1][-]{section.10.1}{Spotipy Crawler}{chapter.10}% 89
+\BOOKMARK [2][-]{subsection.2.2.3}{other audio features}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Similarity Analysis}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{Timbre based}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.2}{Pitch based}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.3}{Rhythm based}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.4}{Metadata based/ Collaborative Filtering}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.5}{Note based}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.6}{Genre specific features}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{MIR Toolkits}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.4.1}{Music Similarity}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.2}{Audio feature extraction}{section.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.4.3}{Melody/ pitch extraction}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.4}{Spotify API/ Echonest}{section.2.4}% 25
+\BOOKMARK [2][-]{subsection.2.4.5}{Cover song identification}{section.2.4}% 26
+\BOOKMARK [0][]{chapter.3}{Data aggregation}{}% 27
+\BOOKMARK [1][-]{section.3.1}{Datasets}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.1.1}{Free Music Archive}{section.3.1}% 29
+\BOOKMARK [2][-]{subsection.3.1.2}{Musicnet and 1517 artists}{section.3.1}% 30
+\BOOKMARK [2][-]{subsection.3.1.3}{MedleyDB}{section.3.1}% 31
+\BOOKMARK [2][-]{subsection.3.1.4}{covers80}{section.3.1}% 32
+\BOOKMARK [2][-]{subsection.3.1.5}{Private music collection}{section.3.1}% 33
+\BOOKMARK [2][-]{subsection.3.1.6}{Overview and other sources}{section.3.1}% 34
+\BOOKMARK [1][-]{section.3.2}{Spotipy}{chapter.3}% 35
+\BOOKMARK [0][]{chapter.4}{Timbre Similarity}{}% 36
+\BOOKMARK [1][-]{section.4.1}{Single Gaussian Model}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.2}{Other Similarity Metrics}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.3}{Validation}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.3.1}{Construction Noise}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.2}{Different recordings and cover versions}{section.4.3}% 41
+\BOOKMARK [1][-]{section.4.4}{summary}{chapter.4}% 42
+\BOOKMARK [0][]{chapter.5}{Melodic Similarity}{}% 43
+\BOOKMARK [1][-]{section.5.1}{Representation}{chapter.5}% 44
+\BOOKMARK [1][-]{section.5.2}{Chroma Features}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.3}{similarity of chroma features}{chapter.5}% 46
+\BOOKMARK [2][-]{subsection.5.3.1}{text retrieval}{section.5.3}% 47
+\BOOKMARK [2][-]{subsection.5.3.2}{cross-correlation}{section.5.3}% 48
+\BOOKMARK [1][-]{section.5.4}{Validation}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.5}{summary}{chapter.5}% 50
+\BOOKMARK [0][]{chapter.6}{Rhythmic Similarity}{}% 51
+\BOOKMARK [1][-]{section.6.1}{Beat histogram}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.2}{Rhythm patterns}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.3}{Rhythm Histogram}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.4}{cross-correlation}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.5}{summary}{chapter.6}% 56
+\BOOKMARK [0][]{chapter.7}{Other Similarity metrics and Feature Extraction Performance}{}% 57
+\BOOKMARK [1][-]{section.7.1}{Test Datasets}{chapter.7}% 58
+\BOOKMARK [1][-]{section.7.2}{Feature Extraction Performance}{chapter.7}% 59
+\BOOKMARK [2][-]{subsection.7.2.1}{Librosa}{section.7.2}% 60
+\BOOKMARK [2][-]{subsection.7.2.2}{Essentia}{section.7.2}% 61
+\BOOKMARK [2][-]{subsection.7.2.3}{Essentia parallel}{section.7.2}% 62
+\BOOKMARK [2][-]{subsection.7.2.4}{rp\137extractor}{section.7.2}% 63
+\BOOKMARK [2][-]{subsection.7.2.5}{performance}{section.7.2}% 64
+\BOOKMARK [0][]{chapter.8}{Big Data Framework Spark}{}% 65
+\BOOKMARK [1][-]{section.8.1}{Apache Hadoop and Spark}{chapter.8}% 66
+\BOOKMARK [2][-]{subsection.8.1.1}{Hadoop and Map Reduce}{section.8.1}% 67
+\BOOKMARK [2][-]{subsection.8.1.2}{Spark and RDDs}{section.8.1}% 68
+\BOOKMARK [2][-]{subsection.8.1.3}{Spark DataFrame}{section.8.1}% 69
+\BOOKMARK [2][-]{subsection.8.1.4}{lazy evaluation}{section.8.1}% 70
+\BOOKMARK [2][-]{subsection.8.1.5}{Performance Comparison of RDD vs DataFrame}{section.8.1}% 71
+\BOOKMARK [2][-]{subsection.8.1.6}{min and max value aggregation}{section.8.1}% 72
+\BOOKMARK [1][-]{section.8.2}{Data aggregation}{chapter.8}% 73
+\BOOKMARK [1][-]{section.8.3}{Euclidean Distance}{chapter.8}% 74
+\BOOKMARK [1][-]{section.8.4}{Bucketed Random Projection}{chapter.8}% 75
+\BOOKMARK [1][-]{section.8.5}{Cross-correlation}{chapter.8}% 76
+\BOOKMARK [1][-]{section.8.6}{Kullback-Leibler Divergence}{chapter.8}% 77
+\BOOKMARK [1][-]{section.8.7}{Jensen-Shannon Divergence}{chapter.8}% 78
+\BOOKMARK [1][-]{section.8.8}{Levenshtein distance}{chapter.8}% 79
+\BOOKMARK [1][-]{section.8.9}{Andere MapReduce tasks}{chapter.8}% 80
+\BOOKMARK [2][-]{subsection.8.9.1}{Alternating Least Squares}{section.8.9}% 81
+\BOOKMARK [2][-]{subsection.8.9.2}{TF-IDF weights}{section.8.9}% 82
+\BOOKMARK [2][-]{subsection.8.9.3}{DIMSUM all-pairs similarity}{section.8.9}% 83
+\BOOKMARK [1][-]{section.8.10}{Combining different measurements}{chapter.8}% 84
+\BOOKMARK [1][-]{section.8.11}{performance}{chapter.8}% 85
+\BOOKMARK [1][-]{section.8.12}{feature separation quality}{chapter.8}% 86
+\BOOKMARK [0][]{chapter.9}{Results}{}% 87
+\BOOKMARK [1][-]{section.9.1}{Runtime}{chapter.9}% 88
+\BOOKMARK [1][-]{section.9.2}{Cover song identification}{chapter.9}% 89
+\BOOKMARK [1][-]{section.9.3}{Genre similarity}{chapter.9}% 90
+\BOOKMARK [1][-]{section.9.4}{Improvements and outlook}{chapter.9}% 91
+\BOOKMARK [1][-]{section.9.5}{Definition of similarity}{chapter.9}% 92
+\BOOKMARK [0][]{section*.9}{References}{}% 93
+\BOOKMARK [0][]{chapter.10}{Appendix}{}% 94
+\BOOKMARK [1][-]{section.10.1}{Spotipy Crawler}{chapter.10}% 95

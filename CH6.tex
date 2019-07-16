@@ -15,7 +15,13 @@ With the ever growing availability of huge amounts of high dimensional data the 
 
 \subsection{Spark DataFrame}
 
+\subsection{lazy evaluation}
+
 \subsection{Performance Comparison of RDD vs DataFrame}
+
+\textit{insert plot here}
+
+\subsection{min and max value aggregation}
 
 \section{Data aggregation}
 
@@ -70,14 +76,7 @@ result = result.rdd.flatMap(list).collect()
 
 \begin{pythonCode}
 def symmetric_kullback_leibler(vec1, vec2):
-    mean1 = np.empty([13, 1])
-    mean1 = vec1[0:13]
-    cov1 = np.empty([13,13])
-    cov1 = vec1[13:].reshape(13, 13)
-    mean2 = np.empty([13, 1])
-    mean2 = vec2[0:13]
-    cov2 = np.empty([13,13])
-    cov2 = vec2[13:].reshape(13, 13)
+	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
     d = 13
     div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + np.trace(cov2 * np.linalg.inv(cov1)) + np.trace( (np.linalg.inv(cov1) + np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
     return div
@@ -92,14 +91,7 @@ result = result.rdd.flatMap(list).collect()
 
 \begin{pythonCode}
 def jensen_shannon(vec1, vec2):
-    mean1 = np.empty([13, 1])
-    mean1 = vec1[0:13]
-    cov1 = np.empty([13,13])
-    cov1 = vec1[13:].reshape(13, 13)
-    mean2 = np.empty([13, 1])
-    mean2 = vec2[0:13]
-    cov2 = np.empty([13,13])
-    cov2 = vec2[13:].reshape(13, 13)
+	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
     mean_m = 0.5 * (mean1 + mean2)
     cov_m = 0.5 * (cov1 + mean1 * np.transpose(mean1)) + 0.5 * (cov2 + mean2 * np.transpose(mean2)) - (mean_m * np.transpose(mean_m))
     div = 0.5 * np.log(np.linalg.det(cov_m)) - 0.25 * np.log(np.linalg.det(cov1)) - 0.25 * np.log(np.linalg.det(cov2))  
@@ -152,3 +144,4 @@ Very small 100 Song Dataset plus 20 Cover Songs to evaluate and compare similari
 High performance/ throughput tests with full 12000 song testset to evaluate full load performance.\\
 
 
+\section{feature separation quality}

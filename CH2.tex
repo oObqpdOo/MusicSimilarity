@@ -59,9 +59,8 @@ Instead of using single frames and summarizing them into statistical or probabil
 
 \section{Validation}
 
-For this thesis the approach by Mandel and Ellis is used to compute the similarity matrix, because it is . There is always a trade-off of complexity and functionality. 
-Using the musly toolkit, a first evaluation is presented in the next section. 
-The feature extraction and distance calculation can also be done in python using the librosa library and a small reimplementation of the Mandel-Ellis approach was tested.\\
+For this thesis the Kullback-Leibler divergence, the Jensen-Shannon divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of the distance computing algorithms and a re-implementation of the block-level features remains left open for future research due to its rather compute heavy nature.\\
+Using the musly toolkit, a first evaluation is presented in the next section. The feature extraction and distance calculation can also be done in python using the librosa library and a small reimplementation of the Mandel-Ellis approach was tested in advance.\\
 \textit{A possible measure for the efficiency of a timbre similarity algorithm is the ability to find songs of the same genre.}
 
 \subsection{Construction Noise}

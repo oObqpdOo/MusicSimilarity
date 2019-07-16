@@ -1112,7 +1112,7 @@
     \field{labeltitlesource}{title}
     \field{title}{Soundcloud bqpd}
     \verb{url}
-    \verb https://soundcloud.com/bq\_pd
+    \verb https://soundcloud.com/bq_pd
     \endverb
   \endentry
 
@@ -1405,6 +1405,8 @@
     \strng{fullhash}{SJGEHPSX1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{Audio, Speech, and Language Processing, IEEE Transactions
+  on}
     \verb{doi}
     \verb 10.1109/TASL.2008.924595
     \endverb
@@ -1412,8 +1414,6 @@
     \field{title}{Chroma Binary Similarity and Local Alignment Applied to Cover
   Song Identification}
     \field{volume}{16}
-    \field{journaltitle}{Audio, Speech, and Language Processing, IEEE
-  Transactions on}
     \field{month}{09}
     \field{year}{2008}
   \endentry
@@ -1465,6 +1465,31 @@
     \verb{url}
     \verb https://www.mathworks.com/help/signal/ref/xcorr2.html
     \endverb
+  \endentry
+
+  \entry{cover802}{article}{}
+    \name{author}{2}{}{%
+      {{hash=PWED}{%
+         family={P\bibnamedelima W\bibnamedelima Ellis},
+         familyi={P\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim
+  E\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={Cotton},
+         familyi={C\bibinitperiod},
+         given={Courtenay},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PWEDCC1}
+    \strng{fullhash}{PWEDCC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The 2007 LabROSA cover song detection system}
+    \field{month}{01}
+    \field{year}{2007}
   \endentry
 
   \entry{rhythm3}{article}{}
