@@ -21,19 +21,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Transcription\relax }}{12}{figure.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Spotify API\relax }}{13}{figure.2.9}
-\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Number of songs in the free music archive dataset per genre\relax }}{14}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Number of songs in the free music archive dataset per genre\relax }}{13}{figure.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Number of songs in the 1517 artists dataset per genre\relax }}{15}{figure.3.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Number of songs in the 1517 artists dataset per genre\relax }}{14}{figure.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Number of songs in the MedleyDB dataset per genre\relax }}{15}{figure.3.3}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Number of songs in the MedleyDB dataset per genre\relax }}{14}{figure.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Number of songs in the private music collection per genre\relax }}{16}{figure.3.4}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Number of songs in the private music collection per genre\relax }}{15}{figure.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Number of songs in the million song dataset per genre\relax }}{17}{figure.3.5}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Spotify API\relax }}{17}{figure.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Number of songs in the million song dataset per genre\relax }}{18}{figure.3.6}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -59,7 +59,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{33}{figure.5.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{33}{figure.5.10}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{34}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -78,6 +78,10 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{45}{figure.7.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark RDD vs Dataframe\relax }}{48}{figure.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{51}{figure.8.2}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

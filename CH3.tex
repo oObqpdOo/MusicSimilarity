@@ -161,10 +161,11 @@ Another consideration is to use the original chromagram without filtering out th
 	\label{fig:nomax}
 \end{figure}
 
-\section{similarity of chroma features}
+\section{Similarity of chroma features}
+
 In this section, two completely different approaches to measure the melodic similarity of two songs will be presented. The first one as proposed by \cite{chroma1} or \cite{chroma4} uses text retrieval methods to compare the chroma features of two songs and the second evaluates the usage of cross-correlation as a signal processing approach \cite{chroma2} and \cite{chroma3}
 
-\subsection{text retrieval}
+\subsection{Text retrieval}
 
 One possibility to process the chromagrams and to estimate similarity between the features of different songs is by handling the features like texts. Due to the extraction of only the main melody line in our feature vector there is only one note for every detected beat. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors. \cite{chroma4} mentions that this is indeed a problem when using the levenshtein distance to compute similarity. In their paper they use MIDI files instead of chroma features, but both contain information about the melody of songs so an adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. The levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as follows \cite[p. 7]{chroma4}
 
@@ -179,13 +180,14 @@ lev_{S,T}(i-1, j-1)\\
 \end{cases} &\text{else} \\
 \end{cases}
 \end{equation}
-Xia (et al.) made some adjustments to this to be able to handle musical information.\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lenghts between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and in the end of each song.
+Xia (et al.) made some adjustments to this to be able to handle musical information.\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lengths between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and in the end of each song.\\
+Due to the fact that this thesis has no actual note information from MIDI files but rather short lists of estimated main pitches from the beat aligned chroma features, most of the feature vectors are already smaller than 200 notes. Therefor the implemented algorithm does not split the vectors. This tends to favor cover songs that share the same length. 
 \ \\
 Englmeier  (et al.) use more advanced information retrieval techniques called TF-IDF weights and explicit semantic analysis (ESA). "The TF-IDF weight is a measure which expresses the meaning of a term or a document within a collection of documents." \cite[p. 186]{chroma1}
 To do so, they have to create "audio words" from the song database by splitting the audio signal into snippets, creating chroma features and clustering them with the k-means algorithm. The centroids are then added to a database. These audio words can then be evaluated using the TF-IDF weights and ESA.
 Although their approach looks promising, a re-implementation of their algorithms would exceed the frame of this thesis.
 
-\subsection{cross-correlation}
+\subsection{Cross-correlation}
 
 Another possibility to handle the extracted chroma features is by viewing them as ordinary signals and creating opportunities to apply classical signal processing algorithms. Ellis and Poliner use cross-correlation in their 2007 published paper \cite{chroma3}. Serra (et al.) also reference the work of Ellis and Poliner and discuss different weak points and influences of processing steps like beat tracking and key transposition to the overall performance of this similarity measurement. 
 They also discuss and improve an other approach called dynamic time warping (DTW) further in their paper \cite{chroma2}. The focus in this thesis is set on the cross-correlation method. 
@@ -219,7 +221,7 @@ In the original paper the cross-correlation is normalized by the length of the s
 Additionally they filtered the result of the correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample" \cite[p. 1431]{chroma3}. The later published paper \cite{cover802} also states, that changes to the filter parameters improved the cover song recognition rate further, however the exact values e.g. for the cutoff frequency weren't give, so this thesis uses the older parameters for the filter\\
 Serra (et al.) discussed various effects of pre-processing steps that improve the algorithm even more. E.g they note that a higher chroma resolution of 3 octaves gives better results. Also a key detection and transposition before cross-correlation gives slightly worse results in comparison to the method Ellis and Poliner used.\\ 
 In this thesis a versions where the songs are all key aligned before the cross-correlation was tested, but due to the fact, that the key detection algorithm in the labrosa and essentia frameworks weren't always correct a second version where addionally the cross-correlation for all key transpositions is calculated, was also implemented. 
-In summary, the implementation of Ellis and Poliners method in this thesis is similar to the approach by Ellis and Poliner.\\ The chroma features are beat aligned, averaged per beat and normalized to unit length as well. Additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ in equation \ref{eq:conv2} is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these aren't ultimately necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results without additional key-shifting but this version is reliant on an accurate key detection of the songs.
+In summary, the implementation in this thesis is similar to the approach by Ellis and Poliner \cite{chroma3} but some of the steps from the newer paper \cite{cover802} leave some room for further improvements.\\ The chroma features are beat aligned, averaged per beat and normalized to unit length as well. Additionally all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation including key shifts by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ in equation \ref{eq:conv2} is shown in the figures \ref{fig:beatalign} and \ref{fig:crosscorr} but due to the previous pre-processing key shift and the fact that both input matrices share the same amount of rows (12, one per key) these aren't ultimately necessary and computation time can be safed by altering the equation to equation \ref{eq:conv5} resulting in a vector C with the correlation results without additional key-shifting but this version is reliant on an accurate key detection of the songs.
 \begin{equation} \label{eq:conv5}
 C(l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{H}(m, n - l)}}
 \end{equation}
@@ -264,21 +266,21 @@ Figure \ref{fig:beatalign} shows two beat aligned, key shifted and per beat aver
 	\caption{beat-aligned chromagram}
 	\label{fig:beatalign}
 \end{figure}
-In figure \ref{fig:crosscorr} the cross-correlation of the song "Rock you like a Hurricane" by the Scorpions and covered by Knightsbridge are shown in \ref{cc1} and in contrast to this the cross-correlation of "Rock you like a Hurricane" with the song "Chandelier" by Sia are shown. Due to the previous key shifting plot \ref{cch1} shows the maximum peak right in the center row.\\
-The unrelated songs result in much smaller correlation values, especially when looking at the middling row of the matrix (marked as the B-key), but also if the songs are transposed additionally even then they do not correlate well. 
+In figure \ref{fig:crosscorr} the cross-correlation of the song "Chandelier" by the singer Sia and covered by Pvris are shown in \ref{cc1} and in contrast to this the cross-correlation of "Rock you like a Hurricane" with the song "Chandelier" by Sia are shown. Due to the previous key shifting, plot \ref{cch1} shows the maximum peak right in the center row. Originally the version by Sia is detected to be written in C sharp and the cover version in F sharp, but both songs are shifted to the A key in the pre-processing step.\\
+The unrelated songs result in much smaller correlation values, especially when looking at the middling row of the matrix (marked as the B-key), but also if the songs are transposed additionally even then they do not correlate well. In contrast to this the cover songs have multiple visible peaks in the center row. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/hurr1chrom.png}
-				\caption{Scorpions}
+				\caption{Pvris}
 				\label{cch1}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/hurr2chrom.png}
-				\caption{Knightsbridge}
+				\caption{Sia}
 				\label{cch2}
 			\end{subfigure}%
 				
@@ -298,8 +300,8 @@ The unrelated songs result in much smaller correlation values, especially when l
 	\caption{Cross-correlation}
 	\label{fig:crosscorr}
 \end{figure}
-The row with the maximum correlation value is extracted and the resulting plot shows, that the covers do correlate much better than the unrelated songs (\ref{cc3} and \ref{cc4}).
-The important row of the cross-correlation matrices from figure \ref{fig:crosscorr} are separately pictured in figure \ref{fig:crosscorr2}. After applying the high-pass filter to the extracted row with the maximum correlation value, the peak in \ref{cc3} when cross-correlating the cover songs is clearly visible compared to the unrelated songs.
+The row with the maximum correlation value is extracted and the resulting plot shows, that the cover songs do correlate much better than the unrelated songs (\ref{cc3} and \ref{cc4}).
+The center rows of the cross-correlation matrices from figure \ref{fig:crosscorr} are separately pictured in figure \ref{fig:crosscorr2}. After applying the high-pass filter to the extracted row with the maximum correlation value, the peaks in \ref{cc3} when cross-correlating the cover songs is clearly visible compared to the unrelated songs. An interesting detail that can be pointed out is that the song structure is also visible in plot \ref{ccf3} with clearly visible recurring peaks when the refrain is repeated.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -332,23 +334,23 @@ The important row of the cross-correlation matrices from figure \ref{fig:crossco
 	\caption{Cross-correlation}
 	\label{fig:crosscorr2}
 \end{figure}
-An interesting detail that can be pointed out is that the song structure is also visible in plot \ref{ccf3} with recurring peaks when the refrain is repeated.
+\FloatBarrier
+
 
 \section{Validation}
 A good measure for the efficiency of a melodic similarity algorithm is the ability to find cover songs, remixes and recordings of the same song from different artists. 
 
-
-\section{summary}
+\section{Summary}
 
 Two different similarity metrics are chosen: 
 \begin{itemize}
 	\item Levenshtein Distance
-	\item cross-correlation on full beat aligned and per beat averaged chroma features
+	\item cross-correlation on full beat aligned and per beat averaged chroma features, key shifted to A
 \end{itemize}
 These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
 \begin{itemize}
 	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
-	\item out.chroma (full beat aligned chromagram, containing a $12 x n$ matrix)
+	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
 The output files contain strings like follows:\\
 \textit{music/guitar2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\

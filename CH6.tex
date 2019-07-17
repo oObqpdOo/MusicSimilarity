@@ -19,7 +19,28 @@ With the ever growing availability of huge amounts of high dimensional data the 
 
 \subsection{Performance Comparison of RDD vs DataFrame}
 
+
 \textit{insert plot here}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/spark_cluster_rdd_1517.png}
+				\caption{RDD on Cluster, 3180 songs}
+				\label{sc1}
+			\end{subfigure}%
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/df_vs_dfmerged_full.png}
+				\caption{DataFrame on single Node}
+				\label{sc2}
+			\end{subfigure}% 			
+	}}
+	\caption{Spark RDD vs Dataframe}
+	\label{fig:spark1}
+\end{figure}
 
 \subsection{min and max value aggregation}
 
@@ -58,6 +79,8 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
 
 \section{Cross-correlation}
+
+\textit{\textbf{2 Versions explained - with additional key shift and without}}
 
 \begin{pythonCode}
 def chroma_cross_correlate(chroma1, chroma2):
@@ -135,6 +158,76 @@ def get_neighbors_notes(song):
 \textit{\textbf{statistic normalization of similarities}}
 
 \section{performance}
+
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+	\centering
+	\begin{axis}[
+	    %title={Performance of various toolkits},
+		x label style={at={(axis description cs:0.5,-0.05)},anchor=north},
+		y label style={at={(axis description cs:-0.05,.5)},rotate=0,anchor=south},
+	    xlabel={\#songs},
+	    ylabel={time [sec]},
+	    xmin=0, xmax=12000,
+	    ymin=0, ymax=1000,
+	    xtick={0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000},
+	    ytick={0,100,200,300,400,500,600,700,800,900,1000},
+	    legend pos=north west,
+	    ymajorgrids=true,
+	    grid style=dashed,
+	    height=8cm,
+	    width=12cm,
+	    grid=major,
+	]
+	\addplot[
+		color=red,
+		mark=square,
+		]
+		coordinates {
+	    (100,51.736)(3180,129.940)(11560,182.035)
+		};
+		\addlegendentry{RDD cluster}
+	\addplot[
+	    color=blue,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (100,30.770)(3180,465.445)(11560,698.657)
+	    };
+	    \addlegendentry{RDD SN}
+	\addplot[
+	    color=orange,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (100,32.087)(3180,91.477)(11560,250.854)
+	    };
+	    \addlegendentry{DataFrames premerged SN}
+	  
+	\addplot[
+	    color=green,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (100,33.351)(3180,57.230)(11560,100.884)
+	    };
+	    \addlegendentry{DataFrames premerged speed SN}
+
+	\addplot[
+	    color=purple,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (100,13.874)(3180,34.232)(11560,78.566)
+	    };
+	    \addlegendentry{DataFrames unique SN}	    
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Performance of various spark algorithms}
+	\label{perfspark}
+\end{figure}
 
 \textit{\textbf{high data locality, full parallelizable, very low replication rate}}
 

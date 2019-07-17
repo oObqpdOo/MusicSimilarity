@@ -400,6 +400,54 @@
     \field{title}{CREPE: A Convolutional Representation for Pitch Estimation}
   \endentry
 
+  \entry{chroma4}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=XG}{%
+         family={Xia},
+         familyi={X\bibinitperiod},
+         given={Guangyu},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Huang},
+         familyi={H\bibinitperiod},
+         given={Tongbo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MY}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Yifei},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dannenberg},
+         familyi={D\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FC}{%
+         family={Faloutsos},
+         familyi={F\bibinitperiod},
+         given={Christos},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XG+1}
+    \strng{fullhash}{XGHTMYDRFC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-3-319-12976-1_17
+    \endverb
+    \field{isbn}{978-3-319-12975-4}
+    \field{pages}{259\bibrangedash 276}
+    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
+  MIDI Databases}
+    \field{month}{10}
+    \field{year}{2013}
+  \endentry
+
   \entry{mussim1}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=GS}{%
@@ -605,6 +653,39 @@
     \verb https://github.com/martinarielhartmann/mirtooloct
     \endverb
     \field{year}{2016}
+  \endentry
+
+  \entry{audiofeattoolb}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=MD}{%
+         family={Moffat},
+         familyi={M\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Ronan},
+         familyi={R\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Reiss},
+         familyi={R\bibinitperiod},
+         given={Joshua},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MDRDRJ1}
+    \strng{fullhash}{MDRDRJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.13140/RG.2.1.1471.4640
+    \endverb
+    \field{title}{An Evaluation of Audio Feature Extraction Toolboxes}
+    \field{month}{11}
+    \field{year}{2015}
   \endentry
 
   \entry{yaafe1}{inproceedings}{}
@@ -845,30 +926,6 @@
     }
     \field{year}{2010}
     \warn{\item Invalid format of field 'month'}
-  \endentry
-
-  \entry{spotifyapi1}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotify API}
-    \verb{url}
-    \verb https://developer.spotify.com/documentation/
-    \endverb
-  \endentry
-
-  \entry{echonest1}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{The Echo Nest}
-    \verb{url}
-    \verb http://the.echonest.com/
-    \endverb
-  \endentry
-
-  \entry{spotipy1}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotipy - a Python client for The Spotify Web API}
-    \verb{url}
-    \verb https://github.com/plamere/spotipy
-    \endverb
   \endentry
 
   \entry{fma1}{inproceedings}{}
@@ -1116,6 +1173,63 @@
     \endverb
   \endentry
 
+  \entry{spotifyapi1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify API}
+    \verb{url}
+    \verb https://developer.spotify.com/documentation/
+    \endverb
+  \endentry
+
+  \entry{echonest1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{The Echo Nest}
+    \verb{url}
+    \verb http://the.echonest.com/
+    \endverb
+  \endentry
+
+  \entry{spotipy1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotipy - a Python client for The Spotify Web API}
+    \verb{url}
+    \verb https://github.com/plamere/spotipy
+    \endverb
+  \endentry
+
+  \entry{spotmin1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Playlist Miner}
+    \verb{url}
+    \verb https://developer.spotify.com/community/showcase/playlist-miner-spoti
+    \verb fy/
+    \endverb
+  \endentry
+
+  \entry{spottac1}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Terms and Conditions of Use}
+    \verb{url}
+    \verb https://www.spotify.com/lt/legal/end-user-agreement/plain/#s9
+    \endverb
+  \endentry
+
+  \entry{spottac2}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Developer Terms of Service}
+    \verb{url}
+    \verb https://developer.spotify.com/terms/
+    \endverb
+  \endentry
+
+  \entry{spottac3}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify Commercial Restrictions}
+    \verb{url}
+    \verb https://developer.spotify.com/legal/commercial-restrictions/
+    \endverb
+  \endentry
+
   \entry{msd5}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=SH}{%
@@ -1159,39 +1273,6 @@
   within the Million Song Dataset}
     \verb{url}
     \verb http://labrosa.ee.columbia.edu/millionsong/secondhand
-    \endverb
-  \endentry
-
-  \entry{spotmin1}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotify Playlist Miner}
-    \verb{url}
-    \verb https://developer.spotify.com/community/showcase/playlist-miner-spoti
-    \verb fy/
-    \endverb
-  \endentry
-
-  \entry{spottac1}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotify Terms and Conditions of Use}
-    \verb{url}
-    \verb https://www.spotify.com/lt/legal/end-user-agreement/plain/#s9
-    \endverb
-  \endentry
-
-  \entry{spottac2}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotify Developer Terms of Service}
-    \verb{url}
-    \verb https://developer.spotify.com/terms/
-    \endverb
-  \endentry
-
-  \entry{spottac3}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{Spotify Commercial Restrictions}
-    \verb{url}
-    \verb https://developer.spotify.com/legal/commercial-restrictions/
     \endverb
   \endentry
 
@@ -1324,54 +1405,6 @@
       {Bonn}%
     }
     \field{year}{2015}
-  \endentry
-
-  \entry{chroma4}{inproceedings}{}
-    \name{author}{5}{}{%
-      {{hash=XG}{%
-         family={Xia},
-         familyi={X\bibinitperiod},
-         given={Guangyu},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=HT}{%
-         family={Huang},
-         familyi={H\bibinitperiod},
-         given={Tongbo},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=MY}{%
-         family={Ma},
-         familyi={M\bibinitperiod},
-         given={Yifei},
-         giveni={Y\bibinitperiod},
-      }}%
-      {{hash=DR}{%
-         family={Dannenberg},
-         familyi={D\bibinitperiod},
-         given={Roger},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=FC}{%
-         family={Faloutsos},
-         familyi={F\bibinitperiod},
-         given={Christos},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{XG+1}
-    \strng{fullhash}{XGHTMYDRFC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1007/978-3-319-12976-1_17
-    \endverb
-    \field{isbn}{978-3-319-12975-4}
-    \field{pages}{259\bibrangedash 276}
-    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
-  MIDI Databases}
-    \field{month}{10}
-    \field{year}{2013}
   \endentry
 
   \entry{chroma2}{article}{}
@@ -1655,39 +1688,6 @@
     \field{title}{On Rhythm and General Music Similarity.}
     \field{month}{01}
     \field{year}{2009}
-  \endentry
-
-  \entry{audiofeattoolb}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=MD}{%
-         family={Moffat},
-         familyi={M\bibinitperiod},
-         given={David},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=RD}{%
-         family={Ronan},
-         familyi={R\bibinitperiod},
-         given={David},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=RJ}{%
-         family={Reiss},
-         familyi={R\bibinitperiod},
-         given={Joshua},
-         giveni={J\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MDRDRJ1}
-    \strng{fullhash}{MDRDRJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.13140/RG.2.1.1471.4640
-    \endverb
-    \field{title}{An Evaluation of Audio Feature Extraction Toolboxes}
-    \field{month}{11}
-    \field{year}{2015}
   \endentry
 
   \entry{spark}{article}{}
