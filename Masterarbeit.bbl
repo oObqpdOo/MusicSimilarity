@@ -179,6 +179,33 @@
     \endverb
   \endentry
 
+  \entry{musicdata}{book}{}
+    \name{author}{1}{}{%
+      {{hash=RCWDJIVG}{%
+         family={Rudolph},
+         familyi={R\bibinitperiod},
+         given={C.\bibnamedelima Weihs; D. Jannach; I. Vatolkin;\bibnamedelima
+  G.},
+         giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod D\bibinitperiod
+  J\bibinitperiod I\bibinitperiod V\bibinitperiod\bibinitdelim
+  G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {New York: Chapman}%
+      {Hall/CRC}%
+    }
+    \strng{namehash}{RCWDJIVG1}
+    \strng{fullhash}{RCWDJIVG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Music Data Analysis}
+    \verb{url}
+    \verb https://doi.org/10.1201/9781315370996
+    \endverb
+    \field{year}{2017}
+  \endentry
+
   \entry{pitch1}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=MM}{%

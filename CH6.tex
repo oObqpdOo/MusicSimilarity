@@ -95,6 +95,12 @@ result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
 
+\textbf{Memory intense - had to alter spark-defaults.conf}
+\textit{spark.driver.memory             6g\\
+spark.executor.memory           2g\\
+}
+
+
 \section{Kullback-Leibler Divergence}
 
 \begin{pythonCode}

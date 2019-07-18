@@ -11,77 +11,85 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.3}{\ignorespaces MFCCs\relax }}{6}{figure.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Features\relax }}{7}{figure.2.4}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Timbre guitar vs. piano\relax }}{7}{figure.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Original Scores\relax }}{11}{figure.2.5}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces MFCC statistics guitar vs. piano\relax }}{7}{figure.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Aubio\relax }}{11}{figure.2.6}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces MFCC statistics guitar vs. piano\relax }}{8}{figure.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Melodia\relax }}{12}{figure.2.7}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Features of the song Layla by Eric Clapton\relax }}{8}{figure.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Transcription\relax }}{12}{figure.2.8}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Features of the song Layla by Eric Clapton\relax }}{9}{figure.2.8}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Original Scores\relax }}{13}{figure.2.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Number of songs in the free music archive dataset per genre\relax }}{13}{figure.3.1}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Aubio\relax }}{13}{figure.2.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Number of songs in the 1517 artists dataset per genre\relax }}{14}{figure.3.2}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Melodia\relax }}{14}{figure.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Number of songs in the MedleyDB dataset per genre\relax }}{14}{figure.3.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Number of songs in the private music collection per genre\relax }}{15}{figure.3.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Spotify API\relax }}{17}{figure.3.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Number of songs in the million song dataset per genre\relax }}{18}{figure.3.6}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Transcription\relax }}{14}{figure.2.12}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Construction Noise\relax }}{22}{figure.4.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Number of songs in the free music archive dataset per genre\relax }}{15}{figure.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Number of songs in the 1517 artists dataset per genre\relax }}{16}{figure.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Number of songs in the MedleyDB dataset per genre\relax }}{16}{figure.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Number of songs in the private music collection per genre\relax }}{17}{figure.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Spotify API\relax }}{19}{figure.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Number of songs in the million song dataset per genre\relax }}{20}{figure.3.6}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{26}{figure.5.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{26}{figure.5.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{27}{figure.5.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{27}{figure.5.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{28}{figure.5.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{28}{figure.5.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{31}{figure.5.7}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{32}{figure.5.8}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{33}{figure.5.9}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{34}{figure.5.10}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Construction Noise\relax }}{24}{figure.4.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{36}{figure.6.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{28}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{37}{figure.6.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{28}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{37}{figure.6.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{29}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{38}{figure.6.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{29}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{39}{figure.6.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{30}{figure.5.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{30}{figure.5.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{33}{figure.5.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{34}{figure.5.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{35}{figure.5.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{36}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{45}{figure.7.1}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{38}{figure.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{39}{figure.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{39}{figure.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{40}{figure.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{41}{figure.6.5}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark RDD vs Dataframe\relax }}{48}{figure.8.1}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{47}{figure.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{51}{figure.8.2}
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark RDD vs Dataframe\relax }}{50}{figure.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{53}{figure.8.2}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

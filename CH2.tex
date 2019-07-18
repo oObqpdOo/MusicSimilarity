@@ -1,9 +1,11 @@
 \chapter{Timbre Similarity} \label{musly}
 
-\textit{MFCCs explained in chapter 1, here: how many melbands, visualize GMM}\\
-Proposed methods according to \cite[pp.51ff]{knees1}\\
 Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref{mfccsim}. This chapter focuses on the different similarity metrics.\\
-To reduce the dimensionality of the data even further, a statistical summarization of the MFCC feature can be calculated \cite[p. 58]{knees1}.
+To reduce the dimensionality of the data even further, a statistical summarization of the MFCC feature can be calculated \cite[pp. 51ff]{knees1}\\
+
+
+\section{Euclidean Distance}
+
 For each of the Mel- Bands (12 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 12 mean values, a 12 by 12 co-variance matrix (actually $\frac{12*11}{2}$ values, because of the triangular shape - the upper triangle contains the co-variances and the main diagonal contains the variances) and 12 variances. These vectors are therefore not dependent on the length of the actual song. 
 Using such a model, the distance between two songs can be calculated as in equation \ref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
 \begin{equation} \label{eq:distGmm}
@@ -14,6 +16,8 @@ also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or th
 This very basic approach has been refined and improved over the past years. 
 
 \section{Single Gaussian Model}
+
+\subsection{Kullback-Leibler Divergence}
 
 This approach was first proposed by Mandel and Ellis \cite{mandelellis1} in 2005 and is briefly summarized in \cite[pp. 65f]{knees1}.\\
 After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $Tr(\cdot)$ being the trace (i.e. the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$\\
@@ -30,7 +34,7 @@ This can be simplified and written as a closed form:
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}
 
-\section{Other Similarity Metrics}
+\subsection{Jensen-Shannon Divergence}
 The second available metric in the musly toolkit by Schnitzer is using the Jenson-Shannon Divergence (in an slightly adapted way). "The Jensen-Shannon (JS) divergence is another symmetric divergence derived from the Kullback-Leibler divergence. To compute it, a mixture $X_m$ of the two distributions is defined" \cite[p. 43]{schnitzer1}. "To use the Jensen-Shannon divergence [...] to estimate similarities between Gaussians, an approximation of $X_m$ as a single multivariate Gaussian can be used [...] This approximation of $X_m$ is exactly the same as the left-type Kullback-Leibler centroid of the two Gaussian distributions [...]" \cite[p. 44]{schnitzer1} 
 \begin{equation} \label{eq:jsl1}
 \mu_m = \frac{1}{2} \mu_P + \frac{1}{2} \mu_Q
@@ -51,6 +55,8 @@ P(X > D_{x,y}) = 1 - P(X \leq D_{x,y}) = 1 - \mathscr{F}(D_{x,y})
 MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
 according to \cite[p. 80]{knees1}
+
+\section{Other Similarity Metrics}
 \ \\
 Another, more compute heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore the usage of GMMs is not further considered in this thesis.
 \ \\

@@ -113,7 +113,7 @@ The calculation with the essentia library for 100 songs took less than half of t
 
 \subsection{Essentia parallel}
 
-Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel. 
+Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
 \begin{pythonCode}
 job_server = pp.Server()
 job_server.set_ncpus(ncpus)
@@ -126,17 +126,16 @@ for index in xrange(startjob, parts):
 times = sum([job() for job in jobs])
 job_server.print_stats()
 \end{pythonCode}
-The computation time takes about 15.4 seconds for per song and processor core. 
-Using 4 CPU cores for 100 songs, the overall processing time could be reduced to about 385 seconds.
-
+The computation time takes about 15.4 seconds per song and processor core. Using 4 CPU cores for 100 songs, the overall processing time could be reduced to about 385 seconds. 
 \begin{equation} \label{eq:parallelp}
 time = \frac{\#songs}{\#CPUs} \cdot 15.4s
 \end{equation}
-Parallel python also opens up the possibility to use a cluster instead of a single node PC. 
+Parallel python also opens up the possibility to use a cluster instead of a single node PC.\\
+For convenience, every processor gets a batch of files instead of single songs. For every batch different output files for the various features are created. The batch size determines the overall size of these feature-files. For example for the 1517 artists dataset a batch size of 400 songs was chosen, so overall 4 CPUs had to process 2 batches, resulting in 8 different output files with the chroma feature files being the largest with about 25MB per file.
 
 \subsection{rp\_extractor}
 
-For the extraction of the rhythm patterns and rhythm histrogram features as described in chapter \ref{rhythmsimc} the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 442 seconds.
+For the extraction of the rhythm patterns and rhythm histogram features as described in chapter \ref{rhythmsimc} the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 442 seconds.
 
 \subsection{performance}
 \begin{figure}[htbp]
