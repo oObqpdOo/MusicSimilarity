@@ -75,10 +75,7 @@ There are a few possibilities like genre, composer/ interpret or cover song iden
 \chapter{Audio features and similarity measurements}\label{audiofeat}
 
 \section{Music Information Retrieval}
-The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study.
-The algorithm used in this thesis is described in \cite[pp. 17ff]{schnitzer1} and in section \ref{mfccsim}.
-The framework used to determine the song similarity in chapter \ref{musly} is the MUSLY toolkit \cite{musly1}
-To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits and approaches to music similarity.
+The field of music information retrieval (MIR) is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits and approaches to music similarity.
 
 \section{Audio Features}
 
@@ -140,7 +137,7 @@ To reduce the dimensionality of the feature vector, a typical approach in MIR wo
 
 \subsection{MFCC}\label{mfccsim}
 
-This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
+This section gives a brief overview over the computation of the MFCC as stated in \cite[pp. 55ff]{knees1} because out of all features presented in this chapter the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical features.
 Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal.
 \begin{figure}[htbp]
 	\centering
@@ -190,7 +187,6 @@ To better visualize the MFCC features all values are typically scaled to have a 
 	\label{fig:mfcc}
 \end{figure}
 \FloatBarrier
-
 MFCCs were found to be suited to represent timbral properties of music \cite[p. 55 ff]{knees1}. To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. Looking at an example melody line played on a electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string every note played consists of the main frequency (the actually played key) and so called harmonic overtones because of the way a string e.g. in a piano vibrates and the wooden body resonates. Typically the overtones of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument these harmonics decline faster or slower or don't appear at all. The electrically amplified guitar amplifies these overtones as well, which is visible in figure \ref{timbreg}.
 \begin{figure}[htbp]
 	\centering
@@ -258,7 +254,7 @@ This time the MFCC plots are pictured without the previously mentioned scaling a
 
 \subsection{other audio features}
 
-As another, better comprehensible, higher-level feature set, the chroma features represent the tonal properties of a song. The chroma plot (Figure \ref{laylachroma}) shows the distribution of the different pitches mapped to the various keys in one octave. The values are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there is only noise or silence at that frame in the recording, as depicted in the first frames of figure \ref{laylachroma}. The chromagram has one significant downside, because it is reduced to one octave and thus can not represent the melody of a song to its full extend.\\
+As another, better comprehensible, higher-level set of features, the chromagram represent the tonal properties of a song. The chroma plot (Figure \ref{laylachroma}) shows the distribution of the different pitches mapped to the various keys in one octave. The values are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there is only noise or silence at that frame in the recording, as depicted in the first frames of figure \ref{laylachroma}. The chromagram has one significant downside, because it is reduced to one octave and thus can not represent the melody of a song to its full extend.\\
 Figure \ref{laylapitch} figures the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. In contrast to the chromagram the pitch curve provides information over the whole spectrum and is not limited to one octave. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in \ref{midiest}.\\
 The rhythmic low-level features of a song include the estimation of the overall tempo, beats and onset events. 
 The Plot in figure \ref{laylacbeat} shows the onsets and estimated beats in the first 10 seconds from a recording of the song Layla by Eric Clapton.
@@ -303,63 +299,6 @@ The Plot in figure \ref{laylacbeat} shows the onsets and estimated beats in the 
 	\label{fig:feat2}
 \end{figure}
 \FloatBarrier
-\section{Similarity Analysis}
-
-\subsection{Timbre based}
-
-As done by: \cite{schnitzer1}\\
-The proposed approach by \cite{schnitzer1} is, to take mfccs as low level features and compute statistical features like mean, standard deviation and covariance of the different mfccs to reduce dimensionality before computing similarities.
-Various similarity measurements are proposed and evaluated in chapter \ref{musly}
-
-\subsection{Pitch based}
-
-As done by: \cite{pitch1}\\
-The proposed approach by \cite{pitch1} is, to take mid-level features like the chromagram or estimated main pitchline instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
-A more detailed analysis of this topic is given in chapter \ref{melsimc}
-
-\subsection{Rhythm based}
-As done by: \cite{rhythm1}\\
-Rhythm based music similarity algorithms use timing information of various events as a baseline. 
-For example low-level features like the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. More advanced approaches make use of the beat histogram, rhythm histogram and rhythm patterns. 
-An in depth overview is given in chapter \ref{rhythmsimc}
-
-\subsection{Metadata based/ Collaborative Filtering}
-
-As done by: \cite{metadat1} and \cite{msd4} using the Million Song Dataset (MSD) \cite{msd1}\\
-In 2012 the MSD Challenge was brought to the MIR community. The researches were challenged to give a list of song recommendations based on a large set of user data.\\ 
-So if user X listened a lot to artist A and artist B and user Y listens mostly to artist A and artist C, then maybe user X would like artist C as well. 
-These kind of collective listening behavior based recommendations are called collaborative filtering \cite[p. 192f.]{knees1} and are pretty common in large music streaming services, although not necessarily representing direct musical similarity.
-These kind of recommendation systems tend to propose commonly well known artists rather than not so well known ones biasing the result. On the other hand these kind of similarity algorithms can work very fast and efficient in a Big Data environment.
-The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on the lyrics and also hybrid recommendation systems that combine lyrics, metadata and collaborative filtering are possible. 
-However all of these recommendation strategies are not directly based on musical features and are not considered for this thesis. They are however a possible addition for a hybrid recommendation engine for future research. 
-
-\subsection{Note based}
-
-As done by: \cite{midi1}\\
-For comparing musical pieces by their symbolic represenation (notes, tabulatures etc.) different text retrieval methods could be used. The MIDI datatype could be used, as it is a form of digital representation of music information. 
-\cite{midi1} uses a variation of the Levinshtein distance measurement. 
-The problem with notation based algorithms is, that there are not many datasets available containing audio and MIDI information.
-As shown in \ref{midiest} the automatic transcription of notes from raw audio does not work flawlessly. 
-There is ongoing research to automatically annotate musical notes with the help of neural networks.\cite{crepe1}
-In chapter \ref{rhythmsimc} an attempt by Xia (et. al) \cite{chroma4} to extract note information as text features from chromagrams and calculating the similarity by using the levinshtein distance is shown and evaluated.
-
-\subsection{Genre specific features}
-
-As done by: \cite{mussim1} for indian art music, by using 560 different combinations of different features. They state that: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation discussed in Section 2.  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed, that the choice of features and parameters for music similarity measurement is a critical point.\\
-In Rock, Pop and Metal music, extraction of different guitar playstyles would be imaginable. Guitar Tab Extraction \cite{guitext1} Toolkits could be used to extract information if the guitar in a song is mostly plucked or strummed for instance. Or if there are Hammer-on/ Pull-off/ side bending or tapping techniques used.
-In classical music, the play style of the string section of an orchestra could be taken into consideration. 
-
-\subsection{summary}
-
-In this thesis music similarity measurements based on three different types of features are evaluated. 
-The first is based on MFCCs to represent timbral features of the songs and therefor offering a set of features to make recommendations that are similar in tone color and should be able to make recommendations inside the boundaries of different genres.
-The second is based on chroma features/ note information collapsed to one octave to represent a measurement of melodic similarity. With these features the detection of cover versions should be possible.  
-The third set of features is based on the rhythmic properties of a song. This should enable recommendations of songs with the same tempo and rhythmic structure, possibly also enabling the recommendation of songs within the same genre.\ \\
-\ \\
-The usage of MIDI-files is not considered further due to the rather poor performance of score extraction tools for songs with multiple instruments and melody lines. Also the melodic component of the songs is already represented by the chroma features, although that limits the representation to one or at most a few octaves. 
-Collaborative filtering is left out due to the fact that it does not necessarily represent the musical features and properties but the personal taste of music. And secondly no dataset with the required information and music files was found (\ref{data}). 
-Genre specific features are also not an option because this field is not yet very well researched and the development of algorithms and the extraction of features would go beyond the scope of this thesis.
-
 
 \section{MIR Toolkits}\label{mirtoolkit}
 \subsection{Music Similarity}
@@ -373,15 +312,12 @@ As another option, the MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \c
 \begin{lstlisting}[frame=single]  % Start your code-block
 numfiles = 326;
 mydata = cell(1, numfiles);
-
 for k = 1:numfiles
 	myfilename = sprintf('%d.wav', k);
 	mydata{k} = mirmfcc(myfilename);
 	close all force
 endfor
-
 simmat = zeros(numfiles,numfiles);
-
 for k = 1:numfiles
 	for l = 1:numfiles
 		simmat(k, l) = mirgetdata( ...
@@ -489,6 +425,64 @@ It is clearly visible in figure \ref{fig:transc} that the transcription does not
 \end{figure}
 \FloatBarrier 
 
+\section{Similarity Analysis}
+
+\subsection{Timbre based}
+
+As done by: \cite{schnitzer1}\\
+The proposed approach by \cite{schnitzer1} is, to take mfccs as low level features and compute statistical features like mean, standard deviation and covariance of the different mfccs to reduce dimensionality before computing similarities.
+Various similarity measurements are proposed and evaluated in chapter \ref{musly}
+The algorithm used in this thesis is described in \cite[pp. 17ff]{schnitzer1}. The framework used to determine the song similarity for the first tests in chapter \ref{musly} is the MUSLY toolkit \cite{musly1}. 
+
+\subsection{Pitch based}
+
+As done by: \cite{pitch1}\\
+The proposed approach by \cite{pitch1} is, to take mid-level features like the chromagram or estimated main pitchline instead of high-level features like sheet music or low-level features like gaussian mixture models of MFCCs. 
+A more detailed analysis of this topic is given in chapter \ref{melsimc}
+
+\subsection{Rhythm based}
+
+As done by: \cite{rhythm1}\\
+Rhythm based music similarity algorithms use timing information of various events as a baseline. 
+For example low-level features like the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. More advanced approaches make use of the beat histogram, rhythm histogram and rhythm patterns. 
+An in depth overview is given in chapter \ref{rhythmsimc}
+
+\subsection{Metadata based/ Collaborative Filtering}
+
+As done by: \cite{metadat1} and \cite{msd4} using the Million Song Dataset (MSD) \cite{msd1}\\
+In 2012 the MSD Challenge was brought to the MIR community. The researches were challenged to give a list of song recommendations based on a large set of user data.\\ 
+So if user X listened a lot to artist A and artist B and user Y listens mostly to artist A and artist C, then maybe user X would like artist C as well. 
+These kind of collective listening behavior based recommendations are called collaborative filtering \cite[p. 192f.]{knees1} and are pretty common in large music streaming services, although not necessarily representing direct musical similarity.
+These kind of recommendation systems tend to propose commonly well known artists rather than not so well known ones biasing the result. On the other hand these kind of similarity algorithms can work very fast and efficient in a Big Data environment.
+The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on the lyrics and also hybrid recommendation systems that combine lyrics, metadata and collaborative filtering are possible. 
+However all of these recommendation strategies are not directly based on musical features and are not considered for this thesis. They are however a possible addition for a hybrid recommendation engine for future research. 
+
+\subsection{Note based}
+
+As done by: \cite{midi1}\\
+For comparing musical pieces by their symbolic represenation (notes, tabulatures etc.) different text retrieval methods could be used. The MIDI datatype could be used, as it is a form of digital representation of music information. 
+\cite{midi1} uses a variation of the Levinshtein distance measurement. 
+The problem with notation based algorithms is, that there are not many datasets available containing audio and MIDI information.
+As shown in \ref{midiest} the automatic transcription of notes from raw audio does not work flawlessly. 
+There is ongoing research to automatically annotate musical notes with the help of neural networks.\cite{crepe1}
+In chapter \ref{rhythmsimc} an attempt by Xia (et. al) \cite{chroma4} to extract note information as text features from chromagrams and calculating the similarity by using the levinshtein distance is shown and evaluated.
+
+\subsection{Genre specific features}
+
+As done by: \cite{mussim1} for indian art music, by using 560 different combinations of different features. They state that: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation discussed in Section 2.  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed, that the choice of features and parameters for music similarity measurement is a critical point.\\
+In Rock, Pop and Metal music, extraction of different guitar playstyles would be imaginable. Guitar Tab Extraction \cite{guitext1} Toolkits could be used to extract information if the guitar in a song is mostly plucked or strummed for instance. Or if there are Hammer-on/ Pull-off/ side bending or tapping techniques used.
+In classical music, the play style of the string section of an orchestra could be taken into consideration. 
+
+\subsection{summary}
+
+In this thesis music similarity measurements based on three different types of features are evaluated. 
+The first is based on MFCCs to represent timbral features of the songs and therefor offering a set of features to make recommendations that are similar in tone color and should be able to make recommendations inside the boundaries of different genres.
+The second is based on chroma features/ note information collapsed to one octave to represent a measurement of melodic similarity. With these features the detection of cover versions should be possible.  
+The third set of features is based on the rhythmic properties of a song. This should enable recommendations of songs with the same tempo and rhythmic structure, possibly also enabling the recommendation of songs within the same genre.
+\ \\
+The usage of MIDI-files is not considered further due to the rather poor performance of score extraction tools for songs with multiple instruments and melody lines. Also the melodic component of the songs is already represented by the chroma features, although that limits the representation to one or at most a few octaves. 
+Collaborative filtering is left out due to the fact that it does not necessarily represent the musical features and properties but the personal taste of music. And secondly no dataset with the required information and music files was found (\ref{data}). 
+Genre specific features are also not an option because this field is not yet very well researched and the development of algorithms and the extraction of features would go beyond the scope of this thesis.
 
 \chapter{Data aggregation}\label{data}
 
@@ -561,8 +555,6 @@ The private music collection is fully cataloged and the according pdf is the app
 The music sources and amounts of songs used for the task at hand is listed in table \ref{table_dsets}.
 
 \begin{table}[h]
-	\caption{available music datasets}
-	\label{table_dsets}
 	\begin{center}
 		\begin{tabular}{|c||c|}
 			\hline
@@ -586,7 +578,11 @@ The music sources and amounts of songs used for the task at hand is listed in ta
 			\hline
 		\end{tabular}
 	\end{center}
+	\caption{music datasets}
+	\label{table_dsets}
 \end{table}
+
+\section{Alternatives}
 
 \subsection{Spotify API/ Echonest}\label{spotipy}
 
@@ -595,8 +591,7 @@ Part of the available audio features comes from the Echo Nest\cite{echonest1}.
 The Downside using the Spotify API is, that there is no packed and ready to use test dataset containing the relevant features. So for scientific purposes, a test dataset would have to be created first. With a small Python library named Spotipy, the available information can very easily be used and accessed. \cite{spotipy1}\\
 For the purpose of this thesis, the option of creating an own dataset using the Spotify API and spotipy was considered. 
 Ten very small test playlists of different genres were created using the Spotify Playlist Miner \cite{spotmin1}. 
-Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from all of the songs of a playlist, that contains a preview URL with a 30 second audio snippet.\\
-The audio features and analysis data is saved as a JSON file containing information about (beyond others)
+Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from all of the songs of a playlist, that contains a preview URL with a 30 second audio snippet. The audio features and analysis data is saved as a JSON file containing information over:
 \begin{itemize}
 	\setlength\itemsep{0em}
 	\item acousticness
@@ -634,12 +629,13 @@ The Spotify API actually returns a chroma feature value for every single one of 
 \FloatBarrier
 \ \\
 Together with the 30 second audio sample from which more data like MFCCs could be extracted, this data miner could provide all the information needed to build a large dataset for MIR. However the terms and conditions explicitly prohibits crawling the Spotify service. As stated by the Spotify Terms and Conditions of Use, section 9 (User guidelines):\\
-"\textit{The following is not permitted for any reason whatsoever: [...]\\
+"\textit{The following is not permitted for any reason whatsoever:\newline
+[...]\\
 12. “crawling” the Spotify Service or otherwise using any automated means (including bots, scrapers, and spiders) to view, access, or collect information from Spotify or the Spotify Service;}" \cite{spottac1}\\
 Therefore a larger user created dataset can not be used without the risk of legal infringements. However one could argue, that there is a difference between data mining and data crawling and for small datasets with the purpose of creating Spotify playlists, these restrictions may not apply.\\ 
 In the sense of the Spotify Developer Terms of Service \cite{spottac2} there may be no legal infringements by creating a non-commercial playlist creation tool. \cite{spottac3} states, that by creating algorithmically-generated playlists similar to the "Discover Weekly" Playlists one may run into challenges if using such features commercially. 
 However it does not prohibit the usage for non-commercial cases.  
-Upon request the Spotify API developer team did not respond and thus in this thesis the Spotify API wont be used to create a test dataset.
+Upon request the Spotify API developer team did not respond and therefor in this thesis the Spotify API wont be used to create a test dataset.
 
 \subsection{Million Song Dataset}
 

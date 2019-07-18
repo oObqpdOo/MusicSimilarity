@@ -27,29 +27,29 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}other audio features}{8}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Similarity Analysis}{9}{section.2.3}
+\contentsline {section}{\numberline {2.3}MIR Toolkits}{9}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Timbre based}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Music Similarity}{9}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Pitch based}{9}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Low-level audio feature extraction}{10}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}Rhythm based}{9}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Melody/ pitch extraction}{10}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.4}Metadata based/ Collaborative Filtering}{10}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Similarity Analysis}{12}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.5}Note based}{10}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.4.1}Timbre based}{12}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.6}Genre specific features}{10}{subsection.2.3.6}
+\contentsline {subsection}{\numberline {2.4.2}Pitch based}{12}{subsection.2.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.7}summary}{11}{subsection.2.3.7}
+\contentsline {subsection}{\numberline {2.4.3}Rhythm based}{12}{subsection.2.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}MIR Toolkits}{11}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.4}Metadata based/ Collaborative Filtering}{12}{subsection.2.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Music Similarity}{11}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.5}Note based}{13}{subsection.2.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.2}Low-level audio feature extraction}{12}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.6}Genre specific features}{13}{subsection.2.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.3}Melody/ pitch extraction}{13}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.7}summary}{14}{subsection.2.4.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Data aggregation}{15}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -67,9 +67,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.6}Overview and other sources}{17}{subsection.3.1.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.7}Spotify API/ Echonest}{17}{subsection.3.1.7}
+\contentsline {section}{\numberline {3.2}Alternatives}{17}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.8}Million Song Dataset}{19}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.2.1}Spotify API/ Echonest}{17}{subsection.3.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Million Song Dataset}{19}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Timbre Similarity}{21}{chapter.4}
 \defcounter {refsection}{0}\relax 
@@ -119,7 +121,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.5}summary}{41}{section.6.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Other Similarity metrics and Feature Extraction Performance}{43}{chapter.7}
+\contentsline {chapter}{\numberline {7}Feature Extraction Performance}{43}{chapter.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7.1}Test Datasets}{43}{section.7.1}
 \defcounter {refsection}{0}\relax 
@@ -153,52 +155,58 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {8.1.4}lazy evaluation}{49}{subsection.8.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1.5}Performance Comparison of RDD vs DataFrame}{49}{subsection.8.1.5}
+\contentsline {subsection}{\numberline {8.1.5}min and max value aggregation}{49}{subsection.8.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1.6}min and max value aggregation}{49}{subsection.8.1.6}
+\contentsline {section}{\numberline {8.2}Data locality and parallelization}{50}{section.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.2}Data aggregation}{49}{section.8.2}
+\contentsline {section}{\numberline {8.3}Combining different measurements}{50}{section.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.3}Euclidean Distance}{50}{section.8.3}
+\contentsline {section}{\numberline {8.4}Data aggregation}{50}{section.8.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.4}Bucketed Random Projection}{50}{section.8.4}
+\contentsline {section}{\numberline {8.5}Euclidean Distance}{51}{section.8.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.5}Cross-correlation}{51}{section.8.5}
+\contentsline {section}{\numberline {8.6}Bucketed Random Projection}{51}{section.8.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.6}Kullback-Leibler Divergence}{51}{section.8.6}
+\contentsline {section}{\numberline {8.7}Cross-correlation}{52}{section.8.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.7}Jensen-Shannon Divergence}{51}{section.8.7}
+\contentsline {section}{\numberline {8.8}Kullback-Leibler Divergence}{52}{section.8.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.8}Levenshtein distance}{52}{section.8.8}
+\contentsline {section}{\numberline {8.9}Jensen-Shannon Divergence}{53}{section.8.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.9}Andere MapReduce tasks}{52}{section.8.9}
+\contentsline {section}{\numberline {8.10}Levenshtein distance}{53}{section.8.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.9.1}Alternating Least Squares}{52}{subsection.8.9.1}
+\contentsline {section}{\numberline {8.11}performance}{54}{section.8.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.9.2}TF-IDF weights}{52}{subsection.8.9.2}
+\contentsline {subsection}{\numberline {8.11.1}Performance Comparison of RDD vs DataFrame}{54}{subsection.8.11.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.9.3}DIMSUM all-pairs similarity}{52}{subsection.8.9.3}
+\contentsline {section}{\numberline {8.12}feature separation quality}{54}{section.8.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.10}Combining different measurements}{52}{section.8.10}
+\contentsline {section}{\numberline {8.13}possible performance improvements}{54}{section.8.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.11}performance}{53}{section.8.11}
+\contentsline {section}{\numberline {8.14}Other alternatives}{55}{section.8.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.12}feature separation quality}{53}{section.8.12}
+\contentsline {subsection}{\numberline {8.14.1}Alternating Least Squares}{55}{subsection.8.14.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Results}{54}{chapter.9}
+\contentsline {subsection}{\numberline {8.14.2}TF-IDF weights}{55}{subsection.8.14.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Runtime}{54}{section.9.1}
+\contentsline {subsection}{\numberline {8.14.3}DIMSUM all-pairs similarity}{55}{subsection.8.14.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.2}Cover song identification}{54}{section.9.2}
+\contentsline {chapter}{\numberline {9}Results}{56}{chapter.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.3}Genre similarity}{54}{section.9.3}
+\contentsline {section}{\numberline {9.1}Runtime}{56}{section.9.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.4}Improvements and outlook}{54}{section.9.4}
+\contentsline {section}{\numberline {9.2}Cover song identification}{56}{section.9.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.5}Definition of similarity}{54}{section.9.5}
+\contentsline {section}{\numberline {9.3}Genre similarity}{56}{section.9.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{55}{section*.9}
+\contentsline {section}{\numberline {9.4}... and beyond genre boundaries}{56}{section.9.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}Appendix}{60}{chapter.10}
+\contentsline {section}{\numberline {9.5}Improvements and outlook}{57}{section.9.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.1}Spotipy Crawler}{60}{section.10.1}
+\contentsline {section}{\numberline {9.6}Definition of similarity}{57}{section.9.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{58}{section*.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {10}Appendix}{63}{chapter.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.1}Spotipy Crawler}{63}{section.10.1}

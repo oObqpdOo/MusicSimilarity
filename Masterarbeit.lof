@@ -21,13 +21,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Features of the song Layla by Eric Clapton\relax }}{9}{figure.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Original Scores\relax }}{13}{figure.2.9}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Original Scores\relax }}{10}{figure.2.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Aubio\relax }}{13}{figure.2.10}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Aubio\relax }}{11}{figure.2.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Melodia\relax }}{14}{figure.2.11}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Melodia\relax }}{11}{figure.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Transcription\relax }}{14}{figure.2.12}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Transcription\relax }}{12}{figure.2.12}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -87,9 +87,9 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark RDD vs Dataframe\relax }}{50}{figure.8.1}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark DF implementations\relax }}{50}{figure.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{53}{figure.8.2}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{54}{figure.8.2}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

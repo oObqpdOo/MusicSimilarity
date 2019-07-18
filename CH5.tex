@@ -1,16 +1,19 @@
 %==============================================================
 
-\chapter{Other Similarity metrics and Feature Extraction Performance}\label{simmet}
+\chapter{Feature Extraction Performance}\label{simmet}
+
+So far the required audio features have been selected in chapter \ref{audiofeat} as well as toolkits to extract those features from the audio data.
+In chapter \ref{data} different sources for audio files have been presented. Chapter \ref{musly}, \ref{melsimc} and \ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
+This chapter focuses on the selection of datasets to extract features from and the performance of the feature extraction and pre-processing software implementation.  
 
 \section{Test Datasets}
 
 Chapter \ref{datasets} introduced a range of MIR datasets but not all are fitting to the problems this thesis evaluates. To test the algorithms on the one hand a lot of data is needed, so the Free Music Archive with its over 100000 songs would be a solid option for performance tests. However on the other hand the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic and rock. Also this dataset may not be really representative for actual popular music, a lot of the songs are live recordings with poor audio quality, possibly influencing the results.
 The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
 The last source used in this thesis is the private music collection. This collection is biased towards metal music but due to the match with personal taste, it offers a subjective evaluation of the results of the similarity analysis. 
-In conclusion that sums up to about 117000 songs for future performance tests and about 12000 songs for a detailed evaluation of the algorithms in this thesis.\\
+In conclusion that sums up to about 117000 songs for future performance tests and about 12000 songs for a detailed evaluation of the algorithms in this thesis. As mentioned in \ref{datasets} all albums from the private music collections are cataloged as well and the associated document is in the appendices. For the first tests an even smaller sample dataset containing 10 songs out of 10 different genres was created from the private music collection and the list with the belonging songs is also in the appendices.
 
 \begin{table}[h]
-	\caption{used music datasets}
 	\label{used_dsets}
 	\begin{center}
 		\begin{tabular}{|c||c|}
@@ -25,9 +28,11 @@ In conclusion that sums up to about 117000 songs for future performance tests an
 			\hline
 		\end{tabular}
 	\end{center}
+	\caption{appropriate music datasets}
 \end{table}
+\FloatBarrier
 
-As mentioned in \ref{datasets} all albums from the private music collections are cataloged as well and the associated document is in the appendices. For the first tests an even smaller sample dataset containing 10 songs out of 10 different genres was created from the private music collection and the list with the belonging songs is also in the appendices.
+
 
 \section{Feature Extraction Performance}
 

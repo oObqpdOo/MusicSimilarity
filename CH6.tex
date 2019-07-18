@@ -2,7 +2,7 @@
 
 \chapter{Big Data Framework Spark}\label{bds1}
 
-After accumulating the Data and presenting various methods to extract different audio features, the following chapters describe the data analysis with Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
+After accumulating the data and presenting various methods to extract and process the different audio features, the following chapters describe the data analysis and computation of the similarities with Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
 
 \section{Apache Hadoop and Spark} 
 
@@ -17,32 +17,56 @@ With the ever growing availability of huge amounts of high dimensional data the 
 
 \subsection{lazy evaluation}
 
-\subsection{Performance Comparison of RDD vs DataFrame}
+\subsection{min and max value aggregation}
 
+\textit{\textbf{Why? Scaling of distances between 0 to 1 interval to combine different distances\\}}
 
-\textit{insert plot here}
+\FloatBarrier
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{
 			\begin{subfigure}{.495\textwidth}
 				\centering
-				\includegraphics[scale=0.22]{Images/Spark/spark_cluster_rdd_1517.png}
-				\caption{RDD on Cluster, 3180 songs}
-				\label{sc1}
+				\includegraphics[scale=0.22]{Images/Spark/separate.png}
+				\caption{Separate DataFrames}
+				\label{sc3}
 			\end{subfigure}%
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering
-				\includegraphics[scale=0.22]{Images/Spark/df_vs_dfmerged_full.png}
-				\caption{DataFrame on single Node}
-				\label{sc2}
-			\end{subfigure}% 			
+				\includegraphics[scale=0.22]{Images/Spark/df_merged.png}
+				\caption{Single DataFrames, multiple collects}
+				\label{sc4}
+			\end{subfigure}% 	
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/speed_uo.png}
+				\caption{Single DataFrames, single collects}
+				\label{sc5}
+			\end{subfigure}% 		
 	}}
-	\caption{Spark RDD vs Dataframe}
-	\label{fig:spark1}
+	\caption{Spark DF implementations}
+	\label{fig:spark2}
 \end{figure}
+\FloatBarrier
 
-\subsection{min and max value aggregation}
+
+\section{Data locality and parallelization}
+
+\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
+\noindent\textit{\textbf{insert data locality scheme here\\}}
+
+\section{Combining different measurements}
+
+\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements\\}}
+
+\begin{equation} \label{eq:distance}
+dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
+\end{equation}
+
+\noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
+
 
 \section{Data aggregation}
 
@@ -57,18 +81,32 @@ chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace(',','').replace(' 
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
 
+\noindent\textbf{\textit{Explain Single DataFrame vs multiple DataFrames}}
+
 \section{Euclidean Distance}
 
 \begin{pythonCode}
+from scipy.spatial import distance
+#...
 distance_udf = F.udf(lambda x: float(distance.euclidean(x, comparator_value)), FloatType())
 result = df_vec.withColumn('distances', distance_udf(F.col('features')))
 result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
+\noindent\textit{\textbf{Explain usage of user defined function udf\\}}
+\ \\
+\noindent\textit{\textbf{Used with BH, RH, BP AND MFCC\\}}
+\ \\
+\noindent\textit{\textbf{super versatile AND very fast\\}}
+\ \\
+\noindent\textit{\textbf{insert analysis of performance\\}}
+
 \section{Bucketed Random Projection}
 
 \begin{pythonCode}
+from pyspark.ml.feature import BucketedRandomProjectionLSH
+#...
 brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=1.0)
 model = brp.fit(df_vec)
 comparator_value = Vectors.dense(comparator[0])
@@ -77,29 +115,37 @@ rf = spark.createDataFrame(result)
 result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \end{pythonCode}
 
+\noindent\textit{\textbf{Usable as a substitute for euclidean UDF\\}}
+\ \\
+\noindent\textit{\textbf{Is it faster than the UDF tho? - performance test\\}}
 
 \section{Cross-correlation}
 
 \textit{\textbf{2 Versions explained - with additional key shift and without}}
-
 \begin{pythonCode}
-def chroma_cross_correlate(chroma1, chroma2):
-    corr = sc.signal.correlate2d(chroma1, chroma2, mode='full') 
-    transposed_chroma = np.transpose(corr)
-    mean_line = transposed_chroma[12]
+def cross_correlate(chroma1, chroma2):
+    corr = sp.signal.correlate2d(chroma1, chroma2, mode='full')
+    #transposed_chroma = transposed_chroma / (min(length1, length2))
+    index = np.where(transposed_chroma == np.amax(transposed_chroma))
+    index = int(index[0])
+    mean_line = transposed_chroma[index]
+    sos = sp.signal.butter(1, 0.1, 'high', analog=False, output='sos')
+    mean_line = sp.signal.sosfilt(sos, mean_line)
     return np.max(mean_line)
-distance_udf = F.udf(lambda x: float(chroma_cross_correlate(x, comparator_value)), DoubleType())
+#...
+distance_udf = F.udf(lambda x: float(cross_correlate(x, comparator_value)), DoubleType())
 result = df_vec.withColumn('distances', distance_udf(F.col('chroma')))
 result = result.select("id", "distances").orderBy('distances', ascending=False)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-
-\textbf{Memory intense - had to alter spark-defaults.conf}
+\noindent\textbf{\textit{Memory intense - had to alter spark-defaults.conf\\}}
 \textit{spark.driver.memory             6g\\
 spark.executor.memory           2g\\
 }
-
+\noindent\textbf{\textit{Insert graphics of calculation time with and without correlation\\}}
+\ \\
+\noindent\textbf{\textit{Differences in the results to the original paper can be explained with the different underlying beat tracking, different filter parameters and a few improvements that are left out as mentioned in \ref{chromafeat}}\cite{cover802}}
 
 \section{Kullback-Leibler Divergence}
 
@@ -115,6 +161,7 @@ result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
+\noindent\textbf{\textit{Differences in the results to the original musly tool can be explained due to the choice of only 13 MFCC bands in this thesis compared to the 25 bands in musly}\cite{musly1}}
 
 \section{Jensen-Shannon Divergence}
 
@@ -131,10 +178,9 @@ distance_udf = F.udf(lambda x: float(jensen_shannon(x, comparator_value)), Doubl
 result = df_vec.withColumn('distances', distance_udf(F.col('features')))
 result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
-
 \end{pythonCode}
 
-\textit{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit}\cite[p.45]{schnitzer1}
+\noindent\textbf{\textit{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit, Lösung 2 nutzen von SKL aber noch rechenintensiver!}\cite[p.45]{schnitzer1}}
 
 \section{Levenshtein distance}
 
@@ -149,23 +195,11 @@ def get_neighbors_notes(song):
     df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
 \end{pythonCode}
 
-\section{Andere MapReduce tasks}
-
-\subsection{Alternating Least Squares}
-
-\subsection{TF-IDF weights}
-
-\subsection{DIMSUM all-pairs similarity}
-
-\section{Combining different measurements}
-
-\textit{\textbf{Pre- merge feature sets, broadcast comparator, descending importance pre-filtering}}
-
-\textit{\textbf{statistic normalization of similarities}}
-
 \section{performance}
 
+\subsection{Performance Comparison of RDD vs DataFrame}
 
+\FloatBarrier
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
@@ -234,13 +268,27 @@ def get_neighbors_notes(song):
 	\caption{Performance of various spark algorithms}
 	\label{perfspark}
 \end{figure}
-
-\textit{\textbf{high data locality, full parallelizable, very low replication rate}}
-
-\textit{\textbf{insert data locality scheme here}}
-
-Very small 100 Song Dataset plus 20 Cover Songs to evaluate and compare similarity metrics. Full similarity matrices. 
-High performance/ throughput tests with full 12000 song testset to evaluate full load performance.\\
-
+\FloatBarrier
 
 \section{feature separation quality}
+
+\textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
+\\
+
+\section{possible performance improvements}
+
+\textit{\textbf{Pre- merge feature sets, broadcast comparator, descending importance pre-filtering\\}}
+\\
+\textit{\textbf{statistic normalization of similarities\\}}
+\ \\
+\textit{\textbf{Filter and refine after statistic normalization, drop all below mean\\}}
+\ \\
+\textit{\textbf{\underline{Is there a better way to cross-correlate???}\\}}
+\ \\
+\section{Other alternatives}
+
+\subsection{Alternating Least Squares}
+
+\subsection{TF-IDF weights}
+
+\subsection{DIMSUM all-pairs similarity}
