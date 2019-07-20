@@ -87,10 +87,18 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark DF implementations\relax }}{50}{figure.8.1}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark DF implementations, single node, 1517 artists\relax }}{50}{figure.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Performance of various spark algorithms\relax }}{54}{figure.8.2}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Chroma on 11500 songs, single node\relax }}{52}{figure.8.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Performance of various spark algorithms (MFCC Euc, Notes, RP)\relax }}{55}{figure.8.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces correlation of features\relax }}{55}{figure.8.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces genre recall 100 songs\relax }}{56}{figure.8.5}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9.1}{\ignorespaces genre recall 100 songs\relax }}{59}{figure.9.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

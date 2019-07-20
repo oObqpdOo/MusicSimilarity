@@ -69,7 +69,7 @@ In figure \ref{fig:sia2} the filter frequency and the original audio signals are
 In the chromagram of the bandpass filtered audio signal the last 10 seconds look cleaner and the melody line is more distinct from the rest in comparison to the chromagram of the unfiltered audio \ref{fig:chroma1}.
 The next step is to calculate the most dominant note value for each timeframe. Due to the fact that the chromagram normalizes every timeframe to the maximum note value, the most dominant note always gets the value 1. The closer the rest of the notes are to zero the more likely the timeframe contains silence. If only a few values are close to one, then a chord or harmony is played. To filter out silence the sum over all note values of every timeframe is calculated and if this sum is twice as high as the average sum of notes of the whole song, then the frame is considered as silence. Otherwise the most dominant pitch is set to a fixed value while the rest of the notes are set to zero.\\
 To extract the main melody in most cases only the most dominant pitch is needed, but sometimes the main melody is superimposed by other accompanying instruments. To prevent this the second most dominant pitch is also taken into consideration if its value is greater then a specific threshold. 
-The result is shown in figure with the threshold 0.8 \ref{fig:chromavg}. 
+The result is shown in figure \ref{fig:chromavg} with the threshold 0.8. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			

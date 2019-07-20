@@ -9,9 +9,55 @@ High performance/ throughput tests with full 12000 song testset to evaluate full
 
 \section{Cover song identification}
 
-\textit{\textbf{Able to find "Rock you like a Hurricane" cover as top recommendation in over 11500 songs}}
+\textit{\textbf{Able to find "Rock you like a Hurricane" cover as top recommendation in over 11500 songs\\}}
+\ \\
+\textit{\textbf{counting the hits in the top 10 results of 80 requested songs on 164 song dataset covers80:\\}}
+\begin{itemize}
+	\item chroma: 16
+	\item notes: 24
+	\item chroma + notes: 24
+	\item notes + rp: 22
+	\item chroma + notes + rp: 28
+	\item mfcc + notes + rp: 20
+\end{itemize}
+\textit{interesting sidenote: results of chroma only and notes only different! Nearly ever}
 
 \section{Genre similarity}
+
+\textbf{\textit{\underline{100 Song Testset, 10 genres:\\}}} 
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/SparkFeat/Classical_MFCC_SKL.png}
+				\caption{Classical MFCC SKL}
+				\label{cms}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/SparkFeat/Metal_MFCC_SKL.png}
+				\caption{Metal MFCC SKL}
+				\label{mms}
+			\end{subfigure}%	
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/SparkFeat/Classical_MFCC_SKL_RP.png}
+				\caption{Classical MFCC SKL RP}
+				\label{cmsr}
+			\end{subfigure}
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.3]{Images/SparkFeat/Metal_MFCC_SKL_RP.png}
+				\caption{Metal MFCC SKL RP}
+				\label{mfsr}
+			\end{subfigure}%		
+	}}
+	\caption{genre recall 100 songs}
+	\label{fig:genrerec}
+\end{figure}
+
 
 \section{... and beyond genre boundaries}
 

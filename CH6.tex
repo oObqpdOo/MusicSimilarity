@@ -46,7 +46,7 @@ With the ever growing availability of huge amounts of high dimensional data the 
 				\label{sc5}
 			\end{subfigure}% 		
 	}}
-	\caption{Spark DF implementations}
+	\caption{Spark DF implementations, single node, 1517 artists}
 	\label{fig:spark2}
 \end{figure}
 \FloatBarrier
@@ -120,6 +120,37 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \noindent\textit{\textbf{Is it faster than the UDF tho? - performance test\\}}
 
 \section{Cross-correlation}
+
+\FloatBarrier
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/df_slow_chroma.png}
+				\caption{Chroma multiple agg}
+				\label{chr2}
+			\end{subfigure}%
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/df_speed_chroma.png}
+				\caption{Chroma single agg}
+				\label{chr1}
+			\end{subfigure}% 	
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/toPandasDag.png}
+				\caption{DAG toPandas}
+				\label{chr3}
+			\end{subfigure}% 		
+	}}
+	\caption{Chroma on 11500 songs, single node}
+	\label{fig:chroma}
+\end{figure}
+\FloatBarrier
+
 
 \textit{\textbf{2 Versions explained - with additional key shift and without}}
 \begin{pythonCode}
@@ -265,7 +296,7 @@ def get_neighbors_notes(song):
 	    \addlegendentry{DataFrames unique SN}	    
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Performance of various spark algorithms}
+	\caption{Performance of various spark algorithms (MFCC Euc, Notes, RP)}
 	\label{perfspark}
 \end{figure}
 \FloatBarrier
@@ -274,6 +305,63 @@ def get_neighbors_notes(song):
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
+
+\textbf{\textit{\underline{correlation of features\\}}} 
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.35]{Images/SparkFeat/correlation100.png}
+				\caption{100 songs, 10 genres}
+				\label{cor1}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.35]{Images/SparkFeat/correlation10.png}
+				\caption{10 songs, 4 genres}
+				\label{cor2}
+			\end{subfigure}%		
+	}}
+	\caption{correlation of features}
+	\label{fig:corr}
+\end{figure}
+
+
+\textbf{\textit{\underline{distances from classical song out of 1517 artists dataset\\}}} 
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.3]{Images/SparkFeat/BH_BPM.png}
+				\caption{Beat Histogram vs BPM}
+				\label{fs1}
+			\end{subfigure}		
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.5]{Images/SparkFeat/MFCC_Eucl.png}
+				\caption{MFCC Euclidean}
+				\label{fs2}
+			\end{subfigure}%	
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.5]{Images/SparkFeat/BH_RP.png}
+				\caption{Beat Histogram vs Rhythm Patterns}
+				\label{fs3}
+			\end{subfigure}
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.5]{Images/SparkFeat/Cross-Corr_Levenshtein.png}
+				\caption{Cross-correlation vs Levenshtein}
+				\label{fs4}
+			\end{subfigure}%		
+	}}
+	\caption{genre recall 100 songs}
+	\label{fig:featsep}
+\end{figure}
+
 
 \section{possible performance improvements}
 
