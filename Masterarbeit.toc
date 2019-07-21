@@ -181,7 +181,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8.12}feature separation quality}{55}{section.8.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.13}possible performance improvements}{56}{section.8.13}
+\contentsline {section}{\numberline {8.13}possible performance improvements}{57}{section.8.13}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8.14}Other alternatives}{57}{section.8.14}
 \defcounter {refsection}{0}\relax 

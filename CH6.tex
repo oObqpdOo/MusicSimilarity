@@ -312,14 +312,14 @@ def get_neighbors_notes(song):
 	\framebox{\parbox{1\textwidth}{ 			
 			\begin{subfigure}{.495\textwidth}
 				\centering    
-				\includegraphics[scale=0.35]{Images/SparkFeat/correlation100.png}
-				\caption{100 songs, 10 genres}
+				\includegraphics[scale=0.35]{Images/SparkFeat/correlation1517_95.png}
+				\caption{95 songs from 19 genres, 1517 artists}
 				\label{cor1}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.35]{Images/SparkFeat/correlation10.png}
-				\caption{10 songs, 4 genres}
+				\caption{10 songs from 4 genres, full ds}
 				\label{cor2}
 			\end{subfigure}%		
 	}}
@@ -327,6 +327,16 @@ def get_neighbors_notes(song):
 	\label{fig:corr}
 \end{figure}
 
+
+\textbf{\textit{\underline{correlation of features\\}}} 
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.33]{Images/SparkFeat/corr_95_1517.png}	
+	}}
+	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
+	\label{fig:corr2}
+\end{figure}
 
 \textbf{\textit{\underline{distances from classical song out of 1517 artists dataset\\}}} 
 \begin{figure}[htbp]
