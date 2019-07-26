@@ -305,8 +305,7 @@ def get_neighbors_notes(song):
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
-
-\textbf{\textit{\underline{correlation of features\\}}} 
+\noindent correlation of features in figure \ref{fig:corr}\\
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -326,9 +325,9 @@ def get_neighbors_notes(song):
 	\caption{correlation of features}
 	\label{fig:corr}
 \end{figure}
+\FloatBarrier
 
-
-\textbf{\textit{\underline{correlation of features\\}}} 
+correlation of features in figure \ref{fig:corr2}\\
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -337,8 +336,68 @@ def get_neighbors_notes(song):
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr2}
 \end{figure}
+\FloatBarrier
 
-\textbf{\textit{\underline{distances from classical song out of 1517 artists dataset\\}}} 
+\noindent Scatter Matrix, 5 songs of each genre from 1517 artists - distances combined, main diagonal = Kernel Density Estimation in figure \ref{fig:corr3}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.36]{Images/SparkFeat/scatter1517_KernelDensityEstimationHD.png}	
+	}}
+	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
+	\label{fig:corr3}
+\end{figure}
+\FloatBarrier
+
+\noindent Scatter Matrix, 1 Song (New Age) from 1517 artists - distances, main diagonal = Histogram, all genres in figure \ref{fig:corr4}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.36]{Images/SparkFeat/scatter1517_singlesongHistogramHD.png}	
+	}}
+	\caption{distances 1 song, New Age, 1517 artists}
+	\label{fig:corr4}
+\end{figure}
+\FloatBarrier
+
+\noindent Scatter Matrix, 1 Song (Rock/ Metal) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres\\ All features combined recommends Rock primarily\\
+Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 3 genres in figure \ref{fig:corr5}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.25]{Images/SparkFeat/scatter1517_singlesongHDrock.png}	
+	}}
+	\caption{distances 1 song, Rock/ Metal, 1517 artists, 3 genres}
+	\label{fig:corr5}
+\end{figure}
+\FloatBarrier
+
+\noindent Scatter Matrix, 1 Song (New Age) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres in figure\\
+No combination of features is able to accurately separate New Age from Rock and Pop\ref{fig:corr6}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.25]{Images/SparkFeat/scatter1517_singlesongHDrock.png}	
+	}}
+	\caption{distances 1 song, Rock/ Metal, 1517 artists, 3 genres}
+	\label{fig:corr6}
+\end{figure}
+\FloatBarrier
+
+
+\noindent Scatter Matrix, 1 Song (Classics) from 100 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 4 genres in figure \ref{fig:corr7}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.5]{Images/SparkFeat/scatter100_1classicsong.png}	
+	}}
+	\caption{distances 1 song, 4 genres (10 songs each)}
+	\label{fig:corr7}
+\end{figure}
+\FloatBarrier
+
+\noindent distances from classical song out of 1517 artists dataset in figure \ref{fig:featsep}\\
+
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -371,6 +430,8 @@ def get_neighbors_notes(song):
 	\caption{genre recall 100 songs}
 	\label{fig:featsep}
 \end{figure}
+\FloatBarrier
+
 
 
 \section{possible performance improvements}

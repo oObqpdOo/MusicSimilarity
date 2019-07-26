@@ -181,32 +181,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8.12}feature separation quality}{55}{section.8.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.13}possible performance improvements}{57}{section.8.13}
+\contentsline {section}{\numberline {8.13}possible performance improvements}{62}{section.8.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.14}Other alternatives}{57}{section.8.14}
+\contentsline {section}{\numberline {8.14}Other alternatives}{63}{section.8.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.14.1}Alternating Least Squares}{57}{subsection.8.14.1}
+\contentsline {subsection}{\numberline {8.14.1}Alternating Least Squares}{63}{subsection.8.14.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.14.2}TF-IDF weights}{57}{subsection.8.14.2}
+\contentsline {subsection}{\numberline {8.14.2}TF-IDF weights}{63}{subsection.8.14.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.14.3}DIMSUM all-pairs similarity}{57}{subsection.8.14.3}
+\contentsline {subsection}{\numberline {8.14.3}DIMSUM all-pairs similarity}{63}{subsection.8.14.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Results}{58}{chapter.9}
+\contentsline {chapter}{\numberline {9}Results}{64}{chapter.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Runtime}{58}{section.9.1}
+\contentsline {section}{\numberline {9.1}Runtime}{64}{section.9.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.2}Cover song identification}{58}{section.9.2}
+\contentsline {section}{\numberline {9.2}Cover song identification}{64}{section.9.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.3}Genre similarity}{58}{section.9.3}
+\contentsline {section}{\numberline {9.3}Genre similarity}{64}{section.9.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.4}... and beyond genre boundaries}{59}{section.9.4}
+\contentsline {section}{\numberline {9.4}... and beyond genre boundaries}{65}{section.9.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.5}Improvements and outlook}{59}{section.9.5}
+\contentsline {section}{\numberline {9.5}Improvements and outlook}{65}{section.9.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.6}Definition of similarity}{60}{section.9.6}
+\contentsline {section}{\numberline {9.6}Definition of similarity}{66}{section.9.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{61}{section*.9}
+\contentsline {chapter}{References}{67}{section*.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}Appendix}{66}{chapter.10}
+\contentsline {chapter}{\numberline {10}Appendix}{72}{chapter.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10.1}Spotipy Crawler}{66}{section.10.1}
+\contentsline {section}{\numberline {10.1}Spotipy Crawler}{72}{section.10.1}
