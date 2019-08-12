@@ -20,16 +20,16 @@ This very basic approach has been refined and improved over the past years.
 \subsection{Kullback-Leibler Divergence}
 
 This approach was first proposed by Mandel and Ellis \cite{mandelellis1} in 2005 and is briefly summarized in \cite[pp. 65f]{knees1}.\\
-After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $Tr(\cdot)$ being the trace (i.e. the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$\\
+After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $tr(\cdot)$ being the trace (i.e. the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$\\
 \begin{equation} \label{eq:KL1}
-KL_{(P||Q)} = \frac{1}{2}[log\frac{|\Sigma_P|}{|\Sigma_Q|} + Tr(\Sigma_P^{-1}\Sigma_Q) + (\mu_P - \mu_Q)^T \Sigma_P^{-1} (\mu_Q - \mu_P) - d]
+KL_{(P||Q)} = \frac{1}{2}[log\frac{|\Sigma_P|}{|\Sigma_Q|} + tr(\Sigma_P^{-1}\Sigma_Q) + (\mu_P - \mu_Q)^T \Sigma_P^{-1} (\mu_Q - \mu_P) - d]
 \end{equation}
 As a second step the result has to be symmetrized.
 \begin{equation} \label{eq:KL2}
 d_{KL}(P, Q) = \frac{1}{2} (KL_{(P||Q)} + KL_{(Q||P)}) 
 \end{equation}
 This approach is one of the two available similarity metrics of the musly \cite{musly1} toolkit introduced in section \ref{mirtoolkit}.
-This can be simplified and written as a closed form:
+This can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:SKL}
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}

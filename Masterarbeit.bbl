@@ -98,25 +98,6 @@
     \field{year}{2012}
   \endentry
 
-  \entry{musly1}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=SDD}{%
-         family={Schnitzer},
-         familyi={S\bibinitperiod},
-         given={Dr.\bibnamedelima Dominik},
-         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SDD1}
-    \strng{fullhash}{SDD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Audio Music Similarity}
-    \verb{url}
-    \verb http://www.musly.org/index.html
-    \endverb
-  \endentry
-
   \entry{librosa1}{inproceedings}{}
     \name{author}{7}{}{%
       {{hash=MB}{%
@@ -206,342 +187,23 @@
     \field{year}{2017}
   \endentry
 
-  \entry{pitch1}{inproceedings}{}
+  \entry{musly1}{inproceedings}{}
     \name{author}{1}{}{%
-      {{hash=MM}{%
-         family={Marolt},
-         familyi={M\bibinitperiod},
-         given={Matija},
-         giveni={M\bibinitperiod},
+      {{hash=SDD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dr.\bibnamedelima Dominik},
+         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MM1}
-    \strng{fullhash}{MM1}
+    \strng{namehash}{SDD1}
+    \strng{fullhash}{SDD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{ISMIR 2006, 7th International Conference on Music
-  Information Retrieval, Victoria, Canada, 8-12 October 2006}
-    \field{title}{A Mid-level Melody-based Representation for Calculating Audio
-  Similarity}
-    \field{year}{2006}
-  \endentry
-
-  \entry{rhythm1}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=FJ}{%
-         family={Foote},
-         familyi={F\bibinitperiod},
-         given={Jonathan},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=CM}{%
-         family={Cooper},
-         familyi={C\bibinitperiod},
-         given={Matthew},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=NU}{%
-         family={Nam},
-         familyi={N\bibinitperiod},
-         given={Unjung},
-         giveni={U\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{FJCMNU1}
-    \strng{fullhash}{FJCMNU1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Audio Retrieval by Rhythmic Similarity.}
-    \field{month}{01}
-    \field{year}{2002}
-  \endentry
-
-  \entry{metadat1}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=YZ}{%
-         family={Yufeng},
-         familyi={Y\bibinitperiod},
-         given={Zhao},
-         giveni={Z\bibinitperiod},
-      }}%
-      {{hash=XL}{%
-         family={Xinwei},
-         familyi={X\bibinitperiod},
-         given={Li},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{YZXL1}
-    \strng{fullhash}{YZXL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.2991/icsnce-18.2018.36.
-    \endverb
-    \field{title}{Design and Implementation of Music Recommendation System
-  Based on Hadoop}
-    \field{year}{2018}
-  \endentry
-
-  \entry{msd4}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=MB}{%
-         family={McFee},
-         familyi={M\bibinitperiod},
-         given={B.},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=LG}{%
-         family={Lanckriet},
-         familyi={L\bibinitperiod},
-         given={G.R.G.},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MBLG1}
-    \strng{fullhash}{MBLG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{ISMIR '11}
-    \field{title}{Large-scale music similarity search with spatial trees}
+    \field{title}{Audio Music Similarity}
     \verb{url}
-    \verb http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.226.5060
+    \verb http://www.musly.org/index.html
     \endverb
-  \endentry
-
-  \entry{msd1}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=BMT}{%
-         family={Bertin-Mahieux},
-         familyi={B\bibinitperiod-M\bibinitperiod},
-         given={Thierry},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=EDP}{%
-         family={Ellis},
-         familyi={E\bibinitperiod},
-         given={Daniel\bibnamedelima P.W.},
-         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-      {{hash=WB}{%
-         family={Whitman},
-         familyi={W\bibinitperiod},
-         given={Brian},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=LP}{%
-         family={Lamere},
-         familyi={L\bibinitperiod},
-         given={Paul},
-         giveni={P\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{BMT+1}
-    \strng{fullhash}{BMTEDPWBLP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{{Proceedings of the 12th International Conference on
-  Music Information Retrieval ({ISMIR} 2011)}}
-    \field{title}{The Million Song Dataset}
-    \field{year}{2011}
-  \endentry
-
-  \entry{midi1}{inproceedings}{}
-    \name{author}{5}{}{%
-      {{hash=XG}{%
-         family={Xia},
-         familyi={X\bibinitperiod},
-         given={Guangyu},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=HT}{%
-         family={Huang},
-         familyi={H\bibinitperiod},
-         given={Tongbo},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=MY}{%
-         family={Ma},
-         familyi={M\bibinitperiod},
-         given={Yifei},
-         giveni={Y\bibinitperiod},
-      }}%
-      {{hash=DR}{%
-         family={Dannenberg},
-         familyi={D\bibinitperiod},
-         given={Roger},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=FC}{%
-         family={Faloutsos},
-         familyi={F\bibinitperiod},
-         given={Christos},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{XG+1}
-    \strng{fullhash}{XGHTMYDRFC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1007/978-3-319-12976-1\_17.
-    \endverb
-    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
-  MIDI Databases, 259-276}
-    \field{year}{2013}
-  \endentry
-
-  \entry{crepe1}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=KJW}{%
-         family={Kim},
-         familyi={K\bibinitperiod},
-         given={Jong\bibnamedelima Wook},
-         giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
-      }}%
-      {{hash=SJ}{%
-         family={Salamon},
-         familyi={S\bibinitperiod},
-         given={Justin},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=LP}{%
-         family={Li},
-         familyi={L\bibinitperiod},
-         given={Peter},
-         giveni={P\bibinitperiod},
-      }}%
-      {{hash=BJP}{%
-         family={Bello},
-         familyi={B\bibinitperiod},
-         given={Juan\bibnamedelima Pablo},
-         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{KJW+1}
-    \strng{fullhash}{KJWSJLPBJP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the IEEE International Conference on
-  Acoustics, Speech, and Signal Processing (ICASSP), 2018}
-    \field{title}{CREPE: A Convolutional Representation for Pitch Estimation}
-  \endentry
-
-  \entry{chroma4}{inproceedings}{}
-    \name{author}{5}{}{%
-      {{hash=XG}{%
-         family={Xia},
-         familyi={X\bibinitperiod},
-         given={Guangyu},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=HT}{%
-         family={Huang},
-         familyi={H\bibinitperiod},
-         given={Tongbo},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=MY}{%
-         family={Ma},
-         familyi={M\bibinitperiod},
-         given={Yifei},
-         giveni={Y\bibinitperiod},
-      }}%
-      {{hash=DR}{%
-         family={Dannenberg},
-         familyi={D\bibinitperiod},
-         given={Roger},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=FC}{%
-         family={Faloutsos},
-         familyi={F\bibinitperiod},
-         given={Christos},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{XG+1}
-    \strng{fullhash}{XGHTMYDRFC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1007/978-3-319-12976-1_17
-    \endverb
-    \field{isbn}{978-3-319-12975-4}
-    \field{pages}{259\bibrangedash 276}
-    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
-  MIDI Databases}
-    \field{month}{10}
-    \field{year}{2013}
-  \endentry
-
-  \entry{mussim1}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=GS}{%
-         family={Gulati},
-         familyi={G\bibinitperiod},
-         given={Sankalp},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=SJ}{%
-         family={Serra},
-         familyi={S\bibinitperiod},
-         given={Joan},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=SX}{%
-         family={Serra},
-         familyi={S\bibinitperiod},
-         given={Xavier},
-         giveni={X\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{GSSJSX1}
-    \strng{fullhash}{GSSJSX1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1109/ICASSP.2015.7178055.
-    \endverb
-    \field{title}{An evaluation of methodologies for melodic similarity in
-  audio recordings of Indian art music, 678-682}
-    \field{year}{2015}
-  \endentry
-
-  \entry{guitext1}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=EC}{%
-         family={Erkut},
-         familyi={E\bibinitperiod},
-         given={Cumhur},
-         giveni={C\bibinitperiod},
-      }}%
-      {{hash=VV}{%
-         family={Välimäki},
-         familyi={V\bibinitperiod},
-         given={Vesa},
-         giveni={V\bibinitperiod},
-      }}%
-      {{hash=KM}{%
-         family={Karjalainen},
-         familyi={K\bibinitperiod},
-         given={Matti},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=LM}{%
-         family={Laurson},
-         familyi={L\bibinitperiod},
-         given={Mikael},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{EC+1}
-    \strng{fullhash}{ECVVKMLM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Extraction of Physical and Expressive Parameters for
-  Model-based Sound Synthesis of the Classical Guitar}
-    \field{year}{2002}
   \endentry
 
   \entry{mandelellis1}{inproceedings}{}
@@ -955,6 +617,344 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
+  \entry{pitch1}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=MM}{%
+         family={Marolt},
+         familyi={M\bibinitperiod},
+         given={Matija},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MM1}
+    \strng{fullhash}{MM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR 2006, 7th International Conference on Music
+  Information Retrieval, Victoria, Canada, 8-12 October 2006}
+    \field{title}{A Mid-level Melody-based Representation for Calculating Audio
+  Similarity}
+    \field{year}{2006}
+  \endentry
+
+  \entry{rhythm1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FJ}{%
+         family={Foote},
+         familyi={F\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CM}{%
+         family={Cooper},
+         familyi={C\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NU}{%
+         family={Nam},
+         familyi={N\bibinitperiod},
+         given={Unjung},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FJCMNU1}
+    \strng{fullhash}{FJCMNU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Audio Retrieval by Rhythmic Similarity.}
+    \field{month}{01}
+    \field{year}{2002}
+  \endentry
+
+  \entry{metadat1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=YZ}{%
+         family={Yufeng},
+         familyi={Y\bibinitperiod},
+         given={Zhao},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=XL}{%
+         family={Xinwei},
+         familyi={X\bibinitperiod},
+         given={Li},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YZXL1}
+    \strng{fullhash}{YZXL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.2991/icsnce-18.2018.36.
+    \endverb
+    \field{title}{Design and Implementation of Music Recommendation System
+  Based on Hadoop}
+    \field{year}{2018}
+  \endentry
+
+  \entry{msd4}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=MB}{%
+         family={McFee},
+         familyi={M\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lanckriet},
+         familyi={L\bibinitperiod},
+         given={G.R.G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MBLG1}
+    \strng{fullhash}{MBLG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR '11}
+    \field{title}{Large-scale music similarity search with spatial trees}
+    \verb{url}
+    \verb http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.226.5060
+    \endverb
+  \endentry
+
+  \entry{msd1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=BMT}{%
+         family={Bertin-Mahieux},
+         familyi={B\bibinitperiod-M\bibinitperiod},
+         given={Thierry},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=EDP}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={Daniel\bibnamedelima P.W.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=WB}{%
+         family={Whitman},
+         familyi={W\bibinitperiod},
+         given={Brian},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Lamere},
+         familyi={L\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BMT+1}
+    \strng{fullhash}{BMTEDPWBLP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{{Proceedings of the 12th International Conference on
+  Music Information Retrieval ({ISMIR} 2011)}}
+    \field{title}{The Million Song Dataset}
+    \field{year}{2011}
+  \endentry
+
+  \entry{midi1}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=XG}{%
+         family={Xia},
+         familyi={X\bibinitperiod},
+         given={Guangyu},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Huang},
+         familyi={H\bibinitperiod},
+         given={Tongbo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MY}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Yifei},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dannenberg},
+         familyi={D\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FC}{%
+         family={Faloutsos},
+         familyi={F\bibinitperiod},
+         given={Christos},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XG+1}
+    \strng{fullhash}{XGHTMYDRFC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-3-319-12976-1\_17.
+    \endverb
+    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
+  MIDI Databases, 259-276}
+    \field{year}{2013}
+  \endentry
+
+  \entry{crepe1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=KJW}{%
+         family={Kim},
+         familyi={K\bibinitperiod},
+         given={Jong\bibnamedelima Wook},
+         giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Salamon},
+         familyi={S\bibinitperiod},
+         given={Justin},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BJP}{%
+         family={Bello},
+         familyi={B\bibinitperiod},
+         given={Juan\bibnamedelima Pablo},
+         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KJW+1}
+    \strng{fullhash}{KJWSJLPBJP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the IEEE International Conference on
+  Acoustics, Speech, and Signal Processing (ICASSP), 2018}
+    \field{title}{CREPE: A Convolutional Representation for Pitch Estimation}
+  \endentry
+
+  \entry{chroma4}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=XG}{%
+         family={Xia},
+         familyi={X\bibinitperiod},
+         given={Guangyu},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HT}{%
+         family={Huang},
+         familyi={H\bibinitperiod},
+         given={Tongbo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MY}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Yifei},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dannenberg},
+         familyi={D\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=FC}{%
+         family={Faloutsos},
+         familyi={F\bibinitperiod},
+         given={Christos},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{XG+1}
+    \strng{fullhash}{XGHTMYDRFC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-3-319-12976-1_17
+    \endverb
+    \field{isbn}{978-3-319-12975-4}
+    \field{pages}{259\bibrangedash 276}
+    \field{title}{MidiFind: Similarity Search and Popularity Mining in Large
+  MIDI Databases}
+    \field{month}{10}
+    \field{year}{2013}
+  \endentry
+
+  \entry{mussim1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=GS}{%
+         family={Gulati},
+         familyi={G\bibinitperiod},
+         given={Sankalp},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Serra},
+         familyi={S\bibinitperiod},
+         given={Joan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SX}{%
+         family={Serra},
+         familyi={S\bibinitperiod},
+         given={Xavier},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GSSJSX1}
+    \strng{fullhash}{GSSJSX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ICASSP.2015.7178055.
+    \endverb
+    \field{title}{An evaluation of methodologies for melodic similarity in
+  audio recordings of Indian art music, 678-682}
+    \field{year}{2015}
+  \endentry
+
+  \entry{guitext1}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=EC}{%
+         family={Erkut},
+         familyi={E\bibinitperiod},
+         given={Cumhur},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=VV}{%
+         family={Välimäki},
+         familyi={V\bibinitperiod},
+         given={Vesa},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Karjalainen},
+         familyi={K\bibinitperiod},
+         given={Matti},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Laurson},
+         familyi={L\bibinitperiod},
+         given={Mikael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EC+1}
+    \strng{fullhash}{ECVVKMLM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Extraction of Physical and Expressive Parameters for
+  Model-based Sound Synthesis of the Classical Guitar}
+    \field{year}{2002}
+  \endentry
+
   \entry{fma1}{inproceedings}{}
     \name{author}{4}{}{%
       {{hash=DM}{%
@@ -1300,6 +1300,127 @@
   within the Million Song Dataset}
     \verb{url}
     \verb http://labrosa.ee.columbia.edu/millionsong/secondhand
+    \endverb
+  \endentry
+
+  \entry{spark}{article}{}
+    \name{author}{14}{}{%
+      {{hash=ZM}{%
+         family={Zaharia},
+         familyi={Z\bibinitperiod},
+         given={Matei},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=XRS}{%
+         family={Xin},
+         familyi={X\bibinitperiod},
+         given={Reynold\bibnamedelima S.},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=WP}{%
+         family={Wendell},
+         familyi={W\bibinitperiod},
+         given={Patrick},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=DT}{%
+         family={Das},
+         familyi={D\bibinitperiod},
+         given={Tathagata},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=AM}{%
+         family={Armbrust},
+         familyi={A\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Dave},
+         familyi={D\bibinitperiod},
+         given={Ankur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MX}{%
+         family={Meng},
+         familyi={M\bibinitperiod},
+         given={Xiangrui},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=RJ}{%
+         family={Rosen},
+         familyi={R\bibinitperiod},
+         given={Josh},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=VS}{%
+         family={Venkataraman},
+         familyi={V\bibinitperiod},
+         given={Shivaram},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=FMJ}{%
+         family={Franklin},
+         familyi={F\bibinitperiod},
+         given={Michael\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Ghodsi},
+         familyi={G\bibinitperiod},
+         given={Ali},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Gonzalez},
+         familyi={G\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Shenker},
+         familyi={S\bibinitperiod},
+         given={Scott},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SI}{%
+         family={Stoica},
+         familyi={S\bibinitperiod},
+         given={Ion},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{ZM+1}
+    \strng{fullhash}{ZMXRSWPDTAMDAMXRJVSFMJGAGJSSSI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1145/2934664
+    \endverb
+    \field{issn}{0001-0782}
+    \field{number}{11}
+    \field{pages}{56\bibrangedash 65}
+    \field{title}{Apache Spark: A Unified Engine for Big Data Processing}
+    \verb{url}
+    \verb http://doi.acm.org/10.1145/2934664
+    \endverb
+    \field{volume}{59}
+    \list{location}{1}{%
+      {New York, NY, USA}%
+    }
+    \field{journaltitle}{Commun. ACM}
+    \field{month}{10}
+    \field{year}{2016}
+  \endentry
+
+  \entry{mapred1im}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{MapReduce}
+    \verb{url}
+    \verb https://commons.wikimedia.org/wiki/File:Mapreduce.png
     \endverb
   \endentry
 
@@ -1715,119 +1836,6 @@
     \field{title}{On Rhythm and General Music Similarity.}
     \field{month}{01}
     \field{year}{2009}
-  \endentry
-
-  \entry{spark}{article}{}
-    \name{author}{14}{}{%
-      {{hash=ZM}{%
-         family={Zaharia},
-         familyi={Z\bibinitperiod},
-         given={Matei},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=XRS}{%
-         family={Xin},
-         familyi={X\bibinitperiod},
-         given={Reynold\bibnamedelima S.},
-         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
-      }}%
-      {{hash=WP}{%
-         family={Wendell},
-         familyi={W\bibinitperiod},
-         given={Patrick},
-         giveni={P\bibinitperiod},
-      }}%
-      {{hash=DT}{%
-         family={Das},
-         familyi={D\bibinitperiod},
-         given={Tathagata},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=AM}{%
-         family={Armbrust},
-         familyi={A\bibinitperiod},
-         given={Michael},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=DA}{%
-         family={Dave},
-         familyi={D\bibinitperiod},
-         given={Ankur},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=MX}{%
-         family={Meng},
-         familyi={M\bibinitperiod},
-         given={Xiangrui},
-         giveni={X\bibinitperiod},
-      }}%
-      {{hash=RJ}{%
-         family={Rosen},
-         familyi={R\bibinitperiod},
-         given={Josh},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=VS}{%
-         family={Venkataraman},
-         familyi={V\bibinitperiod},
-         given={Shivaram},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=FMJ}{%
-         family={Franklin},
-         familyi={F\bibinitperiod},
-         given={Michael\bibnamedelima J.},
-         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-      {{hash=GA}{%
-         family={Ghodsi},
-         familyi={G\bibinitperiod},
-         given={Ali},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=GJ}{%
-         family={Gonzalez},
-         familyi={G\bibinitperiod},
-         given={Joseph},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=SS}{%
-         family={Shenker},
-         familyi={S\bibinitperiod},
-         given={Scott},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=SI}{%
-         family={Stoica},
-         familyi={S\bibinitperiod},
-         given={Ion},
-         giveni={I\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {ACM}%
-    }
-    \strng{namehash}{ZM+1}
-    \strng{fullhash}{ZMXRSWPDTAMDAMXRJVSFMJGAGJSSSI1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1145/2934664
-    \endverb
-    \field{issn}{0001-0782}
-    \field{number}{11}
-    \field{pages}{56\bibrangedash 65}
-    \field{title}{Apache Spark: A Unified Engine for Big Data Processing}
-    \verb{url}
-    \verb http://doi.acm.org/10.1145/2934664
-    \endverb
-    \field{volume}{59}
-    \list{location}{1}{%
-      {New York, NY, USA}%
-    }
-    \field{journaltitle}{Commun. ACM}
-    \field{month}{10}
-    \field{year}{2016}
   \endentry
 \enddatalist
 \endinput

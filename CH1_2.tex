@@ -1,0 +1,65 @@
+%==============================================================
+
+\section{Big Data Environment}\label{bdf}
+
+After accumulating the data and presenting various methods to extract and process the different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Later on chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
+
+\subsection{Apache Hadoop and Spark} 
+
+With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years.\\
+\ \\
+MapReduce\\
+\ \\
+General Purpose Hardware\\
+\ \\
+Error Management\\
+\ \\
+Other Big Data Toolkits: SMACK; lambda;\\
+\ \\
+Data locality\\
+
+\subsubsection{MapReduce}
+
+\FloatBarrier
+\begin{figure}[htbp]
+	\centering
+	%Image based on: https://commons.wikimedia.org/wiki/File:Mapreduce.png
+	\begin{tikzpicture}[node distance = 4cm][every node/.style={thick}]
+	  \colorlet{coul0}{orange!20} \colorlet{coul1}{blue!20} \colorlet{coul2}{red!20} \colorlet{coul3}{green!20}
+	  \tikzstyle{edge}=[->, very thick]
+	  \draw[thick, fill=violet!30] (-1, -2) rectangle node[rotate=90] {\textbf{Input data}} (0,2);
+	  \foreach \i in {0,1,2,3} {
+	    \node[draw, fill=coul\i, xshift=2em] (data\i) at (1.5, 1.5 - \i) {Input};
+	    \node[ellipse, draw, fill=cyan!20, xshift=2em] (map\i) at (3.5, 1.5 - \i) {\textsf{Map}};
+	    \draw[edge] (0,0) -- (data\i.west);
+	    \draw[edge] (data\i) -- (map\i);
+	  }
+	  \node[draw, minimum height=2cm, fill=purple!30, xshift=7em] (resultat) at (10, 0) {\textbf{Results}};
+	  \foreach \i in {0,1,2} {
+	    \node[draw, fill=yellow!20, minimum width=2cm, xshift=4em] (paire\i) at (5.5, 1.5 - \i*1.5) {\begin{minipage}{1cm}Tuples \centering $\langle k,v \rangle$\end{minipage}};
+	    \node[ellipse, draw, fill=cyan!20, xshift=6em] (reduce\i) at (7.5, 1.5 - \i*1.5) {\textsf{Reduce}};
+	    \draw[edge] (paire\i) -- (reduce\i);
+	    \draw[edge] (reduce\i.east) -- (resultat);
+	  }
+	  %paire
+	  \draw[edge] (map0.east) -- (paire0.west); \draw[edge] (map0.east) -- (paire1.west);
+	  \draw[edge] (map1.east) -- (paire0.west); \draw[edge] (map1.east) -- (paire2.west);
+	  \draw[edge] (map2.east) -- (paire1.west); \draw[edge] (map2.east) -- (paire0.west);
+	  \draw[edge] (map3.east) -- (paire1.west); \draw[edge] (map3.east) -- (paire2.west);
+	\end{tikzpicture}
+	\caption{MapReduce \cite{mapred1im}}
+	\label{mapred}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Hadoop vs Spark Memory Management}
+
+\subsection{Spark}
+
+\subsubsection{Spark and RDDs}
+
+\subsubsection{Spark DataFrame}
+
+\subsubsection{lazy evaluation}
+
+\subsubsection{min and max value aggregation}

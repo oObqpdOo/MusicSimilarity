@@ -43,74 +43,76 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Number of songs in the million song dataset per genre\relax }}{20}{figure.3.6}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Construction Noise\relax }}{24}{figure.4.1}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces MapReduce \cite {mapred1im}\relax }}{21}{figure.3.7}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{28}{figure.5.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{28}{figure.5.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{29}{figure.5.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{29}{figure.5.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{30}{figure.5.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{30}{figure.5.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{33}{figure.5.7}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{34}{figure.5.8}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{35}{figure.5.9}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{36}{figure.5.10}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Construction Noise\relax }}{26}{figure.4.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{38}{figure.6.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Chroma Features\relax }}{30}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{39}{figure.6.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Bandpass - Sia\relax }}{30}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{39}{figure.6.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Thresholded Chroma Features - Sia\relax }}{31}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{40}{figure.6.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Processed Chroma Features - Sia\relax }}{31}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{41}{figure.6.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Workflow chroma feature extraction\relax }}{32}{figure.5.5}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Processing Step 3 Chroma Features\relax }}{32}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{47}{figure.7.1}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces cross-correlation\relax }}{35}{figure.5.7}
 \defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.8}{\ignorespaces beat-aligned chromagram\relax }}{36}{figure.5.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark DF implementations, single node, 1517 artists\relax }}{50}{figure.8.1}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-correlation\relax }}{37}{figure.5.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Chroma on 11500 songs, single node\relax }}{52}{figure.8.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Performance of various spark algorithms (MFCC Euc, Notes, RP)\relax }}{55}{figure.8.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.4}{\ignorespaces correlation of features\relax }}{55}{figure.8.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.5}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{56}{figure.8.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.6}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{57}{figure.8.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.7}{\ignorespaces distances 1 song, New Age, 1517 artists\relax }}{58}{figure.8.7}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.8}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 3 genres\relax }}{59}{figure.8.8}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.9}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 3 genres\relax }}{60}{figure.8.9}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.10}{\ignorespaces distances 1 song (Classical), 4 genres (10 songs each)\relax }}{61}{figure.8.10}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8.11}{\ignorespaces genre recall 100 songs\relax }}{62}{figure.8.11}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-correlation\relax }}{38}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {9.1}{\ignorespaces genre recall 100 songs\relax }}{65}{figure.9.1}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Beat Histogram\relax }}{40}{figure.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Rhythmic Patterns\relax }}{41}{figure.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Rhythm Pattern extraction \cite {rp_extract2}\relax }}{41}{figure.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Rhythm Histogram\relax }}{42}{figure.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Detected Onsets (first 30 seconds)\relax }}{43}{figure.6.5}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Performance of various toolkits\relax }}{49}{figure.7.1}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Spark DF implementations, single node, 1517 artists\relax }}{52}{figure.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Chroma on 11500 songs, single node\relax }}{54}{figure.8.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Performance of various spark algorithms (MFCC Euc, Notes, RP)\relax }}{57}{figure.8.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces correlation of features\relax }}{57}{figure.8.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{58}{figure.8.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.6}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{59}{figure.8.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.7}{\ignorespaces distances 1 song, New Age, 1517 artists\relax }}{60}{figure.8.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.8}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 3 genres\relax }}{61}{figure.8.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.9}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 3 genres\relax }}{62}{figure.8.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.10}{\ignorespaces distances 1 song (Classical), 4 genres (10 songs each)\relax }}{63}{figure.8.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8.11}{\ignorespaces genre recall 100 songs\relax }}{64}{figure.8.11}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9.1}{\ignorespaces genre recall 100 songs\relax }}{67}{figure.9.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
