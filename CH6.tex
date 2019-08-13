@@ -1,23 +1,10 @@
 %==============================================================
 
-\chapter{Big Data Framework Spark}\label{bds1}
+\section{Big Data Framework Spark}\label{bds1}
 
-After accumulating the data and presenting various methods to extract and process the different audio features, the following chapters describe the data analysis and computation of the similarities with Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
+\subsection{Apache Spark} 
 
-\section{Apache Hadoop and Spark} 
-
-First of all a small introduction to Big Data processing with Spark is given.
-With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. Map-Reduce as a 
-
-\subsection{Hadoop and Map Reduce}
-
-\subsection{Spark and RDDs}
-
-\subsection{Spark DataFrame}
-
-\subsection{lazy evaluation}
-
-\subsection{min and max value aggregation}
+\subsubsection{min and max value aggregation}
 
 \textit{\textbf{Why? Scaling of distances between 0 to 1 interval to combine different distances\\}}
 
@@ -52,12 +39,12 @@ With the ever growing availability of huge amounts of high dimensional data the 
 \FloatBarrier
 
 
-\section{Data locality and parallelization}
+\subsection{Data locality and parallelization}
 
 \noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
 \noindent\textit{\textbf{insert data locality scheme here\\}}
 
-\section{Combining different measurements}
+\subsection{Combining different measurements}
 
 \noindent\textit{\textbf{weighted arithmetic mean of different distance measurements\\}}
 
@@ -68,7 +55,7 @@ dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 \noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
 
 
-\section{Data aggregation}
+\subsection{Data aggregation}
 
 To work with the features a few transformations have to be done first. 
 
@@ -83,7 +70,7 @@ df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 
 \noindent\textbf{\textit{Explain Single DataFrame vs multiple DataFrames}}
 
-\section{Euclidean Distance}
+\subsection{Euclidean Distance}
 
 \begin{pythonCode}
 from scipy.spatial import distance
@@ -102,7 +89,7 @@ result = result.rdd.flatMap(list).collect()
 \ \\
 \noindent\textit{\textbf{insert analysis of performance\\}}
 
-\section{Bucketed Random Projection}
+\subsection{Bucketed Random Projection}
 
 \begin{pythonCode}
 from pyspark.ml.feature import BucketedRandomProjectionLSH
@@ -119,7 +106,7 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \ \\
 \noindent\textit{\textbf{Is it faster than the UDF tho? - performance test\\}}
 
-\section{Cross-correlation}
+\subsection{Cross-correlation}
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -178,7 +165,7 @@ spark.executor.memory           2g\\
 \ \\
 \noindent\textbf{\textit{Differences in the results to the original paper can be explained with the different underlying beat tracking, different filter parameters and a few improvements that are left out as mentioned in \ref{chromafeat}}\cite{cover802}}
 
-\section{Kullback-Leibler Divergence}
+\subsection{Kullback-Leibler Divergence}
 
 \begin{pythonCode}
 def symmetric_kullback_leibler(vec1, vec2):
@@ -194,7 +181,7 @@ result = result.rdd.flatMap(list).collect()
 
 \noindent\textbf{\textit{Differences in the results to the original musly tool can be explained due to the choice of only 13 MFCC bands in this thesis compared to the 25 bands in musly}\cite{musly1}}
 
-\section{Jensen-Shannon Divergence}
+\subsection{Jensen-Shannon Divergence}
 
 \begin{pythonCode}
 def jensen_shannon(vec1, vec2):
@@ -213,7 +200,7 @@ result = result.rdd.flatMap(list).collect()
 
 \noindent\textbf{\textit{Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit, Lösung 2 nutzen von SKL aber noch rechenintensiver!}\cite[p.45]{schnitzer1}}
 
-\section{Levenshtein distance}
+\subsection{Levenshtein distance}
 
 \begin{pythonCode}
 def get_neighbors_notes(song):
@@ -226,9 +213,9 @@ def get_neighbors_notes(song):
     df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
 \end{pythonCode}
 
-\section{performance}
+\subsection{performance}
 
-\subsection{Performance Comparison of RDD vs DataFrame}
+\subsubsection{Performance Comparison of RDD vs DataFrame}
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -301,7 +288,7 @@ def get_neighbors_notes(song):
 \end{figure}
 \FloatBarrier
 
-\section{feature separation quality}
+\subsection{feature separation quality}
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
@@ -434,7 +421,7 @@ No combination of features is able to accurately separate New Age from Rock and 
 
 
 
-\section{possible performance improvements}
+\subsection{possible performance improvements}
 
 \textit{\textbf{Pre- merge feature sets, broadcast comparator, descending importance pre-filtering\\}}
 \\
@@ -444,10 +431,10 @@ No combination of features is able to accurately separate New Age from Rock and 
 \ \\
 \textit{\textbf{\underline{Is there a better way to cross-correlate???}\\}}
 \ \\
-\section{Other alternatives}
+\subsection{Other alternatives}
 
-\subsection{Alternating Least Squares}
+\subsubsection{Alternating Least Squares}
 
-\subsection{TF-IDF weights}
+\subsubsection{TF-IDF weights}
 
-\subsection{DIMSUM all-pairs similarity}
+\subsubsection{DIMSUM all-pairs similarity}

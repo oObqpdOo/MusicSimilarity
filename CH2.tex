@@ -1,10 +1,13 @@
-\chapter{Timbre Similarity} \label{musly}
+
+\chapter{Similarity Analysis}
+
+\section{Timbre Similarity} \label{musly}
 
 Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref{mfccsim}. This chapter focuses on the different similarity metrics.\\
 To reduce the dimensionality of the data even further, a statistical summarization of the MFCC feature can be calculated \cite[pp. 51ff]{knees1}\\
 
 
-\section{Euclidean Distance}
+\subsection{Euclidean Distance}
 
 For each of the Mel- Bands (12 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 12 mean values, a 12 by 12 co-variance matrix (actually $\frac{12*11}{2}$ values, because of the triangular shape - the upper triangle contains the co-variances and the main diagonal contains the variances) and 12 variances. These vectors are therefore not dependent on the length of the actual song. 
 Using such a model, the distance between two songs can be calculated as in equation \ref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
@@ -15,9 +18,9 @@ d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}
 also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real world scenarios.
 This very basic approach has been refined and improved over the past years. 
 
-\section{Single Gaussian Model}
+\subsection{Single Gaussian Model}
 
-\subsection{Kullback-Leibler Divergence}
+\subsubsection{Kullback-Leibler Divergence}
 
 This approach was first proposed by Mandel and Ellis \cite{mandelellis1} in 2005 and is briefly summarized in \cite[pp. 65f]{knees1}.\\
 After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $tr(\cdot)$ being the trace (i.e. the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$\\
@@ -34,7 +37,7 @@ This can be simplified and written as a closed form according to \cite[p. 44]{sc
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}
 
-\subsection{Jensen-Shannon Divergence}
+\subsubsection{Jensen-Shannon Divergence}
 The second available metric in the musly toolkit by Schnitzer is using the Jenson-Shannon Divergence (in an slightly adapted way). "The Jensen-Shannon (JS) divergence is another symmetric divergence derived from the Kullback-Leibler divergence. To compute it, a mixture $X_m$ of the two distributions is defined" \cite[p. 43]{schnitzer1}. "To use the Jensen-Shannon divergence [...] to estimate similarities between Gaussians, an approximation of $X_m$ as a single multivariate Gaussian can be used [...] This approximation of $X_m$ is exactly the same as the left-type Kullback-Leibler centroid of the two Gaussian distributions [...]" \cite[p. 44]{schnitzer1} 
 \begin{equation} \label{eq:jsl1}
 \mu_m = \frac{1}{2} \mu_P + \frac{1}{2} \mu_Q
@@ -56,20 +59,20 @@ MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
 according to \cite[p. 80]{knees1}
 
-\section{Other Similarity Metrics}
+\subsection{Other Similarity Metrics}
 \ \\
 Another, more compute heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore the usage of GMMs is not further considered in this thesis.
 \ \\
 The last method mentioned in this thesis for timbral similarity is to use block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. 
 Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g. multiple second long, audio frames and features like fluctuation patterns are computed for these frames. 
 
-\section{Validation}
+\subsection{Validation}
 
 For this thesis the Kullback-Leibler divergence, the Jensen-Shannon divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of the distance computing algorithms and a re-implementation of the block-level features remains left open for future research due to its rather compute heavy nature.\\
 Using the musly toolkit, a first evaluation is presented in the next section. The feature extraction and distance calculation can also be done in python using the librosa library and a small reimplementation of the Mandel-Ellis approach was tested in advance.\\
 \textit{A possible measure for the efficiency of a timbre similarity algorithm is the ability to find songs of the same genre.}
 
-\subsection{Construction Noise}
+\subsubsection{Construction Noise}
 Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results could be achieved in descending order: 
 
 \begin{itemize}
@@ -150,22 +153,3 @@ The slower recording wasn't even in the top 30 list of the most similar songs.
 The same was observable for other cover versions of songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. 
 This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches and melody movements.
 
-
-\section{summary}
-
-Three different similarity metrics are chosen: 
-\begin{itemize}
-	\item Euclidean Distance
-	\item Symmetric Kullback-Leibler Divergence
-	\item Jensen-Shannon like Divergence
-\end{itemize}
-To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each mfcc band. These are stored in two different output text files: 
-\begin{itemize}
-	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $b$))
-	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix as a vector (length $\frac{b \cdot (b-1)}{2}$))
-\end{itemize}
-The amount of chosen mfcc bands is $b = 13$.\\
-The second file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.
-The text files contain strings like the following:\\
-\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
-\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}

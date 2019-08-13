@@ -72,10 +72,9 @@ The idea of using genre specific features could be evaluated any further
 Another important question is how to measure similarity algorithms. 
 There are a few possibilities like genre, composer/ interpret or cover song identification. Or actual user data. MSD Challenge Dataset usable?\cite{msdchallenge1}\\}
 
-\chapter{Audio features and similarity measurements}\label{audiofeat}
+\chapter{Music Information Retrieval and Big Data}\label{audiofeat}
 
-\section{Music Information Retrieval}
-The field of music information retrieval (MIR) is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits and approaches to music similarity.
+The field of music information retrieval (MIR) is a large research area combining studies in computer science like signal processing and machine learning as well as psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits and approaches to music similarity. Various datasets are presented and an overview over Big Data frameworks is given as well.
 
 \section{Audio Features}
 
@@ -484,13 +483,13 @@ The usage of MIDI-files is not considered further due to the rather poor perform
 Collaborative filtering is left out due to the fact that it does not necessarily represent the musical features and properties but the personal taste of music. And secondly no dataset with the required information and music files was found (\ref{data}). 
 Genre specific features are also not an option because this field is not yet very well researched and the development of algorithms and the extraction of features would go beyond the scope of this thesis.
 
-\chapter{Data aggregation}\label{data}
+\section{Data aggregation}\label{data}
 
 To evaluate the music similarity algorithms and metrics a lot of music data is needed.
 
-\section{Datasets}\label{datasets}
+\subsection{Datasets}\label{datasets}
 
-\subsection{Free Music Archive}
+\subsubsection{Free Music Archive}
 
 The largest dataset is the Free Music Archive- dataset (fma) consisting of 106733 different songs totalling an amount of nearly one terabyte of music data from all kinds of different music genres.\cite{fma1} There is also a lot of metadata information available for most of the songs.
 
@@ -503,7 +502,7 @@ The largest dataset is the Free Music Archive- dataset (fma) consisting of 10673
 \end{figure}
 \FloatBarrier
 
-\subsection{Musicnet and 1517 artists}
+\subsubsection{Musicnet and 1517 artists}
 
 Another source of music is the Musicnet dataset.\cite{musicnet1} It includes 330 pieces of classical music with musical notes as annotations. 
 Other sources of musical information would be the 1517-Artists dataset containing 3180 songs of multiple genres. \cite{1517artists1}
@@ -517,7 +516,7 @@ Other sources of musical information would be the 1517-Artists dataset containin
 \end{figure}
 \FloatBarrier
 
-\subsection{MedleyDB}
+\subsubsection{MedleyDB}
 
 For a melody/ pitch based similarity analysis, multitrack datasets could provide useful data, due to the fact that the pitch estimation can be done instrument by instrument. 
 Datasets available are the MedleyDB\cite{medleydb1} and MedleyDB2\cite{medleydb2} datasets as well as the Open Multitrack Dataset\cite{openmult1} currently consisting of 593 multi-tracks in which the MedleyDB dataset is already included, leaving 481 other tracks for analysis.
@@ -531,12 +530,12 @@ Datasets available are the MedleyDB\cite{medleydb1} and MedleyDB2\cite{medleydb2
 \end{figure}
 \FloatBarrier
 
-\subsection{covers80}
+\subsubsection{covers80}
 
 For a cover song detection system, the covers80 dataset is available \cite{cover80} containing 80 original songs mostly from the musical genres rock and pop and 80 cover versions. These cover versions tend to differ significantly in musical style, rhythm and timbre from the original.\\
 The ability to detect cover songs or different versions/ recording of a musical piece could be a good measurement for the efficiency of music similarity algorithms. In the next section one test case is presented, showing, that a MFCC based music similarity algorithm isn't able to detect different recordings of the same piano piece as most similar to each other. 
 
-\subsection{Private music collection}
+\subsubsection{Private music collection}
 
 The private music collection used in this work consist mainly of metal music. The music was legally purchased, all rights belong to the respective owners. The distribution of different songs per genre for this dataset is visualized in figure \ref{privmusdist}.
 \begin{figure}[thpb]
@@ -550,7 +549,7 @@ The private music collection used in this work consist mainly of metal music. Th
 Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud\cite{bqpd1}
 The private music collection is fully cataloged and the according pdf is the appendices.
 
-\subsection{Overview and other sources}
+\subsubsection{Overview and other sources}
 
 The music sources and amounts of songs used for the task at hand is listed in table \ref{table_dsets}.
 
@@ -582,9 +581,9 @@ The music sources and amounts of songs used for the task at hand is listed in ta
 	\label{table_dsets}
 \end{table}
 
-\section{Alternatives}
+\subsection{Alternatives}
 
-\subsection{Spotify API/ Echonest}\label{spotipy}
+\subsubsection{Spotify API/ Echonest}\label{spotipy}
 
 Another way of getting music information, audio analysis and metadata is by using the Spotify API\cite{spotifyapi1}
 Part of the available audio features comes from the Echo Nest\cite{echonest1}.
@@ -637,7 +636,7 @@ In the sense of the Spotify Developer Terms of Service \cite{spottac2} there may
 However it does not prohibit the usage for non-commercial cases.  
 Upon request the Spotify API developer team did not respond and therefor in this thesis the Spotify API wont be used to create a test dataset.
 
-\subsection{Million Song Dataset}
+\subsubsection{Million Song Dataset}
 
 Another outstanding and very large dataset is available with the Million Song Dataset (MSD)\cite{msd1}. 
 It contains a large set of metadata per track as well as a lot of supplementary datasets, like the Tagtraum genre annotation (figure \ref{msddist})\cite{msd5}, the last.fm dataset\cite{msd2} and the Echo Nest API dataset\cite{msd3}. Although the MSD does not contain any music files in the first place, 30 second samples could be gathered through simple scripts from 7digital.com when the dataset was made publicly available. On top of that the Echo Nest API data already contains a lot of audio features like pitch, loudness, energy and danceability to name just a few.

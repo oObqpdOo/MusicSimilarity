@@ -1,11 +1,11 @@
 
-\chapter{Rhythmic Similarity}\label{rhythmsimc}
+\section{Rhythmic Similarity}\label{rhythmsimc}
 
 This chapter provides an overview over some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
 Nearly every MIR Toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution to computing very low level rhythmic similarities is by sorting and comparing songs by their tempo. Of course there are far better and more accurate solutions. By just comparing the tempo of songs a lot of rhythm information is lost e.g. the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
 This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a big data framework.\\
 
-\section{Beat histogram}\label{beathist}
+\subsection{Beat histogram}\label{beathist}
 
 Other similarity measurements are e.g. the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. These are relatively similar to the later evaluated Rhythm Histograms.
 Gruhne (et al.) further improved the beat histograms and suggested an additional post processing step for the beat histogram before calculating the similarity between songs with the euclidean distance, to improve a comparison of two songs with different tempi by transforming the beat histograms into the logarithmic lag domain. They found, that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further \cite[182]{rbh1}.
@@ -49,7 +49,7 @@ Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurr
  
 Another feature that will just be mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1}.
 
-\section{Rhythm patterns}
+\subsection{Rhythm patterns}
 
 A more state-of-the-art feature is the so called rhythm pattern, also known as fluctuation patterns for instance mentioned by \cite{rp1}. 
 To extract these features the rp\_extractor library \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible while at the same time substantial differences between the different songs are recognizable.
@@ -164,7 +164,7 @@ To compare two different songs the euclidean distance between the vectorized rhy
 Pohle, Schnitzer et al. refined Fluctuation Patterns into Onset Patterns e.g. by using semitone bands instead of fewer critical bands to detect onsets. \cite{rp2}\\
 This thesis however focuses on Fluctuation/ Rhythm patterns extracted with the rp\_extractor library. 
 
-\section{Rhythm Histogram}
+\subsection{Rhythm Histogram}
 
 A more simplistic and lower dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
 The difference in comparison to the beat histogram mentioned earlier in section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefor the sub-rhythms of single instruments into account. 
@@ -202,7 +202,7 @@ The difference in comparison to the beat histogram mentioned earlier in section 
 	\label{fig:rh1}
 \end{figure}
 
-\section{cross-correlation}
+\subsection{cross-correlation}
 
 Estimating the onset strength per beat and creating a discrete-time signal for each song is an other option. Similar to the chroma features the cross-correlation of the onset functions could be used as a similarity measurement. 
 
@@ -243,7 +243,46 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
 In conclusion this approach is discarded and not further considered and tested in this thesis.  
 
-\section{summary}
+\section{Summary}
+
+\subsection{Timbre Similarity}
+
+Three different similarity metrics are chosen: 
+\begin{itemize}
+	\item Euclidean Distance
+	\item Symmetric Kullback-Leibler Divergence
+	\item Jensen-Shannon like Divergence
+\end{itemize}
+To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each mfcc band. These are stored in two different output text files: 
+\begin{itemize}
+	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $b$))
+	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix as a vector (length $\frac{b \cdot (b-1)}{2}$))
+\end{itemize}
+The amount of chosen mfcc bands is $b = 13$.\\
+The second file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.
+The text files contain strings like the following:\\
+\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
+\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}
+
+\subsection{Melodic Similarity}
+
+Two different similarity metrics are chosen: 
+\begin{itemize}
+	\item Levenshtein Distance
+	\item cross-correlation on full beat aligned and per beat averaged chroma features, key shifted to A
+\end{itemize}
+These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
+\begin{itemize}
+	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
+	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
+\end{itemize}
+The output files contain strings like follows:\\
+\textit{music/guitar2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
+\textit{music/guitar3.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}
+for the out.notes files and out.chroma files. 
+
+\subsection{Rhythm Similarity}
+
 Three different similarity metrics are chosen: 
 \begin{itemize}
 	\item euclidean distance between beat histograms

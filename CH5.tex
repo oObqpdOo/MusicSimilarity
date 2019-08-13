@@ -1,12 +1,16 @@
 %==============================================================
 
-\chapter{Feature Extraction Performance}\label{simmet}
+\chapter{Implementation}
+
+\textit{\textbf{Split in two parts -> Feature Extraction and Big Data on extracted features}}
+
+\section{Feature Extraction Performance}\label{simmet}
 
 So far the required audio features have been selected in chapter \ref{audiofeat} as well as toolkits to extract those features from the audio data.
 In chapter \ref{data} different sources for audio files have been presented. Chapter \ref{musly}, \ref{melsimc} and \ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
 This chapter focuses on the selection of datasets to extract features from and the performance of the feature extraction and pre-processing software implementation.  
 
-\section{Test Datasets}
+\subsection{Test Datasets}
 
 Chapter \ref{datasets} introduced a range of MIR datasets but not all are fitting to the problems this thesis evaluates. To test the algorithms on the one hand a lot of data is needed, so the Free Music Archive with its over 100000 songs would be a solid option for performance tests. However on the other hand the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic and rock. Also this dataset may not be really representative for actual popular music, a lot of the songs are live recordings with poor audio quality, possibly influencing the results.
 The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
@@ -32,13 +36,11 @@ In conclusion that sums up to about 117000 songs for future performance tests an
 \end{table}
 \FloatBarrier
 
-
-
-\section{Feature Extraction Performance}
+\subsection{Feature Extraction Performance}
 
 After evaluating the different features in the last three chapters, this one discusses the feature extraction process in detail. The post processing of the features like the note estimation from the chroma features and the calculation of statistic features from the mfccs was already explained in the previous chapters and is left out here. The full code is in the appendices.
 
-\subsection{Librosa}
+\subsubsection{Librosa}
 
 For most of the plots in the introduction section \ref{audiofeat} the python toolkit librosa was used because of its ease of use and very good documentation. The code example shows the necessary methods to extract the most important features like mfcc, chromagram and beats/ onsets.
 \lstset{language=Python} 
@@ -55,7 +57,7 @@ chroma = librosa.feature.chroma_stft(x, fs)
 But when extracting features from batches of audio data the librosa library turned out to be very slow. For a very small dataset of 100 songs, the extraction of just the mean, variance and covariance of the mfccs and the estimated notes from the chromagram took about 48 minutes. 
 For larger datasets like the 1517 artists dataset the feature extraction process would have taken about 22 hours. 
 
-\subsection{Essentia}
+\subsubsection{Essentia}
 
 \cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that essentia is a much faster alternative to librosa due to the underlying C++ Code and provides even more features, but it is a bit less well documented and requires more effort in implementation at the same time.\\ 
 In the end the code to extract the necessary features had to be rewritten for the usage of essentia due to the slow performance of librosa. Essentia offers two different ways to handle audio files. The first one is to use the essentia standard library. It offers similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and preprocessed by hand. 
@@ -116,7 +118,7 @@ chroma = pool['tonal.hpcp'].T
 
 The calculation with the essentia library for 100 songs took less than half of the time librosa needed. This is a significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet.
 
-\subsection{Essentia parallel}
+\subsubsection{Essentia parallel}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
 \begin{pythonCode}
@@ -138,11 +140,12 @@ time = \frac{\#songs}{\#CPUs} \cdot 15.4s
 Parallel python also opens up the possibility to use a cluster instead of a single node PC.\\
 For convenience, every processor gets a batch of files instead of single songs. For every batch different output files for the various features are created. The batch size determines the overall size of these feature-files. For example for the 1517 artists dataset a batch size of 400 songs was chosen, so overall 4 CPUs had to process 2 batches, resulting in 8 different output files with the chroma feature files being the largest with about 25MB per file.
 
-\subsection{rp\_extractor}
+\subsubsection{rp\_extractor}
 
 For the extraction of the rhythm patterns and rhythm histogram features as described in chapter \ref{rhythmsimc} the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 442 seconds.
 
-\subsection{performance}
+\subsubsection{performance}
+
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
