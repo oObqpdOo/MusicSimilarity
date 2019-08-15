@@ -28,7 +28,7 @@ In conclusion that sums up to about 117000 songs for performance tests and about
 			\hline
 			1517 artists & 3180 Songs\\
 			\hline
-			covers80 & 160 Songs (80 originals + 80 covers)\\
+			covers80 & 164 Songs (80 originals + 84 covers)\\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -220,8 +220,8 @@ In summary the estimated time based on the performance measurements can be calcu
 For the extraction of the features from the fma dataset on the "ARA" cluster of the Friedrich-Schiller-University in Jena parallel python had to be replaced with mpi4py. 
 Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
 Every compute process gets a rank number and is aware of the overall count of all processes. With these two values the file list of all audio files is split and each process only processes the according files. The audio files were stored in a parallel cluster file system called beegfs \cite{beegfs}. Equally to the implementation using parallel python every process stores the results in batches in separate output files, each of them containing 25 songs.\\
-All files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs to evaluate. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyperthreading). To increase the available Memory per CPU, only 18 CPU cores per node were used. During the computation of the features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
-The extraction of the features took 1439s (fastest process) to 1950s (slowest). With a better balancing and messaging between the processes, the task could be balanced in a way where idle tasks take parts of the filelist from tasks that are still processing. 
+All files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs to evaluate. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available Memory per CPU, only 18 CPU cores per node were used. During the computation of the features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
+The extraction of the features took 1439s (fastest process) to 1950s (slowest). With a better balancing and messaging between the processes, the task could be distributed in a way where idle tasks take parts of the file list from tasks that are still processing. 
 
 \begin{pythonCode}
 comm = MPI.COMM_WORLD   # get MPI communicator object
@@ -244,3 +244,6 @@ for index in xrange(start + rank, last, size):
 
 \noindent The extraction of the rhythm patterns spawns the same amount of processes, but each of the processes is able to make use of 4 CPU cores. The fastest process finished after 1657s and the slowest one took 1803s.
 
+\subsubsection{Total amount of songs}
+
+Due to the above mentioned filtering of larger audio files and due to the fact that the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So in the end the overall count of songs where features could be extracted is 114310.\\

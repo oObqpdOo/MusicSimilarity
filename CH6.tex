@@ -2,73 +2,32 @@
 
 \section{Big Data Framework Spark}\label{bds1}
 
-\subsection{Apache Spark} 
+After the features are extracted, the next step is to load the feature files into the HDFS. 
+The first tests with spark were performed on a single PC with 4 CPU cores, running Spark 2.4.0.\\ The cluster test were performed on the ARA- Cluster, that offers 16 compute-nodes with 32 CPU-cores per node (72 with HT) and 192GB RAM. The cluster was running an older version of Spark (1.6.0)\\
 
-\subsubsection{min and max value aggregation}
+\subsection{Data preprocessing}
 
-\textit{\textbf{Why? Scaling of distances between 0 to 1 interval to combine different distances\\}}
-
-\FloatBarrier
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/separate.png}
-				\caption{Separate DataFrames}
-				\label{sc3}
-			\end{subfigure}%
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/df_merged.png}
-				\caption{Single DataFrames, multiple collects}
-				\label{sc4}
-			\end{subfigure}% 	
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/speed_uo.png}
-				\caption{Single DataFrames, single collects}
-				\label{sc5}
-			\end{subfigure}% 		
-	}}
-	\caption{Spark DF implementations, single node, 1517 artists}
-	\label{fig:spark2}
-\end{figure}
-\FloatBarrier
-
-
-\subsection{Data locality and parallelization}
-
-\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
-\noindent\textit{\textbf{insert data locality scheme here\\}}
-
-\subsection{Combining different measurements}
-
-\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements\\}}
-
-\begin{equation} \label{eq:distance}
-dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
-\end{equation}
-
-\noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
-
-
-\subsection{Data aggregation}
-
-To work with the features a few transformations have to be done first. 
+The features are stored in text files as described in chapter \ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contain the features of a small number of songs. Because many small files are inefficient to process with Spark \cite[p. 153]{sparkbook1} all files containing the same feature type are merged to one large file, before being loaded into the HDFS. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \textit{rdd.coalesce(repartition\_count)} command. 
+Finally to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of numbers, each representing a certain note. To compare these using the Levenshtein distance, these lists are converted into strings. 
 
 \begin{pythonCode}
-song = "music/TURCA1.wav"
-chroma = sc.textFile("features/out[0-9]*.notes")
+chroma = sc.textFile("features/out[0-9]*.notes").coalesce(repartition_count)
 chroma = chroma.map(lambda x: x.split(';'))
-chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("10",'K').replace("11",'L').replace("0",'A').replace("1",'B').replace("2",'C').replace("3",'D').replace("4",'E').replace("5",'F').replace("6",'G').replace("7",'H').replace("8",'I').replace("9",'J')))
+chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("0",'A').replace("1",'B').replace("2",'C').replace("3",'D').replace("4",'E').replace("5",'F').replace("6",'G').replace("7",'H').replace("8",'I').replace("9",'J').replace("10",'K').replace("11",'L')))
 chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace(',','').replace(' ','')))
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
 
-\noindent\textbf{\textit{Explain Single DataFrame vs multiple DataFrames}}
+All the other features are stored as lists of floats and have to be converted to vectors.  
+
+\begin{pythonCode}
+list_to_vector_udf = udf(lambda l: Vectors.dense(l), VectorUDT())
+rp = sc.textFile("features[0-9]*/out[0-9]*.rp").coalesce(repartition_count)
+rp = rp.map(lambda x: x.split(","))
+kv_rp= rp.map(lambda x: (x[0].replace(";","").replace(".","").replace(",","").replace(" ",""), list(x[1:])))
+rp_df = spark.createDataFrame(kv_rp, ["id", "rp"])
+rp_df = rp_df.select(rp_df["id"],list_to_vector_udf(rp_df["rp"]).alias("rp"))
+\end{pythonCode}
 
 \subsection{Euclidean Distance}
 
@@ -91,10 +50,12 @@ result = result.rdd.flatMap(list).collect()
 
 \subsection{Bucketed Random Projection}
 
+Due to the fact that the ARA cluster is running with PySpark version 1.6.0, the Bucketed Random Projection (BRP) Algorithm could only be tested on the single node test platform. 
+
 \begin{pythonCode}
 from pyspark.ml.feature import BucketedRandomProjectionLSH
 #...
-brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=1.0)
+brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=25.0)
 model = brp.fit(df_vec)
 comparator_value = Vectors.dense(comparator[0])
 result = model.approxNearestNeighbors(df_vec, comparator_value, df_vec.count()).collect()
@@ -137,7 +98,6 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 	\label{fig:chroma}
 \end{figure}
 \FloatBarrier
-
 
 \textit{\textbf{2 Versions explained - with additional key shift and without}}
 \begin{pythonCode}
@@ -215,7 +175,32 @@ def get_neighbors_notes(song):
 
 \subsection{performance}
 
-\subsubsection{Performance Comparison of RDD vs DataFrame}
+\begin{pythonCode}
+confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
+confCluster.set("spark.driver.memory", "64g")
+confCluster.set("spark.executor.memory", "64g")
+confCluster.set("spark.driver.memoryOverhead", "32g")
+confCluster.set("spark.executor.memoryOverhead", "32g")
+#Be sure that the sum of the driver or executor memory plus the driver or executor memory overhead is always less than the value of yarn.nodemanager.resource.memory-mb
+#confCluster.set("yarn.nodemanager.resource.memory-mb", "192000")
+#spark.driver/executor.memory + spark.driver/executor.memoryOverhead < yarn.nodemanager.resource.memory-mb
+confCluster.set("spark.yarn.executor.memoryOverhead", "4096")
+#set cores of each executor and the driver -> less than avail -> more executors spawn
+confCluster.set("spark.driver.cores", "32")
+confCluster.set("spark.executor.cores", "32")
+confCluster.set("spark.dynamicAllocation.enabled", "True")
+confCluster.set("spark.dynamicAllocation.minExecutors", "16")
+confCluster.set("spark.dynamicAllocation.maxExecutors", "32")
+confCluster.set("yarn.nodemanager.vmem-check-enabled", "false")
+repartition_count = 32
+\end{pythonCode}
+
+\subsubsection{Differences between the feature types}
+
+
+\subsubsection{Performance Comparison of RDD vs DataFrames vs single DataFrame}
+
+\noindent\textbf{\textit{Explain Single DataFrame vs multiple DataFrames}}
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -285,6 +270,41 @@ def get_neighbors_notes(song):
 	\end{tikzpicture}
 	\caption{Performance of various spark algorithms (MFCC Euc, Notes, RP)}
 	\label{perfspark}
+\end{figure}
+\FloatBarrier
+
+
+\subsubsection{min and max value aggregation}
+
+\textit{\textbf{Why? Scaling of distances between 0 to 1 interval to combine different distances\\}}
+
+\FloatBarrier
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/separate.png}
+				\caption{Separate DataFrames}
+				\label{sc3}
+			\end{subfigure}%
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/df_merged.png}
+				\caption{Single DataFrames, multiple collects}
+				\label{sc4}
+			\end{subfigure}% 	
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering
+				\includegraphics[scale=0.22]{Images/Spark/speed_uo.png}
+				\caption{Single DataFrames, single collects}
+				\label{sc5}
+			\end{subfigure}% 		
+	}}
+	\caption{Spark DF implementations, single node, 1517 artists}
+	\label{fig:spark2}
 \end{figure}
 \FloatBarrier
 

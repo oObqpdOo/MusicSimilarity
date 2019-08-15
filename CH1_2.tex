@@ -48,7 +48,7 @@ replication rate\\
 
 \subsubsection{Hadoop}
 
-General Purpose Hardware\\
+General Purpose Hardware/ commodity hardware\\
 \ \\
 Error Management\\
 \ \\
@@ -102,3 +102,22 @@ caching\\
 	\label{dataloc}
 \end{figure}
 \FloatBarrier
+
+\subsubsection{Spark application UI}
+
+\subsection{Data locality and parallelization}
+
+\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
+\noindent\textit{\textbf{insert data locality scheme here\\}}
+
+\subsection{Combining different measurements}
+
+\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements\\}}
+
+\begin{equation} \label{eq:distance}
+dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
+\end{equation}
+
+\noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
+
+

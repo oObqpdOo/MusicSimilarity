@@ -243,7 +243,7 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
 In conclusion this approach is discarded and not further considered and tested in this thesis.  
 
-\section{Summary}
+\section{Summary}\label{sumfeat}
 
 \subsection{Timbre Similarity}
 
@@ -261,8 +261,8 @@ To calculate the distances, for each song the mean vector, variance and covarian
 The amount of chosen mfcc bands is $b = 13$.\\
 The second file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.
 The text files contain strings like the following:\\
-\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
-\textit{music/WALLS1.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}
+\textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
+\textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}
 
 \subsection{Melodic Similarity}
 
@@ -277,8 +277,8 @@ These are stored in two different output text files. The vector length is depend
 	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
 The output files contain strings like follows:\\
-\textit{music/guitar2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
-\textit{music/guitar3.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}
+\textit{music/CHANDELIER2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
+\textit{music/CHANDELIER2.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}
 for the out.notes files and out.chroma files. 
 
 \subsection{Rhythm Similarity}
