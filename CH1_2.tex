@@ -1,26 +1,16 @@
 %==============================================================
 
-\section{Big Data Environment}\label{bdf}
+\section{Big Data processing}\label{bdf}
 
-After accumulating the data and presenting various methods to extract and process the different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Later on chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements. 
+After accumulating the data and presenting various methods to extract and process different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Later on chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements.
 
-\subsection{Apache Hadoop and Spark} 
+\subsection{Hadoop}
 
-With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years.\\
-\ \\
-MapReduce\\
-\ \\
-General Purpose Hardware\\
-\ \\
-Error Management\\
-\ \\
-Other Big Data Toolkits: SMACK; lambda;\\
-\ \\
-Data locality\\
-\ \\
-user defined function\\
+With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. Search engine providers like Google and Yahoo firstly ran into the problem in the early 2000s \cite[p. 6]{sparkbook1}.
 
 \subsubsection{MapReduce}
+
+MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 \cite{mapreduce1}. Figure \ref{mapred} shows the basic scheme of a MapReduce program. The core idea is to split a problem into many independent tasks.
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -54,9 +44,29 @@ user defined function\\
 \end{figure}
 \FloatBarrier
 
-\subsubsection{Hadoop vs Spark Memory Management}
+replication rate\\
+
+\subsubsection{Hadoop}
+
+General Purpose Hardware\\
+\ \\
+Error Management\\
+\ \\
+Data locality\\
+\ \\
+Other Big Data Toolkits: SMACK; lambda; spark\\
 
 \subsection{Spark}
+
+SQL vs NoSQL\\
+\ \\
+user defined function\\
+\ \\
+cluster configuration file\\
+\ \\
+streaming\\
+\ \\
+caching\\
 
 \subsubsection{Spark and RDDs}
 
@@ -65,3 +75,30 @@ user defined function\\
 \subsubsection{lazy evaluation}
 
 \subsubsection{min and max value aggregation}
+
+\subsubsection{Hadoop vs Spark Memory Management}
+
+\FloatBarrier
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+	\node[server](server 1){};
+	\node[server, right of= server 1](server 2){};
+	\node[server, right of= server 2](server 3){};
+	\node[rack switch, above of=server 2,xshift=0.1cm,yshift=0.3cm]
+	  (rack switch 1){};
+	\draw[thick,darkgray!10!gray] (server 1.north)--(rack switch 1);
+	\draw[thick,darkgray!10!gray] (server 2.north)--(rack switch 1);
+	\draw[thick,darkgray!10!gray] (server 3.north)--(rack switch 1);
+	% = = = = = = = = = = = = = = = =
+	% Labels
+	% = = = = = = = = = = = = = = = =
+	\node[xshift=-1.55cm,yshift=0.2cm,left of = server 3,align=left](lev1)
+	  {Computing Servers};
+	\node[xshift=-0.55cm,yshift=0.3cm,above of = lev1,align=left](lev2)
+	  {Access Layer};
+	\end{tikzpicture}
+	\caption{Data locality}
+	\label{dataloc}
+\end{figure}
+\FloatBarrier

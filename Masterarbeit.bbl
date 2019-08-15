@@ -1416,6 +1416,58 @@
     \field{year}{2016}
   \endentry
 
+  \entry{sparkbook1}{book}{}
+    \name{author}{1}{}{%
+      {{hash=AJ}{%
+         family={Aven},
+         familyi={A\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley Professional}%
+    }
+    \strng{namehash}{AJ1}
+    \strng{fullhash}{AJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{1st}
+    \field{isbn}{013484601X, 9780134846019}
+    \field{title}{Data Analytics with Spark Using Python}
+    \field{year}{2018}
+  \endentry
+
+  \entry{mapreduce1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=DJ}{%
+         family={Dean},
+         familyi={D\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Ghemawat},
+         familyi={G\bibinitperiod},
+         given={Sanjay},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DJGS1}
+    \strng{fullhash}{DJGS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1145/1327452.1327492
+    \endverb
+    \field{pages}{137\bibrangedash 150}
+    \field{title}{MapReduce: Simplified Data Processing on Large Clusters}
+    \field{volume}{51}
+    \field{journaltitle}{Communications of the ACM}
+    \field{month}{01}
+    \field{year}{2004}
+  \endentry
+
   \entry{mapred1im}{inproceedings}{}
     \field{labeltitlesource}{title}
     \field{title}{MapReduce}
@@ -1836,6 +1888,22 @@
     \field{title}{On Rhythm and General Music Similarity.}
     \field{month}{01}
     \field{year}{2009}
+  \endentry
+
+  \entry{mpi4py}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{mpi4py}
+    \verb{url}
+    \verb https://pypi.org/project/mpi4py/
+    \endverb
+  \endentry
+
+  \entry{beegfs}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{beegfs}
+    \verb{url}
+    \verb http://www.beegfs.io/content/latest-release/
+    \endverb
   \endentry
 \enddatalist
 \endinput

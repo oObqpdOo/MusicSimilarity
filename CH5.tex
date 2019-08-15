@@ -15,7 +15,7 @@ This chapter focuses on the selection of datasets to extract features from and t
 Chapter \ref{datasets} introduced a range of MIR datasets but not all are fitting to the problems this thesis evaluates. To test the algorithms on the one hand a lot of data is needed, so the Free Music Archive with its over 100000 songs would be a solid option for performance tests. However on the other hand the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic and rock. Also this dataset may not be really representative for actual popular music, a lot of the songs are live recordings with poor audio quality, possibly influencing the results.
 The 1517 artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms e.g. by genre recall this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
 The last source used in this thesis is the private music collection. This collection is biased towards metal music but due to the match with personal taste, it offers a subjective evaluation of the results of the similarity analysis. 
-In conclusion that sums up to about 117000 songs for future performance tests and about 12000 songs for a detailed evaluation of the algorithms in this thesis. As mentioned in \ref{datasets} all albums from the private music collections are cataloged as well and the associated document is in the appendices. For the first tests an even smaller sample dataset containing 10 songs out of 10 different genres was created from the private music collection and the list with the belonging songs is also in the appendices.
+In conclusion that sums up to about 117000 songs for performance tests and about 12000 songs for a detailed evaluation of the algorithms in this thesis. As mentioned in \ref{datasets} all albums from the private music collections are cataloged as well and the associated document is in the appendices. For the first tests an even smaller sample dataset containing 10 songs out of 10 different genres was created from the private music collection and the list with the belonging songs is also in the appendices.
 
 \begin{table}[h]
 	\label{used_dsets}
@@ -50,8 +50,7 @@ x, fs = librosa.load(path)
 mfcc = librosa.feature.mfcc(y=x, sr=fs, n_mfcc=12)
 onset_env = librosa.onset.onset_strength(x, fs, aggregate=np.median)
 tempo, beats = librosa.beat.beat_track(onset_envelope=onset_env,sr=fs)
-hop_length = 512
-times = librosa.frames_to_time(np.arange(len(onset_env)), sr=fs, hop_length=hop_length)
+times = librosa.frames_to_time(np.arange(len(onset_env)), sr=fs, hop_length= 512)
 chroma = librosa.feature.chroma_stft(x, fs)
 \end{pythonCode}	
 But when extracting features from batches of audio data the librosa library turned out to be very slow. For a very small dataset of 100 songs, the extraction of just the mean, variance and covariance of the mfccs and the estimated notes from the chromagram took about 48 minutes. 
@@ -71,10 +70,8 @@ audio = es.MonoLoader(filename=path, sampleRate=fs)()
 hamming_window = es.Windowing(type='hamming')
 spectrum = es.Spectrum()
 mfcc = es.MFCC(numberCoefficients=13)
-frame_sz = 2048
-hop_sz = 1024
 mfccs = numpy.array([mfcc(spectrum(hamming_window(frame)))[1] 
-	for frame in es.FrameGenerator(audio, frameSize=frame_sz, hopSize=hop_sz)])
+	for frame in es.FrameGenerator(audio, frameSize=2048, hopSize=1024)])
 rhythm_extractor = es.RhythmExtractor2013(method="multifeature")
 bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
 peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, histogram =
@@ -118,7 +115,7 @@ chroma = pool['tonal.hpcp'].T
 
 The calculation with the essentia library for 100 songs took less than half of the time librosa needed. This is a significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet.
 
-\subsubsection{Essentia parallel}
+\subsubsection{parallel python}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
 \begin{pythonCode}
@@ -203,11 +200,10 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 	    
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Performance of various toolkits}
+	\caption{Performance of various toolkits on a single node}
 	\label{perfex}
 \end{figure}
-In summary the estimated time based on the performance measurements can be calculated and is listed below, leading to the conclusion that the extraction of the features for the full dataset including the FMA dataset can only be done with the help of a computing cluster or the FMA has to be left out. For this thesis the extracted features from the private music collection, the covers80 and the 1517 artists dataset summing up to over 11500 songs is more than sufficient and the FMA dataset is left out. For future work and performance testing however the inclusion of larger datasets has to be considered. 
-\ \\
+In summary the estimated time based on the performance measurements can be calculated and is listed below, leading to the conclusion that the extraction of the features for the full dataset including the FMA dataset can only be done with the help of a computing cluster.
 \ \\
 \textbf{Estimated feature extraction times}
 \begin{itemize}
@@ -218,3 +214,33 @@ In summary the estimated time based on the performance measurements can be calcu
 	\item (125h - full dataset - essentia parallel, single node, 4 CPU cores)
 	\item (143h - full dataset - rp\_extract)
 \end{itemize}
+
+\subsubsection{mpi4py}
+
+For the extraction of the features from the fma dataset on the "ARA" cluster of the Friedrich-Schiller-University in Jena parallel python had to be replaced with mpi4py. 
+Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
+Every compute process gets a rank number and is aware of the overall count of all processes. With these two values the file list of all audio files is split and each process only processes the according files. The audio files were stored in a parallel cluster file system called beegfs \cite{beegfs}. Equally to the implementation using parallel python every process stores the results in batches in separate output files, each of them containing 25 songs.\\
+All files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs to evaluate. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyperthreading). To increase the available Memory per CPU, only 18 CPU cores per node were used. During the computation of the features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
+The extraction of the features took 1439s (fastest process) to 1950s (slowest). With a better balancing and messaging between the processes, the task could be balanced in a way where idle tasks take parts of the filelist from tasks that are still processing. 
+
+\begin{pythonCode}
+comm = MPI.COMM_WORLD   # get MPI communicator object
+size = comm.size        # total number of processes
+rank = comm.rank        # rank of this process
+status = MPI.Status()   # get MPI status object
+
+files_per_part = 25
+start = 0
+last = len(filelist)
+
+parts = (len(filelist) / files_per_part) + 1
+step = (last - start) / parts + 1
+for index in xrange(start + rank, last, size):
+    if index < parts:        
+        starti = start+index*step
+        endi = min(start+(index+1)*step, last)
+        parallel_python_process(index, filelist[starti:endi])
+\end{pythonCode}
+
+\noindent The extraction of the rhythm patterns spawns the same amount of processes, but each of the processes is able to make use of 4 CPU cores. The fastest process finished after 1657s and the slowest one took 1803s.
+

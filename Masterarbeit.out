@@ -25,8 +25,8 @@
 \BOOKMARK [1][-]{section.2.4}{Data aggregation}{chapter.2}% 25
 \BOOKMARK [2][-]{subsection.2.4.1}{Datasets}{section.2.4}% 26
 \BOOKMARK [2][-]{subsection.2.4.2}{Alternatives}{section.2.4}% 27
-\BOOKMARK [1][-]{section.2.5}{Big Data Environment}{chapter.2}% 28
-\BOOKMARK [2][-]{subsection.2.5.1}{Apache Hadoop and Spark}{section.2.5}% 29
+\BOOKMARK [1][-]{section.2.5}{Big Data processing}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.5.1}{History of Big Data}{section.2.5}% 29
 \BOOKMARK [2][-]{subsection.2.5.2}{Spark}{section.2.5}% 30
 \BOOKMARK [0][]{chapter.3}{Similarity Analysis}{}% 31
 \BOOKMARK [1][-]{section.3.1}{Timbre Similarity}{chapter.3}% 32
@@ -65,16 +65,16 @@
 \BOOKMARK [2][-]{subsection.4.2.9}{Jensen-Shannon Divergence}{section.4.2}% 65
 \BOOKMARK [2][-]{subsection.4.2.10}{Levenshtein distance}{section.4.2}% 66
 \BOOKMARK [2][-]{subsection.4.2.11}{performance}{section.4.2}% 67
-\BOOKMARK [2][-]{subsection.4.2.12}{feature separation quality}{section.4.2}% 68
-\BOOKMARK [2][-]{subsection.4.2.13}{possible performance improvements}{section.4.2}% 69
-\BOOKMARK [2][-]{subsection.4.2.14}{Other alternatives}{section.4.2}% 70
-\BOOKMARK [0][]{chapter.5}{Results}{}% 71
-\BOOKMARK [1][-]{section.5.1}{Runtime}{chapter.5}% 72
-\BOOKMARK [1][-]{section.5.2}{Cover song identification}{chapter.5}% 73
-\BOOKMARK [1][-]{section.5.3}{Genre similarity}{chapter.5}% 74
-\BOOKMARK [1][-]{section.5.4}{... and beyond genre boundaries}{chapter.5}% 75
-\BOOKMARK [1][-]{section.5.5}{Improvements and outlook}{chapter.5}% 76
-\BOOKMARK [1][-]{section.5.6}{Definition of similarity}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.4.2.12}{possible performance improvements}{section.4.2}% 68
+\BOOKMARK [2][-]{subsection.4.2.13}{Other alternatives}{section.4.2}% 69
+\BOOKMARK [0][]{chapter.5}{Results}{}% 70
+\BOOKMARK [1][-]{section.5.1}{Runtime}{chapter.5}% 71
+\BOOKMARK [1][-]{section.5.2}{feature separation quality}{chapter.5}% 72
+\BOOKMARK [1][-]{section.5.3}{Cover song identification}{chapter.5}% 73
+\BOOKMARK [1][-]{section.5.4}{Genre similarity}{chapter.5}% 74
+\BOOKMARK [1][-]{section.5.5}{... and beyond genre boundaries}{chapter.5}% 75
+\BOOKMARK [1][-]{section.5.6}{Improvements and outlook}{chapter.5}% 76
+\BOOKMARK [1][-]{section.5.7}{Definition of similarity}{chapter.5}% 77
 \BOOKMARK [0][]{section*.9}{References}{}% 78
 \BOOKMARK [0][]{chapter.6}{Appendix}{}% 79
 \BOOKMARK [1][-]{section.6.1}{Spotipy Crawler}{chapter.6}% 80

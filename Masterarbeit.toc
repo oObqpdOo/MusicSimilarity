@@ -71,13 +71,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Million Song Dataset}{19}{figure.2.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Big Data Environment}{20}{section.2.5}
+\contentsline {section}{\numberline {2.5}Big Data processing}{20}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Apache Hadoop and Spark}{20}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}History of Big Data}{20}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{MapReduce}{20}{subsection.2.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Hadoop vs Spark Memory Management}{21}{figure.2.19}
+\contentsline {subsubsection}{Hadoop}{20}{figure.2.19}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.2}Spark}{21}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
@@ -88,6 +88,8 @@
 \contentsline {subsubsection}{lazy evaluation}{21}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{min and max value aggregation}{21}{subsection.2.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Hadoop vs Spark Memory Management}{21}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Similarity Analysis}{22}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -151,76 +153,78 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Librosa}{45}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Essentia}{46}{lstnumber.-2.8}
+\contentsline {subsubsection}{Essentia}{46}{lstnumber.-2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Essentia Standard}{46}{lstnumber.-2.8}
+\contentsline {subsubsection}{Essentia Standard}{46}{lstnumber.-2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Essentia Streaming}{46}{lstnumber.-3.12}
+\contentsline {subsubsection}{Essentia Streaming}{46}{lstnumber.-3.10}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Essentia performance}{47}{lstnumber.-4.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Essentia parallel}{47}{lstnumber.-4.27}
+\contentsline {subsubsection}{parallel python}{47}{lstnumber.-4.27}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{rp\_extractor}{48}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{performance}{48}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Big Data Framework Spark}{50}{section.4.2}
+\contentsline {subsubsection}{mpi4py}{49}{figure.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Apache Spark}{50}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.2}Big Data Framework Spark}{51}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{min and max value aggregation}{50}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.1}Apache Spark}{51}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Data locality and parallelization}{50}{subsection.4.2.2}
+\contentsline {subsubsection}{min and max value aggregation}{51}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Combining different measurements}{50}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.2}Data locality and parallelization}{51}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Data aggregation}{51}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.3}Combining different measurements}{51}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Euclidean Distance}{51}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.4}Data aggregation}{52}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Bucketed Random Projection}{51}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.5}Euclidean Distance}{52}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.7}Cross-correlation}{52}{subsection.4.2.7}
+\contentsline {subsection}{\numberline {4.2.6}Bucketed Random Projection}{52}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.8}Kullback-Leibler Divergence}{54}{subsection.4.2.8}
+\contentsline {subsection}{\numberline {4.2.7}Cross-correlation}{53}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.9}Jensen-Shannon Divergence}{55}{subsection.4.2.9}
+\contentsline {subsection}{\numberline {4.2.8}Kullback-Leibler Divergence}{55}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.10}Levenshtein distance}{55}{subsection.4.2.10}
+\contentsline {subsection}{\numberline {4.2.9}Jensen-Shannon Divergence}{56}{subsection.4.2.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.11}performance}{55}{subsection.4.2.11}
+\contentsline {subsection}{\numberline {4.2.10}Levenshtein distance}{56}{subsection.4.2.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrame}{55}{subsection.4.2.11}
+\contentsline {subsection}{\numberline {4.2.11}performance}{56}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.12}feature separation quality}{56}{subsection.4.2.12}
+\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrame}{56}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.13}possible performance improvements}{63}{subsection.4.2.13}
+\contentsline {subsection}{\numberline {4.2.12}possible performance improvements}{57}{subsection.4.2.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.14}Other alternatives}{64}{subsection.4.2.14}
+\contentsline {subsection}{\numberline {4.2.13}Other alternatives}{57}{subsection.4.2.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Alternating Least Squares}{64}{subsection.4.2.14}
+\contentsline {subsubsection}{Alternating Least Squares}{57}{subsection.4.2.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{TF-IDF weights}{64}{subsection.4.2.14}
+\contentsline {subsubsection}{TF-IDF weights}{57}{subsection.4.2.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DIMSUM all-pairs similarity}{64}{subsection.4.2.14}
+\contentsline {subsubsection}{DIMSUM all-pairs similarity}{57}{subsection.4.2.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{65}{chapter.5}
+\contentsline {chapter}{\numberline {5}Results}{58}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{65}{section.5.1}
+\contentsline {section}{\numberline {5.1}Runtime}{58}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Cover song identification}{65}{section.5.2}
+\contentsline {section}{\numberline {5.2}feature separation quality}{58}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Genre similarity}{65}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cover song identification}{65}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}... and beyond genre boundaries}{66}{section.5.4}
+\contentsline {section}{\numberline {5.4}Genre similarity}{66}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Improvements and outlook}{66}{section.5.5}
+\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{66}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Definition of similarity}{67}{section.5.6}
+\contentsline {section}{\numberline {5.6}Improvements and outlook}{67}{section.5.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.7}Definition of similarity}{67}{section.5.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{References}{68}{section*.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Appendix}{73}{chapter.6}
+\contentsline {chapter}{\numberline {6}Appendix}{74}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Spotipy Crawler}{73}{section.6.1}
+\contentsline {section}{\numberline {6.1}Spotipy Crawler}{74}{section.6.1}
