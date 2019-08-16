@@ -2,7 +2,9 @@
 
 \section{Big Data processing}\label{bdf}
 
-After accumulating the data and presenting various methods to extract and process different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Later on chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements.
+After accumulating the data and presenting various methods to extract and process different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements.
+
+\textbf{\textit{"WRONG" - Donald Trump}}
 
 \subsection{Hadoop}
 
@@ -15,6 +17,7 @@ MapReduce as a programming paradigm was introduced by google as an answer to the
 \FloatBarrier
 \begin{figure}[htbp]
 	\centering
+	\framebox{\parbox{1\textwidth}{ 
 	%Image based on: https://commons.wikimedia.org/wiki/File:Mapreduce.png
 	\begin{tikzpicture}[node distance = 4cm][every node/.style={thick}]
 	  \colorlet{coul0}{orange!20} \colorlet{coul1}{blue!20} \colorlet{coul2}{red!20} \colorlet{coul3}{green!20}
@@ -39,6 +42,7 @@ MapReduce as a programming paradigm was introduced by google as an answer to the
 	  \draw[edge] (map2.east) -- (paire1.west); \draw[edge] (map2.east) -- (paire0.west);
 	  \draw[edge] (map3.east) -- (paire1.west); \draw[edge] (map3.east) -- (paire2.west);
 	\end{tikzpicture}
+	}}
 	\caption{MapReduce \cite{mapred1im}}
 	\label{mapred}
 \end{figure}
@@ -81,24 +85,77 @@ caching\\
 \FloatBarrier
 \begin{figure}[htbp]
 	\centering
+	\framebox{\parbox{1\textwidth}{ 
 	\begin{tikzpicture}
+	\tikzstyle{bigbox} = [draw=blue!60, blur shadow={shadow blur steps=5}, minimum size=2cm, thick, fill=blue!10, rounded corners, rectangle]
+	\tikzstyle{box} = [draw=black!40!blue, minimum size=0.6cm, rounded corners,rectangle, fill=blue!50]
+	\tikzstyle{box2} = [draw=black!60!blue, minimum size=0.6cm, rounded corners,rectangle, fill=blue!10]
+	\tikzstyle{box3} = [draw=blue!80, minimum size=0.6cm, rounded corners,rectangle, fill=blue!10]
 	\node[server](server 1){};
-	\node[server, right of= server 1](server 2){};
-	\node[server, right of= server 2](server 3){};
-	\node[rack switch, above of=server 2,xshift=0.1cm,yshift=0.3cm]
+	\node[server, right of= server 1, xshift=3cm](server 2){};
+	\node[server, right of= server 2, xshift=3cm](server 3){};
+	\node[rack switch, above of=server 2,xshift=0.1cm,yshift=0.25cm]
 	  (rack switch 1){};
+   	\node[box, above of=rack switch 1, xshift=0cm, yshift=0.15cm](cm){Cluster Manager}; 
+   	\node[server, above of=cm, yshift=0.15cm](servermaster){};
+ 	\node[box, above of=servermaster, xshift=0cm, yshift=1.25cm](sc){Spark Context}; 
+  	\begin{pgfonlayer}{background}
+  		\node[bigbox, yshift=-0.25cm, xshift=-0.01cm] [fit = (sc)](dr){\\ \ \\Driver};
+  	\end{pgfonlayer}
+	\node[box, below of=server 3, xshift=-3.25em, yshift=-0.25cm](e1){Executor 1};
+	\node[box, below of=server 3, xshift=3.25em, yshift=-0.25cm](e2){Executor 2};
+	\node[box, below of=server 2, xshift=0em, yshift=-0.25cm](e3){Executor 3};
+	\node[box, below of=server 1, xshift=-3.25em, yshift=-0.25cm](e4){Executor 4};
+	\node[box, below of=server 1, xshift=3.25em, yshift=-0.25cm](e5){Executor 5};
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.35cm, xshift=-0.01cm] [fit = (e1)](mem1){\\ \ \\Memory};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.35cm, xshift=0.01cm] [fit = (e2)](mem2){\\ \ \\Memory};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.35cm] [fit = (e3)](mem3){\\ \ \\Memory};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.35cm, xshift=-0.01cm] [fit = (e4)](mem4){\\ \ \\Memory};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.35cm, xshift=0.01cm] [fit = (e5)](mem5){\\ \ \\Memory};
+	\end{pgfonlayer}
+	\node[box2, below of=mem1, yshift=-0.01cm](t1){Task 1};
+	\node[box2, below of=mem2, yshift=-0.01cm](t2){Task 2};
+	\node[box2, below of=mem3, yshift=-0.01cm](t3){Task 3};
+	\node[box2, below of=mem4, yshift=-0.01cm](t4){Task 4};
+	\node[box2, below of=mem5, yshift=-0.01cm](t5){Task 5};
+	\node[box2, below of=t2, yshift=0.3cm](t6){Task 6};
+	\node[box2, below of=t4, yshift=0.3cm](t7){Task 7};
+	\node[box2, below of=t5, yshift=0.3cm](t8){Task 8};
+	\draw[thick,black!60!green] (t2.south)--(t6);	
+	\draw[thick,black!60!green] (t4.south)--(t7);	
+	\draw[thick,black!60!green] (t5.south)--(t8);	
+	\draw[thick,darkgray!10!gray] (servermaster.north)--(dr.south);
+	\draw[thick,darkgray!10!gray] (servermaster.south)--(cm.north);
+	\draw[thick,darkgray!10!gray] (cm.south)--(rack switch 1.north);
 	\draw[thick,darkgray!10!gray] (server 1.north)--(rack switch 1);
 	\draw[thick,darkgray!10!gray] (server 2.north)--(rack switch 1);
 	\draw[thick,darkgray!10!gray] (server 3.north)--(rack switch 1);
+	\draw[thick,darkgray!10!gray] (server 3.south)--(e1);	
+	\draw[thick,darkgray!10!gray] (server 3.south)--(e2);	
+	\draw[thick,darkgray!10!gray] (server 2.south)--(e3);	
+	\draw[thick,darkgray!10!gray] (server 1.south)--(e4);	
+	\draw[thick,darkgray!10!gray] (server 1.south)--(e5);	
 	% = = = = = = = = = = = = = = = =
 	% Labels
 	% = = = = = = = = = = = = = = = =
-	\node[xshift=-1.55cm,yshift=0.2cm,left of = server 3,align=left](lev1)
-	  {Computing Servers};
-	\node[xshift=-0.55cm,yshift=0.3cm,above of = lev1,align=left](lev2)
-	  {Access Layer};
+	\node[box3, xshift=-6.1cm,yshift=0.3cm,left of = sc,align=left](lev1){\textbf{Main Program}};
+	\node[box3, xshift=-6.25cm,yshift=0.3cm,left of = servermaster,align=left](lev2){\textbf{Master Node}};
+	\node[box3, xshift=-5.85cm,yshift=0.3cm,left of = cm,align=left](lev3){\textbf{Cluster Manager}};	
+	\node[box3, xshift=-6.9cm,yshift=0.3cm,left of = rack switch 1,align=left](lev4){\textbf{Switch}};
+	\node[box3, xshift=-2.05cm,yshift=0.3cm,left of = server 3,align=left](lev5){\textbf{Executor Nodes}};
+	\node[box3, xshift=-1.325cm,yshift=0.3cm,left of = e1,align=left](lev6){\textbf{Executors}};
 	\end{tikzpicture}
-	\caption{Data locality}
+	}}
+	\caption{Spark Cluster}
 	\label{dataloc}
 \end{figure}
 \FloatBarrier

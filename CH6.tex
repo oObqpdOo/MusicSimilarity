@@ -18,7 +18,7 @@ chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace(',','').replace(' 
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
 
-All the other features are stored as lists of floats and have to be converted to vectors.  
+\noindent All the other features are stored as lists of floats and have to be converted to vectors.  
 
 \begin{pythonCode}
 list_to_vector_udf = udf(lambda l: Vectors.dense(l), VectorUDT())
