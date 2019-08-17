@@ -1416,26 +1416,48 @@
     \field{year}{2016}
   \endentry
 
-  \entry{sparkbook1}{book}{}
-    \name{author}{1}{}{%
-      {{hash=AJ}{%
-         family={Aven},
-         familyi={A\bibinitperiod},
-         given={Jeffrey},
-         giveni={J\bibinitperiod},
+  \entry{hadoop}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Apache Hadoop}
+    \verb{url}
+    \verb https://hadoop.apache.org/
+    \endverb
+  \endentry
+
+  \entry{gfs}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=GS}{%
+         family={Ghemawat},
+         familyi={G\bibinitperiod},
+         given={Sanjay},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=GH}{%
+         family={Gobioff},
+         familyi={G\bibinitperiod},
+         given={Howard},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=LST}{%
+         family={Leung},
+         familyi={L\bibinitperiod},
+         given={Shun-Tak},
+         giveni={S\bibinitperiod-T\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {Addison-Wesley Professional}%
-    }
-    \strng{namehash}{AJ1}
-    \strng{fullhash}{AJ1}
+    \strng{namehash}{GSGHLST1}
+    \strng{fullhash}{GSGHLST1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{edition}{1st}
-    \field{isbn}{013484601X, 9780134846019}
-    \field{title}{Data Analytics with Spark Using Python}
-    \field{year}{2018}
+    \verb{doi}
+    \verb 10.1145/945445.945450
+    \endverb
+    \field{pages}{29\bibrangedash 43}
+    \field{title}{The Google File System}
+    \field{volume}{37}
+    \field{journaltitle}{ACM SIGOPS Operating Systems Review}
+    \field{month}{12}
+    \field{year}{2003}
   \endentry
 
   \entry{mapreduce1}{inproceedings}{}
@@ -1466,6 +1488,28 @@
     \field{journaltitle}{Communications of the ACM}
     \field{month}{01}
     \field{year}{2004}
+  \endentry
+
+  \entry{sparkbook1}{book}{}
+    \name{author}{1}{}{%
+      {{hash=AJ}{%
+         family={Aven},
+         familyi={A\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley Professional}%
+    }
+    \strng{namehash}{AJ1}
+    \strng{fullhash}{AJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{1st}
+    \field{isbn}{013484601X, 9780134846019}
+    \field{title}{Data Analytics with Spark Using Python}
+    \field{year}{2018}
   \endentry
 
   \entry{mapred1im}{inproceedings}{}

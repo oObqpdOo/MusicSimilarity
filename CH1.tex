@@ -300,6 +300,13 @@ The Plot in figure \ref{laylacbeat} shows the onsets and estimated beats in the 
 \FloatBarrier
 
 \section{MIR Toolkits}\label{mirtoolkit}
+
+\subsection{Low-level audio feature extraction}
+To extract audio features like the ones presented in section \ref{featsec} (mfccs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in \cite{audiofeattoolb}.
+The YAAFE toolkit \cite{yaafe1} is able to extract a lot of different audio features like energy, mfcc or loudness directly into the hadoop file format h5 making it ideal for big data frameworks to use. It can be used with C++, Python or Matlab.\\
+The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of the rhythm decriptors, bpm etc. It can also be used in C++ and Python\\
+The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well documented and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots from section \ref{featsec} were created using librosa. The code for the extraction of low level features with essentia and librosa is given in chapter \ref{simmet} as well as a performance analysis.\\
+
 \subsection{Music Similarity}
 
 The easiest way to test state of the art music similarity algorithms is to use the open source toolkit Musly \cite{musly1}. It is based on statistical models of MFCC features and calculates the distances between songs very fast, supporting OpenMP acceleration. It offers the classical mandel-ellis similarity method \cite{mandelellis1} and a timbre based improved version of the mandel-ellis algorithm using a jenson-shannon-like divergence \cite{musly2}. More details and a re-implementation of this toolkit is presented in chapter \ref{musly}\\
@@ -327,11 +334,6 @@ endfor
 \end{lstlisting}
 \FloatBarrier
 
-\subsection{Low-level audio feature extraction}
-To extract audio features like the ones presented in section \ref{featsec} (mfccs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in \cite{audiofeattoolb}.
-The YAAFE toolkit \cite{yaafe1} is able to extract a lot of different audio features like energy, mfcc or loudness directly into the hadoop file format h5 making it ideal for big data frameworks to use. It can be used with C++, Python or Matlab.\\
-The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of the rhythm decriptors, bpm etc. It can also be used in C++ and Python\\
-The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well documented and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots from section \ref{featsec} were created using librosa. The code for the extraction of low level features with essentia and librosa is given in chapter \ref{simmet} as well as a performance analysis.\\
 
 \subsection{Melody/ pitch extraction}\label{midiest}
 To test the various pitch extraction toolkits, a piece by Rachmaninoff and by Beethoven was used. The first three bars of Rachmaninoffs Prelude can be found in figure \ref{rm}
@@ -400,7 +402,7 @@ The purple line is the estimated pitch, however there are large jumps between di
 	\caption{Melodia}
 	\label{fig:melodia}
 \end{figure}
-Sadly the conversion to MIDI does not work flawlessly.\\
+\noindent Sadly the conversion to MIDI does not work flawlessly.\\
 It is clearly visible in figure \ref{fig:transc} that the transcription does not work accurately enough even for a classical music piece with only one instrument. Figure \ref{femm} shows the output of a python script using the Melodia VAMP plugin to calculate a MIDI file containing the main melody line and figure \ref{feam} shows the transcribed MIDI notes from Aubio. The detected melody lines are jumping between different octaves and finding the right threshold for the separation between silence and detected notes turns out to be problematic as well.
 
 \begin{figure}[htbp]
@@ -424,7 +426,7 @@ It is clearly visible in figure \ref{fig:transc} that the transcription does not
 \end{figure}
 \FloatBarrier 
 
-\section{Similarity Analysis}
+\section{Music Similarity Measurements}
 
 \subsection{Timbre based}
 
@@ -546,8 +548,8 @@ The private music collection used in this work consist mainly of metal music. Th
 	\label{privmusdist}
 \end{figure}
 \FloatBarrier
-Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud\cite{bqpd1}
-The private music collection is fully cataloged and the according pdf is the appendices.
+\noindent Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud \cite{bqpd1}.\\
+The private music collection is fully cataloged and the according pdf file is the appendices.
 
 \subsubsection{Overview and other sources}
 
@@ -604,8 +606,7 @@ Appendix \ref{spotcrawl} lists a small script, that is able to download all audi
 	\item tempo 
 \end{itemize}
 as well as pitch and timbre information, beats and bars.\\
-In figure \ref{spp} the chroma features of the piano piece Für Elise by Beethoven are shown and figure \ref{spp2} shows the beginning of the piece in more detail, including green dots, that resemble estimated bar markings. The blue dots represent the note values of one octave. That means they can resemble a value between zero and eleven with zero representing the key C and 11 is representing a B.
-The Spotify API actually returns a chroma feature value for every single one of the keys per segment, where one segment is a section of samples that are relatively uniform in timbre and harmony. In the plots only the most dominant key per segment is shown. 
+In figure \ref{spp} the chroma features of the piano piece Für Elise by Beethoven are shown and figure \ref{spp2} shows the beginning of the piece in more detail, including green dots, that resemble estimated bar markings. The blue dots represent the note values of one octave. That means they can resemble a value between zero and eleven with zero representing the key C and 11 is representing a B. The Spotify API actually returns a chroma feature value for every single one of the keys per segment, where one segment is a section of samples that are relatively uniform in timbre and harmony. In the plots only the most dominant key per segment is shown. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -627,7 +628,7 @@ The Spotify API actually returns a chroma feature value for every single one of 
 \end{figure}
 \FloatBarrier
 \ \\
-Together with the 30 second audio sample from which more data like MFCCs could be extracted, this data miner could provide all the information needed to build a large dataset for MIR. However the terms and conditions explicitly prohibits crawling the Spotify service. As stated by the Spotify Terms and Conditions of Use, section 9 (User guidelines):\\
+Together with the 30 second audio sample from which more features like MFCCs could be extracted. This data miner could provide all the information needed to build a large dataset for MIR. However the terms and conditions explicitly prohibits crawling the Spotify service. As stated by the Spotify Terms and Conditions of Use, section 9 (User guidelines):\\
 "\textit{The following is not permitted for any reason whatsoever:\newline
 [...]\\
 12. “crawling” the Spotify Service or otherwise using any automated means (including bots, scrapers, and spiders) to view, access, or collect information from Spotify or the Spotify Service;}" \cite{spottac1}\\

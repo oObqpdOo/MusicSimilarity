@@ -11,8 +11,11 @@
 % Duplex: oneside / twoside
 % Grundlegende Fontgr��en: 10pt / 11pt / 12pt
 
-
-
+%% Zeilenabstand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+%\singlespacing        %% 1-zeilig (Standard)
+\onehalfspacing       %% 1,5-zeilig
+%\doublespacing        %% 2-zeilig
 
 %% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[english]{babel}
@@ -91,13 +94,6 @@ pdfstartpage=1,         	%Startseite f�r die Anzeige festlegen
 pdfpagemode=UseOutlines,
 pdfstartview={XYZ null null 1.00}
 ]{hyperref} 
-
-%% Zeilenabstand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{setspace}
-%\singlespacing        %% 1-zeilig (Standard)
-\onehalfspacing       %% 1,5-zeilig
-%\doublespacing        %% 2-zeilig
-
 
 %% Andere Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{a4wide} %%Kleinere Seitenr�nder = mehr Text pro Zeile.
@@ -421,7 +417,43 @@ pdfstartview={XYZ null null 1.00}
 \usetikzlibrary{backgrounds,fit}
 \usetikzlibrary{shadows.blur}
 \usetikzlibrary{shapes.symbols}
+\usetikzlibrary{arrows,calc}
 
+\lstnewenvironment{pythonCode}[1][]
+{
+  \lstset{
+  	language=Python,
+  	keywordstyle=\color{blue},
+  	stringstyle=\color{red},
+    commentstyle=\color{black!60!green}\textit, 
+    backgroundcolor=\color{lightgray!10},
+   	morecomment=[l][\color{magenta}]{\#}
+    breaklines=true,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    numbers=left,
+    numberstyle=\ttfamily\footnotesize,
+    stringstyle=\color{red},
+    showspaces = false,
+    showstringspaces = false,
+    tabsize = 2,
+    %numbers=left,
+    %numbersyle=\tiny
+	breaklines=true,               % automatic line breaking
+	columns=fullflexible,
+	breakautoindent=false,
+	framerule=1pt,
+	xleftmargin=0pt,
+	xrightmargin=0pt,
+	breakindent=0pt,
+	resetmargins=true,    
+    frame=single,
+    xleftmargin=5pt,
+    xrightmargin=3pt,
+    aboveskip = 20pt,
+    rulecolor=\color{black},
+  }
+}{}
 
 %\usepackage[parfill]{parskip}
 
@@ -597,6 +629,7 @@ placeholderplaceplaceholder \= placeholder \kill
 \textbf{BPM} \> beats per minute\\
 \textbf{BRP} \> bucketed random projection\\
 \textbf{HDFS} \> hadoop distributed file system\\
+\textbf{YARN} \> yet another resource negotiator\\
 \textbf{RDD} \> resilient distributed dataset\\
 \textbf{HT} \> hyperthreading\\
 
@@ -632,43 +665,6 @@ placeholderplaceplaceholder \= placeholder \kill
 %Einleitung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\lstnewenvironment{pythonCode}[1][]
-{
-  \lstset{
-  	language=Python,
-  	keywordstyle=\color{blue},
-  	stringstyle=\color{red},
-    commentstyle=\color{green}\textit, 
-    backgroundcolor=\color{gray!20},
-   	morecomment=[l][\color{magenta}]{\#}
-    breaklines=true,
-    basicstyle=\footnotesize,
-    keywordstyle=\color{blue},
-    numbers=left,
-    numberstyle=\footnotesize,
-    stringstyle=\color{red},
-    showspaces = false,
-    showstringspaces = false,
-    tabsize = 2,
-    %numbers=left,
-    %numbersyle=\tiny
-	breaklines=true,               % automatic line breaking
-	columns=fullflexible,
-	breakautoindent=false,
-	framerule=1pt,
-	xleftmargin=0pt,
-	xrightmargin=0pt,
-	breakindent=0pt,
-	resetmargins=true,    
-    frame=single,
-    xleftmargin=5pt,
-    xrightmargin=3pt,
-    language =  Pascal,
-    aboveskip = 20pt,
-    rulecolor=\color{black},
-    #1
-  }
-}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Anhang

@@ -1,9 +1,11 @@
 
 \chapter{Similarity Analysis}
 
+\textit{\textbf{This needs an introduction}}
+
 \section{Timbre Similarity} \label{musly}
 
-Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref{mfccsim}. This chapter focuses on the different similarity metrics.\\
+Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref{mfccsim}. This section focuses on the different similarity metrics.\\
 To reduce the dimensionality of the data even further, a statistical summarization of the MFCC feature can be calculated \cite[pp. 51ff]{knees1}\\
 
 
@@ -138,17 +140,16 @@ The top ten most similar songs to the 3 minutes and 33 seconds version are liste
 	\item Mozart - Concert No. 10 for 2 Pianos and Orchestra in E Flat Major, KV 365 - 2. Andante
 	\item Schubert - Sonata in B Flat, D. 960 - III. Scherzo (Allegro vivace con delicatezza)
 	\item Albeniz - Iberia, Book I - Evocaci\'on
-	\item Mozart Sonate Nr. 11 in A-Dur, K. 33 - Mozart - Alla Turca Allegretto (3:28)
+	\item \underline{Mozart Sonate Nr. 11 in A-Dur, K. 33 - Mozart - Alla Turca Allegretto (3:28)}
 	\item Beethoven - Bagatellen Op 119 -Allemande in D major
 	\item Mozart - Rondo No. 1 in D Major, K. 485
 	\item Mozart - Sonata For Piano No. 8 KV 310 A Minor - Allegro Maestoso
 	\item Sonata For Piano No. 16 KV 545 C Major - Rondo: Allegretto
-	\item Mozart Sonate Nr. 11 in A-Dur, K. 33 - III. Tuerkischer Marsch (3:30)
+	\item \underline{Mozart Sonate Nr. 11 in A-Dur, K. 33 - III. Tuerkischer Marsch (3:30)}
 	\item Mozart - Piano Sonata No. 13 in B flat major, K. 333 (K. 315c): Allegretto grazioso
 	
 \end{itemize}
-
-The interesting conclusion is that only 2 out of the 3 other versions were considered as most similar songs.
+\noindent The interesting conclusion is that only 2 out of the 3 other versions were considered as most similar songs.
 The slower recording wasn't even in the top 30 list of the most similar songs. 
 The same was observable for other cover versions of songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. 
 This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches and melody movements.

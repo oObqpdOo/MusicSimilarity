@@ -87,7 +87,7 @@ To extract these features the rp\_extractor library \cite{rp_extract} was made p
 	\label{fig:rp1}
 \end{figure}
 
-The x-axis represents the frequency band converted to the bark scale (a scale representing the human auditory system comparable to the mel scale) and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (600 BPM).
+\noindent The x-axis represents the frequency band converted to the bark scale (a scale representing the human auditory system comparable to the mel scale) and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (600 BPM).
 The Bark of a frequency $f$ can be determined using formula \ref{eq:bark}.
 \begin{equation} \label{eq:bark}
 Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
@@ -159,7 +159,7 @@ The algorithm to extract the rhythm patterns as well as the rhythm histogram and
 	\label{fig:rpe}
 \end{center}
 
-So in conclusion the Rhythm Patterns basically represent the BPM of various frequency bands.
+\noindent So in conclusion the Rhythm Patterns basically represent the BPM of various frequency bands.
 To compare two different songs the euclidean distance between the vectorized rhythm pattern matrices can be calculated as Pampalk suggests \cite[p. 40]{fp1}\\
 Pohle, Schnitzer et al. refined Fluctuation Patterns into Onset Patterns e.g. by using semitone bands instead of fewer critical bands to detect onsets. \cite{rp2}\\
 This thesis however focuses on Fluctuation/ Rhythm patterns extracted with the rp\_extractor library. 
@@ -240,7 +240,7 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 	\label{fig:ons1}
 \end{figure}	
 
-Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
+\noindent Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
 In conclusion this approach is discarded and not further considered and tested in this thesis.  
 
 \section{Summary}\label{sumfeat}

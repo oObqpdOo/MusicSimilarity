@@ -79,7 +79,7 @@ Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hi
 \FloatBarrier
 
 \noindent Scatter Matrix, 1 Song (New Age) from 1517 artists - distances, main diagonal = Kernel Density Estimation,all genres in figure\\
-No combination of features is able to accurately separate New Age from Rock and Pop\ref{fig:corr6}
+No combination of features is able to accurately separate New Age from Rock and Pop - figure \ref{fig:corr6}
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -193,17 +193,25 @@ No combination of features is able to accurately separate New Age from Rock and 
 
 \textit{\textbf{Rachmaninoff Prelude C\# minor full dataset Top 5 MFCC Euclidean\\}}
 \\
+Titel: Klassik/Rachmaninoff - Idil Biret - Op 3 No 2 Prelude in C - Sharp Minor
 \begin{itemize}
-\item Songs/Klassik/Rachmaninoff-IdilBiret-Op3\_No2PreludeinC-SharpMinormp3
-\item Jazz\&Klassik/100MeisterwerkederKlassik/Rachmaninov\_PianoConcertoNo2InCMinorOp18-1Moderato(Excerpt)mp3
-\item Jazz\&Klassik/LangLang-Liszt/11\_LangLang\_PianoConcertoNo1inEflatmajorS124(LWH4)1Allegromaestosomp3
-\item Jazz\&Klassik/PianoCollection/CD4-Brahms/03PianoSonataNÂ°2inFsharpminorOp2-IIIScherzoallegrowav
-\item Metal\&Rock/Compilations/RelapseSampler-RelapseSampler2015/SteveMoore-RelapseSampler2015-35Intro\&Creditsmp3
-\item Jazz\&Klassik/LangLang-Liszt/12\_LangLang\_PianoConcertoNo1inEflatmajorS124(LWH4)2QuasiAdagio-Allegrettovivace-Allegroanimatomp3
+\item Klassik/Rachmaninoff - Piano Concerto No2 In C Minor Op18-1 Moderato
+\item Klassik/Liszt - Piano Concerto No 1 in E flat major S124(LWH4) Allegro maestoso
+\item Klassik/Brahms - Piano Sonata No2 in F sharp minor Op2 - III Scherzo allegro
+\item Metal\&Rock/Steve Moore - Intro \& Credits
+\item Klassik/Liszt - Piano Concerto No 1 in E flat major S124(LWH4) Allegro animato
 \end{itemize}
 
-\section{Improvements and outlook}
+\section{Summary and outlook}
 
+In the first part of th
+An overview over the field of MIR was given, different audio features were explained, similarity measurements evaluated and multiple algorithms for timbre similarity were presented.\\
+Data was collected, over 1TB of music data, 114000 songs. The necessary audio features were extracted and pre-processed (Melody Estimation) in parallel using MPI on a cluster paving the way for usage with big data processing frameworks.\\
+The features were loaded into the HDFS of a cluster and multiple similarity measurements were implemented, tested, evaluated and improved. With spark multiple approaches (RDD, DataSet, Filter and Refine, Cluster Configurations) were tested.\\
+The results were presented and visualized.\\
+\ \\
+outlook:\\
+\ \\
 more state of the art similarity (blocked)\\
 performance improvements\\
 Genre and metadata, Genre specific features, combinations and variable model, Collaborative Filtering, Lyrics\\

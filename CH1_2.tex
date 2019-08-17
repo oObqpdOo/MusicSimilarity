@@ -2,17 +2,21 @@
 
 \section{Big Data processing}\label{bdf}
 
-After accumulating the data and presenting various methods to extract and process different audio features, the following section describes the data analysis and computation of the similarities with the Big Data processing framework Apache Spark \cite{spark}. Chapter \ref{bds1} deals with the implementation of the various similarity measurements while chapter \ref{bds2} deals with the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements.
-
-\textbf{\textit{"WRONG" - Donald Trump}}
+After evaluating different data sources presenting various methods to extract and process different audio features, the following section describes the data analysis with Big Data processing frameworks like Apache Spark \cite{spark} and Hadoop \cite{hadoop}. Later chapter \ref{bds1} deals with the implementation of the various similarity measurements with Spark, the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements, while chapter \ref{bds2} gives short overview over the achieved results using the Big Data framework to compare audio features. 
 
 \subsection{Hadoop}
 
-With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. Search engine providers like Google and Yahoo firstly ran into the problem in the early 2000s \cite[p. 6]{sparkbook1}.
+With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. They key to handle Big Data is to use parallelity.\\
+Search engine providers like Google and Yahoo firstly ran into the problem of using "internet-scale" data in the early 2000s when being faced with the problem of storing and processing the ever growing amount of indexes from documents in the internet. In 2003, Google presented their whitepaper called "The Google File System" \cite{gfs}. MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 when the paper "MapReduce: Simplified Data Processing on Large Clusters" was published \cite{mapreduce1}. Doug Cutting and Mike Cafarella worked on a web crawler project called Nutch during that time. Inspired by the two papers Cutting incorporated the storage and processing principles from google, leading to what we know as Hadoop today. Hadoop joined the Apache Software Foundation in 2006 \cite[p. 6]{sparkbook1}.\\ 
+Hadoop is based on the idea of data locality. In contrast to the usual approach, where the data is requested from its location and transferred to a remote processing system or host, Hadoop brings the computation to the data instead. This minimizes the problem of data transfer times over network at compute time when working with very large-scale data/ Big Data. One prerequisite is that the operations on the data are independent from each other. Hadoop follows this approach called "shared-nothing". The data can be processed locally on many nodes at the same time in parallel by splitting the data in independent small subsets without the need of communicating with other nodes. Additionally Hadoop is a schemaless (schema-on-read) system which means that it is able to store and process unstructured, semi-structured (JSON, XML) or well structured data (relational database) \cite[p. 7]{sparkbook1}.\\
+Hadoop is a scalable solution able to run on large computer clusters. It does not necessarily require a supercomputing environment and is able to run on clusters of lower-cost commodity hardware. The data is stored redundantly on multiple nodes with a configurable replication rate defining how many copies of each data chunk are stored on other nodes. This enables an error management where faulty operations can simply be restarted.\\
+To make all this possible, Hadoop relies on its core components YARN (Yet Another Resource Negotiator) and the Hadoop Distributed File System (HDFS)\\
+
+\textit{\underline{To Be Continued...}}
 
 \subsubsection{MapReduce}
 
-MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 \cite{mapreduce1}. Figure \ref{mapred} shows the basic scheme of a MapReduce program. The core idea is to split a problem into many independent tasks.
+Figure \ref{mapred} shows the basic scheme of a MapReduce program. The core idea is to split a problem into many independent tasks.\\
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -48,17 +52,10 @@ MapReduce as a programming paradigm was introduced by google as an answer to the
 \end{figure}
 \FloatBarrier
 
-replication rate\\
-
-\subsubsection{Hadoop}
-
-General Purpose Hardware/ commodity hardware\\
-\ \\
-Error Management\\
-\ \\
-Data locality\\
-\ \\
-Other Big Data Toolkits: SMACK; lambda; spark\\
+\noindent In the first stage the input data is split in many chunks and distributed over the nodes of a cluster. This is usually managed by the distributed file system like the HDFS. One master nodes stores the addresses of all data chunks.\\
+The data is fed into the mapper who operates on the input data and finally transforms the input into key-value tuples.\\
+In an intermediate step the key-value pairs are usually grouped by their keys before being fed into the reducer. The reducer applies another method to all tuples with the same key.\\
+The amount of key-value pairs at the output from the mapper divided by the number of input files is called replication rate ($r$). The largest amount of values for one key being fed into a reducer can be denoted as $q$ (reducer size). Usually there is a trade-off between a high replication rate and small $q$ (highly parallel with more network traffic) and small $r$ and larger $q$ (less network traffic but worse parallelism due to an overall smaller reducer count).
 
 \subsection{Spark}
 
@@ -72,15 +69,7 @@ streaming\\
 \ \\
 caching\\
 
-\subsubsection{Spark and RDDs}
-
-\subsubsection{Spark DataFrame}
-
-\subsubsection{lazy evaluation}
-
-\subsubsection{min and max value aggregation}
-
-\subsubsection{Hadoop vs Spark Memory Management}
+\subsubsection{Cluster architecture}
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -160,16 +149,32 @@ caching\\
 \end{figure}
 \FloatBarrier
 
+
+\subsubsection{Spark and RDDs}
+
+\subsubsection{Spark DataFrame}
+
+\subsubsection{lazy evaluation}
+
+\subsubsection{min and max value aggregation}
+
+\subsubsection{Hadoop vs Spark Memory Management}
+
 \subsubsection{Spark application UI}
 
-\subsection{Data locality and parallelization}
+\subsection{Lambda architecture}
 
-\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
-\noindent\textit{\textbf{insert data locality scheme here\\}}
+Other Big Data Toolkits: SMACK; lambda; spark\\
+
+Batch-Layer\\
+\ \\
+Speed-Layer\\
+\ \\
+Serving-Layer\\
 
 \subsection{Combining different measurements}
 
-\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements\\}}
+\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements - there has to be some kind of scaling\\}}
 
 \begin{equation} \label{eq:distance}
 dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
@@ -177,4 +182,11 @@ dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 
 \noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
 
+\textit{\textbf{SPARK NOT ABLE TO PROCESS AUDIO FILES -> SEPARATE TASK}}
 
+\subsection{Data locality and parallelization}
+
+Given the short introduction to Big Data frameworks the decision to use Spark for the computation of the similarities is justifiable. The computation of a one-to-many similarity follows the shared nothing approach of Spark. All the features are independent from each other. Only the scaling of the result requires an aggregation of maximum and minimum values and to return the top results some kind of sorting has to be performed. But apart from these operations, all the features can be distributed and the similarity to one broadcasted song can be calculated independently, following the data locality approach. This offers a fully scalable solution for very large datasets.
+
+\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
+\noindent\textit{\textbf{insert data locality scheme here\\}}

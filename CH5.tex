@@ -85,7 +85,8 @@ The essentia streaming library is used to calculate the chroma features in the f
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
 HP = ess.HighPass(cutoffFrequency=128)
 LP = ess.LowPass(cutoffFrequency=4096)
-framecutter = ess.FrameCutter(frameSize=frameSize, hopSize=hopSize, silentFrames='noise')
+framecutter = ess.FrameCutter(frameSize=frameSize, hopSize=hopSize, 
+	silentFrames='noise')
 windowing = ess.Windowing(type='blackmanharris62')
 spectrum = ess.Spectrum()
 spectralpeaks = ess.SpectralPeaks(orderBy='magnitude', magnitudeThreshold=0.00001, 
@@ -125,7 +126,8 @@ jobs = [ ]
 for index in xrange(startjob, parts):
 	starti = start+index*step
 	endi = min(start+(index+1)*step, end)
-	jobs.append(job_server.submit(parallel_python_process, (index, filelist[starti:endi],1,1,1,1,1)))
+	jobs.append(job_server.submit(parallel_python_process, (index, 
+		filelist[starti:endi],1,1,1,1,1)))
 	gc.collect()
 times = sum([job() for job in jobs])
 job_server.print_stats()
@@ -135,7 +137,8 @@ The computation time takes about 15.4 seconds per song and processor core. Using
 time = \frac{\#songs}{\#CPUs} \cdot 15.4s
 \end{equation}
 Parallel python also opens up the possibility to use a cluster instead of a single node PC.\\
-For convenience, every processor gets a batch of files instead of single songs. For every batch different output files for the various features are created. The batch size determines the overall size of these feature-files. For example for the 1517 artists dataset a batch size of 400 songs was chosen, so overall 4 CPUs had to process 2 batches, resulting in 8 different output files with the chroma feature files being the largest with about 25MB per file.
+For convenience, every processor gets a batch of files instead of single songs. For every batch different output files for the various features are created. The batch size determines the overall size of these feature-files. For example for the 1517 artists dataset a batch size of 400 songs was chosen, so overall 4 CPUs had to process 2 batches, resulting in 8 different output files with the chroma feature files being the largest with about 25MB per file.\\
+One problem that appeared by using parallel python was that the memory usage was increasing over time. The explicit usage of the garbage collector and the deletion of unwanted objects also couldn't solve that problem. So after calculating a few hundred features the process ran out of memory and had to be restarted. By replacing parallel python with mpi4py this problem could be solved later. 
 
 \subsubsection{rp\_extractor}
 
@@ -171,7 +174,7 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 		coordinates {
 		(10,52)(100,385)
 		};
-		\addlegendentry{essentia parallel}
+		\addlegendentry{essentia parallel (4 cores)}
 	\addplot[
 	    color=blue,
 	    mark=square,
@@ -179,16 +182,7 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 	    coordinates {
 	    (10,37)(100,442)
 	    };
-	    \addlegendentry{rp\_extract}
-	\addplot[
-	    color=orange,
-	    mark=square,
-	    ]
-	    coordinates {
-	    (10,265)(100,2907)
-	    };
-	    \addlegendentry{librosa}
-	  
+	    \addlegendentry{rp\_extract  (4 cores)}
 	\addplot[
 	    color=green,
 	    mark=square,
@@ -197,10 +191,17 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 		(10,94)(100,1024)
 	    };
 	    \addlegendentry{essentia}
-	    
+	\addplot[
+	    color=orange,
+	    mark=square,
+	    ]
+	    coordinates {
+	    (10,265)(100,2907)
+	    };
+	    \addlegendentry{librosa}	    
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Performance of various toolkits on a single node}
+	\caption{Performance of various toolkits on a single computer}
 	\label{perfex}
 \end{figure}
 In summary the estimated time based on the performance measurements can be calculated and is listed below, leading to the conclusion that the extraction of the features for the full dataset including the FMA dataset can only be done with the help of a computing cluster.
@@ -219,8 +220,8 @@ In summary the estimated time based on the performance measurements can be calcu
 
 For the extraction of the features from the fma dataset on the "ARA" cluster of the Friedrich-Schiller-University in Jena parallel python had to be replaced with mpi4py. 
 Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
-Every compute process gets a rank number and is aware of the overall count of all processes. With these two values the file list of all audio files is split and each process only processes the according files. The audio files were stored in a parallel cluster file system called beegfs \cite{beegfs}. Equally to the implementation using parallel python every process stores the results in batches in separate output files, each of them containing 25 songs.\\
-All files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs to evaluate. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available Memory per CPU, only 18 CPU cores per node were used. During the computation of the features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
+Every compute process gets a rank number and is aware of the overall count of all processes. With these two values the file list of all audio files is split and each process only processes the according files. The audio files were stored in a parallel cluster file system called beegfs \cite{beegfs}. Equally to the implementation using parallel python every process stores the results in separate output files, each of them containing batches of 25 songs.\\
+All audio files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available Memory per CPU, only 18 CPU cores per node were used. Overall 648 processses were spawned. During the computation of the audio features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
 The extraction of the features took 1439s (fastest process) to 1950s (slowest). With a better balancing and messaging between the processes, the task could be distributed in a way where idle tasks take parts of the file list from tasks that are still processing. 
 
 \begin{pythonCode}
@@ -246,4 +247,4 @@ for index in xrange(start + rank, last, size):
 
 \subsubsection{Total amount of songs}
 
-Due to the above mentioned filtering of larger audio files and due to the fact that the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So in the end the overall count of songs where features could be extracted is 114310.\\
+Due to the above mentioned filtering of audio files larger than 25MB and due to the fact that the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So in the end the overall count of songs where features could be extracted is 114310.\\
