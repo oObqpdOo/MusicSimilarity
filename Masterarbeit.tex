@@ -34,6 +34,7 @@
 \usepackage{here} 
 
 \usepackage{lmodern} %Type1-Schriftart f�r nicht-englische Texte
+
 %\usepackage{textcomp}
 %\usepackage{helvet}
 %\usepackage{bookman}
@@ -419,9 +420,7 @@ pdfstartview={XYZ null null 1.00}
 \usetikzlibrary{shapes.symbols}
 \usetikzlibrary{arrows,calc}
 
-\lstnewenvironment{pythonCode}[1][]
-{
-  \lstset{
+\newcommand{\SetListingOptions}{\lstset{
   	language=Python,
   	keywordstyle=\color{blue},
   	stringstyle=\color{red},
@@ -452,8 +451,17 @@ pdfstartview={XYZ null null 1.00}
     xrightmargin=3pt,
     aboveskip = 20pt,
     rulecolor=\color{black},
-  }
+}}
+
+\lstnewenvironment{pythonCode}[1][]
+{
+	\lstset{#1}
+  	\SetListingOptions
 }{}
+
+
+\renewcommand{\lstlistlistingname}{List of Code Snippets}
+\renewcommand{\lstlistingname}{List of Code Snippets}
 
 %\usepackage[parfill]{parskip}
 
@@ -616,22 +624,28 @@ supervisors: \>Ralf Seidler, Prof. Dr. Martin B\"ucker\\
 
 \begin{tabbing}
 placeholderplaceplaceholder \= placeholder \kill
-\textbf{MIR} \> music information retrieval\\
-\textbf{MFCC} \> mel frequency cepstral coefficients\\
-\textbf{FFT} \> fast fourier transformation\\
-\textbf{DCT} \> discrete cosine transformation\\
-\textbf{MSD} \> million song dataset\\
-\textbf{MIDI} \> musical instrument digital interface\\
-\textbf{KL divergence} \> Kullback-Leibler divergence\\
-\textbf{MP} \> mutual proximity\\
-\textbf{DTW} \> dynamic time warping\\
-\textbf{ESA} \> explicit semantic analysis\\
+
+\textbf{BH} \> beat histogram\\
 \textbf{BPM} \> beats per minute\\
 \textbf{BRP} \> bucketed random projection\\
+\textbf{DCT} \> discrete cosine transformation\\
+\textbf{DTW} \> dynamic time warping\\
+\textbf{ESA} \> explicit semantic analysis\\
+\textbf{FFT} \> fast fourier transformation\\
+\textbf{GMM} \> gaussian mixture model\\
 \textbf{HDFS} \> hadoop distributed file system\\
-\textbf{YARN} \> yet another resource negotiator\\
-\textbf{RDD} \> resilient distributed dataset\\
 \textbf{HT} \> hyperthreading\\
+\textbf{JS divergence} \> Jensen Shannon\\
+\textbf{KL divergence} \> Kullback-Leibler divergence\\
+\textbf{MFCC} \> mel frequency cepstral coefficients\\
+\textbf{MIDI} \> musical instrument digital interface\\
+\textbf{MIR} \> music information retrieval\\
+\textbf{MP} \> mutual proximity\\
+\textbf{MSD} \> million song dataset\\
+\textbf{RDD} \> resilient distributed dataset\\
+\textbf{RH} \> rhythm histogram\\
+\textbf{RP} \> rhythm pattern\\
+\textbf{YARN} \> yet another resource negotiator\\
 
 
 
@@ -661,6 +675,22 @@ placeholderplaceplaceholder \= placeholder \kill
 \ \\ 
 \ \\ 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tabellenverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Code Snippets}
+\lstlistoflistings
+\ \\ 
+\ \\ 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Einleitung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -680,21 +710,24 @@ placeholderplaceplaceholder \= placeholder \kill
 %\appendix
 \justifying
 
-\include{CH1}
+\input{CH1}
 
-\include{CH1_2}
+\input{CH1_2}
 
-\include{CH2}
+%\include{CH2}
+\input{CH2}
 
-\include{CH3}
+%\include{CH3}
+\input{CH3}
 
-\include{CH4}
+%\include{CH4}
+\input{CH4}
 
-\include{CH5}
+\input{CH5}
 
-\include{CH6}
+\input{CH6}
 
-\include{CH7}
+\input{CH7}
 
 %\begin{flushleft}
 %\begin{Huge}
@@ -813,7 +846,7 @@ placeholderplaceplaceholder \= placeholder \kill
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Appendix}
 
-\section{Spotipy Crawler}\label{spotcrawl}
+\section{Spotipy Data Miner}\label{spotcrawl}
 
 \lstset{language=Python,
 	keywordstyle=\color{blue},
@@ -878,7 +911,6 @@ f_feat.close()
 feat_vec = []
 feat_num = []
 feat_name = []
-
 for num in range(0, playlist_length, 100):
 	results = sp.user_playlist_tracks(username, playlist_id, limit=100, offset=int(num))
 	tracks = results
@@ -902,9 +934,7 @@ for num in range(0, playlist_length, 100):
 				os.makedirs(directory)
 			filename = directory + "/" + artist + " - " + songtitle + ".mp3"         
 			urllib.urlretrieve(prev_url, filename)			
-			
 			tid = 'spotify:track:' + track['id']
-			
 			analysis = sp.audio_analysis(tid)	
 			with open(directory + "/" + songtitle + '_analysis.json', 'w') as outfile:
 				json.dump(analysis, outfile)
@@ -912,9 +942,7 @@ for num in range(0, playlist_length, 100):
 			segments = analysis["segments"]
 			bars = analysis["bars"]
 			beats = analysis["beats"]            
-			
 			tid = str(tid)
-
 			features = sp.audio_features(tid)
 			with open(directory + "/" + songtitle + '_features.json', 'w') as outfile:
 				json.dump(features, outfile)
@@ -928,18 +956,16 @@ for num in range(0, playlist_length, 100):
 			speechiness = features[0]['speechiness']
 			valence = features[0]['valence']
 			feat_vec.append(scipy.array([acousticness, danceability, instrumentalness, liveness, loudness, speechiness, valence]))	
-
 		else: 
 			print("no url - entry: " + artist + " - " + songtitle)
 			print(track_id + "\n")
-			
 t_delta = time.time() - t_start
 print ("features retrieved in %.2f seconds" % (t_delta,))   
 dist = distance.euclidean(feat_vec[0], feat_vec[1])
 \end{lstlisting}
 
 
-\chapter*{Acknowledgement}
+%\chapter*{Acknowledgement}
 
 \chapter*{Declaration of Authorship}
 
@@ -948,7 +974,7 @@ sources used are acknowledged as references.
 This thesis was not previously presented to another examination board and has not been
 published in German, English or any other language.\\
 \ \\
-Hermsdorf, \today
+Jena, \today
 \ \\
 \ \\
 \ \\

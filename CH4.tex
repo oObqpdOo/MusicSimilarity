@@ -105,15 +105,15 @@ The algorithm to extract the rhythm patterns as well as the rhythm histogram and
     %inner sep=1pt, font=\sffamily\small},
     block_center/.style ={rectangle, draw=black, thick, fill=white,
       text width=16em, text centered,
-      minimum height=3em},
+      minimum height=2em},
     block_left/.style ={rectangle, draw=black, thick, fill=white,
-      text width=16em, text ragged, minimum height=4em, inner sep=6pt},
+      text width=16em, text ragged, minimum height=2em, inner sep=6pt},
     block_noborder/.style ={rectangle, draw=none, thick, fill=none,
       text width=18em, text centered, minimum height=1em},
     block_assign/.style ={rectangle, draw=black, thick, fill=white,
-      text width=18em, text ragged, minimum height=3em, inner sep=6pt},
+      text width=18em, text ragged, minimum height=2em, inner sep=6pt},
     block_lost/.style ={rectangle, draw=black, thick, fill=white,
-      text width=16em, text ragged, minimum height=3em, inner sep=6pt},
+      text width=16em, text ragged, minimum height=2em, inner sep=6pt},
       line/.style ={draw, thick, -latex', shorten >=0pt}]
     % outlining the flowchart using the PGF/TikZ matrix funtion
     \matrix [column sep=5mm,row sep=3mm] {
@@ -249,12 +249,14 @@ In conclusion this approach is discarded and not further considered and tested i
 
 Three different similarity metrics are chosen: 
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item Euclidean Distance
 	\item Symmetric Kullback-Leibler Divergence
 	\item Jensen-Shannon like Divergence
 \end{itemize}
 To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each mfcc band. These are stored in two different output text files: 
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $b$))
 	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix as a vector (length $\frac{b \cdot (b-1)}{2}$))
 \end{itemize}
@@ -268,11 +270,13 @@ The text files contain strings like the following:\\
 
 Two different similarity metrics are chosen: 
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item Levenshtein Distance
 	\item cross-correlation on full beat aligned and per beat averaged chroma features, key shifted to A
 \end{itemize}
 These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
 	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
@@ -285,12 +289,14 @@ for the out.notes files and out.chroma files.
 
 Three different similarity metrics are chosen: 
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item euclidean distance between beat histograms
 	\item euclidean distance between rhythm histograms
 	\item euclidean distance between rhythm patterns
 \end{itemize}
 These are stored in three different output text files.
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item out.bh (containing the estimated overall bpm and a vector for the beat histogram normalized to one (length $250$))
 	\item out.rh (containing a vector for the rhythm histogram extracted with rp\_extract (length $60$))
 	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (length $24 \times 60$))

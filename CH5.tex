@@ -44,7 +44,7 @@ After evaluating the different features in the last three chapters, this one dis
 
 For most of the plots in the introduction section \ref{audiofeat} the python toolkit librosa was used because of its ease of use and very good documentation. The code example shows the necessary methods to extract the most important features like mfcc, chromagram and beats/ onsets.
 \lstset{language=Python} 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:librosa},caption={librosa},captionpos=b]
 path = ('music/guitar2.mp3')
 x, fs = librosa.load(path)
 mfcc = librosa.feature.mfcc(y=x, sr=fs, n_mfcc=12)
@@ -65,7 +65,7 @@ The second way is to use essentia streaming. Basically a network of connected al
 \subsubsection{Essentia Standard}
 
 In the final extractor code the mfcc calculation and beat histogram estimation is done with the essenia standard library, because it offers a fast and easy way to implement the basic feature extraction tasks. 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:esss},caption={essentia standard},captionpos=b]
 audio = es.MonoLoader(filename=path, sampleRate=fs)()
 hamming_window = es.Windowing(type='hamming')
 spectrum = es.Spectrum()
@@ -81,7 +81,7 @@ peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, hi
 \subsubsection{Essentia Streaming}
 
 The essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various stages of processing and ultimately resulting in the chroma features of the high-pass filtered audio signal. 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:essst},caption={essentia streaming},captionpos=b]
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
 HP = ess.HighPass(cutoffFrequency=128)
 LP = ess.LowPass(cutoffFrequency=4096)
@@ -119,7 +119,7 @@ The calculation with the essentia library for 100 songs took less than half of t
 \subsubsection{parallel python}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:pp},caption={parallel python},captionpos=b]
 job_server = pp.Server()
 job_server.set_ncpus(ncpus)
 jobs = [ ]
@@ -208,6 +208,7 @@ In summary the estimated time based on the performance measurements can be calcu
 \ \\
 \textbf{Estimated feature extraction times}
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item 3h24 - 1517 artists - essentia parallel, single node, 4 CPU cores
 	\item 3h54 - 1517 artists - rp\_extract
 	\item 9h06 - private dataset - essentia parallel, single node, 4 CPU cores
@@ -224,7 +225,7 @@ Every compute process gets a rank number and is aware of the overall count of al
 All audio files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available Memory per CPU, only 18 CPU cores per node were used. Overall 648 processses were spawned. During the computation of the audio features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
 The extraction of the features took 1439s (fastest process) to 1950s (slowest). With a better balancing and messaging between the processes, the task could be distributed in a way where idle tasks take parts of the file list from tasks that are still processing. 
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:mpi4py},caption={mpi4py},captionpos=b]
 comm = MPI.COMM_WORLD   # get MPI communicator object
 size = comm.size        # total number of processes
 rank = comm.rank        # rank of this process
@@ -248,3 +249,7 @@ for index in xrange(start + rank, last, size):
 \subsubsection{Total amount of songs}
 
 Due to the above mentioned filtering of audio files larger than 25MB and due to the fact that the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So in the end the overall count of songs where features could be extracted is 114310.\\
+
+\textbf{\textit{Output size (all features) -> 114000 songs = 11,2GB --> 30000000 songs = 2945.6 GB (Spotify Scale)}}
+
+

@@ -61,10 +61,8 @@ MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
 according to \cite[p. 80]{knees1}
 
-\subsection{Other Similarity Metrics}
-\ \\
-Another, more compute heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore the usage of GMMs is not further considered in this thesis.
-\ \\
+\subsection{Gaussian Mixture Models and block-level features}
+Another, more compute heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore the usage of GMMs is not further considered in this thesis.\\
 The last method mentioned in this thesis for timbral similarity is to use block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. 
 Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g. multiple second long, audio frames and features like fluctuation patterns are computed for these frames. 
 
@@ -78,7 +76,7 @@ Using the musly toolkit, a first evaluation is presented in the next section. Th
 Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results could be achieved in descending order: 
 
 \begin{itemize}
-	\setlength\itemsep{0em}
+	\setlength\itemsep{-0.5em}
 	\item Ziegenm\"uhlen Session - Down On The Corner (Folk Musik)
 	\item While She Sleeps - The Divide (Metalcore)
 	\item Delain - Mother Machine (Live) (Symphonic Metal)
@@ -111,7 +109,7 @@ Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 
 Using the full dataset consisting of the private music collection, private field recordings, the full fma-dataset and the musicnet data, the following results could be achieved: 
 
 \begin{itemize}
-	\setlength\itemsep{0em}
+	\setlength\itemsep{-0.5em}
 	\item Born Pilot - Birds Fell (FMA, Electronic, Noise)
 	\item mrandmrsBrian - sun is boring (FMA, Avant-Garde, field recordings)
 	\item steps in snow (private field recording)
@@ -127,7 +125,7 @@ This piece by Mozart appears overall four times in the dataset and is recorded b
 Every recording has a different length as listed in the following overview of the recordings by CD
 
 \begin{itemize}
-	\setlength\itemsep{0em}
+	\setlength\itemsep{-0.5em}
 	\item 100 Meisterwerke der Klassik (3:33)
 	\item Piano Perlen (3:30)
 	\item The Piano Collection - Disk 18 (3:28)
@@ -136,7 +134,7 @@ Every recording has a different length as listed in the following overview of th
 \end{itemize}
 The top ten most similar songs to the 3 minutes and 33 seconds version are listed below:
 \begin{itemize}
-	\setlength\itemsep{0em}
+	\setlength\itemsep{-0.5em}
 	\item Mozart - Concert No. 10 for 2 Pianos and Orchestra in E Flat Major, KV 365 - 2. Andante
 	\item Schubert - Sonata in B Flat, D. 960 - III. Scherzo (Allegro vivace con delicatezza)
 	\item Albeniz - Iberia, Book I - Evocaci\'on

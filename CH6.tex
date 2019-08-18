@@ -10,7 +10,7 @@ The first tests with spark were performed on a single PC with 4 CPU cores, runni
 The features are stored in text files as described in chapter \ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contain the features of a small number of songs. Because many small files are inefficient to process with Spark \cite[p. 153]{sparkbook1} all files containing the same feature type are merged to one large file, before being loaded into the HDFS. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \textit{rdd.coalesce(repartition\_count)} command. 
 Finally to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of numbers, each representing a certain note. To compare these using the Levenshtein distance, these lists are converted into strings. 
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:prep1},caption={notes preprocessing},captionpos=b]
 chroma = sc.textFile("features/out[0-9]*.notes").coalesce(repartition_count)
 chroma = chroma.map(lambda x: x.split(';'))
 chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("0",'A').replace("1",'B').replace("2",'C').replace("3",'D').replace("4",'E').replace("5",'F').replace("6",'G').replace("7",'H').replace("8",'I').replace("9",'J').replace("10",'K').replace("11",'L')))
@@ -20,7 +20,7 @@ df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 
 \noindent All the other features are stored as lists of floats and have to be converted to vectors.  
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:rpp},caption={rp preprocessing},captionpos=b]
 list_to_vector_udf = udf(lambda l: Vectors.dense(l), VectorUDT())
 rp = sc.textFile("features[0-9]*/out[0-9]*.rp").coalesce(repartition_count)
 rp = rp.map(lambda x: x.split(","))
@@ -31,7 +31,7 @@ rp_df = rp_df.select(rp_df["id"],list_to_vector_udf(rp_df["rp"]).alias("rp"))
 
 \subsection{Euclidean Distance}
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:euc},caption={euclidean distance},captionpos=b]
 from scipy.spatial import distance
 #...
 distance_udf = F.udf(lambda x: float(distance.euclidean(x, comparator_value)), FloatType())
@@ -52,7 +52,7 @@ result = result.rdd.flatMap(list).collect()
 
 Due to the fact that the ARA cluster is running with PySpark version 1.6.0, the Bucketed Random Projection (BRP) Algorithm could only be tested on the single node test platform. 
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:brp},caption={bucketed random projection},captionpos=b]
 from pyspark.ml.feature import BucketedRandomProjectionLSH
 #...
 brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=25.0)
@@ -100,7 +100,7 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \FloatBarrier
 
 \textit{\textbf{2 Versions explained - with additional key shift and without}}
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:corr},caption={cross-correlation},captionpos=b]
 def cross_correlate(chroma1, chroma2):
     corr = sp.signal.correlate2d(chroma1, chroma2, mode='full')
     #transposed_chroma = transposed_chroma / (min(length1, length2))
@@ -127,7 +127,7 @@ spark.executor.memory           2g\\
 
 \subsection{Kullback-Leibler Divergence}
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:kl},caption={kullback leibler},captionpos=b]
 def symmetric_kullback_leibler(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
     d = 13
@@ -143,7 +143,7 @@ result = result.rdd.flatMap(list).collect()
 
 \subsection{Jensen-Shannon Divergence}
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:js},caption={jensen shannon},captionpos=b]
 def jensen_shannon(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
     mean_m = 0.5 * (mean1 + mean2)
@@ -162,7 +162,7 @@ result = result.rdd.flatMap(list).collect()
 
 \subsection{Levenshtein distance}
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:lev},caption={levenshtein},captionpos=b]
 def get_neighbors_notes(song):
     filterDF = df.filter(df.id == song)
     filterDF.first()
@@ -175,7 +175,7 @@ def get_neighbors_notes(song):
 
 \subsection{performance}
 
-\begin{pythonCode}
+\begin{pythonCode}[frame=single,label={lst:clust},caption={cluster setup},captionpos=b]
 confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
 confCluster.set("spark.driver.memory", "64g")
 confCluster.set("spark.executor.memory", "64g")

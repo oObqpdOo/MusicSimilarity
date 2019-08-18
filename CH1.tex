@@ -315,7 +315,9 @@ As another option, the MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \c
 \lstset{language=Matlab}          % Set your language (you can change the language for each code-block optionally)
 %\newpage
 \FloatBarrier
-\begin{lstlisting}[frame=single]  % Start your code-block
+
+\begin{lstlisting}[frame=single,label={lst:MIRmat},
+caption={MIR Toolkit Similarity},captionpos=b]  % Start your code-block
 numfiles = 326;
 mydata = cell(1, numfiles);
 for k = 1:numfiles
@@ -491,65 +493,63 @@ To evaluate the music similarity algorithms and metrics a lot of music data is n
 
 \subsection{Datasets}\label{datasets}
 
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.45]{Images/privmus.jpg}
+		\caption{private music collection}
+		\label{privmusdist}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.29]{Images/1517genre.png}
+		\caption{1517 artists}
+		\label{1517dist}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.35]{Images/fma_genre.JPG}
+		\caption{fma \cite[p. 4]{fma1}}
+		\label{fmadist}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.35]{Images/MedleyDB1.png}
+		\caption{MedleyDB \cite[p. 2]{medleydb1}}
+		\label{medleydbdist}
+	\end{subfigure}
+	}}
+	\caption{Datasets}
+	\label{fig:datasetdist}
+\end{figure}
+\FloatBarrier
+
 \subsubsection{Free Music Archive}
 
-The largest dataset is the Free Music Archive- dataset (fma) consisting of 106733 different songs totalling an amount of nearly one terabyte of music data from all kinds of different music genres.\cite{fma1} There is also a lot of metadata information available for most of the songs.
+The largest dataset is the Free Music Archive- dataset (fma) consisting of 106733 different songs totalling an amount of nearly one terabyte of music data from all kinds of different music genres \cite{fma1}. There is also a lot of metadata information available for most of the songs.
 
-\begin{figure}[thpb]
-	\centering
-	\framebox{\parbox{3in}{      
-			\includegraphics[scale=0.35]{Images/fma_genre.JPG}}}
-	\caption{Number of songs in the free music archive dataset per genre}
-	\label{fmadist}
-\end{figure}
-\FloatBarrier
+\subsubsection{Private music collection}
 
-\subsubsection{Musicnet and 1517 artists}
+The private music collection used in this work consist mainly of metal music. The music was legally purchased, all rights belong to the respective owners. The distribution of different songs per genre for this dataset is visualized in figure \ref{privmusdist}.\\
+\noindent Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud \cite{bqpd1}.\\
+The private music collection is fully cataloged and the according pdf file is the appendices.
 
-Another source of music is the Musicnet dataset.\cite{musicnet1} It includes 330 pieces of classical music with musical notes as annotations. 
-Other sources of musical information would be the 1517-Artists dataset containing 3180 songs of multiple genres. \cite{1517artists1}
+\subsubsection{1517 artists and Musicnet}
 
-\begin{figure}[thpb]
-	\centering
-	\framebox{\parbox{3in}{      
-			\includegraphics[scale=0.29]{Images/1517genre.png}}}
-	\caption{Number of songs in the 1517 artists dataset per genre}
-	\label{1517dist}
-\end{figure}
-\FloatBarrier
-
-\subsubsection{MedleyDB}
-
-For a melody/ pitch based similarity analysis, multitrack datasets could provide useful data, due to the fact that the pitch estimation can be done instrument by instrument. 
-Datasets available are the MedleyDB\cite{medleydb1} and MedleyDB2\cite{medleydb2} datasets as well as the Open Multitrack Dataset\cite{openmult1} currently consisting of 593 multi-tracks in which the MedleyDB dataset is already included, leaving 481 other tracks for analysis.
-
-\begin{figure}[thpb]
-	\centering
-	\framebox{\parbox{3in}{      
-			\includegraphics[scale=0.35]{Images/MedleyDB1.png}}}
-	\caption{Number of songs in the MedleyDB dataset per genre}
-	\label{medleydbdist}
-\end{figure}
-\FloatBarrier
+Another source of music is the Musicnet dataset \cite{musicnet1}. It includes 330 pieces of classical music with musical notes as annotations. Other sources of musical information would be the 1517-Artists dataset containing 3180 songs of multiple genres. \cite{1517artists1}
 
 \subsubsection{covers80}
 
 For a cover song detection system, the covers80 dataset is available \cite{cover80} containing 80 original songs mostly from the musical genres rock and pop and 84 cover versions. These cover versions tend to differ significantly in musical style, rhythm and timbre from the original.\\
 The ability to detect cover songs or different versions/ recording of a musical piece could be a good measurement for the efficiency of music similarity algorithms. In the next section one test case is presented, showing, that a MFCC based music similarity algorithm isn't able to detect different recordings of the same piano piece as most similar to each other. 
 
-\subsubsection{Private music collection}
+\subsubsection{MedleyDB}
 
-The private music collection used in this work consist mainly of metal music. The music was legally purchased, all rights belong to the respective owners. The distribution of different songs per genre for this dataset is visualized in figure \ref{privmusdist}.
-\begin{figure}[thpb]
-	\centering
-	\framebox{\parbox{3in}{      
-			\includegraphics[scale=0.45]{Images/privmus.jpg}}}
-	\caption{Number of songs in the private music collection per genre}
-	\label{privmusdist}
-\end{figure}
-\FloatBarrier
-\noindent Additionally a private recording dataset was used, consisting of ambient recordings and self produced music. Most of this music can be downloaded from soundcloud \cite{bqpd1}.\\
-The private music collection is fully cataloged and the according pdf file is the appendices.
+For a melody/ pitch based similarity analysis, multitrack datasets could provide useful data, due to the fact that the pitch estimation can be done instrument by instrument. 
+Datasets available are the MedleyDB \cite{medleydb1} and MedleyDB2 \cite{medleydb2} datasets as well as the Open Multitrack Dataset \cite{openmult1} currently consisting of 593 multi-tracks in which the MedleyDB dataset is already included, leaving 481 other tracks for analysis.
 
 \subsubsection{Overview and other sources}
 
@@ -594,7 +594,7 @@ For the purpose of this thesis, the option of creating an own dataset using the 
 Ten very small test playlists of different genres were created using the Spotify Playlist Miner \cite{spotmin1}. 
 Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from all of the songs of a playlist, that contains a preview URL with a 30 second audio snippet. The audio features and analysis data is saved as a JSON file containing information over:
 \begin{itemize}
-	\setlength\itemsep{0em}
+	\setlength\itemsep{-0.5em}
 	\item acousticness
 	\item danceability
 	\item instrumentalness
@@ -640,13 +640,13 @@ Upon request the Spotify API developer team did not respond and therefor in this
 \subsubsection{Million Song Dataset}
 
 Another outstanding and very large dataset is available with the Million Song Dataset (MSD)\cite{msd1}. 
-It contains a large set of metadata per track as well as a lot of supplementary datasets, like the Tagtraum genre annotation (figure \ref{msddist})\cite{msd5}, the last.fm dataset\cite{msd2} and the Echo Nest API dataset\cite{msd3}. Although the MSD does not contain any music files in the first place, 30 second samples could be gathered through simple scripts from 7digital.com when the dataset was made publicly available. On top of that the Echo Nest API data already contains a lot of audio features like pitch, loudness, energy and danceability to name just a few.
+It contains a large set of metadata per track as well as a lot of supplementary datasets, like the Tagtraum genre annotation (figure \ref{msddist})\cite{msd5}, the last.fm dataset\cite{msd2} and the Echo Nest API dataset\cite{msd3}. Although the MSD does not contain any music files in the first place, 30 second samples could be gathered through simple scripts from 7digital.com when the dataset was made publicly available. On top of that the Echo Nest API data already contains a lot of audio features like pitch, loudness, energy and danceability to name just a few.\\
 Another addition is the secondhand dataset, containing a list of cover songs in the million song dataset\cite{msd6}
 \begin{figure}[thpb]
 	\centering
 	\framebox{\parbox{3in}{      
 			\includegraphics[scale=0.5]{Images/MSD_Tagtraum.JPG}}}
-	\caption{Number of songs in the million song dataset per genre}
+	\caption{million song dataset genre distribution}
 	\label{msddist}
 \end{figure}
 \FloatBarrier
