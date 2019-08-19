@@ -19,7 +19,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.9}bucketed random projection}{53}{lstlisting.4.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.10}cross-correlation}{54}{lstlisting.4.10}
+\contentsline {lstlisting}{\numberline {4.10}cross-correlation}{55}{lstlisting.4.10}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.11}kullback leibler}{55}{lstlisting.4.11}
 \defcounter {refsection}{0}\relax 

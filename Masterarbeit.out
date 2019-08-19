@@ -67,14 +67,15 @@
 \BOOKMARK [2][-]{subsection.4.2.7}{Levenshtein distance}{section.4.2}% 67
 \BOOKMARK [2][-]{subsection.4.2.8}{performance}{section.4.2}% 68
 \BOOKMARK [2][-]{subsection.4.2.9}{possible performance improvements}{section.4.2}% 69
-\BOOKMARK [2][-]{subsection.4.2.10}{Other alternatives}{section.4.2}% 70
-\BOOKMARK [0][]{chapter.5}{Results}{}% 71
-\BOOKMARK [1][-]{section.5.1}{Runtime}{chapter.5}% 72
-\BOOKMARK [1][-]{section.5.2}{feature separation quality}{chapter.5}% 73
-\BOOKMARK [1][-]{section.5.3}{Cover song identification}{chapter.5}% 74
-\BOOKMARK [1][-]{section.5.4}{Genre similarity}{chapter.5}% 75
-\BOOKMARK [1][-]{section.5.5}{... and beyond genre boundaries}{chapter.5}% 76
-\BOOKMARK [1][-]{section.5.6}{Summary and outlook}{chapter.5}% 77
-\BOOKMARK [0][]{section*.11}{References}{}% 78
-\BOOKMARK [0][]{chapter.6}{Appendix}{}% 79
-\BOOKMARK [1][-]{section.6.1}{Spotipy Data Miner}{chapter.6}% 80
+\BOOKMARK [2][-]{subsection.4.2.10}{Descending Importance Filter and Refine}{section.4.2}% 70
+\BOOKMARK [2][-]{subsection.4.2.11}{Other alternatives}{section.4.2}% 71
+\BOOKMARK [0][]{chapter.5}{Results}{}% 72
+\BOOKMARK [1][-]{section.5.1}{Runtime}{chapter.5}% 73
+\BOOKMARK [1][-]{section.5.2}{feature separation quality}{chapter.5}% 74
+\BOOKMARK [1][-]{section.5.3}{Cover song identification}{chapter.5}% 75
+\BOOKMARK [1][-]{section.5.4}{Genre similarity}{chapter.5}% 76
+\BOOKMARK [1][-]{section.5.5}{... and beyond genre boundaries}{chapter.5}% 77
+\BOOKMARK [1][-]{section.5.6}{Summary and outlook}{chapter.5}% 78
+\BOOKMARK [0][]{section*.11}{References}{}% 79
+\BOOKMARK [0][]{chapter.6}{Appendix}{}% 80
+\BOOKMARK [1][-]{section.6.1}{Spotipy Data Miner}{chapter.6}% 81

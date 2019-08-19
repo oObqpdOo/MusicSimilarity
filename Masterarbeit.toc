@@ -83,15 +83,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Cluster architecture}{22}{subsection.2.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Spark and RDDs}{22}{figure.2.17}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Spark DataFrame}{22}{figure.2.17}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{lazy evaluation}{22}{figure.2.17}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{min and max value aggregation}{22}{figure.2.17}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Hadoop vs Spark Memory Management}{22}{figure.2.17}
+\contentsline {subsubsection}{Cluster configuration}{22}{figure.2.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Spark application UI}{22}{figure.2.17}
 \defcounter {refsection}{0}\relax 
@@ -207,30 +199,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.9}possible performance improvements}{59}{subsection.4.2.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.10}Other alternatives}{59}{subsection.4.2.10}
+\contentsline {subsection}{\numberline {4.2.10}Descending Importance Filter and Refine}{59}{subsection.4.2.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Alternating Least Squares}{59}{subsection.4.2.10}
+\contentsline {subsection}{\numberline {4.2.11}Other alternatives}{60}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{TF-IDF weights}{59}{subsection.4.2.10}
+\contentsline {subsubsection}{Alternating Least Squares}{60}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DIMSUM all-pairs similarity}{59}{subsection.4.2.10}
+\contentsline {subsubsection}{TF-IDF weights}{60}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{60}{chapter.5}
+\contentsline {subsubsection}{DIMSUM all-pairs similarity}{60}{subsection.4.2.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{60}{section.5.1}
+\contentsline {chapter}{\numberline {5}Results}{61}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}feature separation quality}{60}{section.5.2}
+\contentsline {section}{\numberline {5.1}Runtime}{61}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cover song identification}{67}{section.5.3}
+\contentsline {section}{\numberline {5.2}feature separation quality}{61}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{68}{section.5.4}
+\contentsline {section}{\numberline {5.3}Cover song identification}{68}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{68}{section.5.5}
+\contentsline {section}{\numberline {5.4}Genre similarity}{69}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Summary and outlook}{68}{section.5.6}
+\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{69}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{70}{section*.11}
+\contentsline {section}{\numberline {5.6}Summary and outlook}{69}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Appendix}{76}{chapter.6}
+\contentsline {chapter}{References}{71}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{76}{section.6.1}
+\contentsline {chapter}{\numberline {6}Appendix}{77}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{77}{section.6.1}

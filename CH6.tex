@@ -3,7 +3,7 @@
 \section{Big Data Framework Spark}\label{bds1}
 
 After the features are extracted, the next step is to load the feature files into the HDFS. 
-The first tests with spark were performed on a single PC with 4 CPU cores, running Spark 2.4.0.\\ The cluster test were performed on the ARA- Cluster, that offers 16 compute-nodes with 32 CPU-cores per node (72 with HT) and 192GB RAM. The cluster was running an older version of Spark (1.6.0)\\
+The first tests with spark were performed on a single PC with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4), running Spark 2.4.0.\\ The cluster test were performed on the ARA- Cluster, that offers 16 compute-nodes with 32 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT) and 192GB of RAM. The cluster was running an older version of Spark (1.6.0)\\
 
 \subsection{Data preprocessing}
 
@@ -318,6 +318,15 @@ repartition_count = 32
 \ \\
 \textit{\textbf{\underline{Is there a better way to cross-correlate???}\\}}
 \ \\
+
+\subsection{Descending Importance Filter and Refine}
+
+\textit{\textbf{\underline{Make usage of caching from spark!}\\}}
+\ \\
+
+\textit{\textbf{\underline{order of operations is important -> für elise chroma first actually better in cover song recognition}\\}}
+\ \\
+
 \subsection{Other alternatives}
 
 \subsubsection{Alternating Least Squares}

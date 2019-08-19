@@ -10,9 +10,7 @@ With the ever growing availability of huge amounts of high dimensional data the 
 Search engine providers like Google and Yahoo firstly ran into the problem of using "internet-scale" data in the early 2000s when being faced with the problem of storing and processing the ever growing amount of indexes from documents in the internet. In 2003, Google presented their whitepaper called "The Google File System" \cite{gfs}. MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 when the paper "MapReduce: Simplified Data Processing on Large Clusters" was published \cite{mapreduce1}. Doug Cutting and Mike Cafarella worked on a web crawler project called Nutch during that time. Inspired by the two papers Cutting incorporated the storage and processing principles from google, leading to what we know as Hadoop today. Hadoop joined the Apache Software Foundation in 2006 \cite[p. 6]{sparkbook1}.\\ 
 Hadoop is based on the idea of data locality. In contrast to the usual approach, where the data is requested from its location and transferred to a remote processing system or host, Hadoop brings the computation to the data instead. This minimizes the problem of data transfer times over network at compute time when working with very large-scale data/ Big Data. One prerequisite is that the operations on the data are independent from each other. Hadoop follows this approach called "shared-nothing". The data can be processed locally on many nodes at the same time in parallel by splitting the data in independent small subsets without the need of communicating with other nodes. Additionally Hadoop is a schemaless (schema-on-read) system which means that it is able to store and process unstructured, semi-structured (JSON, XML) or well structured data (relational database) \cite[p. 7]{sparkbook1}.\\
 Hadoop is a scalable solution able to run on large computer clusters. It does not necessarily require a supercomputing environment and is able to run on clusters of lower-cost commodity hardware. The data is stored redundantly on multiple nodes with a configurable replication rate defining how many copies of each data chunk are stored on other nodes. This enables an error management where faulty operations can simply be restarted.\\
-To make all this possible, Hadoop relies on its core components YARN (Yet Another Resource Negotiator) and the Hadoop Distributed File System (HDFS)\\
-
-\textit{\underline{To Be Continued...}}
+To make all this possible, Hadoop relies on its core components YARN (Yet Another Resource Negotiator) as the processing and resource scheduling subsystem and the Hadoop Distributed File System (HDFS) as Hadoop's data storage subsystem\\
 
 \subsubsection{MapReduce}
 
@@ -55,19 +53,23 @@ Figure \ref{mapred} shows the basic scheme of a MapReduce program. The core idea
 \noindent In the first stage the input data is split in many chunks and distributed over the nodes of a cluster. This is usually managed by the distributed file system like the HDFS. One master nodes stores the addresses of all data chunks.\\
 The data is fed into the mapper who operates on the input data and finally transforms the input into key-value tuples.\\
 In an intermediate step the key-value pairs are usually grouped by their keys before being fed into the reducer. The reducer applies another method to all tuples with the same key.\\
-The amount of key-value pairs at the output from the mapper divided by the number of input files is called replication rate ($r$). The largest amount of values for one key being fed into a reducer can be denoted as $q$ (reducer size). Usually there is a trade-off between a high replication rate and small $q$ (highly parallel with more network traffic) and small $r$ and larger $q$ (less network traffic but worse parallelism due to an overall smaller reducer count).
+The amount of key-value pairs at the output from the mapper divided by the number of input files is called replication rate ($r$). The highest count of values for one key being fed into a reducer can be denoted as $q$ (reducer size). Usually there is a trade-off between a high replication rate and small $q$ (highly parallel with more network traffic) and small $r$ and larger $q$ (less network traffic but worse parallelism due to an overall smaller reducer count).
 
 \subsection{Spark}
 
 SQL vs NoSQL\\
 \ \\
-user defined function\\
-\ \\
-cluster configuration file\\
-\ \\
 streaming\\
 \ \\
 caching\\
+\ \\
+RDDs\\
+\ \\
+Spark DataFrame\\
+\ \\
+lazy evaluation\\
+\ \\
+Hadoop vs Spark Memory Management\\
 
 \subsubsection{Cluster architecture}
 
@@ -149,16 +151,9 @@ caching\\
 \end{figure}
 \FloatBarrier
 
-
-\subsubsection{Spark and RDDs}
-
-\subsubsection{Spark DataFrame}
-
-\subsubsection{lazy evaluation}
-
-\subsubsection{min and max value aggregation}
-
-\subsubsection{Hadoop vs Spark Memory Management}
+\subsubsection{Cluster configuration}
+\ \\
+cluster configuration file\\
 
 \subsubsection{Spark application UI}
 

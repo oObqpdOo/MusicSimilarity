@@ -93,7 +93,7 @@ The result is shown in figure \ref{fig:chromavg} with the threshold 0.8.
 
 After that a beat tracking algorithm is applied to the song and the count of appearances of each note between two beats is calculated. The notes that appear the most are then set 1 while the rest is set to 0 for each section between two beats. This beat-alignment serves to make the similarity measurement invariant to the global tempo of the song. Even if a cover of a song is played with half the tempo of the original song, then the melody of each bar is still the same as in the faster version.
 Figure \ref{beataligned} show the different beat aligned features of both songs with bandpass filtered audio and unfiltered audio. The red lines are the detected beat events.
-Another option would be to separate the frames between the beats in more smaller sections. This would result in a better resolution of the melodic movement but at the same time increase the length of the data vectors that have to be compared to each other.
+Another option would be to separate the frames between the beats in even smaller sections. This would result in a better resolution of the melodic movement but at the same time increase the length of the data vectors that have to be compared to each other.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
