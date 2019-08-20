@@ -9,16 +9,15 @@ Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref
 To reduce the dimensionality of the data even further, a statistical summarization of the MFCC feature can be calculated \cite[pp. 51ff]{knees1}\\
 
 
-\subsection{Euclidean Distance}
+\subsection{Euclidean Distance}\label{mfcceuc}
 
-For each of the Mel- Bands (12 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 12 mean values, a 12 by 12 co-variance matrix (actually $\frac{12*11}{2}$ values, because of the triangular shape - the upper triangle contains the co-variances and the main diagonal contains the variances) and 12 variances. These vectors are therefore not dependent on the length of the actual song. 
+For each of the Mel- Bands (12 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 12 mean values, a 12 by 12 co-variance matrix ($\frac{12*(12-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the co-variances and the main diagonal contains the variances) and 12 variances. These vectors are therefore not dependent on the length of the actual song. 
 Using such a model, the distance between two songs can be calculated as in equation \ref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
 \begin{equation} \label{eq:distGmm}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}
 \end{equation}
-also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real world scenarios.
-This very basic approach has been refined and improved over the past years. 
+also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real world scenarios. This very basic approach has been refined and improved over the past years. \cite[p. 58]{knees1}
 
 \subsection{Single Gaussian Model}
 
@@ -34,7 +33,7 @@ As a second step the result has to be symmetrized.
 d_{KL}(P, Q) = \frac{1}{2} (KL_{(P||Q)} + KL_{(Q||P)}) 
 \end{equation}
 This approach is one of the two available similarity metrics of the musly \cite{musly1} toolkit introduced in section \ref{mirtoolkit}.
-This can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
+It can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:SKL}
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}

@@ -247,7 +247,7 @@ In conclusion this approach is discarded and not further considered and tested i
 
 \subsection{Timbre Similarity}
 
-Three different similarity metrics are chosen: 
+The chosen similarity metrics are : 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item Euclidean Distance
@@ -257,21 +257,19 @@ Three different similarity metrics are chosen:
 To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each mfcc band. These are stored in two different output text files: 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $b$))
-	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix as a vector (length $\frac{b \cdot (b-1)}{2}$))
+	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $\frac{b \cdot (b+1)}{2}$))
+	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix (length $b \cdot b$)
 \end{itemize}
-The amount of chosen mfcc bands is $b = 13$.\\
-The second file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.
-The text files contain strings like the following:\\
-\textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
-\textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}
+The amount of mfcc bands chosen is $b = 13$.\\
+The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.\\
+To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in section \ref{mfcceuc}) in the triangular matrix.\\
 
 \subsection{Melodic Similarity}
 
-Two different similarity metrics are chosen: 
+For the computation of the melodic similarities, two different similarity metrics are chosen: 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item Levenshtein Distance
+	\item Levenshtein Distance 
 	\item cross-correlation on full beat aligned and per beat averaged chroma features, key shifted to A
 \end{itemize}
 These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
@@ -280,14 +278,11 @@ These are stored in two different output text files. The vector length is depend
 	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
 	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
-The output files contain strings like follows:\\
-\textit{music/CHANDELIER2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
-\textit{music/CHANDELIER2.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}
-for the out.notes files and out.chroma files. 
+
 
 \subsection{Rhythm Similarity}
 
-Three different similarity metrics are chosen: 
+Three different similarity measurements are chosen for the rhythm features: 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item euclidean distance between beat histograms
@@ -301,7 +296,14 @@ These are stored in three different output text files.
 	\item out.rh (containing a vector for the rhythm histogram extracted with rp\_extract (length $60$))
 	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (length $24 \times 60$))
 \end{itemize}
-The text files contain strings like:\\
-\textit{music/CHANDELIER2.mp3; 86.9380264282; [0. ... 0.01453488 ...  0.  0.]}\\
-\textit{music/CHANDELIER2.mp3,15.2521291416,10.10441871, ... ,2.2519330706}\\
-\textit{music/CHANDELIER2.mp3,0.0237481782333,0.0208784207788, ... ,0.00204177442894}\\
+
+\subsection{Feature files}
+
+The text files contain strings like the following:\\
+\underline{out.mfcc}: \textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
+\underline{out.mfcc}: \textit{music/CHANDELIER2.mp3; [-498.03763,  ... ,4.321189]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}\\
+\underline{out.notes}: \textit{music/CHANDELIER2.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
+\underline{out.chroma}: \textit{music/CHANDELIER2.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}\\
+\underline{out.bh}: \textit{music/CHANDELIER2.mp3; 86.9380264282; [0. ... 0.01453488 ...  0.  0.]}\\
+\underline{out.rh}: \textit{music/CHANDELIER2.mp3,15.2521291416,10.10441871, ... ,2.2519330706}\\
+\underline{out.rp}: \textit{music/CHANDELIER2.mp3,0.0237481782333,0.0208784207788, ... ,0.00204177442894}\\

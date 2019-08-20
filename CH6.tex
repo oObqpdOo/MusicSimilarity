@@ -69,36 +69,6 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
 \subsection{Cross-correlation}
 
-\FloatBarrier
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/df_slow_chroma.png}
-				\caption{Chroma multiple agg}
-				\label{chr2}
-			\end{subfigure}%
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/df_speed_chroma.png}
-				\caption{Chroma single agg}
-				\label{chr1}
-			\end{subfigure}% 	
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/toPandasDag.png}
-				\caption{DAG toPandas}
-				\label{chr3}
-			\end{subfigure}% 		
-	}}
-	\caption{Chroma on 11500 songs, single node}
-	\label{fig:chroma}
-\end{figure}
-\FloatBarrier
-
 \textit{\textbf{2 Versions explained - with additional key shift and without}}
 \begin{pythonCode}[frame=single,label={lst:corr},caption={cross-correlation},captionpos=b]
 def cross_correlate(chroma1, chroma2):
@@ -181,11 +151,7 @@ confCluster.set("spark.driver.memory", "64g")
 confCluster.set("spark.executor.memory", "64g")
 confCluster.set("spark.driver.memoryOverhead", "32g")
 confCluster.set("spark.executor.memoryOverhead", "32g")
-#Be sure that the sum of the driver or executor memory plus the driver or executor memory overhead is always less than the value of yarn.nodemanager.resource.memory-mb
-#confCluster.set("yarn.nodemanager.resource.memory-mb", "192000")
-#spark.driver/executor.memory + spark.driver/executor.memoryOverhead < yarn.nodemanager.resource.memory-mb
 confCluster.set("spark.yarn.executor.memoryOverhead", "4096")
-#set cores of each executor and the driver -> less than avail -> more executors spawn
 confCluster.set("spark.driver.cores", "32")
 confCluster.set("spark.executor.cores", "32")
 confCluster.set("spark.dynamicAllocation.enabled", "True")
@@ -277,36 +243,6 @@ repartition_count = 32
 \subsubsection{min and max value aggregation}
 
 \textit{\textbf{Why? Scaling of distances between 0 to 1 interval to combine different distances\\}}
-
-\FloatBarrier
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/separate.png}
-				\caption{Separate DataFrames}
-				\label{sc3}
-			\end{subfigure}%
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/df_merged.png}
-				\caption{Single DataFrames, multiple collects}
-				\label{sc4}
-			\end{subfigure}% 	
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering
-				\includegraphics[scale=0.22]{Images/Spark/speed_uo.png}
-				\caption{Single DataFrames, single collects}
-				\label{sc5}
-			\end{subfigure}% 		
-	}}
-	\caption{Spark DF implementations, single node, 1517 artists}
-	\label{fig:spark2}
-\end{figure}
-\FloatBarrier
 
 \subsection{possible performance improvements}
 

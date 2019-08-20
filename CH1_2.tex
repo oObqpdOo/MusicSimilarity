@@ -2,13 +2,14 @@
 
 \section{Big Data}\label{bdf}
 
-After evaluating different data sources presenting various methods to extract and process different audio features, the following section describes the data analysis with Big Data processing frameworks like Apache Spark \cite{spark} and Hadoop \cite{hadoop}. Later chapter \ref{bds1} deals with the implementation of the various similarity measurements with Spark, the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements, while chapter \ref{bds2} gives short overview over the achieved results using the Big Data framework to compare audio features. 
+After evaluating different data sources presenting various methods to extract and process different audio features, the following section describes the data analysis with Big Data processing frameworks like Apache Spark \cite{spark} and Hadoop \cite{hadoop}. Most of the basic information on Hadoop and Spark in the next few sections are taken from the book "Data Analytics with Spark using Python" by Jeffrey Aven, which gives a very comprehensible and practical introduction to the field of Big Data processing with PySpark \cite{sparkbook1}.\\ 
+Later chapter \ref{bds1} deals with the implementation of the various similarity measurements with Spark, the handling of larger amounts of data, runtime analysis and the combination of multiple similarity measurements, while chapter \ref{bds2} gives short overview over the achieved results using the Big Data framework to compare audio features. 
 
 \subsection{Hadoop}
 
 With the ever growing availability of huge amounts of high dimensional data the need for toolkits and efficient algorithms to handle these grew as well over the past years. They key to handle Big Data is to use parallelity.\\
-Search engine providers like Google and Yahoo firstly ran into the problem of using "internet-scale" data in the early 2000s when being faced with the problem of storing and processing the ever growing amount of indexes from documents in the internet. In 2003, Google presented their whitepaper called "The Google File System" \cite{gfs}. MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 when the paper "MapReduce: Simplified Data Processing on Large Clusters" was published \cite{mapreduce1}. Doug Cutting and Mike Cafarella worked on a web crawler project called Nutch during that time. Inspired by the two papers Cutting incorporated the storage and processing principles from google, leading to what we know as Hadoop today. Hadoop joined the Apache Software Foundation in 2006 \cite[p. 6]{sparkbook1}.\\ 
-Hadoop is based on the idea of data locality. In contrast to the usual approach, where the data is requested from its location and transferred to a remote processing system or host, Hadoop brings the computation to the data instead. This minimizes the problem of data transfer times over network at compute time when working with very large-scale data/ Big Data. One prerequisite is that the operations on the data are independent from each other. Hadoop follows this approach called "shared-nothing". The data can be processed locally on many nodes at the same time in parallel by splitting the data in independent small subsets without the need of communicating with other nodes. Additionally Hadoop is a schemaless (schema-on-read) system which means that it is able to store and process unstructured, semi-structured (JSON, XML) or well structured data (relational database) \cite[p. 7]{sparkbook1}.\\
+Search engine providers like Google and Yahoo firstly ran into the problem of using "internet-scale" data in the early 2000s when being faced with the problem of storing and processing the ever growing amount of indexes from documents in the internet. In 2003, Google presented their whitepaper called "The Google File System" \cite{gfs}. MapReduce as a programming paradigm was introduced by google as an answer to the problem of internet scale data and dates back to 2004 when the paper "MapReduce: Simplified Data Processing on Large Clusters" was published \cite{mapreduce1}. Doug Cutting and Mike Cafarella worked on a web crawler project called Nutch during that time. Inspired by the two papers Cutting incorporated the storage and processing principles from google, leading to what we know as Hadoop today. Hadoop joined the Apache Software Foundation in 2006. \cite[p. 6]{sparkbook1}\\ 
+Hadoop is based on the idea of data locality. In contrast to the usual approach, where the data is requested from its location and transferred to a remote processing system or host, Hadoop brings the computation to the data instead. This minimizes the problem of data transfer times over network at compute time when working with very large-scale data/ Big Data. One prerequisite is that the operations on the data are independent from each other. Hadoop follows this approach called "shared-nothing". The data can be processed locally on many nodes at the same time in parallel by splitting the data in independent small subsets without the need of communicating with other nodes. Additionally Hadoop is a schemaless (schema-on-read) system which means that it is able to store and process unstructured, semi-structured (JSON, XML) or well structured data (relational database). \cite[p. 7]{sparkbook1}\\
 Hadoop is a scalable solution able to run on large computer clusters. It does not necessarily require a supercomputing environment and is able to run on clusters of lower-cost commodity hardware. The data is stored redundantly on multiple nodes with a configurable replication rate defining how many copies of each data chunk are stored on other nodes. This enables an error management where faulty operations can simply be restarted.\\
 To make all this possible, Hadoop relies on its core components YARN (Yet Another Resource Negotiator) as the processing and resource scheduling subsystem and the Hadoop Distributed File System (HDFS) as Hadoop's data storage subsystem\\
 
@@ -48,7 +49,6 @@ Figure \ref{mapred} shows the basic scheme of a MapReduce program. The core idea
 	\caption{MapReduce \cite{mapred1im}}
 	\label{mapred}
 \end{figure}
-\FloatBarrier
 
 \noindent In the first stage the input data is split in many chunks and distributed over the nodes of a cluster. This is usually managed by the distributed file system like the HDFS. One master nodes stores the addresses of all data chunks.\\
 The data is fed into the mapper who operates on the input data and finally transforms the input into key-value tuples.\\
@@ -57,23 +57,10 @@ The amount of key-value pairs at the output from the mapper divided by the numbe
 
 \subsection{Spark}
 
-SQL vs NoSQL\\
-\ \\
-streaming\\
-\ \\
-caching\\
-\ \\
-RDDs\\
-\ \\
-Spark DataFrame\\
-\ \\
-lazy evaluation\\
-\ \\
-Hadoop vs Spark Memory Management\\
+Hadoop as a Big Data processing framework has some downsides compared to other and newer options. Apache Spark was developed as an alternative to the implementation of MapReduce in Hadoop. The Spark project was started in 2009 and was created as a part of the Mesos research project. Spark is written in the programming language Scala and runs in Java Virtual Machines (JVM) but also provides native support for programming interfaces in Python, Java and R. 
+One major advantage compared to Hadoop is the efficient way of caching intermediate data to the main memory instead of the hard drive. While Hadoop has to read all data from the disk and writes the results back to the disk, Spark is able to efficiently take advantage of the RAM memory, making it suitable for interactive queries and iterative machine learning operations. To be able to offer these kinds of in-memory operations Spark uses a structure called Resilient Distributed Dataset (RDD). RDDs are able to use the main memory across multiple machines in a cluster. \cite[p. 13]{sparkbook1}\\ 
+Figure \ref{dataloc} shows the simplified architecture of a compute cluster running Spark. 
 
-\subsubsection{Cluster architecture}
-
-\FloatBarrier
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -87,9 +74,12 @@ Hadoop vs Spark Memory Management\\
 	\node[server, right of= server 2, xshift=3cm](server 3){};
 	\node[rack switch, above of=server 2,xshift=0.1cm,yshift=0.25cm]
 	  (rack switch 1){};
-   	\node[box, above of=rack switch 1, xshift=0cm, yshift=0.15cm](cm){Cluster Manager}; 
-   	\node[server, above of=cm, yshift=0.15cm](servermaster){};
- 	\node[box, above of=servermaster, xshift=0cm, yshift=1.25cm](sc){Spark Context}; 
+   	\node[box, above of=rack switch 1, xshift=0cm, yshift=0.95cm](cm){Cluster Manager}; 
+	\begin{pgfonlayer}{background}
+		\node[bigbox, yshift=-0.25cm, xshift=-0.01cm] [fit = (cm)](ma){\\ \ \\Master};
+	\end{pgfonlayer}
+   	\node[server, above of=ma, yshift=0.75cm](servermaster){};
+ 	\node[box, above of=servermaster, xshift=0cm, yshift=1.25cm](sc){SparkSession}; 
   	\begin{pgfonlayer}{background}
   		\node[bigbox, yshift=-0.25cm, xshift=-0.01cm] [fit = (sc)](dr){\\ \ \\Driver};
   	\end{pgfonlayer}
@@ -125,8 +115,8 @@ Hadoop vs Spark Memory Management\\
 	\draw[thick,black!60!green] (t4.south)--(t7);	
 	\draw[thick,black!60!green] (t5.south)--(t8);	
 	\draw[thick,darkgray!10!gray] (servermaster.north)--(dr.south);
-	\draw[thick,darkgray!10!gray] (servermaster.south)--(cm.north);
-	\draw[thick,darkgray!10!gray] (cm.south)--(rack switch 1.north);
+	\draw[thick,darkgray!10!gray] (servermaster.south)--(ma.north);
+	\draw[thick,darkgray!10!gray] (ma.south)--(rack switch 1.north);
 	\draw[thick,darkgray!10!gray] (server 1.north)--(rack switch 1);
 	\draw[thick,darkgray!10!gray] (server 2.north)--(rack switch 1);
 	\draw[thick,darkgray!10!gray] (server 3.north)--(rack switch 1);
@@ -142,30 +132,97 @@ Hadoop vs Spark Memory Management\\
 	\node[box3, xshift=-6.25cm,yshift=0.3cm,left of = servermaster,align=left](lev2){\textbf{Master Node}};
 	\node[box3, xshift=-5.85cm,yshift=0.3cm,left of = cm,align=left](lev3){\textbf{Cluster Manager}};	
 	\node[box3, xshift=-6.9cm,yshift=0.3cm,left of = rack switch 1,align=left](lev4){\textbf{Switch}};
-	\node[box3, xshift=-2.05cm,yshift=0.3cm,left of = server 3,align=left](lev5){\textbf{Executor Nodes}};
+	\node[box3, xshift=-2.185cm,yshift=0.3cm,left of = server 3,align=left](lev5){\textbf{Worker Nodes}};
 	\node[box3, xshift=-1.325cm,yshift=0.3cm,left of = e1,align=left](lev6){\textbf{Executors}};
 	\end{tikzpicture}
 	}}
 	\caption{Spark Cluster}
 	\label{dataloc}
 \end{figure}
+
+\noindent The core components of a Spark application are the Driver, the Master, the Cluster Manager and the Executors. The Driver is the process where the client submit their applications to. It is responsible for the panning and execution of the Spark program and returns status logs and results to the client. It can be located on a remote client or on a node in the cluster. The SparkSession is created by the Driver and represents a connection to a Spark cluster. The SparkContext and SparkConf as child objects of SparkSession contain the necessary information to configure the cluster parameters, e.g. the amount of CPU cores and memory assigned to the executors and how many executors are spawned overall. Up until version 2.0 entry points for Spark applications included the SparkContext, SQLContext, HiveContext and StreamingContext. In more recent versions these were combined into one SparkSession object providing a single entry point.
+The execution of the Spark application is planned and directed acyclic graphs (DAG) with nodes that represent transformational or computational steps are created by the Spark Driver. These DAGs can be visualized by the Spark application UI typically running on port 4040 of the Driver node. The Spark application UI is a useful tool to improve the performance of Spark applications, as it also gives information about the computation time of the distinct tasks within a Spark program. \cite[pp. 45 ff]{sparkbook1}\\
+An Example is shown in figure \ref{appui}\\
+
+\begin{figure}[htbp]
+	\captionsetup[subfigure]{justification=centering}
+	\centering
+	\framebox{\parbox{1\textwidth}{
+	\begin{subfigure}{.5\textwidth}
+		\captionsetup{justification=centering}
+		\captionsetup[subfigure]{justification=centering}
+		\centering
+		\includegraphics[scale=0.23]{Images/Spark/df_slow_chroma.png}
+		\caption{\noindent Event Timeline}
+		\label{sui2}
+	\end{subfigure}%
+	
+	\begin{subfigure}{.5\textwidth}
+	\captionsetup{justification=centering}
+	\captionsetup[subfigure]{justification=centering}
+	\centering
+	\includegraphics[scale=0.26]{Images/Spark/toPandasDag.png}
+	\caption{\noindent DAG}
+	\label{sui3}
+	\end{subfigure}% 		
+	}}
+	\caption{Spark Application UI}
+	\label{appui}
+\end{figure}
 \FloatBarrier
 
-\subsubsection{Cluster configuration}
+\noindent The Worker nodes are the nodes in the cluster where the actual computation of the Spark DAG tasks take place. As defined within the SparkConf the Worker nodes spawn a finite or fixed number of Executors that reserve CPU and memory resources on the slave nodes and run in parallel. The Executors are hosted in JVMs on the Worker nodes. Finally the Spark Master and the Cluster Manager are the processes that monitor, reserve and allocate the resources for the executors. Spark can work on top of various Cluster Managers like Apache Mesos, Hadoop YARN and Kubernetes. Spark can also work in standalone mode, where the Spark Master also takes control of the Cluster Managers tasks. If Spark is running on top of a Hadoop cluster, it uses the YARN ResourceManager as the Cluster Manager and the ApplicationMaster as the Spark Master. The ApplicationMaster is the first task allocated by the ResourceManager and negotiates the ressources (containers) for the Executors and makes them available to the Driver. \cite[pp. 49 ff]{sparkbook1}\\
+When running on top of a Hadoop installation, Spark can additionally take advantage of the HDFS by reading data directly out of it.\\
+
+\subsubsection{Cluster configuration and execution}\label{cconfexp}
+
+
+There are multiple options of passing a Spark programm to the cluster. The first is to use a spark shell e.g. by calling \lstinline{pyspark} when working with the Spark Python API. If the interactive option of using a spark shell is chosen, a SparkSession is created and exited once the spark-shell is closed. 
+As mentioned previously the configuration of the Spark cluster can be changed. This can either be done by using a cluster configuration file (e.g. spark-defaults.conf), by submitting the parameters as arguments passed to pyspark, spark-console or spark-submit or by directly setting the configuration properties inside the spark application code (see code snippet \ref{lst:cconf})\\
+
+
+\begin{pythonCode}[frame=single,label={lst:cconf},caption={example cluster configuration python},captionpos=b]
+confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
+confCluster.set("spark.driver.memory", "1g")
+confCluster.set("spark.executor.memory", "1g")
+confCluster.set("spark.executor.memoryOverhead", "500m")
+#Sum of the driver or executor memory plus the driver or executor memory overhead is always less than the value of yarn.nodemanager.resource.memory-mb
+#confCluster.set("yarn.nodemanager.resource.memory-mb", "8192")
+confCluster.set("spark.yarn.executor.memoryOverhead", "512")
+#set cores of each executor and the driver -> less than avail -> more executors spawn
+confCluster.set("spark.executor.cores", "1")
+confCluster.set("spark.dynamicAllocation.enabled", "True")
+confCluster.set("spark.dynamicAllocation.minExecutors", "4")
+confCluster.set("spark.dynamicAllocation.maxExecutors", "8")
+confCluster.set("yarn.nodemanager.vmem-check-enabled", "false")
+sc = SparkContext(conf=confCluster)
+sqlContext = SQLContext(sc)
+spark = SparkSession.builder.master("cluster").appName("MusicSimilarity").
+	getOrCreate()
+\end{pythonCode}
+
+\subsubsection{Spark vs. Hadoop}
+
 \ \\
-cluster configuration file\\
+Spark DataFrame\\
+\ \\
+SQL vs NoSQL\\
+\ \\
+streaming\\
+\ \\
+lazy evaluation\\
 
-\subsubsection{Spark application UI}
-
-\subsection{Lambda architecture}
+\subsection{Other Big Data architectures}
 
 Other Big Data Toolkits: SMACK; lambda; spark\\
-
+Lambda architecture:\\
 Batch-Layer\\
 \ \\
 Speed-Layer\\
 \ \\
 Serving-Layer\\
+
+\subsection{Music Similarity with Big Data Frameworks}
 
 \subsection{Combining different measurements}
 
@@ -181,7 +238,7 @@ dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 
 \subsection{Data locality and parallelization}
 
-Given the short introduction to Big Data frameworks the decision to use Spark for the computation of the similarities is justifiable. The computation of a one-to-many similarity follows the shared nothing approach of Spark. All the features are independent from each other. Only the scaling of the result requires an aggregation of maximum and minimum values and to return the top results some kind of sorting has to be performed. But apart from these operations, all the features can be distributed and the similarity to one broadcasted song can be calculated independently, following the data locality approach. This offers a fully scalable solution for very large datasets.
+Given the short introduction to Big Data frameworks the decision to use Spark for the computation of the similarities is justifiable. The computation of the one-to-many-item similarity follows the shared nothing approach of Spark. All the features are independent from each other. Only the scaling of the result requires an aggregation of maximum and minimum values and to return the top results some kind of sorting has to be performed. But apart from these operations, all the features can be distributed and the similarity to one broadcasted song can be calculated independently, following the data locality approach. This offers a fully scalable solution for very large datasets. Additionally Spark enables efficient ways of caching the features. Under the prerequisite that the sum of all features fit into the main memory of the cluster, interactive requests can be answered. 
 
 \noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
 \noindent\textit{\textbf{insert data locality scheme here\\}}

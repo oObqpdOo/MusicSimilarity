@@ -9,11 +9,11 @@ As presented in section \ref{midiest} there are tools for pitch curve extraction
 Another possible representation for melodic features could be to transform the structural information to graphs and use graph comparing algorithms to estimate the similarity between songs. \cite{graph1} 
 A better and widely used approach is to use chroma features as described in the next section \ref{chromafeat}.
 
-\subsection{Chroma Features}\label{chromafeat}
+\subsection{Chroma Features pre-processing}\label{chromafeat}
 
 Chroma Features as described in section \ref{featsec} are a good and low dimensional way to describe the melodic features of a song. The reduction of dimensionality however comes with a loss of information, especially what octaves the notes are played in. To compute chroma features, most MIR toolkits already offer methods to do so. The plots in this chapter were created using the essentia \cite{essentia1} and librosa \cite{librosa1} toolkits. 
 In addition to the pure computation of the chroma features, some pre- and post-processing steps were implemented and tested and will be presented later in this chapter. 
-First of all figure \ref{fig:chroma1} shows the chroma feature plots from 2 recordings of the first thirty seconds of the song "Chandelier". Figure a shows the original version sung by the artist Sia and figure b shows the features of a cover version from the band Pvris. 
+First of all figure \ref{fig:chroma1} shows the chroma feature plots from 2 recordings of the first thirty seconds of the song "Chandelier". Figure \ref{pv} shows the original version sung by the artist Sia and figure \ref{sia} shows the features of a cover version from the band Pvris. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -91,7 +91,7 @@ The result is shown in figure \ref{fig:chromavg} with the threshold 0.8.
 	\label{fig:chromavg}
 \end{figure}
 
-After that a beat tracking algorithm is applied to the song and the count of appearances of each note between two beats is calculated. The notes that appear the most are then set 1 while the rest is set to 0 for each section between two beats. This beat-alignment serves to make the similarity measurement invariant to the global tempo of the song. Even if a cover of a song is played with half the tempo of the original song, then the melody of each bar is still the same as in the faster version.
+\noindent After that a beat tracking algorithm is applied to the song and the count of appearances of each note between two beats is calculated. The notes that appear the most are then set 1 while the rest is set to 0 for each section between two beats. This beat-alignment serves to make the similarity measurement invariant to the global tempo of the song. Even if a cover of a song is played with half the tempo of the original song, then the melody of each bar is still the same as in the faster version.
 Figure \ref{beataligned} show the different beat aligned features of both songs with bandpass filtered audio and unfiltered audio. The red lines are the detected beat events.
 Another option would be to separate the frames between the beats in even smaller sections. This would result in a better resolution of the melodic movement but at the same time increase the length of the data vectors that have to be compared to each other.
 \begin{figure}[htbp]
@@ -135,7 +135,7 @@ The whole workflow to extract the chroma features for this thesis is shown in fi
 		\ \\
 		%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white, blue!40!white}}
 		\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}			
-		\smartdiagram[priority descriptive diagram]{6) key shifting, 5) beat alignment, 4) extract most dominant pitches, 3) filter silence, 2) calculate chromagram, 1) filter audio (bandpass)} \\
+		\smartdiagram[priority descriptive diagram]{6) key shifting, 5) beat alignment, 4) extract most dominant pitches, 3) detect silence, 2) calculate chromagram, 1) filter audio (bandpass)} \\
 		\caption{Workflow chroma feature extraction}
 		\label{workflowchrom}
 	}}
