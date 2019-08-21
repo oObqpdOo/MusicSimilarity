@@ -177,7 +177,7 @@ When running on top of a Hadoop installation, Spark can additionally take advant
 \subsubsection{Cluster configuration and execution}\label{cconfexp}
 
 
-There are multiple options of passing a Spark programm to the cluster. The first is to use a spark shell e.g. by calling \lstinline{pyspark} when working with the Spark Python API. If the interactive option of using a spark shell is chosen, a SparkSession is created and exited once the spark-shell is closed. 
+There are multiple options of passing a Spark programm to the cluster. The first one is to use a spark shell e.g. by calling \lstinline{pyspark} when working with the Spark Python API. If the interactive option of using a spark shell is chosen, a SparkSession is automatically created and exited once the spark-shell is closed. 
 As mentioned previously the configuration of the Spark cluster can be changed. This can either be done by using a cluster configuration file (e.g. spark-defaults.conf), by submitting the parameters as arguments passed to pyspark, spark-console or spark-submit or by directly setting the configuration properties inside the spark application code (see code snippet \ref{lst:cconf})\\
 
 
@@ -201,44 +201,25 @@ spark = SparkSession.builder.master("cluster").appName("MusicSimilarity").
 	getOrCreate()
 \end{pythonCode}
 
-\subsubsection{Spark vs. Hadoop}
+\subsubsection{Spark advantages}
 
-\ \\
-Spark DataFrame\\
-\ \\
-SQL vs NoSQL\\
-\ \\
-streaming\\
-\ \\
-lazy evaluation\\
+For this thesis the programming language of choice is Python. With its high-level  Python API, Spark applications can take advantage of commonly known and widely used Python libraries such as Numpy or Scipy. It also contains own powerful libraries like the Spark ML library for machine learning applications or GraphX for the work with large graphs.\\ 
+Spark can be used in combination with SQL (e.g. the Hive project) and NoSQL Systems like Cassandra and HBase. Spark SQL enables the transformation of RDDs to well structured DataFrames. The DataFrame concept is later used in chapter \ref{bds1}\\
+One other import concept Spark uses is its lazy evaluation or lazy execution. Spark differentiates between data transformations (e.g. filter, \lstinline{join} and \lstinline{map}) and actions (e.g. \lstinline{take} or \lstinline{count}). The actual processing and transformation of data is deferred until an action is called. In the example code snippet \ref{lst:lev} the map and filter operation is only executed once the count() operation is called. Only then a DAG is created together with logical and physical execution plans and the tasks are distributed across the Executors. The lazy evaluation allows Spark to combine as many operations as possible which may lead to a drastic reduction of processing stages and data shuffling (data transferred between executors) and thus reducing unnecessary overhead and data/ network traffic. The lazy execution has to be kept in mind during debugging and performance testing. \cite[p.73]{sparkbook1}
 
-\subsection{Other Big Data architectures}
+\begin{pythonCode}[frame=single,label={lst:lev},caption={lazy evaluation},captionpos=b]
+chroma = sc.textFile("features.txt").repartition(repartition_count)
+chroma = chroma.map(lambda x: x.split(';'))
+chroma = chroma.filter(lambda x: x[0] == "OrbitCulture_SunOfAll.mp3")
+chroma = chroma.count()
+\end{pythonCode}
 
-Other Big Data Toolkits: SMACK; lambda; spark\\
-Lambda architecture:\\
-Batch-Layer\\
-\ \\
-Speed-Layer\\
-\ \\
-Serving-Layer\\
+\noindent Another important part of Spark is its ability to process streaming data. While Hadoop is good at batch processing very large datasets but rather slow when it comes to iterative tasks on the same data due to its persistent write operations to the hard drive, Spark already outperforms Hadoop with its ability to use RDDs and the main memory during iterative tasks. 
+With Spark streaming the possibility to process data streams e.g. from social networks in real-time is given. 
+The combination of batch- and stream-processing methods is called Lambda architecture, a data-processing architecture consisting of a Batch-Layer, a Speed-Layer for real-time processing and a Serving-Layer managing the data \cite[pp. 8 f]{nextgenbig}. Spark already has the possibility to take care of both, batch- and stream-processing jobs. Combined with other frameworks like the Apache SMACK stack (Spark, Mesos, Akka, Cassandra and Kafka), Spark offers many possibilities for high-throughput big data processing \cite[p. 5]{smack}.\\
+This thesis preliminary only focuses on batch processing and finding similar items. But the possibility to pass song titles in real-time to spark and getting recommendation lists of similar songs in a few seconds in return could be a long-term goal of future work.\\
 
 \subsection{Music Similarity with Big Data Frameworks}
 
-\subsection{Combining different measurements}
-
-\noindent\textit{\textbf{weighted arithmetic mean of different distance measurements - there has to be some kind of scaling\\}}
-
-\begin{equation} \label{eq:distance}
-dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
-\end{equation}
-
-\noindent\textit{\textbf{statistic prescaling to have mean = 0.5 and variance 0.5?\\}}
-
-\textit{\textbf{SPARK NOT ABLE TO PROCESS AUDIO FILES -> SEPARATE TASK}}
-
-\subsection{Data locality and parallelization}
-
-Given the short introduction to Big Data frameworks the decision to use Spark for the computation of the similarities is justifiable. The computation of the one-to-many-item similarity follows the shared nothing approach of Spark. All the features are independent from each other. Only the scaling of the result requires an aggregation of maximum and minimum values and to return the top results some kind of sorting has to be performed. But apart from these operations, all the features can be distributed and the similarity to one broadcasted song can be calculated independently, following the data locality approach. This offers a fully scalable solution for very large datasets. Additionally Spark enables efficient ways of caching the features. Under the prerequisite that the sum of all features fit into the main memory of the cluster, interactive requests can be answered. 
-
-\noindent\textit{\textbf{high data locality, full parallelizable, very low replication rate\\}}
-\noindent\textit{\textbf{insert data locality scheme here\\}}
+Given the short introduction to Big Data frameworks the decision to use Spark for the computation of the similarities seems justifiable. The computation of the one-to-many-item similarity follows the shared nothing approach of Spark. All the features are independent from each other. Only the scaling of the result requires an aggregation of maximum and minimum values and to return the top results some kind of sorting has to be performed. But apart from these operations, all the features can be distributed on a cluster and the similarity to one broadcasted song can be calculated independently, following the data locality approach. This offers a fully scalable solution for very large datasets. Additionally Spark enables efficient ways of caching the features. Under the prerequisite that the sum of all features fit into the main memory of the cluster, interactive requests could be answered without the need of reading the features from the disk every time.\\
+One limitation is, that Spark itself is unable read and handle audio files. So the features extraction itself has to be performed separately and only the extracted features are loaded into the cluster and processed with Spark. The features extraction is described in chapter \ref{simmet}.

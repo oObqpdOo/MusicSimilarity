@@ -23,7 +23,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.1}Fourier Transformation}{4}{subsection.2.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.2}MFCC}{6}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.2}MFCC}{5}{subsection.2.1.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.3}other audio features}{8}{subsection.2.1.3}
 \defcounter {refsection}{0}\relax 
@@ -83,15 +83,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Cluster configuration and execution}{24}{figure.2.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Spark vs. Hadoop}{25}{lstnumber.2.2.17}
+\contentsline {subsubsection}{Spark advantages}{25}{lstnumber.2.2.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Other Big Data architectures}{25}{subsection.2.5.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.4}Music Similarity with Big Data Frameworks}{25}{subsection.2.5.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.5}Combining different measurements}{25}{subsection.2.5.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.6}Data locality and parallelization}{26}{subsection.2.5.6}
+\contentsline {subsection}{\numberline {2.5.3}Music Similarity with Big Data Frameworks}{26}{subsection.2.5.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Similarity Analysis}{27}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -111,7 +105,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Construction Noise}{30}{subsection.3.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.5}Different recordings and cover versions}{31}{subsection.3.1.5}
+\contentsline {subsubsection}{Different recordings and cover versions}{31}{figure.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Melodic Similarity}{32}{section.3.2}
 \defcounter {refsection}{0}\relax 
@@ -169,7 +163,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{rp\_extractor}{52}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{performance}{52}{equation.4.1.1}
+\contentsline {subsubsection}{performance}{53}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{mpi4py}{53}{figure.4.1}
 \defcounter {refsection}{0}\relax 
@@ -177,49 +171,57 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Big Data Framework Spark}{55}{section.4.2}
 \defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{underlying hardware}{55}{figure.4.2}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.1}Data preprocessing}{55}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Euclidean Distance}{56}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.2}Distance Computation}{57}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Bucketed Random Projection}{56}{subsection.4.2.3}
+\contentsline {subsubsection}{Euclidean Distance}{57}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Cross-correlation}{57}{subsection.4.2.4}
+\contentsline {subsubsection}{Bucketed Random Projection}{57}{lstnumber.4.8.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Kullback-Leibler Divergence}{58}{subsection.4.2.5}
+\contentsline {subsubsection}{Cross-correlation}{58}{lstnumber.4.9.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Jensen-Shannon Divergence}{58}{subsection.4.2.6}
+\contentsline {subsubsection}{Kullback-Leibler Divergence}{58}{lstnumber.4.10.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.7}Levenshtein distance}{59}{subsection.4.2.7}
+\contentsline {subsubsection}{Jensen-Shannon Divergence}{59}{lstnumber.4.11.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.8}performance}{59}{subsection.4.2.8}
+\contentsline {subsubsection}{Levenshtein distance}{59}{lstnumber.4.12.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Differences between the feature types}{59}{lstnumber.4.14.13}
+\contentsline {subsubsection}{Combining different measurements}{60}{lstnumber.4.13.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{59}{lstnumber.4.14.13}
+\contentsline {subsection}{\numberline {4.2.3}performance}{60}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{min and max value aggregation}{60}{figure.4.2}
+\contentsline {subsubsection}{Cluster configuration and data file size}{60}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.9}possible performance improvements}{60}{subsection.4.2.9}
+\contentsline {subsubsection}{Differences between the feature types}{61}{lstnumber.4.14.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.10}Descending Importance Filter and Refine}{60}{subsection.4.2.10}
+\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{61}{lstnumber.4.14.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.11}Other alternatives}{61}{subsection.4.2.11}
+\contentsline {subsubsection}{min and max value aggregation}{61}{figure.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Alternating Least Squares}{61}{subsection.4.2.11}
+\contentsline {subsection}{\numberline {4.2.4}possible performance improvements}{61}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{TF-IDF weights}{61}{subsection.4.2.11}
+\contentsline {subsection}{\numberline {4.2.5}Descending Importance Filter and Refine}{62}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DIMSUM all-pairs similarity}{61}{subsection.4.2.11}
+\contentsline {subsection}{\numberline {4.2.6}Other alternatives}{62}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{62}{chapter.5}
+\contentsline {subsubsection}{Alternating Least Squares}{62}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{62}{section.5.1}
+\contentsline {subsubsection}{TF-IDF weights}{62}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}feature separation quality}{62}{section.5.2}
+\contentsline {subsubsection}{DIMSUM all-pairs similarity}{62}{subsection.4.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Results}{63}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Runtime}{63}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}feature separation quality}{63}{section.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.3}Cover song identification}{69}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{70}{section.5.4}
+\contentsline {section}{\numberline {5.4}Genre similarity}{69}{section.5.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{70}{section.5.5}
 \defcounter {refsection}{0}\relax 

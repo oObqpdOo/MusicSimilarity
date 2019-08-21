@@ -83,8 +83,7 @@ More in-depth information about the different metrics is given in chapter \ref{m
 
 \subsection{Fourier Transformation}\label{featsec}
 
-As done by: \cite[pp. 17ff]{schnitzer1}\\
-Most of the algorithms start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then compute the power spectrum (equation \ref{eq:absfft})
+Most of the algorithms start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then compute the power spectrum (equation \ref{eq:absfft}) 
 \begin{equation} \label{eq:fft}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 X_m = \sum_{k=0}^{K-1}{x_k \cdot e^ { - \frac{K}{ 2 \cdot \pi \cdot i}\cdot k\cdot m}}
@@ -93,8 +92,7 @@ X_m = \sum_{k=0}^{K-1}{x_k \cdot e^ { - \frac{K}{ 2 \cdot \pi \cdot i}\cdot k\cd
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 |X_m| = \sqrt{Re(X_m)^2 + Im(X_m)^2}
 \end{equation}
-Figure \ref{laylaspec} shows the spectrogram of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar to avoid copyright infringements. 
-Due to the fact that the human ear perceives sound in a non-linear matter, a logarithmic or Mel-scale is better to represent different pitches.\\ 
+Figure \ref{laylaspec} shows the spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Due to the fact that the human ear perceives sound in a non-linear matter, a logarithmic or Mel-scale is better to represent different pitches.\\ 
 For example the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. 
 The Mel-scale \cite[pp. 53f]{knees1} was introduced to resemble the human perception of frequency (equation \ref{eq:mel})
 \begin{equation} \label{eq:mel}
@@ -115,7 +113,7 @@ The following plots were created with the librosa library \cite{librosa1}.
 		\centering
 		\framebox{\parbox{2.96in}{      
 		\includegraphics[scale=0.25]{Images/Layla/laylacfftlog.png}}}
-		\captionof{figure}{Rachmaninoff Prelude in C Sharp Minor \cite{rm1}}
+		\captionof{figure}{log scaled spectrogram}
 		\label{laylaspecfft}
 	\end{subfigure}
 	\caption{Frequency Space}

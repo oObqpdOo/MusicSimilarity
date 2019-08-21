@@ -14,19 +14,9 @@ High performance/ throughput tests with full 12000 song testset to evaluate full
 \noindent correlation of features in figure \ref{fig:corr}\\
 \begin{figure}[htbp]
 	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\begin{subfigure}{.495\textwidth}
-				\centering    
-				\includegraphics[scale=0.35]{Images/SparkFeat/correlation1517_95.png}
-				\caption{95 songs from 19 genres, 1517 artists}
-				\label{cor1}
-			\end{subfigure}		
-			\begin{subfigure}{.495\textwidth}
-				\centering     
-				\includegraphics[scale=0.35]{Images/SparkFeat/correlation10.png}
-				\caption{10 songs from 4 genres, full ds}
-				\label{cor2}
-			\end{subfigure}%		
+	\framebox{\parbox{1\textwidth}{ 
+	\centering						    
+	\includegraphics[scale=0.35]{Images/SparkFeat/correlation1517_95.png}
 	}}
 	\caption{correlation of features}
 	\label{fig:corr}
@@ -37,7 +27,7 @@ correlation of features in figure \ref{fig:corr2}\\
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.33]{Images/SparkFeat/corr_95_1517.png}	
+			\includegraphics[scale=0.4]{Images/SparkFeat/corr_95_1517.png}	
 	}}
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr2}
@@ -55,46 +45,35 @@ correlation of features in figure \ref{fig:corr2}\\
 \end{figure}
 \FloatBarrier
 
-\noindent Scatter Matrix, 1 Song (New Age) from 1517 artists - distances, main diagonal = Histogram, all genres in figure \ref{fig:corr4}
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.36]{Images/SparkFeat/scatter1517_singlesongHistogramHD.png}	
-	}}
-	\caption{distances 1 song, New Age, 1517 artists}
-	\label{fig:corr4}
-\end{figure}
-\FloatBarrier
-
 \noindent Scatter Matrix, 1 Song (Rock/ Metal) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres\\ All features combined recommends Rock primarily\\
 Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 3 genres in figure \ref{fig:corr5}
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.25]{Images/SparkFeat/scatter1517_singlesongHDrock.png}	
+			\includegraphics[scale=0.45]{Images/SparkFeat/rock.png}	
 	}}
 	\caption{distances 1 song, Rock/ Metal, 1517 artists, 3 genres}
 	\label{fig:corr5}
 \end{figure}
 \FloatBarrier
 
-\noindent Scatter Matrix, 1 Song (New Age) from 1517 artists - distances, main diagonal = Kernel Density Estimation,all genres in figure\\
-No combination of features is able to accurately separate New Age from Rock and Pop - figure \ref{fig:corr6}
+\noindent Scatter Matrix, 1 Song (Electronic) from 1517 artists - distances - figure \ref{fig:corr6}
+No combination of features is able to accurately separate HipHop from Rock-Pop
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.25]{Images/SparkFeat/scatter1517_singlesongHD.png}	
+			\includegraphics[scale=0.45]{Images/SparkFeat/electronic.png}	
 	}}
-	\caption{distances 1 song, New Age, 1517 artists, all genres}
+	\caption{distances 1 song, electronic, 1517 artists, all genres}
 	\label{fig:corr6}
 \end{figure}
 \FloatBarrier
 
-\noindent Scatter Matrix, 1 Song (Classics) from 100 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 4 genres in figure \ref{fig:corr7}
+\noindent Scatter Matrix, 1 Song (Classics) from 1517 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 4 genres in figure \ref{fig:corr7}
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.45]{Images/SparkFeat/scatter100_1classicsong.png}	
+			\includegraphics[scale=0.45]{Images/SparkFeat/classical.png}	
 	}}
 	\caption{distances 1 song (Classical), 4 genres (10 songs each)}
 	\label{fig:corr7}
@@ -216,6 +195,7 @@ outlook:\\
 \ \\
 more state of the art similarity (blocked)\\
 performance improvements\\
+spark streaming, real-time\\
 Genre and metadata, Genre specific features, combinations and variable model, Collaborative Filtering, Lyrics\\
 reduce hubness\\
 

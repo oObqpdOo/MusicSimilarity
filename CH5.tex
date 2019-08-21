@@ -81,6 +81,7 @@ peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, hi
 \subsubsection{Essentia Streaming}
 
 The essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various stages of processing and ultimately resulting in the chroma features of the high-pass filtered audio signal. 
+\newpage
 \begin{pythonCode}[frame=single,label={lst:essst},caption={essentia streaming},captionpos=b]
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
 HP = ess.HighPass(cutoffFrequency=128)
@@ -119,6 +120,7 @@ The calculation with the essentia library for 100 songs took less than half of t
 \subsubsection{parallel python}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
+\newpage
 \begin{pythonCode}[frame=single,label={lst:pp},caption={parallel python},captionpos=b]
 job_server = pp.Server()
 job_server.set_ncpus(ncpus)
@@ -249,7 +251,5 @@ for index in xrange(start + rank, last, size):
 \subsubsection{Total amount of songs}
 
 Due to the above mentioned filtering of audio files larger than 25MB and due to the fact that the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So in the end the overall count of songs where features could be extracted is 114310.\\
-
-\textbf{\textit{Output size (all features) -> 114000 songs = 11,2GB --> 30000000 songs = 2945.6 GB (Spotify Scale)}}
 
 
