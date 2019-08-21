@@ -81,7 +81,7 @@ peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, hi
 \subsubsection{Essentia Streaming}
 
 The essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various stages of processing and ultimately resulting in the chroma features of the high-pass filtered audio signal. 
-\newpage
+%\newpage
 \begin{pythonCode}[frame=single,label={lst:essst},caption={essentia streaming},captionpos=b]
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
 HP = ess.HighPass(cutoffFrequency=128)

@@ -9,7 +9,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.2}essentia standard}{50}{lstlisting.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.3}essentia streaming}{51}{lstlisting.4.3}
+\contentsline {lstlisting}{\numberline {4.3}essentia streaming}{50}{lstlisting.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.4}parallel python}{52}{lstlisting.4.4}
 \defcounter {refsection}{0}\relax 
@@ -25,10 +25,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.10}cross-correlation}{58}{lstlisting.4.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.11}kullback leibler}{59}{lstlisting.4.11}
+\contentsline {lstlisting}{\numberline {4.11}kullback leibler}{58}{lstlisting.4.11}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.12}jensen shannon}{59}{lstlisting.4.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.13}levenshtein}{60}{lstlisting.4.13}
+\contentsline {lstlisting}{\numberline {4.13}levenshtein}{59}{lstlisting.4.13}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.14}cluster setup}{60}{lstlisting.4.14}

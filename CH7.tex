@@ -11,19 +11,51 @@ High performance/ throughput tests with full 12000 song testset to evaluate full
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
-\noindent correlation of features in figure \ref{fig:corr}\\
+
+\noindent skl scaled and unscaled\ref{fig:sklsc}\\
+
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
-	\centering						    
-	\includegraphics[scale=0.35]{Images/SparkFeat/correlation1517_95.png}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Images/SparkFeat/skl_unscaled.png}
+		\captionof{figure}{SKL unscaled}
+		\label{scklusc}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Images/SparkFeat/skl_scaled.png}
+		\captionof{figure}{SKL scaled}
+		\label{scklsc}
+	\end{subfigure}%
 	}}
-	\caption{correlation of features}
+	\caption{Correlation of features}
+	\label{fig:sklsc}
+\end{figure}
+
+\noindent correlation of features in figure \ref{fig:corr}\\
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_unscaled.png}
+		\captionof{figure}{SKL unscaled}
+		\label{corrusc}
+	\end{subfigure} 
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_scaled.png}
+		\captionof{figure}{SKL scaled}
+		\label{corrsc}
+	\end{subfigure}%
+	}}
+	\caption{Correlation of features}
 	\label{fig:corr}
 \end{figure}
-\FloatBarrier
 
-correlation of features in figure \ref{fig:corr2}\\
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -32,7 +64,6 @@ correlation of features in figure \ref{fig:corr2}\\
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr2}
 \end{figure}
-\FloatBarrier
 
 \noindent Scatter Matrix, 5 songs of each genre from 1517 artists - distances combined, main diagonal = Kernel Density Estimation in figure \ref{fig:corr3}
 \begin{figure}[htbp]
@@ -43,19 +74,27 @@ correlation of features in figure \ref{fig:corr2}\\
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr3}
 \end{figure}
-\FloatBarrier
+
+\noindent Scatter Matrix, 1 Song (Soundtack) from 100 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 5 genres in figure \ref{fig:corr8}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.45]{Images/SparkFeat/soundtrack.png}	
+	}}
+	\caption{distances 1 song (Soundtrack), 5 genres (10 songs each)}
+	\label{fig:corr8}
+\end{figure}
 
 \noindent Scatter Matrix, 1 Song (Rock/ Metal) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres\\ All features combined recommends Rock primarily\\
-Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 3 genres in figure \ref{fig:corr5}
+Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 4 genres in figure \ref{fig:corr5}
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.45]{Images/SparkFeat/rock.png}	
 	}}
-	\caption{distances 1 song, Rock/ Metal, 1517 artists, 3 genres}
+	\caption{distances 1 song, Rock/ Metal, 1517 artists, 4 genres}
 	\label{fig:corr5}
 \end{figure}
-\FloatBarrier
 
 \noindent Scatter Matrix, 1 Song (Electronic) from 1517 artists - distances - figure \ref{fig:corr6}
 No combination of features is able to accurately separate HipHop from Rock-Pop
@@ -64,10 +103,9 @@ No combination of features is able to accurately separate HipHop from Rock-Pop
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.45]{Images/SparkFeat/electronic.png}	
 	}}
-	\caption{distances 1 song, electronic, 1517 artists, all genres}
+	\caption{distances 1 song, electronic, 1517 artists, 4 genres}
 	\label{fig:corr6}
 \end{figure}
-\FloatBarrier
 
 \noindent Scatter Matrix, 1 Song (Classics) from 1517 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 4 genres in figure \ref{fig:corr7}
 \begin{figure}[htbp]
@@ -78,7 +116,6 @@ No combination of features is able to accurately separate HipHop from Rock-Pop
 	\caption{distances 1 song (Classical), 4 genres (10 songs each)}
 	\label{fig:corr7}
 \end{figure}
-\FloatBarrier
 
 \noindent distances from classical song out of 1517 artists dataset in figure \ref{fig:featsep}\\
 

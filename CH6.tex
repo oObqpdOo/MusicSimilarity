@@ -81,11 +81,8 @@ result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
 \noindent\textit{\textbf{Explain usage of user defined function udf\\}}
-\ \\
-\noindent\textit{\textbf{Used with BH, RH, BP AND MFCC\\}}
-\ \\
+\noindent\textit{\textbf{Used with BH, RH, RP AND MFCC\\}}
 \noindent\textit{\textbf{super versatile AND very fast\\}}
-\ \\
 \noindent\textit{\textbf{insert analysis of performance\\}}
 
 \subsubsection{Bucketed Random Projection}
@@ -95,7 +92,7 @@ Due to the fact that the ARA cluster is running with PySpark version 1.6.0, the 
 \begin{pythonCode}[frame=single,label={lst:brp},caption={bucketed random projection},captionpos=b]
 from pyspark.ml.feature import BucketedRandomProjectionLSH
 #...
-brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=25.0)
+brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=100.0)
 model = brp.fit(df_vec)
 comparator_value = Vectors.dense(comparator[0])
 result = model.approxNearestNeighbors(df_vec, comparator_value, df_vec.count()).collect()
@@ -104,7 +101,6 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \end{pythonCode}
 
 \noindent\textit{\textbf{Usable as a substitute for euclidean UDF\\}}
-\ \\
 \noindent\textit{\textbf{Is it faster than the UDF tho? - performance test\\}}
 
 \subsubsection{Cross-correlation}
@@ -127,12 +123,7 @@ result = result.select("id", "distances").orderBy('distances', ascending=False)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\noindent\textbf{\textit{Memory intense - had to alter spark-defaults.conf\\}}
-\textit{spark.driver.memory             6g\\
-spark.executor.memory           2g\\
-}
 \noindent\textbf{\textit{Insert graphics of calculation time with and without correlation\\}}
-\ \\
 \noindent\textbf{\textit{Differences in the results to the original paper can be explained with the different underlying beat tracking, different filter parameters and a few improvements that are left out as mentioned in \ref{chromafeat}}\cite{cover802}}
 
 \subsubsection{Kullback-Leibler Divergence}
@@ -213,6 +204,11 @@ confCluster.set("spark.dynamicAllocation.maxExecutors", "32")
 confCluster.set("yarn.nodemanager.vmem-check-enabled", "false")
 repartition_count = 32
 \end{pythonCode}
+
+\noindent\textbf{\textit{Memory intense - had to alter spark-defaults.conf\\}}
+\textit{spark.driver.memory             6g\\
+spark.executor.memory           2g\\
+}
 
 \subsubsection{Differences between the feature types}
 
@@ -299,21 +295,14 @@ repartition_count = 32
 \subsection{possible performance improvements}
 
 \textit{\textbf{Pre- merge feature sets, broadcast comparator, descending importance pre-filtering\\}}
-\\
 \textit{\textbf{statistic normalization of similarities\\}}
-\ \\
 \textit{\textbf{Filter and refine after statistic normalization, drop all below mean\\}}
-\ \\
 \textit{\textbf{\underline{Is there a better way to cross-correlate???}\\}}
-\ \\
 
 \subsection{Descending Importance Filter and Refine}
 
 \textit{\textbf{\underline{Make usage of caching from spark!}\\}}
-\ \\
-
 \textit{\textbf{\underline{order of operations is important -> für elise chroma first actually better in cover song recognition}\\}}
-\ \\
 
 \subsection{Other alternatives}
 

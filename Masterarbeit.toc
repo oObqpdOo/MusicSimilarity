@@ -203,7 +203,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.4}possible performance improvements}{61}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Descending Importance Filter and Refine}{62}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}Descending Importance Filter and Refine}{61}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.6}Other alternatives}{62}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
@@ -219,9 +219,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}feature separation quality}{63}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cover song identification}{69}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cover song identification}{70}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{69}{section.5.4}
+\contentsline {section}{\numberline {5.4}Genre similarity}{70}{section.5.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{70}{section.5.5}
 \defcounter {refsection}{0}\relax 
