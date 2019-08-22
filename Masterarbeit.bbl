@@ -2005,5 +2005,24 @@
     \verb http://www.beegfs.io/content/latest-release/
     \endverb
   \endentry
+
+  \entry{github-code}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=SJ}{%
+         family={Schoder},
+         familyi={S\bibinitperiod},
+         given={Johannes},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SJ1}
+    \strng{fullhash}{SJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{MusicSimilarity-Spark}
+    \verb{url}
+    \verb https://github.com/oObqpdOo/MusicSimilarity-Spark
+    \endverb
+  \endentry
 \enddatalist
 \endinput

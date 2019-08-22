@@ -2,9 +2,11 @@
 
 \chapter{Implementation}
 
-\textit{\textbf{Split in two parts -> Feature Extraction and Big Data on extracted features}}
+The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The result are stored in feature files.\\
+These features files then have to be processes with the Big Data framework Spark to compute the similarities between songs.\\ 
+Both parts are implemented in Python and are able to be executed on computer clusters. The source code can be found in the appendices and can be pulled from github \cite{github-code}. Details for the usage of the python scripts are also documented there. 
 
-\section{Feature Extraction Performance}\label{simmet}
+\section{Audio Feature Extraction}\label{simmet}
 
 So far the required audio features have been selected in chapter \ref{audiofeat} as well as toolkits to extract those features from the audio data.
 In chapter \ref{data} different sources for audio files have been presented. Chapter \ref{musly}, \ref{melsimc} and \ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
@@ -61,6 +63,7 @@ For larger datasets like the 1517 artists dataset the feature extraction process
 \cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that essentia is a much faster alternative to librosa due to the underlying C++ Code and provides even more features, but it is a bit less well documented and requires more effort in implementation at the same time.\\ 
 In the end the code to extract the necessary features had to be rewritten for the usage of essentia due to the slow performance of librosa. Essentia offers two different ways to handle audio files. The first one is to use the essentia standard library. It offers similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and preprocessed by hand. 
 The second way is to use essentia streaming. Basically a network of connected algorithms is created and they handle and schedule the "how and when" whenever a process is called.
+The melodic and timbral features and the beat histograms are all computed with essentia. Only the rhythm patterns and rhythm histograms are computed in a separate step as stated below. 
 
 \subsubsection{Essentia Standard}
 
@@ -120,7 +123,7 @@ The calculation with the essentia library for 100 songs took less than half of t
 \subsubsection{parallel python}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
-\newpage
+%\newpage
 \begin{pythonCode}[frame=single,label={lst:pp},caption={parallel python},captionpos=b]
 job_server = pp.Server()
 job_server.set_ncpus(ncpus)
@@ -157,7 +160,7 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 		x label style={at={(axis description cs:0.5,-0.05)},anchor=north},
 		y label style={at={(axis description cs:-0.05,.5)},rotate=0,anchor=south},
 	    xlabel={\#songs},
-	    ylabel={time [sec]},
+	    ylabel={time in s},
 	    xmin=0, xmax=120,
 	    ymin=0, ymax=3000,
 	    xtick={0,20,40,60,80,100,120},
@@ -232,11 +235,9 @@ comm = MPI.COMM_WORLD   # get MPI communicator object
 size = comm.size        # total number of processes
 rank = comm.rank        # rank of this process
 status = MPI.Status()   # get MPI status object
-
 files_per_part = 25
 start = 0
 last = len(filelist)
-
 parts = (len(filelist) / files_per_part) + 1
 step = (last - start) / parts + 1
 for index in xrange(start + rank, last, size):
@@ -246,7 +247,7 @@ for index in xrange(start + rank, last, size):
         parallel_python_process(index, filelist[starti:endi])
 \end{pythonCode}
 
-\noindent The extraction of the rhythm patterns spawns the same amount of processes, but each of the processes is able to make use of 4 CPU cores. The fastest process finished after 1657s and the slowest one took 1803s.
+\noindent For the extraction of the rhythm features with the rp\_extract tool, the script of the TU Wien was adapted for usage with mpi4py as well. The same amount of processes is spawned on the cluster (648), but each of the processes is able to make use of 2 CPU cores plus HT. The fastest process finished after 1657s and the slowest one took 1803s.
 
 \subsubsection{Total amount of songs}
 
