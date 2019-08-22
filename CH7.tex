@@ -7,12 +7,13 @@ High performance/ throughput tests with full 12000 song testset to evaluate full
 
 \section{Runtime}
 
-\section{feature separation quality}
+\section{feature separation quality}\label{featqual}
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
 
 \noindent skl scaled and unscaled\ref{fig:sklsc}\\
+problem with outliers \ref{sparkskl}
 
 \begin{figure}[htbp]
 	\centering
@@ -170,7 +171,7 @@ No combination of features is able to accurately separate HipHop from Rock-Pop
 \end{itemize}
 \textit{interesting sidenote: results of chroma only and notes only different! Nearly ever}
 
-\section{Genre similarity}
+\section{Genre similarity}\label{genrerec}
 
 \textbf{\textit{\underline{100 Song Testset, 10 genres:\\}}} 
 \begin{figure}[htbp]
@@ -233,6 +234,7 @@ outlook:\\
 more state of the art similarity (blocked)\\
 performance improvements\\
 spark streaming, real-time\\
+jensen-shannon investigation\\
 Genre and metadata, Genre specific features, combinations and variable model, Collaborative Filtering, Lyrics\\
 reduce hubness\\
 

@@ -21,7 +21,7 @@ also known as the $L_p$ distance. Most of the times, the Euclidean ($L_2$) or th
 
 \subsection{Single Gaussian Model}
 
-\subsubsection{Kullback-Leibler Divergence}
+\subsubsection{Symmetric Kullback-Leibler Divergence}\label{klth}
 
 This approach was first proposed by Mandel and Ellis \cite{mandelellis1} in 2005 and is briefly summarized in \cite[pp. 65f]{knees1}.\\
 After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $tr(\cdot)$ being the trace (i.e. the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$\\
@@ -38,7 +38,7 @@ It can be simplified and written as a closed form according to \cite[p. 44]{schn
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}
 
-\subsubsection{Jensen-Shannon Divergence}
+\subsubsection{Jensen-Shannon-like Divergence}
 The second available metric in the musly toolkit by Schnitzer is using the Jenson-Shannon Divergence (in an slightly adapted way). "The Jensen-Shannon (JS) divergence is another symmetric divergence derived from the Kullback-Leibler divergence. To compute it, a mixture $X_m$ of the two distributions is defined" \cite[p. 43]{schnitzer1}. "To use the Jensen-Shannon divergence [...] to estimate similarities between Gaussians, an approximation of $X_m$ as a single multivariate Gaussian can be used [...] This approximation of $X_m$ is exactly the same as the left-type Kullback-Leibler centroid of the two Gaussian distributions [...]" \cite[p. 44]{schnitzer1} 
 \begin{equation} \label{eq:jsl1}
 \mu_m = \frac{1}{2} \mu_P + \frac{1}{2} \mu_Q
@@ -49,7 +49,9 @@ The second available metric in the musly toolkit by Schnitzer is using the Jenso
 \begin{equation} \label{eq:jsl3}
 JS(P, Q) = \frac{1}{2} log|\Sigma_m| - \frac{1}{4} log |\Sigma_P| - \frac{1}{4} log |\Sigma_Q|
 \end{equation}
-After calculating a similarity matrix for all songs, it normalizes the similarities with mutual proximity (MP). \cite{musly2}  This method wants to reduce the effect of a phenomenon called hubness that appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
+
+\subsubsection{Mutual Proximity}\label{mprox}
+After calculating a similarity matrix for all songs, musly normalizes the similarities with mutual proximity (MP). \cite{musly2}. This method wants to reduce the effect of a phenomenon called hubness that appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
 Schedl and Knees state: "To apply MP to a distance matrix, it is assumed that the distances $D_{x,i = 1..N}$ from an object $x$ to all other objects in the data set follow a certain probability distribution; thus, any discance $D_{x,y}$ can be reinterpreted as the probability of $y$ being the nearest neighbor of $x$, given the distance $D_{x,y}$ and the probability distribution $P(x)$ [...] MP is then defined as the probability that $y$ is the nearest neighbor of $x$ given $P(x)$ and $x$ is the nearest neighbor of $y$ given $P(y)$" \cite[p. 80]{knees1}\\
 Resulting in: 
 \begin{equation} \label{eq:mp1}

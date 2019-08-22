@@ -85,38 +85,38 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Workflow Spark\relax }}{56}{figure.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance single node(MFCC Euc, Notes, RP)\relax }}{63}{figure.4.4}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance single node(MFCC Euc, Notes, RP)\relax }}{65}{figure.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Performance on different feature types\relax }}{65}{figure.4.5}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Performance on different feature types\relax }}{67}{figure.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Performance ARA, full workload, (MFCC + Notes + RP)\relax }}{66}{figure.4.6}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Performance ARA, full workload, (MFCC + Notes + RP)\relax }}{68}{figure.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Performance ARA, full workload, (JS + Chroma + RP)\relax }}{66}{figure.4.7}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Performance ARA, full workload, (JS + Chroma + RP)\relax }}{68}{figure.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces two subsequent songs, all features\relax }}{67}{figure.4.8}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces two subsequent songs, all features\relax }}{69}{figure.4.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Descending importance filter and refine, all features\relax }}{68}{figure.4.9}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Descending importance filter and refine, all features\relax }}{70}{figure.4.9}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Correlation of features\relax }}{69}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Correlation of features\relax }}{71}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Correlation of features\relax }}{70}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Correlation of features\relax }}{72}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{70}{figure.5.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{72}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{71}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{73}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{72}{figure.5.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{74}{figure.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 4 genres\relax }}{73}{figure.5.6}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 4 genres\relax }}{75}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces distances 1 song, electronic, 1517 artists, 4 genres\relax }}{74}{figure.5.7}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces distances 1 song, electronic, 1517 artists, 4 genres\relax }}{76}{figure.5.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song (Classical), 4 genres (10 songs each)\relax }}{75}{figure.5.8}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song (Classical), 4 genres (10 songs each)\relax }}{77}{figure.5.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces genre recall 100 songs\relax }}{76}{figure.5.9}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces genre recall 100 songs\relax }}{78}{figure.5.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces genre recall 100 songs\relax }}{77}{figure.5.10}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces genre recall 100 songs\relax }}{79}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

@@ -93,7 +93,7 @@ After the data preparation, the similarities between a requested single song and
 
 \subsubsection{Euclidean Distance}
 
-The euclidean distance is used as the metric to compute the similarities of beat histograms, rhythm histograms, rhythm patterns and MFCCs, making it the most versatile distance measurement introduced. To compute the euclidean distance a user defined function (UDF) is declared (see \ref{lst:eucd}). This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the euclidean distance is computed using python's scipy library. Alternatively the numpy library could be used instead (\lstinline{numpy.linalg.norm(x-comparator_value)}). 
+The euclidean distance is used as a metric to compute the distances between the vectors of beat histograms, rhythm histograms, rhythm patterns and MFCCs making it the most versatile distance measurement introduced in this thesis. To compute the euclidean distance in Spark a user defined function (UDF) is declared (see \ref{lst:eucd}). This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the euclidean distance is computed using python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). 
 
 \begin{pythonCode}[frame=single,label={lst:eucd},caption={euclidean distance DF},captionpos=b]
 from scipy.spatial import distance
@@ -146,12 +146,13 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
 As laid out in chapter \ref{melsimc} there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are allready key-shifted to a common key but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in equation \ref{eq:conv2}, \ref{eq:conv3} and \ref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time even without additional key-shifting (see section \ref{sparkperf}) the implementation on the cluster and in code snippet \ref{lst:corrnp} calculates the simplified cross-correlation (equations \ref{eq:conv5} and \ref{eq:conv6}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
 \noindent The cross-correlation was used to detect cover songs on the same dataset Ellis and Cotton used in their paper\cite{cover802}. The results are presented in chapter \ref{covsongid}. There are some differences in the results to the original paper. These can be explained with the different underlying beat tracking, different filter parameters and a few improvements that are left out compared to the implementation of Ellis \cite{cover802} as mentioned in \ref{chromafeat}.\\
-Concerning the actual implementation of the cross-correlation, two different libraries were tested. Code snippet \ref{lst:corrsc} shows the cross-correlation function coming with the scipy library. The parameter \lstinline{mode='valid'} determines whether or not additional key shifting is included. The \lstinline{'valid'} option already includes additional key-shifting but without zero-padding. Other options would be \lstinline{mode='same'}(no key-shifting) and \lstinline{mode='full'} (with zero-padding)\\
+Concerning the actual implementation of the cross-correlation, two different libraries were tested. Code snippet \ref{lst:corrsc} shows the cross-correlation function coming with the scipy library.
 
 \begin{pythonCode}[frame=single,label={lst:corrsc},caption={cross-correlation scipy},captionpos=b]
 corr = scipy.signal.correlate2d(chroma1, chroma2, mode='full')
 \end{pythonCode}
 
+\noindent The parameter \lstinline{mode='valid'} determines whether or not additional key shifting is included. The \lstinline{'valid'} option already includes additional key-shifting but without zero-padding. Other options would be \lstinline{mode='same'}(no key-shifting) and \lstinline{mode='full'} (with zero-padding)\\
 \noindent The other variant is shown in code snippet \ref{lst:corrnp}. It uses the numpy library. Although numpy only offers a 1D-cross-correlation function which had to be nested inside a for-loop to get the 2D-cross-correlation, but performance tests showed that the numpy version was faster than the scipy version by orders of magnitude. Calculating and scaling the distances of the chroma features from one song to about 114000 other songs took about 22 seconds with numpy and around 725 seconds with scipy on the ARA-cluster. 
 
 \begin{pythonCode}[frame=single,label={lst:corrnp},caption={cross-correlation numpy},captionpos=b]
@@ -171,7 +172,7 @@ def cross_correlate(chroma1, chroma2):
     correlation = np.zeros([max(length1, length2)])
     for i in range(12):
         correlation = correlation + np.correlate(chroma1[i], chroma2[i], "same")    
-    #remove offset to get rid of initial filter peak(highpass of jump from 0-20)
+    #remove offset to get rid of initial filter peak (highpass filter jump 0-20)
     correlation = correlation - correlation[0]
     sos = butter(1, 0.1, 'high', analog=False, output='sos')
     correlation = sosfilt(sos, correlation)[:]
@@ -183,29 +184,15 @@ result = result.select("id", "distances").orderBy('distances', ascending=False)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\subsubsection{Kullback-Leibler Divergence}
+\subsubsection{Jensen-Shannon-like Divergence}
 
-\begin{pythonCode}[frame=single,label={lst:kl},caption={kullback leibler},captionpos=b]
-import numpy as np
-def symmetric_kullback_leibler(vec1, vec2):
-	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
-	d = 13
-	div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + 
-		np.trace(cov2 * np.linalg.inv(cov1)) + 
-		np.trace( (np.linalg.inv(cov1) + np.linalg.inv(cov2)) * 
-		(mean1 - mean2)**2) - 2*d)
-	return div
-distance_udf = F.udf(lambda x: float(symmetric_kullback_leibler(x, comparator_value)), DoubleType())
-result = df_vec.withColumn('distances', distance_udf(F.col('features')))
-result = result.select("id", "distances").orderBy('distances', ascending=True)
-result = result.rdd.flatMap(list).collect()
-\end{pythonCode}
+While computing the Jensen-Shannon-like Divergence for the MFCC features a problem with negative determinants was encountered. Because the logarithm of negative numbers is not defined, no similarity for these features could be calculated.\\ 
+Schnitzer mentioned a problem with "skyrocketing values of determinants which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \ref{eq:jsl3}. 
+This approach was also tested for the encountered issue mentioned above but ultimately did not work out because of the covariance matrices not being positive definite.\\
+Because no immediate solution to that problem was found, the rows where this issue appears just get filtered out by setting the distance to \lstinline{np.inf} and later dropping these rows. This problem seems to appear for about 5-10\% of the distances calculated with the Jensen-Shannon Divergence. Further investigation to solve this problem would be necessary. 
+An example code snippet is given in \ref{lst:js}.
 
-\noindent Differences in the results to the original musly tool can be explained due to the choice of only 13 MFCC bands in this thesis compared to the 25 bands in musly\cite{musly1}
-
-\subsubsection{Jensen-Shannon Divergence}
-
-\begin{pythonCode}[frame=single,label={lst:js},caption={jensen shannon},captionpos=b]
+\begin{pythonCode}[frame=single,label={lst:js},caption={Jensen-Shannon-like Divergence},captionpos=b]
 import numpy as np
 def jensen_shannon(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
@@ -220,20 +207,58 @@ def jensen_shannon(vec1, vec2):
 distance_udf = F.udf(lambda x: float(jensen_shannon(x, comparator_value)), 
 	DoubleType())
 result = df_vec.withColumn('distances', distance_udf(F.col('features')))
+result = result.filter(result.distances_js != np.inf)    
 result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\noindent Problem mit den "skyrocketing determinanten" -> Lösung: cholesky zerlegung, geht nicht - nicht positiv definit, Lösung 2 nutzen von SKL aber noch rechenintensiver! \cite[p.45]{schnitzer1}
+\subsubsection{Symmetric Kullback-Leibler Divergence}\label{sparkskl}
+
+When implementing the Symmetric Kullback-Leibler Divergence a few interesting observations could be made. First of all this metric seems to be prone to outliers. While only very few distances get disproportionately large, most of the distances are between 0 and 100. The large outliers lead to problems when scaling the resulting distances to an interval between 0 and 1 (see section \ref{distsc} and \ref{featqual}). As a temporary solution all distances larger than a certain threshold get filtered out.\\ 
+Secondly when using the fma dataset a few of the songs returned error where the covariance matrix could not be inverted. 
+These songs get filtered out as well. The example code for the calculation of distance using DataFrames can be seen in code snippet \ref{lst:kl}. 
+
+\begin{pythonCode}[frame=single,label={lst:kl},caption={Kullback-Leibler Divergence},captionpos=b]
+import numpy as np
+def symmetric_kullback_leibler(vec1, vec2):
+	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
+	if (is_invertible(cov1) and is_invertible(cov2)):
+		d = 13
+		div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + 
+			np.trace(cov2 * np.linalg.inv(cov1)) + 
+			np.trace((np.linalg.inv(cov1) + 
+			np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
+	else: 
+		div = np.inf
+		#print("ERROR: NON INVERTIBLE SINGULAR COVARIANCE MATRIX\n")  
+	return div
+distance_udf = F.udf(lambda x: float(symmetric_kullback_leibler(x, comparator_value)), DoubleType())
+result = df_vec.withColumn('distances', distance_udf(F.col('features')))
+#thresholding for outliers
+result = result.filter(result.distances <= 100)  
+#result = result.filter(result.distances != np.inf)        
+result = result.select("id", "distances").orderBy('distances', ascending=True)
+result = result.rdd.flatMap(list).collect()
+\end{pythonCode}
+
+\noindent After implementing this similarity measurement into Spark some tests and comparisons to the results of the musly toolkit \cite{musly1} were done. While overall the genre recall is quite good (see chapter \ref{genrerec}) and the results are reasonable they do differ from the ones returned from musly. 
+These differences in the results to the original musly tool could be explained with to the choice of only 13 MFCC bands in this thesis compared to the 25 bands in musly \cite{musly1} and some other decisions like leaving the normalization with mutual proximity (\ref{mprox}) out. The same goes for the Jensen-Shannon-like Divergence. 
+
 
 \subsubsection{Levenshtein distance}
 
-\begin{pythonCode}[frame=single,label={lst:levr},caption={Levenshtein DataFrame},captionpos=b]
+Spark already offers a function for the computation of the Levenshtein distance when the feature vectors are stored in a DataFrame. The Levenshtein distance can then be computed between two columns for all rows. Code snippet \ref{lst:levd} shows a minimal example. 
+
+\begin{pythonCode}[frame=single,label={lst:levd},caption={Levenshtein DataFrame},captionpos=b]
+from pyspark.sql.functions import levenshtein 
+df_merged = featureDF.withColumn("compare", lit(comparator_value)) 
 df_levenshtein = df_merged.withColumn("word1_word2_levenshtein", levenshtein(col("notes"), col("compare")))
 df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
 \end{pythonCode}
 
-\begin{pythonCode}[frame=single,label={lst:levd},caption={Levenshtein RDD},captionpos=b]
+\noindent An alternative for the RDD based variant of the Spark application the python wrapper for the C/C++ library edlib was used. During initial tests when experimenting with an naive implementation of the levenshtein distance using a python function with numpy immense performance issues were encountered. Due to the underlying C/C++ code of the edlib the computation of the levenshtein distance in code snippet \ref{lst:levr} performes comparably well as the Spark-native DataFrame equivalent and is a good alternative. 
+
+\begin{pythonCode}[frame=single,label={lst:levr},caption={Levenshtein RDD},captionpos=b]
 import edlib
 def naive_levenshtein(seq1, seq2):
     result = edlib.align(seq1, seq2)
@@ -242,7 +267,7 @@ def naive_levenshtein(seq1, seq2):
 resultNotes = notes.map(lambda x: (x[0], naive_levenshtein(str(x[1]), str(comparator_value)), x[1], x[2]))
 \end{pythonCode}
 
-\subsection{distance scaling}
+\subsection{distance scaling}\label{distsc}
 
 min and max value aggregation\\
 Performance of first spark algorithms:

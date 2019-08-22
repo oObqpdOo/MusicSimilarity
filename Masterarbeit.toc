@@ -95,9 +95,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}Single Gaussian Model}{28}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Kullback-Leibler Divergence}{28}{subsection.3.1.2}
+\contentsline {subsubsection}{Symmetric Kullback-Leibler Divergence}{28}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Jensen-Shannon Divergence}{28}{equation.3.1.4}
+\contentsline {subsubsection}{Jensen-Shannon-like Divergence}{28}{equation.3.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Mutual Proximity}{29}{equation.3.1.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.3}Gaussian Mixture Models and block-level features}{29}{subsection.3.1.3}
 \defcounter {refsection}{0}\relax 
@@ -163,9 +165,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{rp\_extractor}{53}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{performance}{53}{equation.4.1.1}
+\contentsline {subsubsection}{performance on a single pc}{53}{equation.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{mpi4py}{53}{figure.4.1}
+\contentsline {subsubsection}{performance on a cluster with mpi4py}{54}{figure.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Total amount of songs}{55}{lstnumber.4.5.14}
 \defcounter {refsection}{0}\relax 
@@ -185,48 +187,48 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Cross-correlation}{60}{lstnumber.4.11.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Kullback-Leibler Divergence}{61}{lstnumber.4.13.26}
+\contentsline {subsubsection}{Jensen-Shannon-like Divergence}{62}{lstnumber.4.13.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Jensen-Shannon Divergence}{62}{lstnumber.4.14.13}
+\contentsline {subsubsection}{Symmetric Kullback-Leibler Divergence}{62}{lstnumber.4.14.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Levenshtein distance}{63}{lstnumber.4.15.16}
+\contentsline {subsubsection}{Levenshtein distance}{63}{lstnumber.4.15.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}distance scaling}{63}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}distance scaling}{64}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Combining different measurements}{64}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.6}Combining different measurements}{65}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.7}performance}{64}{subsection.4.2.7}
+\contentsline {subsection}{\numberline {4.2.7}performance}{65}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Persisting to memory}{64}{subsection.4.2.7}
+\contentsline {subsubsection}{Persisting to memory}{65}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cluster configuration and data file size}{64}{lstnumber.4.18.1}
+\contentsline {subsubsection}{Cluster configuration and data file size}{66}{lstnumber.4.18.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Differences between the feature types}{65}{lstnumber.4.19.13}
+\contentsline {subsubsection}{Differences between the feature types}{66}{lstnumber.4.19.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{65}{figure.4.5}
+\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{67}{figure.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.8}possible performance improvements}{67}{subsection.4.2.8}
+\contentsline {subsection}{\numberline {4.2.8}possible performance improvements}{69}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Descending Importance Filter and Refine}{67}{subsection.4.2.8}
+\contentsline {subsubsection}{Descending Importance Filter and Refine}{69}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Other alternatives}{68}{figure.4.9}
+\contentsline {subsubsection}{Other alternatives}{70}{figure.4.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{69}{chapter.5}
+\contentsline {chapter}{\numberline {5}Results}{71}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{69}{section.5.1}
+\contentsline {section}{\numberline {5.1}Runtime}{71}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}feature separation quality}{69}{section.5.2}
+\contentsline {section}{\numberline {5.2}feature separation quality}{71}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cover song identification}{76}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cover song identification}{78}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{77}{section.5.4}
+\contentsline {section}{\numberline {5.4}Genre similarity}{79}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{77}{section.5.5}
+\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{79}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Summary and outlook}{77}{section.5.6}
+\contentsline {section}{\numberline {5.6}Summary and outlook}{79}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{79}{section*.11}
+\contentsline {chapter}{References}{81}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Appendix}{85}{chapter.6}
+\contentsline {chapter}{\numberline {6}Appendix}{87}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{85}{section.6.1}
+\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{87}{section.6.1}

@@ -21,7 +21,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.8}euclidean distance DF}{58}{lstlisting.4.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.9}Filter for requested song}{58}{lstlisting.4.9}
+\contentsline {lstlisting}{\numberline {4.9}Filter for requested song}{59}{lstlisting.4.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.10}euclidean distance RDD}{59}{lstlisting.4.10}
 \defcounter {refsection}{0}\relax 
@@ -31,14 +31,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.13}cross-correlation numpy}{61}{lstlisting.4.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.14}kullback leibler}{61}{lstlisting.4.14}
+\contentsline {lstlisting}{\numberline {4.14}Jensen-Shannon-like Divergence}{62}{lstlisting.4.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.15}jensen shannon}{62}{lstlisting.4.15}
+\contentsline {lstlisting}{\numberline {4.15}Kullback-Leibler Divergence}{63}{lstlisting.4.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.16}Levenshtein DataFrame}{63}{lstlisting.4.16}
+\contentsline {lstlisting}{\numberline {4.16}Levenshtein DataFrame}{64}{lstlisting.4.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.17}Levenshtein RDD}{63}{lstlisting.4.17}
+\contentsline {lstlisting}{\numberline {4.17}Levenshtein RDD}{64}{lstlisting.4.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.18}Spark persistence}{64}{lstlisting.4.18}
+\contentsline {lstlisting}{\numberline {4.18}Spark persistence}{65}{lstlisting.4.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.19}cluster setup}{64}{lstlisting.4.19}
+\contentsline {lstlisting}{\numberline {4.19}cluster setup}{66}{lstlisting.4.19}
