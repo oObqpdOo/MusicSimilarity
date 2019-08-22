@@ -171,60 +171,62 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Big Data Framework Spark}{55}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{underlying hardware}{55}{figure.4.2}
+\contentsline {subsection}{\numberline {4.2.1}underlying hardware}{55}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}workflow}{56}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}workflow}{56}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Data preparation}{56}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Data preparation}{56}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Distance Computation}{58}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Distance Computation}{58}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Euclidean Distance}{58}{subsection.4.2.3}
+\contentsline {subsubsection}{Euclidean Distance}{58}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Bucketed Random Projection}{58}{lstnumber.4.9.1}
+\contentsline {subsubsection}{Bucketed Random Projection}{59}{lstnumber.4.10.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cross-correlation}{59}{lstnumber.4.10.8}
+\contentsline {subsubsection}{Cross-correlation}{60}{lstnumber.4.11.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Kullback-Leibler Divergence}{60}{lstnumber.4.12.2}
+\contentsline {subsubsection}{Kullback-Leibler Divergence}{61}{lstnumber.4.13.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Jensen-Shannon Divergence}{60}{lstnumber.4.13.13}
+\contentsline {subsubsection}{Jensen-Shannon Divergence}{62}{lstnumber.4.14.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Levenshtein distance}{61}{lstnumber.4.14.16}
+\contentsline {subsubsection}{Levenshtein distance}{63}{lstnumber.4.15.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{distance scaling}{61}{lstnumber.4.16.6}
+\contentsline {subsection}{\numberline {4.2.5}distance scaling}{63}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Combining different measurements}{62}{figure.4.4}
+\contentsline {subsection}{\numberline {4.2.6}Combining different measurements}{64}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}performance}{62}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.7}performance}{64}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cluster configuration and data file size}{62}{subsection.4.2.4}
+\contentsline {subsubsection}{Persisting to memory}{64}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Differences between the feature types}{63}{lstnumber.4.17.13}
+\contentsline {subsubsection}{Cluster configuration and data file size}{64}{lstnumber.4.18.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{64}{figure.4.5}
+\contentsline {subsubsection}{Differences between the feature types}{65}{lstnumber.4.19.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}possible performance improvements}{66}{subsection.4.2.5}
+\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{65}{figure.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Descending Importance Filter and Refine}{66}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.8}possible performance improvements}{67}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Other alternatives}{66}{figure.4.9}
+\contentsline {subsubsection}{Descending Importance Filter and Refine}{67}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{68}{chapter.5}
+\contentsline {subsubsection}{Other alternatives}{68}{figure.4.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{68}{section.5.1}
+\contentsline {chapter}{\numberline {5}Results}{69}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}feature separation quality}{68}{section.5.2}
+\contentsline {section}{\numberline {5.1}Runtime}{69}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cover song identification}{75}{section.5.3}
+\contentsline {section}{\numberline {5.2}feature separation quality}{69}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{76}{section.5.4}
+\contentsline {section}{\numberline {5.3}Cover song identification}{76}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{76}{section.5.5}
+\contentsline {section}{\numberline {5.4}Genre similarity}{77}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Summary and outlook}{76}{section.5.6}
+\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{77}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{78}{section*.11}
+\contentsline {section}{\numberline {5.6}Summary and outlook}{77}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Appendix}{84}{chapter.6}
+\contentsline {chapter}{References}{79}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{84}{section.6.1}
+\contentsline {chapter}{\numberline {6}Appendix}{85}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{85}{section.6.1}

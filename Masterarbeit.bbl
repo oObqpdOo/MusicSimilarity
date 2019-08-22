@@ -1990,22 +1990,6 @@
     \field{year}{2009}
   \endentry
 
-  \entry{mpi4py}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{mpi4py}
-    \verb{url}
-    \verb https://pypi.org/project/mpi4py/
-    \endverb
-  \endentry
-
-  \entry{beegfs}{inproceedings}{}
-    \field{labeltitlesource}{title}
-    \field{title}{beegfs}
-    \verb{url}
-    \verb http://www.beegfs.io/content/latest-release/
-    \endverb
-  \endentry
-
   \entry{github-code}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=SJ}{%
@@ -2022,6 +2006,30 @@
     \field{title}{MusicSimilarity-Spark}
     \verb{url}
     \verb https://github.com/oObqpdOo/MusicSimilarity-Spark
+    \endverb
+  \endentry
+
+  \entry{mpi4py}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{mpi4py}
+    \verb{url}
+    \verb https://pypi.org/project/mpi4py/
+    \endverb
+  \endentry
+
+  \entry{beegfs}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{beegfs}
+    \verb{url}
+    \verb http://www.beegfs.io/content/latest-release/
+    \endverb
+  \endentry
+
+  \entry{lshspark}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Locality Sensitive Hashing}
+    \verb{url}
+    \verb https://spark.apache.org/docs/2.4.0/ml-features.html#lsh-operations
     \endverb
   \endentry
 \enddatalist

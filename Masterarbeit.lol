@@ -15,26 +15,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.5}mpi4py}{54}{lstlisting.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.6}notes preprocessing}{56}{lstlisting.4.6}
+\contentsline {lstlisting}{\numberline {4.6}notes preprocessing}{57}{lstlisting.4.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.7}rp preprocessing}{57}{lstlisting.4.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.8}euclidean distance DF}{58}{lstlisting.4.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.9}euclidean distance RDD}{58}{lstlisting.4.9}
+\contentsline {lstlisting}{\numberline {4.9}Filter for requested song}{58}{lstlisting.4.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.10}bucketed random projection}{58}{lstlisting.4.10}
+\contentsline {lstlisting}{\numberline {4.10}euclidean distance RDD}{59}{lstlisting.4.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.11}cross-correlation numpy}{59}{lstlisting.4.11}
+\contentsline {lstlisting}{\numberline {4.11}bucketed random projection}{60}{lstlisting.4.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.12}cross-correlation scipy}{60}{lstlisting.4.12}
+\contentsline {lstlisting}{\numberline {4.12}cross-correlation scipy}{61}{lstlisting.4.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.13}kullback leibler}{60}{lstlisting.4.13}
+\contentsline {lstlisting}{\numberline {4.13}cross-correlation numpy}{61}{lstlisting.4.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.14}jensen shannon}{60}{lstlisting.4.14}
+\contentsline {lstlisting}{\numberline {4.14}kullback leibler}{61}{lstlisting.4.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.15}Levenshtein DataFrame}{61}{lstlisting.4.15}
+\contentsline {lstlisting}{\numberline {4.15}jensen shannon}{62}{lstlisting.4.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.16}Levenshtein RDD}{61}{lstlisting.4.16}
+\contentsline {lstlisting}{\numberline {4.16}Levenshtein DataFrame}{63}{lstlisting.4.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.17}cluster setup}{62}{lstlisting.4.17}
+\contentsline {lstlisting}{\numberline {4.17}Levenshtein RDD}{63}{lstlisting.4.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {4.18}Spark persistence}{64}{lstlisting.4.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {4.19}cluster setup}{64}{lstlisting.4.19}

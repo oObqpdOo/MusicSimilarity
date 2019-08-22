@@ -224,7 +224,7 @@ In summary the estimated time based on the performance measurements can be calcu
 
 \subsubsection{mpi4py}
 
-For the extraction of the features from the fma dataset on the "ARA" cluster of the Friedrich-Schiller-University in Jena parallel python had to be replaced with mpi4py. 
+For the extraction of the features from the fma dataset on the computer cluster of the Friedrich-Schiller-University in Jena, the "ARA-cluster", parallel python had to be replaced with mpi4py. 
 Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
 Every compute process gets a rank number and is aware of the overall count of all processes. With these two values the file list of all audio files is split and each process only processes the according files. The audio files were stored in a parallel cluster file system called beegfs \cite{beegfs}. Equally to the implementation using parallel python every process stores the results in separate output files, each of them containing batches of 25 songs.\\
 All audio files larger than 25MB were filtered out of the fma dataset to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available Memory per CPU, only 18 CPU cores per node were used. Overall 648 processses were spawned. During the computation of the audio features with essentia one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed. For performance tests this doesn't make a large difference but for future work, the feature extraction script should be adapted accordingly. 
