@@ -193,42 +193,42 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Levenshtein distance}{63}{lstnumber.4.15.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}distance scaling}{64}{subsection.4.2.5}
+\contentsline {subsubsection}{Lazy evaluation and caching data}{64}{lstnumber.4.17.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Combining different measurements}{65}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.5}distance scaling}{66}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.7}performance}{65}{subsection.4.2.7}
+\contentsline {subsection}{\numberline {4.2.6}Combining different measurements}{67}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Persisting to memory}{65}{subsection.4.2.7}
+\contentsline {subsection}{\numberline {4.2.7}performance}{68}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cluster configuration and data file size}{66}{lstnumber.4.18.1}
+\contentsline {subsubsection}{Cluster configuration and data file size}{68}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Differences between the feature types}{66}{lstnumber.4.19.13}
+\contentsline {subsubsection}{Differences between the feature types}{69}{lstnumber.4.21.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance Comparison of RDD vs DataFrames vs single DataFrame}{67}{figure.4.5}
+\contentsline {subsubsection}{Data representation}{70}{figure.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.8}possible performance improvements}{69}{subsection.4.2.8}
+\contentsline {subsubsection}{Performance for subsequent songs}{72}{figure.4.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Descending Importance Filter and Refine}{69}{subsection.4.2.8}
+\contentsline {subsubsection}{Descending Importance Filter and Refine}{72}{figure.4.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Other alternatives}{70}{figure.4.9}
+\contentsline {subsection}{\numberline {4.2.8}possible improvements and additions}{73}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{71}{chapter.5}
+\contentsline {chapter}{\numberline {5}Results}{74}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Runtime}{71}{section.5.1}
+\contentsline {section}{\numberline {5.1}Runtime}{74}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}feature separation quality}{71}{section.5.2}
+\contentsline {section}{\numberline {5.2}feature separation quality}{74}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cover song identification}{78}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cover song identification}{81}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Genre similarity}{79}{section.5.4}
+\contentsline {section}{\numberline {5.4}Genre similarity}{82}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{79}{section.5.5}
+\contentsline {section}{\numberline {5.5}... and beyond genre boundaries}{82}{section.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.6}Summary and outlook}{79}{section.5.6}
+\contentsline {section}{\numberline {5.6}Summary and outlook}{82}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{81}{section*.11}
+\contentsline {chapter}{References}{84}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Appendix}{87}{chapter.6}
+\contentsline {chapter}{\numberline {6}Appendix}{90}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{87}{section.6.1}
+\contentsline {section}{\numberline {6.1}Spotipy Data Miner}{90}{section.6.1}

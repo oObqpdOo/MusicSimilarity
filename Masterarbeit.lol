@@ -39,6 +39,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.17}Levenshtein RDD}{64}{lstlisting.4.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.18}Spark persistence}{65}{lstlisting.4.18}
+\contentsline {lstlisting}{\numberline {4.18}Spark lazy evaluation}{65}{lstlisting.4.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.19}cluster setup}{66}{lstlisting.4.19}
+\contentsline {lstlisting}{\numberline {4.19}Minimum and maximum aggregation separate}{67}{lstlisting.4.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {4.20}Minimum and maximum aggregation optimized}{67}{lstlisting.4.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {4.21}cluster setup}{68}{lstlisting.4.21}
