@@ -2,12 +2,13 @@
 
 \chapter{Results}\label{bds2}
 
-\section{Runtime}
+In the last chapter of the thesis the results concerning the quality of the recommendations are shown. At the end of the chapter the work of the thesis is summarized and the open task for future work are outlined. 
 
 \section{Objective evaluation}
 
 \subsection{feature quality}\label{featqual}
 
+First of all the features 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
 
@@ -67,13 +68,6 @@ problem with outliers \ref{sparkskl}
 
 \noindent 95 song requests (5 from each sample)\\
 
-\begin{figure}
-	\centering    
-	\includegraphics[scale=0.75]{Images/SparkFeat/BH_BPM.png}
-	\caption{Beat Histogram vs BPM}
-	\label{bh1}
-\end{figure}	
-
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 				
@@ -117,7 +111,15 @@ problem with outliers \ref{sparkskl}
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr3}
 \end{figure}
+\FloatBarrier
 
+\begin{figure}
+	\centering    
+	\includegraphics[scale=0.65]{Images/SparkFeat/BH_BPM.png}
+	\caption{Beat Histogram vs BPM}
+	\label{bh1}
+\end{figure}	
+\FloatBarrier
 
 \subsection{Cover song identification}\label{covsongid}
 
@@ -134,8 +136,10 @@ problem with outliers \ref{sparkskl}
 	\item notes + rp: 22
 	\item mfcc + notes + rp: 20 (mfcc faulty)
 	\item chroma: 16
-
 \end{itemize}
+
+
+
 \textit{interesting sidenote: results of chroma only and notes only different! Nearly ever}
 
 \subsection{Genre similarity}\label{genrerec}

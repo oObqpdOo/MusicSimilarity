@@ -342,7 +342,7 @@ A better way to rescale the data could be evaluated in future research.
 d' = \frac{d}{\mu_f}
 \end{equation} 
 
-Implementation-wise the aggregation of the minimum and maximum value went through different tests. During first tests the aggregation of minimum and maximum value were performed separately (see \ref{lst:mindf}). This turned out to be very inefficient because the data had to be accessed multiple times. 
+\noindent Implementation-wise the aggregation of the minimum and maximum value went through different tests. During first tests the aggregation of minimum and maximum value were performed separately (see \ref{lst:mindf}). This turned out to be very inefficient because the data had to be accessed multiple times. 
 
 \begin{pythonCode}[frame=single,label={lst:mindf},caption={Minimum and maximum aggregation separate},captionpos=b]
 max_val = result.agg({"distances": "max"}).collect()[0]
@@ -360,7 +360,7 @@ max_val = aggregated.collect()[0]["max(distances)"]
 min_val = aggregated.collect()[0]["min(distances)"]
 \end{pythonCode}
 
-Another alternative would be the usage the \lstinline{describe()} function for DataFrames. For the implementation using RDDs the \lstinline{stats()} function was used, returning minimum, maximum, mean and variance values all at once. 
+\noindent Another alternative would be the usage the \lstinline{describe()} function for DataFrames. For the implementation using RDDs the \lstinline{stats()} function was used, returning minimum, maximum, mean and variance values all at once. 
 
 \subsection{Combining different measurements}\label{weighedsum}
 
@@ -370,15 +370,13 @@ To finally compute the overall similarity of what Stober calls the facet distanc
 dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 \end{equation}
 
-In this thesis only binary weights were tested by either including a facet distance with a weight of one or just leaving it out of the overall similarity by setting its weight to zero. The impact of different weights is left open for future research. 
+\noindent In this thesis only binary weights were tested by either including a facet distance with a weight of one or just leaving it out of the overall similarity by setting its weight to zero. The impact of different weights is left open for future research. 
 
 \subsection{performance}\label{sparkperf}
 
 \subsubsection{Cluster configuration} %and data file size}
 
-The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster as described in chapter \ref{cconfexp}. With the help of the \lstinline{spark.dynamicAllocation} parameters the amount of Executors spawned can be determined. While normally the executors are spawned and then retained for the life of the application, dynamicAllocation is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources.\\
-The cluster configuration in the code example \ref{lst:clust} turned out to perform best. The cluster is configured in a way where 16 up to 32 Executors are spawned with each Executor requesting as many CPU cores and memory resources as possible. 
-The \lstinline{repartition_count} variable is used with the \lstinline{repartition()} method during the data preparation stage to evenly distribute all chunks of feature file across the cluster. 
+The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster as described in chapter \ref{cconfexp}.
 
 \begin{pythonCode}[frame=single,label={lst:clust},caption={cluster setup},captionpos=b]
 confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
@@ -390,17 +388,60 @@ confCluster.set("spark.executor.memoryOverhead", "32g")
 confCluster.set("spark.yarn.executor.memoryOverhead", "4096")
 confCluster.set("spark.driver.cores", "32")
 confCluster.set("spark.executor.cores", "32")
+#confCluster.set("spark.shuffle.service.enabled", "True")
 confCluster.set("spark.dynamicAllocation.enabled", "True")
+#confCluster.set("spark.dynamicAllocation.initialExecutors", "16")
+#confCluster.set("spark.dynamicAllocation.executorIdleTimeout", "30s")	
 confCluster.set("spark.dynamicAllocation.minExecutors", "16")
 confCluster.set("spark.dynamicAllocation.maxExecutors", "32")
 confCluster.set("yarn.nodemanager.vmem-check-enabled", "false")
 repartition_count = 32
 \end{pythonCode}
 
-\noindent To get the most performant cluster configuration various cluster settings were tested. 
-Increasing the \lstinline{repartition_count} and the amount of Executors spawned (with fewer ressources each) seemingly only increased the overhead and network traffic on the cluster without reducing the overall computation time. Only increasing the \lstinline{repartition_count} while keeping the Executors as large as in the code snippet turned out to be slower as well.\\ 
-Although each node on the ARA-cluster has 36 CPU cores (without hyper-threading), 32 cores assigned to each Executor turned out to perform just a little bit better when calculating the similarities for only one song in the first tests. Therefor the cluster configuration was set as described in the code snippet \ref{lst:clust} for the following tests in this section.\\
-When calculating the similarities on already cached feature data for consecutive song requests, 36 cores per executor performed slightly better than 32 cores. Increasing the CPU core count to 72 per Executor performed far worse.\\
+\noindent The cluster configuration in the code example \ref{lst:clust} turned out to perform well compared to other test configurations. The cluster is configured in a way where 16 up to 32 Executors are spawned with each Executor requesting as many CPU cores and memory resources as possible. The \lstinline{repartition_count} variable is used with the \lstinline{repartition()} method during the data preparation stage to evenly distribute all chunks of feature file across the cluster.\\
+With the help of the \lstinline{spark.dynamicAllocation} parameters the amount of Executors spawned can be determined \cite[p. 153]{sparkbook1}. While normally the executors are spawned and then retained for the life of the application, dynamicAllocation is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources. 
+It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when using the dynamicAllocation and an external Shuffle service should be configured to avoid shuffle data gets lost in case an Executor gets deleted, but during the tests this option was disabled. This shouldn't be a problem because the dynamicAllocation is mainly used to ensure that a certain minimum amount of Executors is spawned at all and with this configuration no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration the Executors never actually get killed.\\
+
+\FloatBarrier
+\begin{figure}[htbp]
+   	\centering
+   	\begin{tikzpicture}
+   	\centering
+   	\begin{axis}[
+	    x label style={at={(axis description cs:0.5,-0.025)},anchor=north},
+   		y label style={at={(axis description cs:-0.025,.5)},rotate=0,anchor=south},
+	    xlabel={\#Executor},
+	    ylabel={time in s},
+	    xmin=10, xmax=260,
+	    ymin=12, ymax=25,
+	    legend pos=north west,
+	    ymajorgrids=true,
+	    grid style=dashed,
+	    height=10cm,
+	    width=14cm,
+	    grid=major,
+   	]		
+   	\addplot[color=purple, mark=square,]
+   		coordinates {(16,13.499)(32,13.513)(64,14.834)(128,14.863)(256,23.110)};
+   		\addlegendentry{song request on cached feature DF}  					
+   	\end{axis}
+   	\end{tikzpicture}
+   	\caption{\#Executors spawned}
+   	\label{perfspark7}
+\end{figure}
+\FloatBarrier
+
+\noindent The Spark driver programm is executed on the ARA-cluster login-node where also software from clients runs, possibly influencing the results of the performance tests. Fine-tuning the cluster settings is a tricky task. Increasing the number of Executors also increases the additional overhead of managing the Executors and shuffling the data while on the other side more unique tasks can be distributed better over the compute nodes. To get a performant cluster configuration various other cluster settings were tested. Increasing the \lstinline{repartition_count} and the amount of Executors spawned (with fewer ressources each) seemingly increased the overhead and network traffic on the cluster without reducing the overall computation time. Increasing the \lstinline{repartition_count} while keeping the Executors the same size as in the code snippet turned out to be slower as well.\\ 
+Although each node on the ARA-cluster has 36 CPU cores (without hyper-threading), only 32 cores were assigned to each Executor because this turned out to perform just a little bit better when calculating the similarities for only one song in the first tests. Therefor the cluster configuration was set as described in the code snippet \ref{lst:clust} for the following tests in this section to keep the tests comparable to each other.\\
+Later when calculating the similarities on already cached feature data for consecutive song requests, 36 cores per executor performed slightly better than 32 cores. Increasing the CPU core count to 72 per Executor performed far worse.\\ 
+\noindent Figure \ref{perfspark7} shows the execution time for one full song request for all features on all 114210 songs, but the features are already cached in one large DataFrame (this approach is explained later on in more detail, see figure \ref{mergeddf}).
+The x-axis shows the numbers of Executors that are spawned on the cluster. Because there are limited resources on the cluster the amount of CPU cores assigned to each Executor decreases when more Executors get spawned. In total there are 576 cores on 16 nodes, so the number of CPU cores per Executor can be calculated as $\#CPUs = \frac{576}{\#Executors}$. The available main memory per node (192GB) is split equally. The large DataFrame is cached and split in twice as many parts as Executors are spawned, so every Executor has to handle two data chunks.
+
+%16 exec / 36 core / 32 part: {'CSV1: ': 6381, 'AGG: ': 1174, 'RH: ': 49, 'MERGED_FULL_SONG2: ': 13499, 'PREPROCESS: ': 43445, 'MERGED_TOTAL: ': 102807, 'JOIN: ': 595, 'JS: ': 49, 'NOTE: ': 55, 'CHROMA: ': 43, 'COMPARATOR: ': 457, 'SKL: ': 59, 'MERGED_FULL_SONG1: ': 34298, 'BH: ': 72, 'CSV2: ': 8151, 'SCALE: ': 10470, 'RP: ': 69, 'MFCC: ': 63}
+%32 exec / 18 core / 64 part: {'CSV1: ': 8880, 'AGG: ': 903, 'RH: ': 49, 'MERGED_FULL_SONG2: ': 13513, 'PREPROCESS: ': 38266, 'MERGED_TOTAL: ': 109907, 'JOIN: ': 580, 'JS: ': 46, 'NOTE: ': 51, 'CHROMA: ': 43, 'COMPARATOR: ': 311, 'SKL: ': 44, 'MERGED_FULL_SONG1: ': 25913, 'BH: ': 42, 'CSV2: ': 6652, 'SCALE: ': 10971, 'RP: ': 70, 'MFCC: ': 49}
+%64 exec / 9 core / 128 part: {'CSV1: ': 9055, 'AGG: ': 1051, 'RH: ': 47, 'MERGED_FULL_SONG2: ': 14834, 'PREPROCESS: ': 41738, 'MERGED_TOTAL: ': 101764, 'JOIN: ': 568, 'JS: ': 45, 'NOTE: ': 38, 'CHROMA: ': 58, 'COMPARATOR: ': 223, 'SKL: ': 45, 'MERGED_FULL_SONG1: ': 33472, 'BH: ': 41, 'CSV2: ': 7638, 'SCALE: ': 12261, 'RP: ': 66, 'MFCC: ': 47}
+%144 exec / 4 core / 288 part: {'CSV1: ': 8278, 'AGG: ': 1175, 'RH: ': 40, 'MERGED_FULL_SONG2: ': 14863, 'PREPROCESS: ': 42329, 'MERGED_TOTAL: ': 103523, 'JOIN: ': 575, 'JS: ': 48, 'NOTE: ': 38, 'CHROMA: ': 43, 'COMPARATOR: ': 240, 'SKL: ': 56, 'MERGED_FULL_SONG1: ': 33094, 'BH: ': 63, 'CSV2: ': 8301, 'SCALE: ': 12146, 'RP: ': 44, 'MFCC: ': 49}
+%288 exec / 2 core / 576 part: {'CSV1: ': 6129, 'AGG: ': 2703, 'RH: ': 78, 'MERGED_FULL_SONG2: ': 23110, 'PREPROCESS: ': 42321, 'MERGED_TOTAL: ': 120121, 'JOIN: ': 646, 'JS: ': 61, 'NOTE: ': 58, 'CHROMA: ': 73, 'COMPARATOR: ': 525, 'SKL: ': 54, 'MERGED_FULL_SONG1: ': 38769, 'BH: ': 54, 'CSV2: ': 7580, 'SCALE: ': 18342, 'RP: ': 66, 'MFCC: ': 76}
 
 %\noindent FMA Many Small Files (40000 small files, 102000 songs)\\
 %MFCC + NOTES + RP:      {'TOTAL DF': 30517, 'TOTAL RDD': 211591, 'TOTAL MERGED': 39336}\\
@@ -410,8 +451,6 @@ When calculating the similarities on already cached feature data for consecutive
 %JS + CHROMA + RP:       {'TOTAL DF': 41477, 'TOTAL RDD': 35856, 'TOTAL MERGED': 51286}    
                                     
 \subsubsection{Differences between the feature types}
-
-Due to the different complexity of the various similarity measurements and metrics, the time needed to calculate the distances between all songs and a single requested song differs. The computation time of all feature types (with respect to the lazy evaluation as described in section \ref{leval}) is pictured in figure \ref{features}. 
 
 \begin{figure}[htbp]
 	\centering
@@ -446,6 +485,8 @@ Due to the different complexity of the various similarity measurements and metri
 \end{figure}
 \FloatBarrier
 
+\noindent Due to the different complexity of the various similarity measurements and metrics, the time needed to calculate the distances between all songs and a single requested song differs. 
+\noindent The computation time of all feature types (with respect to the lazy evaluation as described in section \ref{leval}) is pictured in figure \ref{features}. 
 \noindent The blue bars figure the computation time required to compute the distances between one requested song and all 114210 songs in the dataset without loading the data and without scaling. That means, that the features were stored in the main memory already. The measured times for the whole computation of the similarities for each feature set including the data time taken for pre-processing and the scaling of the results to the unit interval is shown in the red bar. The plot shows the importance of proper caching for fast response times. 
 \noindent The labels on the x-axis represent the different distance measurements and are used further throughout this thesis, mainly in different plots. 
 
@@ -463,65 +504,10 @@ Due to the different complexity of the various similarity measurements and metri
 
 \subsubsection{Data representation}
 
-Figure \ref {perfspark2} and \ref{perfspark3} show the performance of three different approaches on the ARA-cluster for different combinations of features (see caption).\\
-For the approach annotated with "Merged DF" all features are pre-processed, joined and storeed in one large DataFrame that then gets repartitioned across all nodes and cached. The idea behind this approach is to reduce shuffling operations during the computation of the similarities by bringing all feature types of the same songs to the same compute nodes. The downside of this method is a higher initial workload that has to be tolerated during the pre-processing stage. Once the pre-processing of the features is done the similarities between the songs are computed and the results are stored in new, smaller DataFrames, one for each feature type. Due to the previous joining of the feature data by the song ID, the repartitioning and the caching, distances of the same songs but for different feature types are calculated on the same node in theory, reducing unnecessary shuffling operation during the compute time. The resulting small DataFrames containing the facet distances for one feature set are joined by the song IDs once all similarities are computed. Then the joined results are scaled using only one \lstinline{agg()} call for all feature types (see section \ref{distsc}) and the combined distances are summed up and sorted. Figure \ref{mergeddf} shows the adapted workflow (original see figure \ref{workflowspark}) of this approach \\
+\noindent Figure \ref {perfspark2} and \ref{perfspark3} show the performance of three different approaches on the ARA-cluster for different combinations of features (see caption).\\
+\noindent For the approach annotated with "Merged DF" all features are pre-processed, joined and storeed in one large DataFrame that then gets repartitioned across all nodes and cached. The idea behind this approach is to reduce shuffling operations during the computation of the similarities by bringing all feature types of the same songs to the same compute nodes. The downside of this method is a higher initial workload that has to be tolerated during the pre-processing stage. 
+\noindent Once the pre-processing of the features is done the similarities between the songs are computed and the results are stored in new, smaller DataFrames, one for each feature type. Due to the previous joining of the feature data by the song ID, the repartitioning and the caching, distances of the same songs but for different feature types are calculated on the same node in theory, reducing unnecessary shuffling operation during the compute time. The resulting small DataFrames containing the facet distances for one feature set are joined by the song IDs once all similarities are computed. Then the joined results are scaled using only one \lstinline{agg()} call for all feature types (see section \ref{distsc}) and the combined distances are summed up and sorted.
 
-\begin{center}
-  \sffamily
-  \footnotesize
-  \begin{tikzpicture}[auto,
-    %decision/.style={diamond, draw=black, thick, fill=white,
-    %text width=8em, text badly centered,
-    %inner sep=1pt, font=\sffamily\small},
-    block_center/.style ={rectangle, draw=black, thick, fill=white,
-      text width=14em, text centered, minimum height=2em},
-    block_assign/.style ={rectangle, draw=black, thick, fill=white,
-      text width=22em, text ragged, minimum height=2em, inner sep=6pt},
-	line/.style ={draw, thick, -latex', shorten >=0pt}]
-    % outlining the flowchart using the PGF/TikZ matrix funtion
-    \matrix [column sep=5mm,row sep=3mm] {
-      % enrollment - row 1
-      \node [block_center] (b1) {data preparation};
-      & \node [block_assign] (c1) {many DFs (features)};\\
-      % enrollment - row 2
-      \node [block_center] (b2) {join and repartition};
-      & \node [block_assign] (c2) {single DF (features)};\\
-      % enrollment - row 3
-      \node [block_center] (b3) {distance computation};
-      & \node [block_assign] (c3) {single DF (features) + many DFs (distances)};\\
-      % follow-up - row 4
-      \node [block_center] (b4) {join results};
-      & \node [block_assign] (c4) {single DF (features) + single DF (distances)};\\
-      % follow-up - row 5
-      \node [block_center] (b5) {scale results \& combine};
-      & \node [block_assign] (c5) {single DF (features) + single DF (distances)};\\
-      % follow-up - row 6
-      \node [block_center] (b6) {sort and return result};
-      & \node [block_assign] (c6) {single DF (features)};\\
-    };% end matrix
-    % connecting nodes with paths
-    \begin{scope}[every path/.style=line]
-      % paths for enrollemnt rows
-      \path (b1) -- (b2);
-      \path (b2) -- (b3);
-      \path (b3) -- (b4);
-      \path (b4) -- (b5);
-      \path (b5) -- (b6);
-      \path (b1) -- (c1);
-      \path (b2) -- (c2);
-      \path (b3) -- (c3);
-      \path (b4) -- (c4);
-      \path (b5) -- (c5);
-      \path (b6) -- (c6);
-    \end{scope}
-  \end{tikzpicture}
-  \captionof{figure}{Workflow Merged DF}
-  \label{mergeddf}
-\end{center}
-
-%The consideration to join the resulting distances with the large cached feature DataFrame was made but this approach would alter the original feature DataFrame, making it necessary to create a copy of the original DataFrame which leads to additional overhead. 
-\noindent The second approach annotated with "DF" also uses DataFrames, but stores the different pre-processed feature types in separate smaller DataFrames instead. The third approach doesn't use DataFrames at all and uses single RDDs for the pre-processed features. Each of the times measured include the full workflow including data pre-processing, calculating, scaling and combining the similarities for a single song request. The plots show the time required to compute the similarities for that single requested song for growing datasets starting from 163 (covers80) to 114210 songs (all datasets combined). 
-\noindent Unsurprisingly the Merged DF- approach performed relatively poorly compared to the other approaches due to its initial overhead. The next section will make up for this when presenting the performance on the calculation of subsequent song requests on the same features.
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -599,7 +585,64 @@ For the approach annotated with "Merged DF" all features are pre-processed, join
 \end{figure}
 \FloatBarrier
 
+\noindent Figure \ref{mergeddf} shows the adapted workflow (original see figure \ref{workflowspark}) of this approach \\
 
+\begin{center}
+  \sffamily
+  \footnotesize
+  \begin{tikzpicture}[auto,
+    %decision/.style={diamond, draw=black, thick, fill=white,
+    %text width=8em, text badly centered,
+    %inner sep=1pt, font=\sffamily\small},
+    block_center/.style ={rectangle, draw=black, thick, fill=white,
+      text width=14em, text centered, minimum height=2em},
+    block_assign/.style ={rectangle, draw=black, thick, fill=white,
+      text width=22em, text ragged, minimum height=2em, inner sep=6pt},
+	line/.style ={draw, thick, -latex', shorten >=0pt}]
+    % outlining the flowchart using the PGF/TikZ matrix funtion
+    \matrix [column sep=5mm,row sep=3mm] {
+      % enrollment - row 1
+      \node [block_center] (b1) {data preparation};
+      & \node [block_assign] (c1) {many DFs (features)};\\
+      % enrollment - row 2
+      \node [block_center] (b2) {join and repartition};
+      & \node [block_assign] (c2) {single DF (features)};\\
+      % enrollment - row 3
+      \node [block_center] (b3) {distance computation};
+      & \node [block_assign] (c3) {single DF (features) + many DFs (distances)};\\
+      % follow-up - row 4
+      \node [block_center] (b4) {join results};
+      & \node [block_assign] (c4) {single DF (features) + single DF (distances)};\\
+      % follow-up - row 5
+      \node [block_center] (b5) {scale results \& combine};
+      & \node [block_assign] (c5) {single DF (features) + single DF (distances)};\\
+      % follow-up - row 6
+      \node [block_center] (b6) {sort and return result};
+      & \node [block_assign] (c6) {single DF (features)};\\
+    };% end matrix
+    % connecting nodes with paths
+    \begin{scope}[every path/.style=line]
+      % paths for enrollemnt rows
+      \path (b1) -- (b2);
+      \path (b2) -- (b3);
+      \path (b3) -- (b4);
+      \path (b4) -- (b5);
+      \path (b5) -- (b6);
+      \path (b1) -- (c1);
+      \path (b2) -- (c2);
+      \path (b3) -- (c3);
+      \path (b4) -- (c4);
+      \path (b5) -- (c5);
+      \path (b6) -- (c6);
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{Workflow Merged DF}
+  \label{mergeddf}
+\end{center}
+
+%The consideration to join the resulting distances with the large cached feature DataFrame was made but this approach would alter the original feature DataFrame, making it necessary to create a copy of the original DataFrame which leads to additional overhead. 
+\noindent The second approach annotated with "DF" also uses DataFrames, but stores the different pre-processed feature types in separate smaller DataFrames instead. The third approach doesn't use DataFrames at all and uses single RDDs for the pre-processed features. Each of the times measured include the full workflow including data pre-processing, calculating, scaling and combining the similarities for a single song request. The plots show the time required to compute the similarities for that single requested song for growing datasets starting from 163 (covers80) to 114210 songs (all datasets combined). 
+\noindent Unsurprisingly the Merged DF- approach performed relatively poorly compared to the other approaches due to its initial overhead. The next section will make up for this when presenting the performance on the calculation of subsequent song requests on the same features.
 
 \subsubsection{Performance for subsequent song requests}
 
@@ -663,17 +706,13 @@ In contrast to the performance analysis from the last section, figure \ref{perfs
 \end{figure}
 \FloatBarrier
 
-\noindent The plots annoted with Merge DF total, DF total and RDD total depicture the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request. The measured times include the calculation of the distances, the scaling and the join operation of the different result-types. 
+\noindent The plots annoted with "Merge DF" total, "DF total" and "RDD total" depicture the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request. The measured times include the calculation of the distances, the scaling and the join operation of the different result-types. 
 \noindent The results show that the pre-merged DataFrame approach performs best, returning the 20 nearest neighbors for the second song request in about 16 seconds and 14 seconds when using 36 cores per executor as mentioned in section \ref{sparkperf} cluster configuration). 
 
 \subsubsection{Descending importance filter and refine}
 
 To improve the performance even further a filter and refine method was tested where the similarities are computed for one feature set and all songs to which the distance is larger than the mean value of all distances get filtered out of the feature DataFrame. From the thinned-out dataset another less important feature set is chosen and this is repeated until all feature sets were used. 
 The implementation is based on the "Merge DF" approach described and pictured in \ref{mergeddf} earlier on but a few changes had to be made. After all features are pre-processed, joined and repartitioned, this large feature DataFrame gets cloned and persisted to the main memory as well. It is important that the compute cluster has enough RAM available to cache the full feature DataFrame twice. 
-The first feature set is chosen and the distances are calculated and appended to the cloned version of the full feature DataFrame. 
-In the next step all rows of the DataFrame where the freshly calculated distances are larger than some threshold (the mean value of the distance column in this case) get dropped out of the DataFrame, drastically reducing the size of all feature-sets.
-When using the mean value about half of the songs get dropped out of the DataFrame, reducing the problem size for the next feature set to half the size. This is also the reason why the data had to be copied in-memory because now the clone can be altered and thinned out without impacting the original DataFrame. Of course the copying of the data on the other hand is an additional overhead. 
-But when looking at the results in figure \ref{perfspark5} it shows that the filter and refine method scales very well with increasing sizes of the dataset. The plots show the performance of full requests on already cached feature DataFrames or RDDs but the plots of the filter and refine tests include the time necessary to create a copy of the cached feature DataFrames so the additional overhead is taken into account. 
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -722,18 +761,65 @@ But when looking at the results in figure \ref{perfspark5} it shows that the fil
 \end{figure}
 \FloatBarrier
 
+\noindent The first feature set is chosen and the distances are calculated and appended to the cloned version of the full feature DataFrame. 
+In the next step all rows of the DataFrame where the freshly calculated distances are larger than some threshold (the mean value of the distance column in this case) get dropped out of the DataFrame, drastically reducing the size of all feature-sets.
+When using the mean value about half of the songs get dropped out of the DataFrame, reducing the problem size for the next feature set to half the size. This is also the reason why the data had to be copied in-memory because now the clone can be altered and thinned out without impacting the original DataFrame. Of course the copying of the data on the other hand is an additional overhead. 
+But when looking at the results in figure \ref{perfspark5} it shows that the filter and refine method scales very well with increasing sizes of the dataset. The plots show the performance of full requests on already cached feature DataFrames or RDDs but the plots of the filter and refine tests include the time necessary to create a copy of the cached feature DataFrames so the additional overhead is taken into account. 
 \noindent The order of filtering for the plot labeled with "Filter chroma first" is:\\
-chroma $\rightarrow$ mfcc  $\rightarrow$ js  $\rightarrow$ skl $\rightarrow$ rp  $\rightarrow$ rh  $\rightarrow$ bh  $\rightarrow$ notes\\ 
-and:\\
-bh $\rightarrow$ rh $\rightarrow$ notes $\rightarrow$ rp $\rightarrow$ mfcc $\rightarrow$ js $\rightarrow$ skl $\rightarrow$ chroma\\
-for the plot labeled with "Filter bh first". 
+\textit{chroma $\rightarrow$ mfcc  $\rightarrow$ js  $\rightarrow$ skl $\rightarrow$ rp  $\rightarrow$ rh  $\rightarrow$ bh  $\rightarrow$ notes} and:\\
+\textit{bh $\rightarrow$ rh $\rightarrow$ notes $\rightarrow$ rp $\rightarrow$ mfcc $\rightarrow$ js $\rightarrow$ skl $\rightarrow$ chroma} for the plot labeled with "Filter bh first".
 \noindent The order of the different filter and refine operations is very important. For example when searching for cover songs, the cross-correlation and the levenshtein distance should be calculated in the very beginning of the filter chain or otherwise the covers songs could be filtered out. When running a simple test with the song "Für Elise" by Beethoven that appears three times in the full dataset the filter and refine method starting with the chroma features was able to still detect one alternative recording as the top recommendation and the other recording was placed as recommendation number 14, even scoring higher than in a test without the filter and refine method because other non-matching songs got filtered out.\\
 Of course the computation of the cross-correlation between the chroma features is the most compute-intensive one so for performance reasons it is better to start with a distance measurement like the euclidean distance of the beat histograms because later when the more demanding computations follow the data set is already thinned out. 
 This is also the reason this approach is called descending importance filter and refine in this thesis, because the client requesting song recommendations has to define which aspect is most important to him (speed, melodic/ rhythm/ timbral features or cover song detection) before choosing an order for the filter chain. The results get better the further it gets in the filter chain.  
+
+\subsubsection{Cluster size}
+
+The runtime and its dependencies on cluster configuration, size of the input dataset and implementation details was already given in the previous chapter \ref{sparkperf}. With about eleven seconds response time for the filter and refine method and 16 seconds for the merged DataFrame approach on 16 compute nodes and for 114000 songs, the result is reasonably fast but not really fast enough for real-time processing.\\ 
+
+\FloatBarrier
+\begin{figure}[htbp]
+   	\centering
+   	\begin{tikzpicture}
+   	\centering
+   	\begin{axis}[
+	    x label style={at={(axis description cs:0.5,-0.025)},anchor=north},
+   		y label style={at={(axis description cs:-0.025,.5)},rotate=0,anchor=south},
+	    xlabel={\#Nodes},
+	    ylabel={time in s},
+	    xmin=0, xmax=18,
+	    ymin=0, ymax=200,
+	    legend pos=north west,
+	    ymajorgrids=true,
+	    grid style=dashed,
+	    height=8cm,
+	    width=14cm,
+	    grid=major,
+   	]
+   	%\addplot[color=red, mark=x,]
+   	%	coordinates {(164,43.090)(3344,58.852)(11564,55.227)(114210,102.438)};
+   	%	\addlegendentry{Merged DF total}
+   	%\addplot[color=green, mark=x,]
+   	%	coordinates {(164,49.274)(3344,59.691)(11564,65.949)(114210,94.464)};
+  	%	\addlegendentry{Filter total}   		
+    %	\addplot[color=purple, mark=square,]
+   	%	coordinates {(1,303.876)(2,176.854)(4,327.198)(8,114.014)(12,106.415)(16,106.491)};
+   	%	\addlegendentry{Total} 
+   	\addplot[color=blue, mark=square,]
+   		coordinates {(1,164.900)(2,60.094)(4,103.585)(8,16.488)(12,16.251)(16,13.547)};
+   		%coordinates {(1,164.900)(4,202.478,)(8,16.488)(12,16.251)(16,13.547)};
+   		\addlegendentry{Song request}   					
+   	\end{axis}
+   	\end{tikzpicture}
+   	\caption{Performance / Executors (36 CPU cores each)}
+   	\label{perfspark6}
+\end{figure}
+\FloatBarrier
+
+\noindent To simulate the impact of growing cluster sizes in figure \ref{perfspark6} the cluster configuration was changed from 1 up to 16 Executors spawned, each reserving 36 CPU cores (the available cores on one node) and 64GB (+ 32GB overhead) of main memory. To do this, the parameters of the dynamicAllocation were changed. When setting the minimum Executor count above 16 but there are not enough resources on the cluster, the Spark Driver only spawns as many as he is able to (16 on the ARA-cluster with 36 CPU cores/ Executor). As the tests algorithm, the merged DataFrame approach (repartitioned in 32 chunks) with two subsequent song requests was chosen and the computation time of the second song request for all feature-sets is shown.\\
 
 \subsection{possible improvements and additions}
 
 Spark offers some other interesting alternatives to compute similarities that are only mentioned here and not further evaluated.  
 The Alternating Least Squares to perform collaborative filtering (see section \ref{collaborative}) would be an interesting addition. Although this thesis only focuses on audio features, a future additional implementation of metadata and listening behavior information could provide valuable informations.\\ 
-The so called "DIMSUM all-pairs similarity" (Dimension Independent Similarity Computation using MapReduce) is a MapReduce algorithm to compute full similarity matrices (all-pairs similarity instead of the "one-to-many-items similarity" implemented here) and could be of interest as well.\\
+The so called "DIMSUM all-pairs similarity" (Dimension Independent Similarity Computation using MapReduce) is a MapReduce algorithm to compute full similarity matrices (all-pairs similarity instead of the "one-to-many items" similarity implemented here) and could be of interest as well.\\
 Also an implementation of the TF-IDF weights is already part of the Spark framework, possibly enabling a future implementation of the melodic similarity computation using the mentioned approach in chapter \ref{textretr}

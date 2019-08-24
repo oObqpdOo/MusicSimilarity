@@ -191,6 +191,7 @@ confCluster.set("spark.executor.memoryOverhead", "500m")
 confCluster.set("spark.yarn.executor.memoryOverhead", "512")
 #set cores of each executor and the driver -> less than avail -> more executors spawn
 confCluster.set("spark.executor.cores", "1")
+confCluster.set("spark.shuffle.service.enabled", "True")
 confCluster.set("spark.dynamicAllocation.enabled", "True")
 confCluster.set("spark.dynamicAllocation.minExecutors", "4")
 confCluster.set("spark.dynamicAllocation.maxExecutors", "8")
