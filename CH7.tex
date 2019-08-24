@@ -2,12 +2,11 @@
 
 \chapter{Results}\label{bds2}
 
-Very small 100 Song Dataset plus 20 Cover Songs to evaluate and compare similarity metrics. Full similarity matrices. 
-High performance/ throughput tests with full 12000 song testset to evaluate full load performance.\\
-
 \section{Runtime}
 
-\section{feature separation quality}\label{featqual}
+\section{Objective evaluation}
+
+\subsection{feature quality}\label{featqual}
 
 \textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
 \\
@@ -66,6 +65,49 @@ problem with outliers \ref{sparkskl}
 	\label{fig:corr2}
 \end{figure}
 
+\noindent 95 song requests (5 from each sample)\\
+
+\begin{figure}
+	\centering    
+	\includegraphics[scale=0.75]{Images/SparkFeat/BH_BPM.png}
+	\caption{Beat Histogram vs BPM}
+	\label{bh1}
+\end{figure}	
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 				
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.5]{Images/SparkFeat/cum1.png}
+				\caption{cumulative distribution 1}
+				\label{cum1}
+			\end{subfigure}%	
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.5]{Images/SparkFeat/cum2.png}
+				\caption{cumulative distribution 2}
+				\label{cum2}
+			\end{subfigure}
+			
+			\begin{subfigure}{.495\textwidth}
+				\centering     
+				\includegraphics[scale=0.5]{Images/SparkFeat/cum3.png}
+				\caption{cumulative distribution 3}
+				\label{cum3}
+			\end{subfigure}%		
+			\begin{subfigure}{.495\textwidth}
+				\centering    
+				\includegraphics[scale=0.5]{Images/SparkFeat/cum4.png}
+				\caption{cumulative distribution 4}
+				\label{cum4}
+			\end{subfigure}	
+	}}
+	\caption{Cumulative distributions}
+	\label{fig:cumdist}
+\end{figure}
+\FloatBarrier
+
 \noindent Scatter Matrix, 5 songs of each genre from 1517 artists - distances combined, main diagonal = Kernel Density Estimation in figure \ref{fig:corr3}
 \begin{figure}[htbp]
 	\centering
@@ -76,85 +118,8 @@ problem with outliers \ref{sparkskl}
 	\label{fig:corr3}
 \end{figure}
 
-\noindent Scatter Matrix, 1 Song (Soundtack) from 100 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 5 genres in figure \ref{fig:corr8}
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.32]{Images/SparkFeat/soundtrack2.png}	
-	}}
-	\caption{distances 1 song (Soundtrack), 5 genres (10 songs each)}
-	\label{fig:corr8}
-\end{figure}
 
-\noindent Scatter Matrix, 1 Song (Rock/ Metal) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres\\ All features combined recommends Rock primarily\\
-Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 4 genres in figure \ref{fig:corr5}
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.45]{Images/SparkFeat/rock.png}	
-	}}
-	\caption{distances 1 song, Rock/ Metal, 1517 artists, 4 genres}
-	\label{fig:corr5}
-\end{figure}
-
-\noindent Scatter Matrix, 1 Song (Electronic) from 1517 artists - distances - figure \ref{fig:corr6}
-No combination of features is able to accurately separate HipHop from Rock-Pop
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.45]{Images/SparkFeat/electronic.png}	
-	}}
-	\caption{distances 1 song, electronic, 1517 artists, 4 genres}
-	\label{fig:corr6}
-\end{figure}
-
-\noindent Scatter Matrix, 1 Song (Classics) from 1517 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 4 genres in figure \ref{fig:corr7}
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\includegraphics[scale=0.45]{Images/SparkFeat/classical.png}	
-	}}
-	\caption{distances 1 song (Classical), 4 genres (10 songs each)}
-	\label{fig:corr7}
-\end{figure}
-
-\noindent distances from classical song out of 1517 artists dataset in figure \ref{fig:featsep}\\
-
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 			
-			\begin{subfigure}{.495\textwidth}
-				\centering    
-				\includegraphics[scale=0.3]{Images/SparkFeat/BH_BPM.png}
-				\caption{Beat Histogram vs BPM}
-				\label{fs1}
-			\end{subfigure}		
-			\begin{subfigure}{.495\textwidth}
-				\centering     
-				\includegraphics[scale=0.5]{Images/SparkFeat/MFCC_Eucl.png}
-				\caption{MFCC Euclidean}
-				\label{fs2}
-			\end{subfigure}%	
-			
-			\begin{subfigure}{.495\textwidth}
-				\centering    
-				\includegraphics[scale=0.5]{Images/SparkFeat/BH_RP.png}
-				\caption{Beat Histogram vs Rhythm Patterns}
-				\label{fs3}
-			\end{subfigure}
-			\begin{subfigure}{.495\textwidth}
-				\centering     
-				\includegraphics[scale=0.5]{Images/SparkFeat/Cross-Corr_Levenshtein.png}
-				\caption{Cross-correlation vs Levenshtein}
-				\label{fs4}
-			\end{subfigure}%		
-	}}
-	\caption{genre recall 100 songs}
-	\label{fig:featsep}
-\end{figure}
-\FloatBarrier
-
-\section{Cover song identification}\label{covsongid}
+\subsection{Cover song identification}\label{covsongid}
 
 \textit{\textbf{Able to find "Rock you like a Hurricane" cover as top recommendation in over 11500 songs\\}}
 \ \\
@@ -173,7 +138,7 @@ No combination of features is able to accurately separate HipHop from Rock-Pop
 \end{itemize}
 \textit{interesting sidenote: results of chroma only and notes only different! Nearly ever}
 
-\section{Genre similarity}\label{genrerec}
+\subsection{Genre similarity}\label{genrerec}
 
 \textbf{\textit{\underline{100 Song Testset, 10 genres:\\}}} 
 \begin{figure}[htbp]
@@ -210,7 +175,42 @@ No combination of features is able to accurately separate HipHop from Rock-Pop
 \end{figure}
 
 
-\section{... and beyond genre boundaries}
+\noindent Scatter Matrix, 1 Song (Soundtack) from 100 song sample - distances, main diagonal = Kernel Density Estimation, picked subset of 5 genres in figure \ref{fig:corr8}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.25]{Images/SparkFeat/soundtrack2.png}	
+	}}
+	\caption{distances 1 song (Soundtrack), 5 genres (10 songs each)}
+	\label{fig:corr8}
+\end{figure}
+
+\noindent Scatter Matrix, 1 Song (Rock/ Metal) from 1517 artists - distances, main diagonal = Kernel Density Estimation, picked subset of 3 genres\\ All features combined recommends Rock primarily\\
+Most interesting Detail: Plot JS - RP: overall similarity JS between Rock and Hip Hop - overall similarity RP between Classical and Metal - only one feature would not be able to separate all 4 genres in figure \ref{fig:corr5}
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.29]{Images/SparkFeat/rock.png}	
+	}}
+	\caption{distances 1 song, Rock/ Metal, 1517 artists, 4 genres}
+	\label{fig:corr5}
+\end{figure}
+
+\noindent Scatter Matrix, 1 Song (Electronic) from 1517 artists - distances - figure \ref{fig:corr6}
+No combination of features is able to accurately separate HipHop from Rock-Pop
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 			
+			\includegraphics[scale=0.29]{Images/SparkFeat/electronic.png}	
+	}}
+	\caption{distances 1 song, electronic, 1517 artists, 4 genres}
+	\label{fig:corr6}
+\end{figure}
+\FloatBarrier
+
+\section{Subjective evaluation}
+
+\subsection{Beyond genre boundaries}
 
 \textit{\textbf{Rachmaninoff Prelude C\# minor full dataset Top 5 MFCC Euclidean\\}}
 \\
@@ -223,6 +223,8 @@ Titel: Klassik/Rachmaninoff - Idil Biret - Op 3 No 2 Prelude in C - Sharp Minor
 	\item \underline{Metal\&Rock/Steve Moore - Intro \& Credits}
 	\item Klassik/Liszt - Piano Concerto No 1 in E flat major S124(LWH4) Allegro animato
 \end{itemize}
+
+\subsection{Honorable mentions}
 
 \section{Summary and outlook}
 
