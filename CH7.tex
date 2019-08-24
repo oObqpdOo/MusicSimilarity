@@ -8,54 +8,7 @@ In the last chapter of the thesis the results concerning the quality of the reco
 
 \subsection{feature quality}\label{featqual}
 
-First of all the features 
-\textit{\textbf{Which features are useful, which not (looking at you rhythm histogram)\\}}
-\\
-
-\noindent skl scaled and unscaled\ref{fig:sklsc}\\
-problem with outliers \ref{sparkskl}
-
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{ 
-	\begin{subfigure}{0.5\textwidth}
-		\centering
-		\includegraphics[scale=0.5]{Images/SparkFeat/skl_unscaled.png}
-		\captionof{figure}{SKL unscaled}
-		\label{scklusc}
-	\end{subfigure}
-	\begin{subfigure}{0.5\textwidth}
-		\centering
-		\includegraphics[scale=0.5]{Images/SparkFeat/skl_scaled.png}
-		\captionof{figure}{SKL scaled}
-		\label{scklsc}
-	\end{subfigure}%
-	}}
-	\caption{Correlation of features}
-	\label{fig:sklsc}
-\end{figure}
-
-\noindent correlation of features in figure \ref{fig:corr}\\
-
-\begin{figure}[htbp]
-	\centering
-	\framebox{\parbox{1\textwidth}{
-	\begin{subfigure}{0.5\textwidth}
-		\centering
-		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_unscaled.png}
-		\captionof{figure}{SKL unscaled}
-		\label{corrusc}
-	\end{subfigure} 
-	\begin{subfigure}{0.5\textwidth}
-		\centering
-		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_scaled.png}
-		\captionof{figure}{SKL scaled}
-		\label{corrsc}
-	\end{subfigure}%
-	}}
-	\caption{Correlation of features}
-	\label{fig:corr}
-\end{figure}
+This section analyzes the results from the similarity analysis to find out how the distances from different feature sets are correlated to each other and how they are distributed over the unit interval $[0,1]$.
 
 \begin{figure}[htbp]
 	\centering
@@ -66,7 +19,11 @@ problem with outliers \ref{sparkskl}
 	\label{fig:corr2}
 \end{figure}
 
-\noindent 95 song requests (5 from each sample)\\
+
+\noindent To analyze this, a test dataset consisting of distances coming from the Spark framework had to be created. 95 songs (five songs for every genre) were randomly chosen from the 1517 artists dataset and the distances to all other songs of the 1517 artists dataset were calculated. The dataset contains 3180 songs evenly distributed over 19 different genres (see figure \ref{1517dist}). The sampling of distances from different genres is important for the analysis of the distribution of the distances, because the distances vary, depending on where in the feature space the actual song is located. A song taken from the edge of the distribution of the feature space will end up with different distances than a song taken from the center. 
+%For 95 song request that results in eight very large vectors containing the distances of song pairs. This large set of distances is then analyzed. 
+Figure \ref{fig:corr2} shows the correlation of the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following formula \ref{eq:distance} with all weights $w = 1$ ). This combined distance is labeled as "agg" in the following plots.
+\noindent The correlation of a feature type with the overall distance is a sign of the impact of the feature type on the overall distance from the weighted sum. But because not all distances are equally distributed over the unit interval the different feature types have different impacts on the sum of distances. This problem was already mentioned in section \ref{distsc} and section \ref{sparkskl}. Figure \ref{fig:cumdist} shows how the distances are distributed with the cumulative histograms over the unit interval. It is clearly visible that the cross-correlation distances are not evenly distributed. In section \ref{distsc} a few proposals were already given how this problem could be solved in the future. 
 
 \begin{figure}[htbp]
 	\centering
@@ -102,7 +59,55 @@ problem with outliers \ref{sparkskl}
 \end{figure}
 \FloatBarrier
 
-\noindent Scatter Matrix, 5 songs of each genre from 1517 artists - distances combined, main diagonal = Kernel Density Estimation in figure \ref{fig:corr3}
+\noindent As mentioned in section \ref{sparkskl} the SKL divergence was also prone to outliers and had issues when scaling distances to the unit interval. The solution was to filter out all song pairs with an SKL divergence larger than a certain threshold before scaling the distances. If this filter operation is left out nearly all distances calculated with the symmetric Kullback-Leibler divergence are close to zero after the scaling. The impact can be seen in figure \ref{fig:sklsc} and figure \ref{fig:corr}
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{ 
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Images/SparkFeat/skl_unscaled.png}
+		\captionof{figure}{SKL unscaled}
+		\label{scklusc}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Images/SparkFeat/skl_scaled.png}
+		\captionof{figure}{SKL scaled}
+		\label{scklsc}
+	\end{subfigure}%
+	}}
+	\caption{Correlation of features}
+	\label{fig:sklsc}
+\end{figure}
+
+\noindent If the outliers are not filtered, the correlation between the distances of the different feature types change drastically. The correlation of the unfiltered SKL distances with the combined distance ("agg") decreases significantly (see figure \ref{fig:corr}). Interestingly also the correlation of the Jensen-Shannon like divergence and the combined distance ("agg") is dropping. 
+A possible explanation could be that the SKL and JS distances are indeed highly correlated but due to the bad scaling the SKL has no impact on the overall distance. The results from the JS divergence alone are not able to impact the weighed sum of the combined distance in the same way, both features together could. 
+
+\begin{figure}[htbp]
+	\centering
+	\framebox{\parbox{1\textwidth}{
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_unscaled.png}
+		\captionof{figure}{SKL unscaled}
+		\label{corrusc}
+	\end{subfigure} 
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.33]{Images/SparkFeat/skl_corr_scaled.png}
+		\captionof{figure}{SKL scaled}
+		\label{corrsc}
+	\end{subfigure}%
+	}}
+	\caption{Correlation of features}
+	\label{fig:corr}
+\end{figure}
+\FloatBarrier
+
+\noindent The last plot (figure \ref{fig:corr3}) shows the full scatter matrix of the various distances. The main diagonal shows the histogram of the 
+
+\ref{fig:corr3}
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -111,14 +116,6 @@ problem with outliers \ref{sparkskl}
 	\caption{correlation 95 songs, 19 genres (5 each), 1517 artists}
 	\label{fig:corr3}
 \end{figure}
-\FloatBarrier
-
-\begin{figure}
-	\centering    
-	\includegraphics[scale=0.65]{Images/SparkFeat/BH_BPM.png}
-	\caption{Beat Histogram vs BPM}
-	\label{bh1}
-\end{figure}	
 \FloatBarrier
 
 \subsection{Cover song identification}\label{covsongid}
@@ -137,8 +134,6 @@ problem with outliers \ref{sparkskl}
 	\item mfcc + notes + rp: 20 (mfcc faulty)
 	\item chroma: 16
 \end{itemize}
-
-
 
 \textit{interesting sidenote: results of chroma only and notes only different! Nearly ever}
 
