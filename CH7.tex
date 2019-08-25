@@ -329,14 +329,13 @@ Another critical requirement for the recommendation engine is the ability to ret
 
 \section{Subjective evaluation}
 
-This section includes the personal opinion and music taste and is not exclusively relying on scientific approaches. 
+This section includes the personal opinion and music taste of the author and is not exclusively relying on scientific findings. 
 
 \subsection{Beyond genre boundaries}
 
-The main reason for the choice of the topic of this thesis was that recommender-systems as they come with streaming platforms like Spotify tend to value. The "Song Radio"- option coming with Spotify stays in the boundaries of and is heavily influenced by other peoples listening behavior. Although this is not necessarily a bad thing to do, this thesis tried focus on the properties 
+The main reason for the choice of the topic of this thesis was that recommender systems as they come with streaming platforms like Spotify tend to value. For example the "Song Radio"- option coming with Spotify stays in the boundaries of genres and is heavily influenced by other peoples listening behavior. Although this is not necessarily a bad thing to do, this thesis tried focus directly on the tonal, rhythmic and properties. As a result, songs from other genres are recommended as can be seen in the following example. 
+\noindent When searching for the nearest neighbors of the "Prelude in C- Sharp Minor (Op. 3 No. 2)" by the Russian composer Sergei Rachmaninoff based on the euclidean distance of MFCCs, the following results were returned: 
 
-
-When adding the song Klassik/Rachmaninoff - Idil Biret - Op 3 No 2 Prelude in C- Sharp Minor
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item Klassik/Rachmaninoff - Piano Concerto No2 In C Minor Op18-1 Moderato
@@ -346,9 +345,47 @@ When adding the song Klassik/Rachmaninoff - Idil Biret - Op 3 No 2 Prelude in C-
 	\item Klassik/Liszt - Piano Concerto No 1 in E flat major S124(LWH4) Allegro animato
 \end{itemize}
 
+\noindent The "Metal \& Rock" recommendation seems out of place at the first glance, but when taking a closer look, the recommended song is called "Intro \& Credits". When listening to it some similarities are recognizable, it is a calm, dark instrumental piece made of synthesizer sounds. The original requested Prelude is a dark piano piece. Of course this is just one example and the recommendation is arguably not perfect. In general some of the timbre based recommendations seen out of place. This might be due to the choice of 13 MFCC bands over 25 as the musly toolkit uses, or maybe there are some unnoticed issues with the implementation left, which would have to be investigated in future work. But as also stated in section \ref{genrerec} the overall performance concerning the genre recall rate is reasonably good.
+
 \subsection{Honorable mentions - personal music taste}
 
-\textit{Favourite Songs listed in appendix -> recommendations: hit or not}
+\textit{Favourite Top 80 songs from private music collection listed in appendix -> recommendations: hit or not}
+
+\noindent Song request: Gojira - The Art Of Dying - rhythm patterns only\\
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item Numenorean - Adore
+	\item Shylmagoghnar - Transience
+	\item \underline{Amon Amarth - The Last Stand Of Frej}
+	\item Delain - We Are the Others
+	\item Ensiferum - Descendants Defiance Domination
+\end{itemize}
+
+\noindent Mozart - Alla Turca (Allegretto) - JS + Chroma + RP\\ For the other 2 versions (see section \ref{covermfcc}) the rhythm patterns were not extracted by the rp\_extract tool because of file format issues. 
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item Mozart Türkischer Marsch
+	\item Vika - This Is Not a Goodbye 
+	\item Buddy Rich - I Remember Clifford
+	\item Orgelsax - Rumänische Volkstänze Bucimeana
+	\item Cherubini - Sonate Nr. 4 Moderato			
+\end{itemize}
+
+\noindent 100MeisterwerkederKlassik/Mozart-AllaTurca(Allegretto) - rerun only Chroma\\ 
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item Mozart/CD31/KV331-3Allaturcaallegretto
+	\item PianoCollection/CD25-Mozart-AllaTurcaAllegretto
+	\item Mozart-TürkischerMarsch
+	\item BluesCaravan-IRememberClifford
+	\item Vika-ThisIsNotaGoodbye	
+\end{itemize}
+
+\noindent 100MeisterwerkederKlassik/Mozart-AllaTurca(Allegretto) - rerun only JS -> first cover appears as 13th recommendation\\
+ 
 
 \chapter{Summary}
 
