@@ -184,7 +184,7 @@ result = result.select("id", "distances").orderBy('distances', ascending=False)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\subsubsection{Jensen-Shannon-like Divergence}
+\subsubsection{Jensen-Shannon-like Divergence}\label{jsld}
 
 While computing the Jensen-Shannon-like Divergence for the MFCC features a problem with negative determinants was encountered. Because the logarithm of negative numbers is not defined, no similarity for these features could be calculated.\\ 
 Schnitzer mentioned a problem with "skyrocketing values of determinants which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \ref{eq:jsl3}. 

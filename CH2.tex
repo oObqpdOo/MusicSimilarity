@@ -62,7 +62,7 @@ MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
 according to \cite[p. 80]{knees1}
 
-\subsection{Gaussian Mixture Models and block-level features}
+\subsection{Gaussian Mixture Models and block-level features}\label{blocklevel}
 Another, more compute heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore the usage of GMMs is not further considered in this thesis.\\
 The last method mentioned in this thesis for timbral similarity is to use block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. 
 Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g. multiple second long, audio frames and features like fluctuation patterns are computed for these frames. 

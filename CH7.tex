@@ -180,9 +180,8 @@ As mentioned in section \ref{covermfcc}, purely MFCC based recommender systems l
 				mfcc + js + skl & 3\\
 				\hline
 			\end{tabular}
-			\label{cov_1}
 		\end{center}
-		\caption{Cover song recognition - Top 1}
+		\captionof{table}{Cover recognition - Top 1\label{cov_1}}
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
 		\begin{center}
@@ -221,9 +220,8 @@ As mentioned in section \ref{covermfcc}, purely MFCC based recommender systems l
 				mfcc + js + skl & 10\\
 				\hline
 			\end{tabular}
-			\label{cov_2}
 		\end{center}
-		\caption{Cover song recognition - Top 5}
+		\captionof{table}{Cover recognition - Top 5\label{cov_2}}
 	\end{minipage}
 \end{table}
 
@@ -359,7 +357,7 @@ Another critical requirement for the recommendation engine is the ability to ret
 
 \section{Subjective evaluation}
 
-This section includes the personal opinion and music taste of the author and is not exclusively relying on scientific findings. 
+This section includes the personal opinion and music taste of the author. Although these results are not "scientific", music taste is something personal and judging music recommendation solely from an objective perspective would be the wrong attempt. The core strength of this Spark-based recommender system is, that its parameters can be used to personalize the music recommendation. 
 
 \subsection{Beyond genre boundaries}
 
@@ -377,13 +375,9 @@ The main reason for the choice of the topic of this thesis was that recommender 
 
 \noindent The "Metal \& Rock" recommendation seems out of place at the first glance, but when taking a closer look, the recommended song is called "Intro \& Credits". When listening to it some similarities are recognizable, it is a calm, dark instrumental piece made of synthesizer sounds. The original requested Prelude is a dark piano piece. Of course this is just one example and the recommendation is arguably not perfect. In general some of the timbre based recommendations seen out of place. This might be due to the choice of 13 MFCC bands over 25 as the musly toolkit uses, or maybe there are some unnoticed issues with the implementation left, which would have to be investigated in future work. But as also stated in section \ref{genrerec} the overall performance concerning the genre recall rate is reasonably good.
 
-\subsection{Honorable mentions - personal music taste}
+\subsection{personal music taste}\label{personal}
 
-\textit{Favourite Top 80 songs from private music collection listed in appendix -> recommendations: hit or not}
-
-As a last side note on personal music taste, 
-
-\noindent Song request: Gojira - The Art Of Dying - rhythm patterns only - on private music collection using rp, chroma and js features. \\
+As a last side note on personal music taste, a test using one of my favorite songs was made. As already mentioned my private music collection was a part of this thesis. To retain some kind of reproducibility the whole collection is documented and the according list of albums and songs is on a document on the CD in the appendix. On the last pages of this document there is also a list containing my personal song favorites in the metal music genre. One of these songs was chosen and the recommendations based on rhythm patterns was calculated for the private music collection. The song is called "The Art Of Dying" by the band Gojira. The recommendations are listed below. Another track from my personal list of favorite song appears as well. 
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -394,6 +388,10 @@ As a last side note on personal music taste,
 	\item Ensiferum - Descendants Defiance Domination
 \end{itemize}
 
+\noindent This could be an indication that my personal taste is closely related to the rhythmic properties of the music. 
+An idea for future research could be to reverse engineer a users musical taste by looking at a list of favorite songs. The information which songs a user likes the most is already available to all streaming platforms, because most likely the songs a user listens to the most are also the songs he likes the best. Spark could be used to calculate the similarities between these favorite songs of a user and analyze the distances. Whether or not these songs are more similar in rhythm, melody or in timbre could enhance the parametrization of a recommender engine and further personalize music recommendations by adapting the weights of a recommendation engine.\\
+Of course the field of personalized music recommendation is an already existing one, but maybe the addition of Spark and Big Data opportunities of using audio content instead of contextual information and collaborative filtering could enhance these existing system. 
+
 \chapter{Summary}
 
 \section{Conclusion}
@@ -402,21 +400,17 @@ Looking back at the content of this thesis, the first chapter provided an overvi
 In the first part of the implementation the necessary audio features were extracted and pre-processed (e.g. by extractiong the melody estimation) in parallel using MPI on a computer cluster, paving the way for the usage with the Big Data processing framework Spark.
 The features were loaded into the HDFS of a cluster and multiple similarity measurements were implemented, tested, evaluated and improved using the Spark framework. With Spark multiple approaches (RDD, DataSet, Filter and Refine, Cluster Configurations) were tested and the runtime was measured. The results of the were presented and visualized.\\
 \ \\
-The final application is able to recommend songs similar to a song request by computing the distances. The recommendations are parameterized, giving the user the option to prioritize different aspects of the music. The system is scalable. More songs can be added, the cluster size can be increased and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is also given. There are still a few flaws, especially when looking at the implementation of the symmetric Kullback-Leibler divergence and the Jensen-Shannon divergence and the scaling of the distances. The different starting points for possible future research were laid out during the whole thesis and are summarized in the outlook. 
+The final application is able to recommend songs similar to a song request by computing the distances. The recommendations are parameterized, giving the user the option to prioritize different aspects of the music. The system is scalable. More songs can be added, the cluster size can be increased and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is also given. 
 
 \section{Outlook}
 
-file format issues with *.wav audio files when using the rp\_extract tool\\
-\ \\
-performance improvements, larger cluster, more data\\
-Spark streaming, real-time application instead of a batch-processing job\\
-garbage collecting issue after 40 subsequent song requests\\
-\ \\
-jensen-shannon \& symmetric Kullback- leibler investigation\\
-reduce hubness with mutual proximity\\
-\ \\
-more state of the art similarity (blocked)\\
-Addition of genre and metadata information, Genre specific features, combinations and variable model, collaborative filtering, Lyrics\\
+There are still a few minor flaws, especially when looking at the implementation of the symmetric Kullback-Leibler divergence and the Jensen-Shannon divergence and the scaling of the distances. The different starting points for possible future research were laid out during the whole thesis and are summarized here.\\
+First of all the file format issues with *.wav audio files when using the rp\_extract tool from the TU Wien should be fixed to be able to compute all features from all the songs of a dataset (see section \ref{totamsong}).\\
+The next step would be to re-evaluate the Jensen-Shannon-like divergence and the symmetric Kullback-Leibler divergence and fix the issues with the outliers. Also the issues the issues with non-invertible or non-singular covariance matrices should be investigated (see section \ref{sparkskl} and \ref{jsld}). Maybe also the proposed enhancements by Schnitzer \cite{schnitzer1} of reducing the hubness with mutual proximity and by using more MFCC bands would be sufficient to improve the quality of the recommendations (see section \ref{mprox}). Also the scaling of the different features could be improved in a way, where all feature are evenly distributed over the unit interval (see section \ref{distsc}).\\
+Tests of the performance on larger clusters and with more data would be critical to assess the scaling of the problem.
+An implementation of the Spark streaming abilities to enable a real-time computation of similarities instead of using batch-processing job would be the next logical step if the goal is to develop a system able to run with music streaming platforms. When evaluating the genre recall rate with Spark, an issue with the garbage collection running out of memory after 40 subsequent song requests was encountered and should be fixed first.\\
+\noindent As another way of improving the presented Spark application, more state of the art similarity measurements like block-level features (section \ref{blocklevel}) or the TF-IDF weights (section \ref{textretr}) for melodic similarity could be added. The most promising enhancement for the developed recommendation engine in this thesis would be the addition of genre and metadata information, genre specific features, collaborative filtering and lyrics (see section \ref{collaborative}). Basically all the music contextual information that would normally be processed by a Big Data framework wasn't included in this thesis but could greatly enhance the recommendations. Most streaming services already have all the information to add available, like users listening behavior or audio metadata and services like Spotify are also already using Spark for collaborative filtering so the Spark application presented in this thesis could be added and integrated into running streaming systems.\\
+A last, but possibly interesting suggestion for future enhancements is to investigate the proposal from section \ref{personal} of personalized music recommendation based on the audio feature similarities of a users favorite songs made available by the Big Data framework.
 
 %\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
 % on the last page of the document manually. It shortens

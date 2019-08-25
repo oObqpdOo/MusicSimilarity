@@ -231,7 +231,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2.1}Beyond genre boundaries}{89}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Honorable mentions - personal music taste}{90}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}personal music taste}{90}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Summary}{91}{chapter.6}
 \defcounter {refsection}{0}\relax 
