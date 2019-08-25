@@ -105,22 +105,28 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{78}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature space example\relax }}{79}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Cumulative distributions\relax }}{79}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{79}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Correlation of features\relax }}{80}{figure.5.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Cumulative distributions\relax }}{80}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Correlation of features\relax }}{80}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Correlation of features depending on SKL scaling\relax }}{81}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{81}{figure.5.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Correlation of features\relax }}{81}{figure.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces genre recall 100 songs\relax }}{83}{figure.5.6}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{82}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{84}{figure.5.7}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces genre recall\relax }}{84}{figure.5.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song, Rock/ Metal, 1517 artists, 4 genres\relax }}{85}{figure.5.8}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song, Rock\&Pop, 1517 artists, 4 genres\relax }}{85}{figure.5.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.9}{\ignorespaces distances 1 song, electronic, 1517 artists, 4 genres\relax }}{86}{figure.5.9}
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Rhythm features/ BPM\relax }}{87}{figure.5.10}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{97}{figure.7.1}

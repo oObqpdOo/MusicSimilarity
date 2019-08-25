@@ -66,14 +66,18 @@
 \BOOKMARK [2][-]{subsection.4.2.8}{possible improvements and additions}{section.4.2}% 66
 \BOOKMARK [0][]{chapter.5}{Results}{}% 67
 \BOOKMARK [1][-]{section.5.1}{Objective evaluation}{chapter.5}% 68
-\BOOKMARK [2][-]{subsection.5.1.1}{feature quality}{section.5.1}% 69
+\BOOKMARK [2][-]{subsection.5.1.1}{feature correlation and distance distribution}{section.5.1}% 69
 \BOOKMARK [2][-]{subsection.5.1.2}{Cover song identification}{section.5.1}% 70
 \BOOKMARK [2][-]{subsection.5.1.3}{Genre similarity}{section.5.1}% 71
-\BOOKMARK [1][-]{section.5.2}{Subjective evaluation}{chapter.5}% 72
-\BOOKMARK [2][-]{subsection.5.2.1}{Beyond genre boundaries}{section.5.2}% 73
-\BOOKMARK [2][-]{subsection.5.2.2}{Honorable mentions}{section.5.2}% 74
-\BOOKMARK [1][-]{section.5.3}{Summary and outlook}{chapter.5}% 75
-\BOOKMARK [0][]{section*.11}{References}{}% 76
-\BOOKMARK [0][]{chapter.6}{Appendix}{}% 77
-\BOOKMARK [1][-]{section.6.1}{Spotipy Data Miner}{chapter.6}% 78
-\BOOKMARK [1][-]{section.6.2}{Contend of the CD}{chapter.6}% 79
+\BOOKMARK [2][-]{subsection.5.1.4}{Rhythm Features}{section.5.1}% 72
+\BOOKMARK [1][-]{section.5.2}{Subjective evaluation}{chapter.5}% 73
+\BOOKMARK [2][-]{subsection.5.2.1}{Beyond genre boundaries}{section.5.2}% 74
+\BOOKMARK [2][-]{subsection.5.2.2}{Honorable mentions - personal music taste}{section.5.2}% 75
+\BOOKMARK [0][]{chapter.6}{Summary}{}% 76
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 77
+\BOOKMARK [1][-]{section.6.2}{Outlook}{chapter.6}% 78
+\BOOKMARK [0][]{section*.12}{References}{}% 79
+\BOOKMARK [0][]{chapter.7}{Appendix}{}% 80
+\BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 81
+\BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 82
+\BOOKMARK [1][-]{section.7.3}{Contend of the CD}{chapter.7}% 83

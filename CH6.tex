@@ -709,7 +709,7 @@ In contrast to the performance analysis from the last section, figure \ref{perfs
 \noindent The plots annoted with "Merge DF" total, "DF total" and "RDD total" depicture the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request. The measured times include the calculation of the distances, the scaling and the join operation of the different result-types. 
 \noindent The results show that the pre-merged DataFrame approach performs best, returning the 20 nearest neighbors for the second song request in about 16 seconds and 14 seconds when using 36 cores per executor as mentioned in section \ref{sparkperf} cluster configuration). 
 
-\subsubsection{Descending importance filter and refine}
+\subsubsection{Descending importance filter and refine}\label{farfs}
 
 To improve the performance even further a filter and refine method was tested where the similarities are computed for one feature set and all songs to which the distance is larger than the mean value of all distances get filtered out of the feature DataFrame. From the thinned-out dataset another less important feature set is chosen and this is repeated until all feature sets were used. 
 The implementation is based on the "Merge DF" approach described and pictured in \ref{mergeddf} earlier on but a few changes had to be made. After all features are pre-processed, joined and repartitioned, this large feature DataFrame gets cloned and persisted to the main memory as well. It is important that the compute cluster has enough RAM available to cache the full feature DataFrame twice. 

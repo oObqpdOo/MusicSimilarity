@@ -1,7 +1,7 @@
 
 \chapter{Similarity Analysis}\label{simanal}
 
-\textit{\textbf{This needs an introduction}}
+\textit{\textbf{This needs an introduction, the smaller the distance the more similar the songs are etc. -> smilarity = 1 / distance}}
 
 \section{Timbre Similarity} \label{musly}
 
@@ -71,10 +71,10 @@ Instead of using single frames and summarizing them into statistical or probabil
 
 For this thesis the Kullback-Leibler divergence, the Jensen-Shannon divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of the distance computing algorithms and a re-implementation of the block-level features remains left open for future research due to its rather compute heavy nature.\\
 Using the musly toolkit, a first evaluation is presented in the next section. The feature extraction and distance calculation can also be done in python using the librosa library and a small reimplementation of the Mandel-Ellis approach was tested in advance.\\
-\textit{A possible measure for the efficiency of a timbre similarity algorithm is the ability to find songs of the same genre.}
+A good measure for the efficiency of a timbre similarity algorithm in general is the ability to recommend songs of the same genre.
 
-\subsubsection{Construction Noise}
-Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results could be achieved in descending order: 
+\subsubsection{Genre recall rate/ construction noise}
+Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results were returned in descending order: 
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -116,10 +116,9 @@ Using the full dataset consisting of the private music collection, private field
 	\item steps in snow (private field recording)
 	\item Sawako - Paris Children (FMA, field recordings)
 	\item Jeremy Gluck and Michael Dent - Olivier (FMA, Ambient Electronic)
-	
 \end{itemize}
 
-\subsubsection{Different recordings and cover versions}
+\subsubsection{Different recordings and cover versions}\label{covermfcc}
 Another experiment was, to get the most similar songs to the famous 'Rondo alla Turca' by Mozart.
 The recording used as a starting point is from the CD "100 Meisterwerke der Klassik" and has a length of 3:33 minutes.
 This piece by Mozart appears overall four times in the dataset and is recorded by different pianists.
@@ -149,7 +148,7 @@ The top ten most similar songs to the 3 minutes and 33 seconds version are liste
 	
 \end{itemize}
 \noindent The interesting conclusion is that only 2 out of the 3 other versions were considered as most similar songs.
-The slower recording wasn't even in the top 30 list of the most similar songs. 
-The same was observable for other cover versions of songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. 
-This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches and melody movements.
+The slower recording wasn't even in the top 30 list of the most similar songs. The recommendations are however all from the same genre of classical music. 
+The inability to detect cover versions was also observable for other songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. 
+This is probably due to the usage of GMMs of MFCCs representing and valuing the timbre of the music predominantly instead of the pitches and melody movements. 
 
