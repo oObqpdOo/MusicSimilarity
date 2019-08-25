@@ -223,32 +223,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.1.2}Cover song identification}{83}{subsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Genre similarity}{84}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.3}Genre similarity}{85}{subsection.5.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.4}Rhythm Features}{87}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.4}Rhythm Features}{88}{subsection.5.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Subjective evaluation}{88}{section.5.2}
+\contentsline {section}{\numberline {5.2}Subjective evaluation}{89}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Beyond genre boundaries}{88}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}Beyond genre boundaries}{89}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Honorable mentions - personal music taste}{89}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Honorable mentions - personal music taste}{90}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Summary}{90}{chapter.6}
+\contentsline {chapter}{\numberline {6}Summary}{91}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Conclusion}{90}{section.6.1}
+\contentsline {section}{\numberline {6.1}Conclusion}{91}{section.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Outlook}{91}{section.6.2}
+\contentsline {section}{\numberline {6.2}Outlook}{92}{section.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{92}{section*.12}
+\contentsline {chapter}{References}{93}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Appendix}{98}{chapter.7}
+\contentsline {chapter}{\numberline {7}Appendix}{99}{chapter.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Feature Analysis}{98}{section.7.1}
+\contentsline {section}{\numberline {7.1}Feature Analysis}{99}{section.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Spotipy Data Miner}{99}{section.7.2}
+\contentsline {section}{\numberline {7.2}Spotipy Data Miner}{100}{section.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Contend of the CD}{101}{section.7.3}
+\contentsline {section}{\numberline {7.3}Contend of the CD}{102}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Code}{101}{section.7.3}
+\contentsline {subsubsection}{Code}{102}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{...}{101}{section.7.3}
+\contentsline {subsubsection}{...}{102}{section.7.3}

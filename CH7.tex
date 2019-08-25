@@ -229,7 +229,37 @@ As mentioned in section \ref{covermfcc}, purely MFCC based recommender systems l
 
 \noindent Running the first tests on the full dataset consisting of 114210 songs, the Spark implementation was able to find the cover of "Rock you like a Hurricane" by the Scorpions and covered by Knightsbridge as top recommendation when using the cross-correlation.\\
 \noindent The application was also able to find an alternative recording of the piece "Für Elise" cover as a top recommendation in over 114210 songs, even when using the filter and refine algorithm (starting with chroma features) presented in section \ref{farfs}.\\
-\noindent To further quantify the ability to detect cover songs after these promising first tests, the covers80 dataset introduced in section \ref{cov801} was loaded onto the cluster. The 80 "version A" songs were passed to the Spark application as song requests and the resulting nearest neighbors were analyzed. Table \ref{cov_1} counts the appearance of the "version B" songs as the top recommendation while table \ref{cov_2} lists the recommended cover versions in the top five results of the 80 requested songs when using different combinations of feature sets. As expected the approaches using melodic similarity features perform best. The combination of the different timbre based features performs worst. Surprisingly the distances based on rhythm patterns are also able to detect cover songs.\\
+\noindent As a third example the famous "Rondo Alla Turca (Allegretto)" also known as the Turkish March by Mozart was tested. This song was also used in chapter \ref{covermfcc} where the ability of the Musly toolkit to detect cover songs was tested. 
+At first a combination of js, chroma and rp features was used. The top five results are listed below.\\
+\ \\
+\textit{\noindent Song request: 100 Meisterwerke der Klassik/ Mozart - Alla Turca (Allegretto) (private collection), JS + RP + CHROMA}
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item 1) Piano Perlen/ Mozart - Türkischer Marsch (private collection)
+	\item 2) FRITZ STEINEGGER - RONDO ALLA TURCA KV 331 (1517 artists)
+	\item 3) 136071 (fma dataset)
+	\item 4) Sean Bennett - Variations on the Turkish March (1517 artists)
+	\item 5) Mozart - Fantasie in D minor (1517 artists)
+\end{itemize}
+
+\noindent Two different versions were detected as the top results and the fourth recommendation even listed a variation of the original song theme. Although the private music collection used contains two additional versions of this song (see section \ref{covermfcc}), the other versions could not be detected because the rp\_extract tool failed during the extraction of the features from these songs due to file format issues. So for the second attempt the RP were left out. The six top recommendations are again listed below:\\
+\ \\
+\textit{\noindent Song request: 100 Meisterwerke der Klassik/ Mozart - Alla Turca (Allegretto) (private collection), JS + CHROMA}
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item 1) Mozart Collection/ CD31/ KV331-3 Alla turca allegretto (private collection)
+	\item 2) Piano Collection/ CD25 - Mozart - Alla Turca Allegretto (private collection)
+	\item 3) Piano Perlen/ Mozart - Türkischer Marsch (private collection)
+	\item 4) FRITZ STEINEGGER - RONDO ALLA TURCA KV 331 (1517 artists)
+	\item 5) 136071 (2Kutup - We Shall Cuddle Up And Sleep) (fma dataset) 
+	\item 6) Sean Bennett - Variations on the Turkish March (1517 artists)
+\end{itemize}
+
+\noindent Even if the JS features are left out and only the cross-correlation is computed, the top 6 results don't change. But on the other hand even when the JS features are included, they aren't interfering with the cover song recognition. In a third request where only the Jensen-Shannon-like divergence was tested to detect the alternative recordings, the first version only appeared as the 13th recommendation. This confirmed the presumption, that timbral features and the Jensen-Shannon-like divergence and the symmetric Kullback-Leibler divergence are not appropriate for cover song recognition.
+\noindent But there are also song requests where the cross-correlation fails to detect the cover song, one example being the song Chandelier by Sia and the cover version by Pvris that was used in chapter \ref{chromafeat} to explain the computation of the chroma features.\\
+\noindent To further quantify the ability to detect cover songs after the promising first tests, the covers80 dataset introduced in section \ref{cov801} was loaded onto the cluster. The 80 "A-versions" songs were passed to the Spark application as song requests and the resulting nearest neighbors were analyzed. Table \ref{cov_1} counts the appearance of the "B-version" songs as the first recommendation while table \ref{cov_2} lists the count of the recommended cover versions in the top five results of the 80 requested songs when using different combinations of feature sets. As expected the approaches using melodic similarity features perform best. The combination of the different timbre based features performs worst. Surprisingly the distances based on rhythm patterns are also able to detect cover songs.\\
 \noindent Although 30 out of 80 on the first doesn't seem like a surprisingly good hit rate and is not quite as good as the results from the original paper, it has to be mentioned that most of the cover versions in the cover80 dataset differ a lot in musical style, instrumentation, rhythm and even genre from the original recordings. These differences in musical style were also mentioned in the original paper from Ellis and Cottin \cite[p. 3]{cover802}.
 \noindent As an interesting side note it has to be mentioned that the detected cover versions of the "chroma-" and "notes-only" requests were mostly the same. Besides two songs, the chroma feature cross-correlation approach detected all of the cover songs that the Levenshtein distance also detected. 
 
@@ -351,7 +381,9 @@ The main reason for the choice of the topic of this thesis was that recommender 
 
 \textit{Favourite Top 80 songs from private music collection listed in appendix -> recommendations: hit or not}
 
-\noindent Song request: Gojira - The Art Of Dying - rhythm patterns only\\
+As a last side note on personal music taste, 
+
+\noindent Song request: Gojira - The Art Of Dying - rhythm patterns only - on private music collection using rp, chroma and js features. \\
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -361,31 +393,6 @@ The main reason for the choice of the topic of this thesis was that recommender 
 	\item Delain - We Are the Others
 	\item Ensiferum - Descendants Defiance Domination
 \end{itemize}
-
-\noindent Mozart - Alla Turca (Allegretto) - JS + Chroma + RP\\ For the other 2 versions (see section \ref{covermfcc}) the rhythm patterns were not extracted by the rp\_extract tool because of file format issues. 
-
-\begin{itemize}
-	\setlength\itemsep{-0.5em}
-	\item Mozart Türkischer Marsch
-	\item Vika - This Is Not a Goodbye 
-	\item Buddy Rich - I Remember Clifford
-	\item Orgelsax - Rumänische Volkstänze Bucimeana
-	\item Cherubini - Sonate Nr. 4 Moderato			
-\end{itemize}
-
-\noindent 100MeisterwerkederKlassik/Mozart-AllaTurca(Allegretto) - rerun only Chroma\\ 
-
-\begin{itemize}
-	\setlength\itemsep{-0.5em}
-	\item Mozart/CD31/KV331-3Allaturcaallegretto
-	\item PianoCollection/CD25-Mozart-AllaTurcaAllegretto
-	\item Mozart-TürkischerMarsch
-	\item BluesCaravan-IRememberClifford
-	\item Vika-ThisIsNotaGoodbye	
-\end{itemize}
-
-\noindent 100MeisterwerkederKlassik/Mozart-AllaTurca(Allegretto) - rerun only JS -> first cover appears as 13th recommendation\\
- 
 
 \chapter{Summary}
 
@@ -398,14 +405,18 @@ The features were loaded into the HDFS of a cluster and multiple similarity meas
 The final application is able to recommend songs similar to a song request by computing the distances. The recommendations are parameterized, giving the user the option to prioritize different aspects of the music. The system is scalable. More songs can be added, the cluster size can be increased and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is also given. There are still a few flaws, especially when looking at the implementation of the symmetric Kullback-Leibler divergence and the Jensen-Shannon divergence and the scaling of the distances. The different starting points for possible future research were laid out during the whole thesis and are summarized in the outlook. 
 
 \section{Outlook}
+
+file format issues with *.wav audio files when using the rp\_extract tool\\
+\ \\
+performance improvements, larger cluster, more data\\
+Spark streaming, real-time application instead of a batch-processing job\\
+garbage collecting issue after 40 subsequent song requests\\
+\ \\
+jensen-shannon \& symmetric Kullback- leibler investigation\\
+reduce hubness with mutual proximity\\
 \ \\
 more state of the art similarity (blocked)\\
-performance improvements\\
-spark streaming, real-time\\
-jensen-shannon \& symmetric Kullback- leibler investigation\\
-garbage collecting issue\\
-Genre and metadata, Genre specific features, combinations and variable model, Collaborative Filtering, Lyrics\\
-reduce hubness\\
+Addition of genre and metadata information, Genre specific features, combinations and variable model, collaborative filtering, Lyrics\\
 
 %\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
 % on the last page of the document manually. It shortens
