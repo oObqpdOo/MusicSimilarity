@@ -9,7 +9,7 @@ As presented in section \ref{midiest}, there are tools for pitch curve extractio
 Another possible representation for melodic features could be to transform the structural information to graphs and use graph comparing algorithms to estimate the similarity between songs. \cite{graph1} 
 A better and widely used approach is to use chroma features as described in the next section \ref{chromafeat}.
 
-\subsection{Chroma Features pre-processing}\label{chromafeat}
+\subsection{Chroma Features Pre-Processing}\label{chromafeat}
 
 Chroma Features, as described in section \ref{featsec}, are a good and low-dimensional way to describe the melodic features of a song. The reduction of dimensionality, however, comes with a loss of information, especially what octaves the notes are played in. To compute chroma features, most MIR toolkits already offer methods to do so. The plots in this chapter were created using the essentia \cite{essentia1} and librosa \cite{librosa1} toolkits. 
 In addition to the pure computation of the chroma features, some pre- and post-processing steps were implemented and tested and will be presented later in this chapter. 
@@ -162,11 +162,11 @@ Another consideration is to use the original chromagram without filtering out th
 	\label{fig:nomax}
 \end{figure}
 
-\subsection{Similarity of chroma features}
+\subsection{Similarity of Chroma Features}
 
 In this section, two completely different approaches to measure the melodic similarity between two songs will be presented. The first one as proposed by \cite{chroma1} or \cite{chroma4} uses text retrieval methods to compare the chroma features of two songs and the second evaluates the usage of cross-correlation as a signal processing approach \cite{chroma2} and \cite{chroma3}
 
-\subsubsection{Text retrieval}\label{textretr}
+\subsubsection{Text Retrieval}\label{textretr}
 
 One possibility to process the chromagrams and to estimate the similarity between the melodic features of different songs is by handling the pre-processed chromagrams like texts. Due to the extraction of only the main melody line in our feature vector, there is only one note for every detected beat. This main melody line gets converted into a vector of subsequent notes and this vector is converted into a string. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors. \cite{chroma4} mentions that this is indeed a problem when using the Levenshtein distance (also known as the edit-distance) to compute similarities. In their paper, they use MIDI files instead of chroma features, but both contain information about the melody of songs so an adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. The Levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as follows \cite[p. 7]{chroma4}
 
@@ -188,7 +188,7 @@ Englmeier  (et al.) uses a more advanced information retrieval technique called 
 To do so, they have to create "audio words" from the song database by splitting the audio signal into snippets, creating chroma features and clustering them with the k-means algorithm. The centroids are then added to a database. These audio words can then be evaluated using the TF-IDF weights and ESA.
 Although their approach looks promising, a re-implementation of their algorithms would exceed the frame of this thesis.
 
-\subsubsection{Cross-correlation}\label{crosscorrsec}
+\subsubsection{Cross-Correlation}\label{crosscorrsec}
 
 Another possibility to handle the extracted chroma features is by viewing them as ordinary signals and creating opportunities to apply classical signal processing algorithms. Ellis and Poliner use cross-correlation in their 2007 published paper \cite{chroma3}. Serra (et al.) also references the work of Ellis and Poliner and discusses different weak points and influences of processing steps like beat tracking and key transposition to the overall performance of this similarity measurement. 
 They also discuss and improve another approach called dynamic time warping (DTW) further in their paper \cite{chroma2}. The focus of this thesis is set on the cross-correlation method. 

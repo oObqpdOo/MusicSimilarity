@@ -5,7 +5,7 @@ This chapter provides an overview of some of the possibilities for computing mus
 Nearly every MIR Toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution to computing very low-level rhythmic similarities is by sorting and comparing songs by their main tempo (BPM). Of course, there are far better and more accurate solutions. By just comparing the tempo of songs, a lot of rhythm information is lost, e.g., the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
 This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a big data framework.\\
 
-\subsection{Beat histogram}\label{beathist}
+\subsection{Beat Histogram}\label{beathist}
 
 Other similarity measurements are, e.g., the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. 
 Gruhne (et al.) further improved the beat histograms and suggested an additional post-processing step for the beat histogram before calculating the similarity between songs with the euclidean distance, to improve a comparison of two songs with different tempi by transforming the beat histograms into the logarithmic lag domain. They found that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further \cite[182]{rbh1}.
@@ -49,7 +49,7 @@ Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurr
  
 \noindent Another paper that is just be mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1} to compute similarities.
 
-\subsection{Rhythm patterns}
+\subsection{Rhythm Patterns}
 
 A more state-of-the-art feature is the so-called rhythm pattern, also known as fluctuation patterns, for instance evaluated by Lidy and Rauber in \cite{rp1}. 
 To extract these features, the rp\_extractor library for python \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible, while at the same time substantial differences between the different songs are recognizable.
@@ -202,7 +202,7 @@ The difference in comparison to the beat histogram mentioned earlier in section 
 	\label{fig:rh1}
 \end{figure}
 
-\subsection{cross-correlation}
+\subsection{Cross-Correlation}
 
 Estimating the onset strength per beat and creating a discrete-time signal for each song is another option. Similar to the chroma features the cross-correlation of the onset functions could be used as a similarity measurement. 
 
@@ -299,7 +299,7 @@ These are stored in three different output text files.
 	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (length $24 \times 60$))
 \end{itemize}
 
-\subsubsection{Feature files}
+\subsubsection{Feature Files}
 
 The feature files contain strings like the following:\\
 \underline{out.mfcc}: \textit{music/song.mp3; [-498.03763, ... ,4.321189]; [8943.487, ... ,61.624344]; [8944.3907652, ... ,74.17548092]}\\

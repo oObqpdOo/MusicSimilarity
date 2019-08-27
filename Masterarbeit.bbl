@@ -45,40 +45,6 @@
     \field{year}{2016}
   \endentry
 
-  \entry{msdchallenge1}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=MB}{%
-         family={McFee},
-         familyi={M\bibinitperiod},
-         given={B.},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=BMT}{%
-         family={Bertin-Mahieux},
-         familyi={B\bibinitperiod-M\bibinitperiod},
-         given={T.},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=ED}{%
-         family={Ellis},
-         familyi={E\bibinitperiod},
-         given={D.},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=LG}{%
-         family={Lanckriet},
-         familyi={L\bibinitperiod},
-         given={G.},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MB+1}
-    \strng{fullhash}{MBBMTEDLG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{The Million Song Dataset Challenge, AdMIRe '12}
-  \endentry
-
   \entry{librosa1}{inproceedings}{}
     \name{author}{7}{}{%
       {{hash=MB}{%
@@ -124,7 +90,7 @@
          giveni={O\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MB+2}
+    \strng{namehash}{MB+1}
     \strng{fullhash}{MBRCLDEDPMMBENO1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}

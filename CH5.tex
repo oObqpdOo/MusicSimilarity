@@ -41,7 +41,7 @@ In conclusion that sums up to about 117000 songs for performance tests and about
 
 After evaluating the different features in the last three chapters, this section only discusses the performance of the feature extraction process without going too much into the details of the code for the feature post-processing. The post-processing of the features like the note estimation from the chroma features and the calculation of statistic features from the MFCCs was already explained in-depth in the previous chapters and is therefore left out here. The full code is in the appendices. 
 
-\subsubsection{librosa}
+\subsubsection{Librosa}
 
 For most of the plots in the introduction section \ref{audiofeat} the python toolkit librosa was used because of its ease of use and very good documentation. The code example shows the necessary methods to extract the most important features like mfcc, chromagram and beats/ onsets.
 \lstset{language=Python} 
@@ -119,7 +119,7 @@ chroma = pool['tonal.hpcp'].T
 
 The calculation with the essentia library for 100 songs took less than half of the time librosa needed. This is a significant improvement, however the essentia library uses only one CPU core so that performance was further improved by using the parallel python library as presented in the next code snippet.
 
-\subsubsection{parallel python}
+\subsubsection{Parallel Python}
 
 Multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
 %\newpage
@@ -144,7 +144,7 @@ Parallel python also opens up the possibility to use a cluster instead of a sing
 For convenience, every processor gets a batch of files instead of single songs. For every batch, different output files for the various features are created. The batch size determines the overall size of these feature-files. For example, for the 1517 artists dataset a batch size of 400 songs was chosen, so overall four CPUs had to process two batches, resulting in eight different output files with the chroma feature files being the largest one with about 25MB per file.\\
 One problem that appeared by using parallel python was that the memory usage was increasing over time. The explicit usage of the garbage collector and the deletion of unwanted objects also couldn't solve that problem. So after calculating a few hundred features, the process ran out of memory and had to be restarted. By replacing parallel python with mpi4py, this problem could be solved later. 
 
-\subsubsection{rp\_extractor}
+\subsubsection{Rp\_extractor}
 
 For the extraction of the rhythm patterns and rhythm histogram features as described in chapter \ref{rhythmsimc}, the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 442 seconds.
 
@@ -223,7 +223,7 @@ The extraction of the rhythm patterns and the rhythm histogram is performed by t
 	\item (143h - full dataset - rp\_extract)
 \end{itemize}
 
-\subsubsection{performance on a cluster with mpi4py}
+\subsubsection{Performance on a Cluster with mpi4py}
 
 For the extraction of the features from the fma dataset on the computer cluster of the Friedrich-Schiller-University in Jena, the "ARA-cluster", parallel python had to be replaced with mpi4py. 
 Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
@@ -250,7 +250,7 @@ for index in xrange(start + rank, last, size):
 
 \noindent For the extraction of the rhythm features with the rp\_extract tool, the script of the TU Wien was adapted for usage with mpi4py as well. The same amount of processes gets spawned on the cluster (648), but each of the processes is able to make use of 2 CPU cores plus HT. The fastest process finished after 1657 seconds and the slowest one took 1803 seconds.
 
-\subsubsection{Total amount of songs}\label{totamsong}
+\subsubsection{Total Amount of Songs}\label{totamsong}
 
 Due to the above-mentioned filtering of audio files larger than 25MB and since the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So, in the end, the overall amount of songs where all features could be obtained is 114210.\\
 

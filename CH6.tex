@@ -36,7 +36,7 @@ All feature files of the same type (forming the feature sets) get merged into on
 
 \noindent Large streaming platforms like Spotify give access to about 30 million songs in their databases. At this scale, the feature files would approximately sum up to about 3 TB.\\
 
-\subsection{Underlying hardware}
+\subsection{Underlying Hardware}
 
 The first tests with Spark were performed on a single PC with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 32 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running an older version of Spark (1.6.0)\\
 
@@ -60,7 +60,7 @@ Although multiple different implementations were tested to evaluate the fastest 
 
 \noindent The following sections explain the various stages in more detail, also giving more details over a few subtle differences between the different implemented and tested approaches like the usage of RDDs, single DataFrames for each feature or one large DataFrame containing all features. 
 
-\subsection{Data preparation}
+\subsection{Data Preparation}
 
 The features are stored in text files as described in chapter \ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contain the features of a small number of songs. Because many small files are inefficient to process with Spark \cite[p. 153]{sparkbook1} all files containing the same feature type are merged to one large file, before being loaded into the HDFS. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition\_count)} command. 
 Finally to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of integer numbers, each representing a certain note. To compare these using the Levenshtein distance, these lists are converted into strings. 
@@ -72,7 +72,7 @@ chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("0",'A').replace("
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
 
-\noindent All the other features are stored as lists of floats and have to be converted to vectors. The Spark ML library and the older MLlib library offer sparse and dense vectors as a data type. The only feature type that contains a lot of zeros and where sparse vectors could improve performance is the beat histogram. But compared to other features like the chromagram they are relatively small (with a length of only 200 values), so all lists including the beat histograms are converted to dense vectors by calling \lstinline{Vectors.dense(l)}. An example is given for the rhythm pattern features in code snippet \ref{lst:rpp}.
+\noindent All the other features are stored as lists of floats and have to be converted to vectors. The Spark ML library and the older MLlib library offer sparse and dense vectors as a data type. The only feature type that contains a lot of zeros and where sparse vectors could improve performance is the beat histogram. But compared to other features like the chromagram they are relatively small (with a length of only 200 values), so all lists including the beat histograms are converted to dense vectors by calling \lstinline{Vectors.dense(l)}. 
 
 \begin{pythonCode}[frame=single,label={lst:rpp},caption={rp preprocessing},captionpos=b]
 from pyspark.mllib.linalg import Vectors
@@ -84,7 +84,7 @@ rp_df = spark.createDataFrame(kv_rp, ["id", "rp"])
 rp_df = rp_df.select(rp_df["id"],list_to_vector_udf(rp_df["rp"]).alias("rp"))
 \end{pythonCode}
 
-\noindent The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("name.txt")}. The repartitioning is optional but improves the overall performance (see \ref{sparkperf}). After the pre-processing steps are performed the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame()} to ease up the access to the data and improve the code readability. The features can then be accessed via column names instead of the RDD indices, making the code better readable and understandable.\\
+\noindent An example is given for the rhythm pattern features in code snippet \ref{lst:rpp}. The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("name.txt")}. The repartitioning is optional but improves the overall performance (see \ref{sparkperf}). After the pre-processing steps are performed the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame()} to ease up the access to the data and improve the code readability. The features can then be accessed via column names instead of the RDD indices, making the code better readable and understandable.\\
 For the performance tests, three different kinds of implementations were tested. The first one merges all audio features into one large DataFrame in the beginning and persists this to the main memory. The second implementation uses single DataFrames for each feature set, and the third uses RDDs instead of DataFrames. The results of the performance analysis of DataFrames vs. RDDs are given in section \ref{sparkperf}
 
 \subsection{Distance Computation}
@@ -93,7 +93,7 @@ After the data preparation, the similarities between a requested single song and
 
 \subsubsection{Euclidean Distance}
 
-The euclidean distance is used as a metric to compute the distances between the vectors of beat histograms, rhythm histograms, rhythm patterns and MFCCs making it the most versatile distance measurement introduced in this thesis. To compute the euclidean distance in Spark a user defined function (UDF) is declared (see \ref{lst:eucd}). This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the euclidean distance is computed using python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). 
+The euclidean distance is used as a metric to compute the distances between the vectors of beat histograms, rhythm histograms, rhythm patterns and MFCCs making it the most versatile distance measurement introduced in this thesis. To compute the euclidean distance in Spark a user defined function (UDF) is declared (see \ref{lst:eucd}). 
 
 \begin{pythonCode}[frame=single,label={lst:eucd},caption={euclidean distance DF},captionpos=b]
 from scipy.spatial import distance
@@ -104,7 +104,7 @@ result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\noindent The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
+\noindent This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the euclidean distance is computed using python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
 
 \begin{pythonCode}[frame=single,label={lst:comp},caption={Filter for requested song},captionpos=b]
 song = fullFeatureDF.filter(fullFeatureDF.id == songname).collect()
@@ -142,18 +142,17 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
  
 
-\subsubsection{Cross-correlation}
+\subsubsection{Cross-Correlation}
 
 As laid out in chapter \ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in equation \ref{eq:conv2}, \ref{eq:conv3}, and \ref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time even without additional key-shifting (see section \ref{sparkperf}) the implementation on the cluster and in code snippet \ref{lst:corrnp} calculates the simplified cross-correlation (equations \ref{eq:conv5} and \ref{eq:conv6}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
 \noindent The cross-correlation was used to detect cover songs on the same dataset Ellis and Cotton used in their paper\cite{cover802}. The results are presented in chapter \ref{covsongid}. There are some differences in the returned recommendations compared to the original paper. These can be explained with the different underlying beat tracking, different filter parameters, and a few improvements that are left out compared to the implementation of Ellis \cite{cover802} as mentioned in \ref{chromafeat}.\\
-Concerning the actual implementation of the cross-correlation, two different libraries were tested. Code snippet \ref{lst:corrsc} shows the cross-correlation function coming with the scipy library.
 
 \begin{pythonCode}[frame=single,label={lst:corrsc},caption={cross-correlation scipy},captionpos=b]
 corr = scipy.signal.correlate2d(chroma1, chroma2, mode='full')
 \end{pythonCode}
 
+\noindent Concerning the actual implementation of the cross-correlation, two different libraries were tested. Code snippet \ref{lst:corrsc} shows the cross-correlation function coming with the scipy library.
 \noindent The parameter \lstinline{mode='valid'} determines whether or not additional key shifting is included. The \lstinline{'valid'} option already includes additional key-shifting but without zero-padding. Other options would be \lstinline{mode='same'}(no key-shifting) and \lstinline{mode='full'} (with zero-padding)\\
-\noindent The other variant is shown in code snippet \ref{lst:corrnp}. It uses the numpy library. Although numpy only offers a 1D-cross-correlation function which had to be nested inside a for-loop to get the 2D-cross-correlation, but performance tests showed that the numpy version was faster than the scipy version by orders of magnitude. Calculating and scaling the distances of the chroma features from one song to about 114000 other songs took about 22 seconds with numpy and around 725 seconds with scipy on the ARA-cluster. 
 
 \begin{pythonCode}[frame=single,label={lst:corrnp},caption={cross-correlation numpy},captionpos=b]
 from scipy.signal import butter, lfilter, freqz, correlate2d, sosfilt
@@ -184,13 +183,13 @@ result = result.select("id", "distances").orderBy('distances', ascending=False)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\subsubsection{Jensen-Shannon-like Divergence}\label{jsld}
+\noindent The other variant is shown in code snippet \ref{lst:corrnp}. It uses the numpy library. Although numpy only offers a 1D-cross-correlation function which had to be nested inside a for-loop to get the 2D-cross-correlation, but performance tests showed that the numpy version was faster than the scipy version by orders of magnitude. Calculating and scaling the distances of the chroma features from one song to about 114000 other songs took about 22 seconds with numpy and around 725 seconds with scipy on the ARA-cluster. 
+
+\subsubsection{Jensen-Shannon-Like Divergence}\label{jsld}
 
 While computing the Jensen-Shannon-like Divergence for some of the MFCC features, a problem with negative determinants was encountered. Because the logarithm of negative numbers is not defined, no similarity for these features could be calculated.\\ 
 Schnitzer mentioned a problem with "skyrocketing values of determinants, which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \ref{eq:jsl3}. 
 This approach was also considered for the encountered issue mentioned above but ultimately did not work out because of the covariance matrices causing the error not being positive definite.\\
-Because no immediate solution to that problem was found, the rows where this issue appears just get filtered out by setting the distance to \lstinline{np.inf} and later dropping these rows. This problem seems to appear for about 5-10\% of the distances calculated with the Jensen-Shannon Divergence. Further investigation to solve this problem would be necessary. 
-An example code snippet is given in \ref{lst:js}.
 
 \begin{pythonCode}[frame=single,label={lst:js},caption={Jensen-Shannon-like Divergence},captionpos=b]
 import numpy as np
@@ -211,6 +210,9 @@ result = result.filter(result.distances_js != np.inf)
 result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
+
+\noindent Because no immediate solution to that problem was found, the rows where this issue appears just get filtered out by setting the distance to \lstinline{np.inf} and later dropping these rows. This problem seems to appear for about 5-10\% of the distances calculated with the Jensen-Shannon Divergence. Further investigation to solve this problem would be necessary. 
+An example code snippet is given in \ref{lst:js}.
 
 \subsubsection{Symmetric Kullback-Leibler Divergence}\label{sparkskl}
 
@@ -325,7 +327,7 @@ When further removing the print command in line 4, the lazy execution no longer 
 \noindent So in summary, the correct way of caching the data is a tricky task. Writing everything into the main memory is no solution either because then the cluster will run out of memory eventually. As a rule of thumb the best way to persist data is to cache it every time more than one subsequent action is performed on it.\\
 That means that especially in the field of music similarity, all pre-processed features have to fit into the main memory of the cluster to speed up consecutive song requests. 
 
-\subsection{distance scaling}\label{distsc}
+\subsection{Distance Scaling}\label{distsc}
 
 To combine different distance measurements into one combined distance, the various results from the different kinds of features have to be rescaled to avoid biasing the overall distance.
 The easiest way is to subtract the minimum of all distances $d$ and to divide by the difference between the maximum and the minimum distance, as described in equation \ref{eq:scaling}. 
@@ -342,7 +344,7 @@ A better way to rescale the data could be evaluated in future research.
 d' = \frac{d}{\mu_f}
 \end{equation} 
 
-\noindent Implementation-wise the aggregation of the minimum and maximum value went through different tests. During first tests the aggregation of minimum and maximum value were performed separately (see \ref{lst:mindf}). This turned out to be very inefficient because the data had to be accessed multiple times. 
+\noindent Implementation-wise the aggregation of the minimum and maximum value went through different tests. 
 
 \begin{pythonCode}[frame=single,label={lst:mindf},caption={Minimum and maximum aggregation separate},captionpos=b]
 max_val = result.agg({"distances": "max"}).collect()[0]
@@ -351,18 +353,20 @@ min_val = result.agg({"distances": "min"}).collect()[0]
 min_val = min_val["min(distances)"]
 \end{pythonCode}
 
-An improved version shown in code example \ref{lst:mindf} only uses one action to gather minimum and maximum value, which improved the overall performance significantly. 
+\noindent During first tests the aggregation of minimum and maximum value were performed separately (see \ref{lst:mindf}). This turned out to be very inefficient because the data had to be accessed multiple times. 
 
-\begin{pythonCode}[frame=single,label={lst:mindf},caption={Minimum and maximum aggregation optimized},captionpos=b]
+\begin{pythonCode}[frame=single,label={lst:mindf2},caption={Minimum and maximum aggregation optimized},captionpos=b]
 from pyspark.sql import functions as F
 aggregated = result.agg(F.min(result.distances),F.max(result.distances))
 max_val = aggregated.collect()[0]["max(distances)"]
 min_val = aggregated.collect()[0]["min(distances)"]
 \end{pythonCode}
 
+
+\noindent An improved version shown in code example \ref{lst:mindf2} only uses one action to gather minimum and maximum value, which improved the overall performance significantly. 
 \noindent Another alternative would be the usage of the \lstinline{describe()} function for DataFrames. For the implementation using RDDs the \lstinline{stats()} function was used, returning minimum, maximum, mean, and variance values all at once. 
 
-\subsection{Combining different measurements}\label{weighedsum}
+\subsection{Combining Different Measurements}\label{weighedsum}
 
 To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in \cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using equation \ref{eq:distance}.
 
@@ -372,11 +376,9 @@ dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 
 \noindent In this thesis, only binary weights were tested by either including a facet distance with a weight of one or just leaving it out of the overall similarity by setting its weight to zero. The impact of different weights is left open for future research. 
 
-\subsection{performance}\label{sparkperf}
+\subsection{Performance}\label{sparkperf}
 
-\subsubsection{Cluster configuration} %and data file size}
-
-The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster as described in chapter \ref{cconfexp}.
+\subsubsection{Cluster Configuration} %and data file size}
 
 \begin{pythonCode}[frame=single,label={lst:clust},caption={cluster setup},captionpos=b]
 confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
@@ -398,9 +400,8 @@ confCluster.set("yarn.nodemanager.vmem-check-enabled", "false")
 repartition_count = 32
 \end{pythonCode}
 
+\noindent The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster as described in chapter \ref{cconfexp}.
 \noindent The cluster configuration in the code example \ref{lst:clust} turned out to perform well compared to other test configurations. The cluster is configured in a way where 16 up to 32 Executors are spawned with each Executor requesting as many CPU cores and memory resources as possible. The \lstinline{repartition_count} variable is used with the \lstinline{repartition()} method during the data preparation stage to evenly distribute all chunks of feature files across the cluster.\\
-With the help of the \lstinline{spark.dynamicAllocation} parameters the number of Executors spawned can be determined \cite[p. 153]{sparkbook1}. While normally the executors are spawned and then retained for the life of the application, with dynamic allocation Spark is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources. 
-It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when using the dynamic allocation and an external shuffle service should be configured to avoid shuffle data gets lost in case an Executor gets deleted, but during the tests this option was disabled. This shouldn't be a problem because the dynamic allocation is mainly used to ensure that a certain minimum amount of Executors is spawned at all and with this configuration, no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration, the Executors never actually get killed.\\
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -431,6 +432,8 @@ It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} s
 \end{figure}
 \FloatBarrier
 
+\noindent With the help of the \lstinline{spark.dynamicAllocation} parameters the number of Executors spawned can be determined \cite[p. 153]{sparkbook1}. While normally the executors are spawned and then retained for the life of the application, with dynamic allocation Spark is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources. 
+It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when using the dynamic allocation and an external shuffle service should be configured to avoid shuffle data gets lost in case an Executor gets deleted, but during the tests this option was disabled. This shouldn't be a problem because the dynamic allocation is mainly used to ensure that a certain minimum amount of Executors is spawned at all and with this configuration, no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration, the Executors never actually get killed.\\
 \noindent The Spark driver program is executed on the ARA-cluster login-node where also software from clients runs, possibly influencing the results of the performance tests. Fine-tuning the cluster settings is a tricky task. Increasing the number of Executors also increases the additional overhead of managing the Executors and shuffling the data while on the other side, more unique tasks can be distributed better over the compute nodes. To get a performant cluster configuration, various other cluster settings were tested. Increasing the \lstinline{repartition_count} and the amount of Executors spawned (with fewer resources each) seemingly increased the overhead and network traffic on the cluster without reducing the overall computation time. Increasing the \lstinline{repartition_count} while keeping the Executors the same size as in the code snippet turned out to be slower as well.\\ 
 Although each node on the ARA-cluster has 36 CPU cores (without hyper-threading), only 32 cores were assigned to each Executor because this turned out to perform just a little bit better when calculating the similarities for only one song in the first tests. Therefore the cluster configuration was set as described in the code snippet \ref{lst:clust} for the following tests in this section to keep the tests comparable to each other.\\
 Later, when calculating the similarities on already cached feature data for consecutive song requests, 36 cores per executor performed slightly better than 32 cores. Increasing the CPU core count to 72 per Executor performed far worse.\\ 
@@ -450,7 +453,10 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
 %MFCC + NOTES + RP:      {'TOTAL DF': 33677, 'TOTAL RDD': 21933, 'TOTAL MERGED': 31963}\\
 %JS + CHROMA + RP:       {'TOTAL DF': 41477, 'TOTAL RDD': 35856, 'TOTAL MERGED': 51286}    
                                     
-\subsubsection{Differences between the feature types}
+\subsubsection{Differences Between the Feature Types}
+
+\noindent Due to the different complexity of the various similarity measurements and metrics, the time needed to calculate the distances between all songs and a single requested song differs. 
+\noindent The computation time of all feature types (with respect to the lazy evaluation as described in section \ref{leval}) is pictured in figure \ref{features}. 
 
 \begin{figure}[htbp]
 	\centering
@@ -485,8 +491,7 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
 \end{figure}
 \FloatBarrier
 
-\noindent Due to the different complexity of the various similarity measurements and metrics, the time needed to calculate the distances between all songs and a single requested song differs. 
-\noindent The computation time of all feature types (with respect to the lazy evaluation as described in section \ref{leval}) is pictured in figure \ref{features}. 
+
 \noindent The blue bars figure the computation time required to compute the distances between one requested song and all 114210 songs in the dataset without loading the data and without scaling. That means that the features were stored in the main memory already. The measured times for the whole computation of the similarities for each feature set, including the data time taken for pre-processing and the scaling of the results to the unit interval is shown in the red bar. The plot shows the importance of proper caching for fast response times. 
 \noindent The labels on the x-axis represent the different distance measurements and are used further throughout this thesis, mainly in different plots. 
 
@@ -502,7 +507,7 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
 	\item chroma (beat aligned chromagram, cross-correlation)
 \end{itemize}
 
-\subsubsection{Data representation}
+\subsubsection{Data Representation}
 
 \noindent Figure \ref {perfspark2} and \ref{perfspark3} show the performance of three different approaches on the ARA-cluster for different combinations of features (see caption).\\
 \noindent For the approach annotated with "Merged DF" all features are pre-processed, joined and stored in one large DataFrame that then gets repartitioned across all nodes and cached. The idea behind this approach is to reduce shuffling operations during the computation of the similarities by bringing all feature types of the same songs to the same compute nodes. The downside of this method is a higher initial workload that has to be tolerated during the pre-processing stage. 
@@ -644,11 +649,11 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
 \noindent The second approach annotated with "DF" also uses DataFrames, but stores the different pre-processed feature types in separate smaller DataFrames instead. The third approach doesn't use DataFrames at all and uses single RDDs for the pre-processed features. Each of the times measured include the full workflow including data pre-processing, calculating, scaling, and combining the similarities for a single song request. The plots show the time required to compute the similarities for that single requested song for growing datasets starting from 163 (covers80) to 114210 songs (all datasets combined). 
 \noindent Unsurprisingly the Merged DF approach performed relatively poorly compared to the other approaches due to its initial overhead. The next section will make up for this when presenting the performance on the calculation of subsequent song requests on the same features.
 
-\subsubsection{Performance for subsequent song requests}
+\subsubsection{Performance for Subsequent Song Requests}
 
 In contrast to the performance analysis from the last section, figure \ref{perfspark4} shows the time measured to process two subsequent song requests. That means that the second consecutive song request is able to use the already pre-processed and cached feature data. Figure \ref{perfspark4} shows the according results.\\
+\noindent The plots annotated with "Merge DF" total, "DF total" and "RDD total" depicture the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request. The measured times include the calculation of the distances, the scaling, and the join operation of the different result-types.
 
-\FloatBarrier
 \begin{figure}[htbp]
    	\centering
    	\begin{tikzpicture}
@@ -705,14 +710,15 @@ In contrast to the performance analysis from the last section, figure \ref{perfs
    	\label{perfspark4}
 \end{figure}
 \FloatBarrier
-
-\noindent The plots annotated with "Merge DF" total, "DF total" and "RDD total" depicture the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request. The measured times include the calculation of the distances, the scaling, and the join operation of the different result-types. 
+ 
 \noindent The results show that the pre-merged DataFrame approach performs best, returning the 20 nearest neighbors for the second song request in about 16 seconds and 14 seconds when using 36 cores per executor as mentioned in section \ref{sparkperf} cluster configuration). 
 
-\subsubsection{Descending importance filter and refine}\label{farfs}
+\subsubsection{Descending Importance Filter and Refine}\label{farfs}
 
 To improve the performance even further a filter and refine method was tested where the similarities are computed for one feature set and all songs to which the distance is larger than the mean value of all distances get filtered out of the feature DataFrame. From the thinned-out dataset, another less important feature set is chosen, and this is repeated until all feature sets were used. 
 The implementation is based on the "Merge DF" approach described and pictured in \ref{mergeddf} earlier on, but a few changes had to be made. After all features are pre-processed, joined and repartitioned, this large feature DataFrame gets cloned and persisted to the main memory as well. It is important that the compute cluster has enough RAM available to cache the full feature DataFrame twice. 
+\noindent The first feature set is chosen, and the distances are calculated and appended to the cloned version of the full feature DataFrame. In the next step, all rows of the DataFrame where the freshly calculated distances are larger than some threshold (the mean value of the distance column in this case) get dropped out of the DataFrame, drastically reducing the size of all feature-sets.
+When using the mean value about half of the songs get dropped out of the DataFrame, reducing the problem size for the next feature set to half the size. This is also the reason why the data had to be copied in-memory because now the clone can be altered and thinned out without impacting the original DataFrame. Of course, the copying of the data, on the other hand, is an additional overhead. 
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -761,10 +767,8 @@ The implementation is based on the "Merge DF" approach described and pictured in
 \end{figure}
 \FloatBarrier
 
-\noindent The first feature set is chosen, and the distances are calculated and appended to the cloned version of the full feature DataFrame. 
-In the next step, all rows of the DataFrame where the freshly calculated distances are larger than some threshold (the mean value of the distance column in this case) get dropped out of the DataFrame, drastically reducing the size of all feature-sets.
-When using the mean value about half of the songs get dropped out of the DataFrame, reducing the problem size for the next feature set to half the size. This is also the reason why the data had to be copied in-memory because now the clone can be altered and thinned out without impacting the original DataFrame. Of course, the copying of the data, on the other hand, is an additional overhead. 
-But when looking at the results in figure \ref{perfspark5}, it shows that the filter and refine method scales very well with increasing sizes of the dataset. The plots show the performance of full requests on already cached feature DataFrames or RDDs but the plots of the filter and refine tests include the time necessary to create a copy of the cached feature DataFrames, so the additional overhead is taken into account. 
+
+\noindent But when looking at the results in figure \ref{perfspark5}, it shows that the filter and refine method scales very well with increasing sizes of the dataset. The plots show the performance of full requests on already cached feature DataFrames or RDDs but the plots of the filter and refine tests include the time necessary to create a copy of the cached feature DataFrames, so the additional overhead is taken into account. 
 \noindent The order of filter operations in the filter chain for the plot labeled with "Filter chroma first" is:\\
 \textit{chroma $\rightarrow$ (js  $\rightarrow$ skl  $\rightarrow$ mfcc) $\rightarrow$ rp  $\rightarrow$ rh  $\rightarrow$ bh  $\rightarrow$ notes} and:\\
 \textit{bh $\rightarrow$ rh $\rightarrow$ notes $\rightarrow$ rp $\rightarrow$ (js  $\rightarrow$ skl  $\rightarrow$ mfcc) $\rightarrow$ chroma} for the plot labeled with "Filter bh first".
@@ -772,7 +776,7 @@ But when looking at the results in figure \ref{perfspark5}, it shows that the fi
 Admittedly, the computation of the cross-correlation between the chroma features is the most compute-intensive one so for performance reasons it is better to start with a distance measurement like the Euclidean distance of the beat histograms because later when the more demanding computations follow the data set is already thinned out. 
 This is also the reason this approach is called descending importance filter and refine in this thesis because the client requesting song recommendations has to define which aspect is most important to him (speed, melodic/ rhythm/ timbral features or cover song detection) before choosing an order for the filter chain. The results get better the further it gets in the filter chain.  
 
-\subsubsection{Cluster size}
+\subsubsection{Cluster Size}
 
 The runtime and its dependencies on cluster configuration, size of the input dataset and implementation details were already given in the previous chapter \ref{sparkperf}. With about eleven seconds response time for the filter and refine method and 16 seconds for the merged DataFrame approach on 16 compute nodes, and for 114000 songs, the result is reasonably fast but probably not yet fast enough for real-time processing.\\ 
 
@@ -817,7 +821,7 @@ The runtime and its dependencies on cluster configuration, size of the input dat
 
 \noindent To simulate the impact of growing cluster sizes in figure \ref{perfspark6} the cluster configuration was changed from 1 up to 16 Executors spawned, each reserving 36 CPU cores (the maximum number of available cores on one node (without HT)) and 64GB (+ 32GB overhead) of main memory. To do this, the parameters of the dynamic allocation were changed. When setting the minimum Executor count above 16 but there are not enough resources on the cluster, the Spark Driver only spawns as many as he is able to (16 on the ARA-cluster with 36 CPU cores/ Executor). As the tests algorithm, the merged DataFrame approach (repartitioned in 32 chunks) with two subsequent song requests was chosen, and the computation time of the second song request for all feature-sets is shown.\\
 
-\subsection{possible improvements and additions}
+\subsection{Possible Improvements and Additions}
 
 Spark offers some other interesting alternatives to compute similarities that are only mentioned here and not further evaluated.  
 The Alternating Least Squares to perform collaborative filtering (see section \ref{collaborative}) would be an interesting addition. Although this thesis only focuses on audio features, a future additional implementation of metadata and listening behavior information could provide valuable information.\\ 

@@ -28,8 +28,19 @@
 \usepackage{float}
 \restylefloat{figure}
 
+
 \usepackage[section]{placeins}
 %\usepackage{placeins}
+
+%\let\Oldsection\section
+%\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+%\let\Oldsubsection\subsection
+%\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+%\let\Oldsubsubsection\subsubsection
+%\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
 
 \usepackage{here} 
 
@@ -996,7 +1007,7 @@ dist = distance.euclidean(feat_vec[0], feat_vec[1])
 
 
 
-\section{Contend of the CD}\label{DVD}
+\section{Contend on the CD}\label{DVD}
 
 \subsubsection{Code}
 

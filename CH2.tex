@@ -37,7 +37,7 @@ It can be simplified and written as a closed form according to \cite[p. 44]{schn
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}
 
-\subsubsection{Jensen-Shannon-like Divergence}
+\subsubsection{Jensen-Shannon-Like Divergence}
 The second available metric in the Musly toolkit by Schnitzer is using the Jensen-Shannon Divergence (in a slightly adapted way). "The Jensen-Shannon (JS) divergence is another symmetric divergence derived from the Kullback-Leibler divergence. To compute it, a mixture $X_m$ of the two distributions is defined" \cite[p. 43]{schnitzer1}. "To use the Jensen-Shannon divergence [...] to estimate similarities between Gaussians, an approximation of $X_m$ as a single multivariate Gaussian can be used [...] This approximation of $X_m$ is exactly the same as the left-type Kullback-Leibler centroid of the two Gaussian distributions [...]" \cite[p. 45]{schnitzer1} 
 \begin{equation} \label{eq:jsl1}
 \mu_m = \frac{1}{2} \mu_P + \frac{1}{2} \mu_Q
@@ -61,7 +61,7 @@ MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
 according to \cite[p. 80]{knees1}
 
-\subsection{Gaussian Mixture Models and block-level features}\label{blocklevel}
+\subsection{Gaussian Mixture Models and Block-Level Features}\label{blocklevel}
 Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore, the usage of GMMs is not further considered in this thesis.\\
 The last method mentioned in this thesis for timbral similarity is to use block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. 
 Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g., multiple second long, audio frames and features like fluctuation patterns are computed for these frames. 
@@ -72,7 +72,7 @@ For this thesis, the Kullback-Leibler divergence, the Jensen-Shannon divergence 
 Using the Musly toolkit, a first evaluation is presented in the next section. The feature extraction and distance calculation can also be done in python using the librosa library, and a small re-implementation of the Mandel-Ellis approach was tested in advance.\\
 A good measure for the efficiency of a timbre similarity algorithm, in general, is the ability to recommend songs of the same genre.
 
-\subsubsection{Genre recall rate/ construction noise}
+\subsubsection{Genre Recall Rate/ Construction Noise}
 Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results were returned in descending order: 
 
 \begin{itemize}
@@ -119,7 +119,7 @@ Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 
 
 \noindent Especially the second test shows, that the timbre based recommendations are able to recommend similar sounding audio files by returning mostly music containing ambient noises once these were included to the dataset.
 
-\subsubsection{Different recordings and cover versions}\label{covermfcc}
+\subsubsection{Different Recordings and Cover Versions}\label{covermfcc}
 Another experiment was, to get the most similar songs to the famous 'Rondo alla Turca' by Mozart.
 The recording used as a starting point is from the CD "100 Meisterwerke der Klassik" and has a length of 3:33 minutes.
 This piece by Mozart appears overall four times in the dataset and is recorded by different pianists.

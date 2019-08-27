@@ -174,7 +174,7 @@ An example is shown in figure \ref{appui}.\\
 \noindent The Worker nodes are the nodes in the cluster where the actual computation of the Spark DAG tasks take place. As defined within the SparkConf, the Worker nodes spawn a finite or fixed number of Executors that reserve CPU and memory resources on the slave nodes and run in parallel. The Executors are hosted in JVMs on the Worker nodes. Finally, the Spark Master and the Cluster Manager are the processes that monitor, reserve and allocate the resources for the executors. Spark can work on top of various Cluster Managers like Apache Mesos, Hadoop, YARN, and Kubernetes. Spark can also work in standalone mode, where the Spark Master also takes control of the Cluster Managers' tasks. If Spark is running on top of a Hadoop cluster, it uses the YARN ResourceManager as the Cluster Manager and the ApplicationMaster as the Spark Master. The ApplicationMaster is the first task allocated by the ResourceManager and negotiates the resources (containers) for the Executors and makes them available to the Driver. \cite[pp. 49 ff]{sparkbook1}\\
 When running on top of a Hadoop installation, Spark can additionally take advantage of the HDFS by reading data directly out of it.\\
 
-\subsubsection{Cluster configuration and execution}\label{cconfexp}
+\subsubsection{Cluster Configuration and Execution}\label{cconfexp}
 
 
 There are multiple options of passing a Spark programm to the cluster. The first one is to use a spark shell e.g. by calling \lstinline{pyspark} when working with the Spark Python API. If the interactive option of using a spark shell is chosen, a SparkSession is automatically created and exited once the spark-shell is closed. 
@@ -202,7 +202,7 @@ spark = SparkSession.builder.master("cluster").appName("MusicSimilarity").
 	getOrCreate()
 \end{pythonCode}
 
-\subsubsection{Spark advantages}
+\subsubsection{Spark Advantages}
 
 For this thesis, the programming language of choice is Python. With its high-level Python API, Spark applications can take advantage of commonly known and widely used Python libraries such as Numpy or Scipy. It also contains its own powerful libraries like the Spark ML library for machine learning applications or GraphX for the work with large graphs.\\ 
 Spark can be used in combination with SQL (e.g., the Hive project) and NoSQL Systems like Cassandra and HBase. Spark SQL enables the transformation of RDDs to well structured DataFrames. The DataFrame concept is later used in chapter \ref{bds1}.\\
