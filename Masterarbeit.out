@@ -47,37 +47,33 @@
 \BOOKMARK [2][-]{subsection.3.3.3}{Rhythm Histogram}{section.3.3}% 47
 \BOOKMARK [2][-]{subsection.3.3.4}{cross-correlation}{section.3.3}% 48
 \BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 49
-\BOOKMARK [2][-]{subsection.3.4.1}{Timbre Similarity}{section.3.4}% 50
-\BOOKMARK [2][-]{subsection.3.4.2}{Melodic Similarity}{section.3.4}% 51
-\BOOKMARK [2][-]{subsection.3.4.3}{Rhythm Similarity}{section.3.4}% 52
-\BOOKMARK [2][-]{subsection.3.4.4}{Feature files}{section.3.4}% 53
-\BOOKMARK [0][]{chapter.4}{Implementation}{}% 54
-\BOOKMARK [1][-]{section.4.1}{Audio Feature Extraction}{chapter.4}% 55
-\BOOKMARK [2][-]{subsection.4.1.1}{Test Datasets}{section.4.1}% 56
-\BOOKMARK [2][-]{subsection.4.1.2}{Feature Extraction Performance}{section.4.1}% 57
-\BOOKMARK [1][-]{section.4.2}{Big Data Framework Spark}{chapter.4}% 58
-\BOOKMARK [2][-]{subsection.4.2.1}{Underlying hardware}{section.4.2}% 59
-\BOOKMARK [2][-]{subsection.4.2.2}{Workflow}{section.4.2}% 60
-\BOOKMARK [2][-]{subsection.4.2.3}{Data preparation}{section.4.2}% 61
-\BOOKMARK [2][-]{subsection.4.2.4}{Distance Computation}{section.4.2}% 62
-\BOOKMARK [2][-]{subsection.4.2.5}{distance scaling}{section.4.2}% 63
-\BOOKMARK [2][-]{subsection.4.2.6}{Combining different measurements}{section.4.2}% 64
-\BOOKMARK [2][-]{subsection.4.2.7}{performance}{section.4.2}% 65
-\BOOKMARK [2][-]{subsection.4.2.8}{possible improvements and additions}{section.4.2}% 66
-\BOOKMARK [0][]{chapter.5}{Results}{}% 67
-\BOOKMARK [1][-]{section.5.1}{Objective evaluation}{chapter.5}% 68
-\BOOKMARK [2][-]{subsection.5.1.1}{feature correlation and distance distribution}{section.5.1}% 69
-\BOOKMARK [2][-]{subsection.5.1.2}{Cover song identification}{section.5.1}% 70
-\BOOKMARK [2][-]{subsection.5.1.3}{Genre similarity}{section.5.1}% 71
-\BOOKMARK [2][-]{subsection.5.1.4}{Rhythm Features}{section.5.1}% 72
-\BOOKMARK [1][-]{section.5.2}{Subjective evaluation}{chapter.5}% 73
-\BOOKMARK [2][-]{subsection.5.2.1}{Beyond genre boundaries}{section.5.2}% 74
-\BOOKMARK [2][-]{subsection.5.2.2}{personal music taste}{section.5.2}% 75
-\BOOKMARK [0][]{chapter.6}{Summary}{}% 76
-\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 77
-\BOOKMARK [1][-]{section.6.2}{Outlook}{chapter.6}% 78
-\BOOKMARK [0][]{section*.12}{References}{}% 79
-\BOOKMARK [0][]{chapter.7}{Appendix}{}% 80
-\BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 81
-\BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 82
-\BOOKMARK [1][-]{section.7.3}{Contend of the CD}{chapter.7}% 83
+\BOOKMARK [0][]{chapter.4}{Implementation}{}% 50
+\BOOKMARK [1][-]{section.4.1}{Audio Feature Extraction}{chapter.4}% 51
+\BOOKMARK [2][-]{subsection.4.1.1}{Test Datasets}{section.4.1}% 52
+\BOOKMARK [2][-]{subsection.4.1.2}{Feature Extraction Performance}{section.4.1}% 53
+\BOOKMARK [1][-]{section.4.2}{Big Data Framework Spark}{chapter.4}% 54
+\BOOKMARK [2][-]{subsection.4.2.1}{Underlying hardware}{section.4.2}% 55
+\BOOKMARK [2][-]{subsection.4.2.2}{Workflow}{section.4.2}% 56
+\BOOKMARK [2][-]{subsection.4.2.3}{Data preparation}{section.4.2}% 57
+\BOOKMARK [2][-]{subsection.4.2.4}{Distance Computation}{section.4.2}% 58
+\BOOKMARK [2][-]{subsection.4.2.5}{distance scaling}{section.4.2}% 59
+\BOOKMARK [2][-]{subsection.4.2.6}{Combining different measurements}{section.4.2}% 60
+\BOOKMARK [2][-]{subsection.4.2.7}{performance}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.8}{possible improvements and additions}{section.4.2}% 62
+\BOOKMARK [0][]{chapter.5}{Results}{}% 63
+\BOOKMARK [1][-]{section.5.1}{Objective evaluation}{chapter.5}% 64
+\BOOKMARK [2][-]{subsection.5.1.1}{feature correlation and distance distribution}{section.5.1}% 65
+\BOOKMARK [2][-]{subsection.5.1.2}{Cover song identification}{section.5.1}% 66
+\BOOKMARK [2][-]{subsection.5.1.3}{Genre similarity}{section.5.1}% 67
+\BOOKMARK [2][-]{subsection.5.1.4}{Rhythm Features}{section.5.1}% 68
+\BOOKMARK [1][-]{section.5.2}{Subjective evaluation}{chapter.5}% 69
+\BOOKMARK [2][-]{subsection.5.2.1}{Beyond genre boundaries}{section.5.2}% 70
+\BOOKMARK [2][-]{subsection.5.2.2}{personal music taste}{section.5.2}% 71
+\BOOKMARK [0][]{chapter.6}{Summary}{}% 72
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 73
+\BOOKMARK [1][-]{section.6.2}{Outlook}{chapter.6}% 74
+\BOOKMARK [0][]{section*.12}{References}{}% 75
+\BOOKMARK [0][]{chapter.7}{Appendix}{}% 76
+\BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 77
+\BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 78
+\BOOKMARK [1][-]{section.7.3}{Contend of the CD}{chapter.7}% 79

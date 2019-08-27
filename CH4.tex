@@ -1,16 +1,16 @@
 
 \section{Rhythmic Similarity}\label{rhythmsimc}
 
-This chapter provides an overview over some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
-Nearly every MIR Toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution to computing very low level rhythmic similarities is by sorting and comparing songs by their tempo. Of course there are far better and more accurate solutions. By just comparing the tempo of songs a lot of rhythm information is lost e.g. the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
+This chapter provides an overview of some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
+Nearly every MIR Toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution to computing very low-level rhythmic similarities is by sorting and comparing songs by their main tempo (BPM). Of course, there are far better and more accurate solutions. By just comparing the tempo of songs, a lot of rhythm information is lost, e.g., the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
 This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a big data framework.\\
 
 \subsection{Beat histogram}\label{beathist}
 
-Other similarity measurements are e.g. the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. These are relatively similar to the later evaluated Rhythm Histograms.
-Gruhne (et al.) further improved the beat histograms and suggested an additional post processing step for the beat histogram before calculating the similarity between songs with the euclidean distance, to improve a comparison of two songs with different tempi by transforming the beat histograms into the logarithmic lag domain. They found, that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further \cite[182]{rbh1}.
-The essentia toolkit offers methods to extract the beat histogram. The different detected potential bpms are normalized to 1. If a song changes its tempo then multiple peaks can be seen.\\ 
-Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as a singer in 1999. The 1994 version changes its tempo in the outro of the song as can be seen in the figure.
+Other similarity measurements are, e.g., the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. 
+Gruhne (et al.) further improved the beat histograms and suggested an additional post-processing step for the beat histogram before calculating the similarity between songs with the euclidean distance, to improve a comparison of two songs with different tempi by transforming the beat histograms into the logarithmic lag domain. They found that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further \cite[182]{rbh1}.
+The essentia toolkit offers methods to extract the beat histogram. The different detected potential BPMs are normalized to 1. If a song changes its tempo, then multiple peaks can be seen.\\ 
+Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the Swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as the singer in 1999. The 1994 version changes its tempo in the outro of the song, and the tempo change can be seen in the histogram in figure \ref{ssbh} as a second large peak around 120 BPM.
 
 \begin{figure}[htbp]
 	\centering
@@ -47,12 +47,12 @@ Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurr
 
 \FloatBarrier
  
-Another feature that will just be mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1}.
+\noindent Another paper that is just be mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1} to compute similarities.
 
 \subsection{Rhythm patterns}
 
-A more state-of-the-art feature is the so called rhythm pattern, also known as fluctuation patterns for instance mentioned by \cite{rp1}. 
-To extract these features the rp\_extractor library \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible while at the same time substantial differences between the different songs are recognizable.
+A more state-of-the-art feature is the so-called rhythm pattern, also known as fluctuation patterns, for instance evaluated by Lidy and Rauber in \cite{rp1}. 
+To extract these features, the rp\_extractor library for python \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible, while at the same time substantial differences between the different songs are recognizable.
 
 \begin{figure}[htbp]
 	\centering
@@ -87,12 +87,12 @@ To extract these features the rp\_extractor library \cite{rp_extract} was made p
 	\label{fig:rp1}
 \end{figure}
 
-\noindent The x-axis represents the frequency band converted to the bark scale (a scale representing the human auditory system comparable to the mel scale) and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (600 BPM).
+\noindent The x-axis represents the frequency band converted to the Bark-scale (a scale representing the human auditory system comparable to the Mel-scale from equation \ref{eq:mel}), and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (600 BPM).
 The Bark of a frequency $f$ can be determined using formula \ref{eq:bark}.
 \begin{equation} \label{eq:bark}
 Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
 \end{equation}
-The algorithm to extract the rhythm patterns as well as the rhythm histogram and statistical spectrum descriptors measuring the variations over the critical frequency bands can be seen in figure \ref{fig:rpe}.
+The algorithm to extract the rhythm patterns, the rhythm histogram, and statistical spectrum descriptors measuring the variations over the critical frequency bands, can be seen in figure \ref{fig:rpe}.
 
 \begin{center}
   % setting the typeface to sans serif and the font size to small
@@ -159,15 +159,15 @@ The algorithm to extract the rhythm patterns as well as the rhythm histogram and
 	\label{fig:rpe}
 \end{center}
 
-\noindent So in conclusion the Rhythm Patterns basically represent the BPM of various frequency bands.
+\noindent So in conclusion, the Rhythm Patterns basically represent the BPM of various frequency bands.
 To compare two different songs the euclidean distance between the vectorized rhythm pattern matrices can be calculated as Pampalk suggests \cite[p. 40]{fp1}\\
-Pohle, Schnitzer et al. refined Fluctuation Patterns into Onset Patterns e.g. by using semitone bands instead of fewer critical bands to detect onsets. \cite{rp2}\\
-This thesis however focuses on Fluctuation/ Rhythm patterns extracted with the rp\_extractor library. 
+Pohle, Schnitzer et al. later refined fluctuation patterns into onset patterns, e.g., by using semitone bands instead of fewer critical bands to detect onsets. \cite{rp2}\\
+This thesis, however, focuses on fluctuation-/ rhythm patterns extracted with the rp\_extractor library. 
 
 \subsection{Rhythm Histogram}
 
-A more simplistic and lower dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
-The difference in comparison to the beat histogram mentioned earlier in section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefor the sub-rhythms of single instruments into account. 
+A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
+The difference in comparison to the beat histogram mentioned earlier in section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefore the sub-rhythms of single instruments into account. 
 
 \begin{figure}[htbp]
 	\centering
@@ -204,7 +204,7 @@ The difference in comparison to the beat histogram mentioned earlier in section 
 
 \subsection{cross-correlation}
 
-Estimating the onset strength per beat and creating a discrete-time signal for each song is an other option. Similar to the chroma features the cross-correlation of the onset functions could be used as a similarity measurement. 
+Estimating the onset strength per beat and creating a discrete-time signal for each song is another option. Similar to the chroma features the cross-correlation of the onset functions could be used as a similarity measurement. 
 
 \begin{figure}[htbp]
 	\centering
@@ -240,12 +240,14 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 	\label{fig:ons1}
 \end{figure}	
 
-\noindent Looking at the extracted onset features of the Song "Behing Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals are greatly dependent on the underlying beat extraction and onset detection algorithms. E.g. the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
-In conclusion this approach is discarded and not further considered and tested in this thesis.  
+\noindent Looking at the extracted onset features of the Song "Behind Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals is greatly dependent on the underlying beat extraction and onset detection algorithms. E.g., the librosa toolkit struggles to detect beats in the first 10 seconds of the version of the song from the year 1999. Also, this representation seems to contain a lot less valuable and comparable information in contrast to Fluctuation Patterns. 
+In conclusion, this approach is discarded and not further considered and tested in this thesis.  
 
 \section{Summary}\label{sumfeat}
 
-\subsection{Timbre Similarity}
+After evaluating various options of similarity measurements for different aspects of music (timbre, rhythm, and melody/ pitch), all of the chosen approaches that are implemented in the next chapters are summarized in this section. 
+
+\subsubsection{Timbre Similarity}
 
 The chosen similarity metrics are : 
 \begin{itemize}
@@ -254,17 +256,17 @@ The chosen similarity metrics are :
 	\item Symmetric Kullback-Leibler Divergence
 	\item Jensen-Shannon like Divergence
 \end{itemize}
-To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each mfcc band. These are stored in two different output text files: 
+To calculate the distances, for each song the mean vector, variance and covariance matrix has to be computed for each MFCC. These are stored in two different output text files: 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $\frac{b \cdot (b+1)}{2}$))
 	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix (length $b \cdot b$)
 \end{itemize}
-The amount of mfcc bands chosen is $b = 13$.\\
-The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data Framework and reduce the computation time when a similarity computation request is processed.\\
+The amount of Mel-bands chosen is $b = 13$.\\
+The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the big data framework and reduce the computation time when a similarity computation request is processed.\\
 To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in section \ref{mfcceuc}) in the triangular matrix.\\
 
-\subsection{Melodic Similarity}
+\subsubsection{Melodic Similarity}
 
 For the computation of the melodic similarities, two different similarity metrics are chosen: 
 \begin{itemize}
@@ -275,19 +277,19 @@ For the computation of the melodic similarities, two different similarity metric
 These are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key shifted to the A key (length $n$))
+	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key-shifted to the A key (length $n$))
 	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
 
 
-\subsection{Rhythm Similarity}
+\subsubsection{Rhythm Similarity}
 
 Three different similarity measurements are chosen for the rhythm features: 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item euclidean distance between beat histograms
-	\item euclidean distance between rhythm histograms
-	\item euclidean distance between rhythm patterns
+	\item Euclidean distance between beat histograms
+	\item Euclidean distance between rhythm histograms
+	\item Euclidean distance between rhythm patterns
 \end{itemize}
 These are stored in three different output text files.
 \begin{itemize}
@@ -297,15 +299,15 @@ These are stored in three different output text files.
 	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (length $24 \times 60$))
 \end{itemize}
 
-\subsection{Feature files}
+\subsubsection{Feature files}
 
 The feature files contain strings like the following:\\
-\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763,  ... ,4.321189]; [8943.487,... ,61.624344]; [ 8944.3907652, ... ,74.17548092]}\\
-\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763,  ... ,4.321189]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}\\
-\underline{out.notes}: \textit{music/song.mp3; G; minor; [6, 2, 5, 7, 7, 7, 7, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0]}\\
-\underline{out.chroma}: \textit{music/song.mp3; [[0.5209161 ,0.82440507,... ,0.68443549] ... [0.31470749,0.02552716,... ,0.01234249]]}\\
+\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763, ... ,4.321189]; [8943.487, ... ,61.624344]; [8944.3907652, ... ,74.17548092]}\\
+\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763, ... ,4.321189]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}\\
+\underline{out.notes}: \textit{music/song.mp3; G; minor; [6, 2, 5, 7, 7 ... , 0, 0]}\\
+\underline{out.chroma}: \textit{music/song.mp3; [[0.5209161, 0.82440507, ... , 0.68443549] ... [0.31470749, 0.02552716, ... ,0.01234249]]}\\
 \underline{out.bh}: \textit{music/song.mp3; 86.9380264282; [0. ... 0.01453488 ...  0.  0.]}\\
-\underline{out.rh}: \textit{music/song.mp3,15.2521291416,10.10441871, ... ,2.2519330706}\\
-\underline{out.rp}: \textit{music/song.mp3,0.0237481782333,0.0208784207788, ... ,0.00204177442894}\\
+\underline{out.rh}: \textit{music/song.mp3, 15.2521291416, 10.10441871, ... , 2.2519330706}\\
+\underline{out.rp}: \textit{music/song.mp3, 0.0237481782333, 0.0208784207788, ... , 0.00204177442894}\\
 \ \\
 An additional file containing a list of all song names is stored as \underline{out.files}
