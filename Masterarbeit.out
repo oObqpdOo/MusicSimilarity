@@ -18,9 +18,9 @@
 \BOOKMARK [1][-]{section.2.3}{Music Similarity Measurements}{chapter.2}% 18
 \BOOKMARK [2][-]{subsection.2.3.1}{Timbre Based}{section.2.3}% 19
 \BOOKMARK [2][-]{subsection.2.3.2}{Pitch Based}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.3}{Rhythm Based}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.4}{Metadata Based/ Collaborative Filtering}{section.2.3}% 22
-\BOOKMARK [2][-]{subsection.2.3.5}{Note Based}{section.2.3}% 23
+\BOOKMARK [2][-]{subsection.2.3.3}{Note Based}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.4}{Rhythm Based}{section.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.3.5}{Metadata Based/ Collaborative Filtering}{section.2.3}% 23
 \BOOKMARK [2][-]{subsection.2.3.6}{Genre Specific Features}{section.2.3}% 24
 \BOOKMARK [2][-]{subsection.2.3.7}{Summary}{section.2.3}% 25
 \BOOKMARK [1][-]{section.2.4}{Data Aggregation}{chapter.2}% 26
@@ -39,7 +39,7 @@
 \BOOKMARK [1][-]{section.3.2}{Melodic Similarity}{chapter.3}% 39
 \BOOKMARK [2][-]{subsection.3.2.1}{Representation}{section.3.2}% 40
 \BOOKMARK [2][-]{subsection.3.2.2}{Chroma Features Pre-Processing}{section.3.2}% 41
-\BOOKMARK [2][-]{subsection.3.2.3}{Similarity of Chroma Features}{section.3.2}% 42
+\BOOKMARK [2][-]{subsection.3.2.3}{Similarity of Melodic Features}{section.3.2}% 42
 \BOOKMARK [2][-]{subsection.3.2.4}{Validation}{section.3.2}% 43
 \BOOKMARK [1][-]{section.3.3}{Rhythmic Similarity}{chapter.3}% 44
 \BOOKMARK [2][-]{subsection.3.3.1}{Beat Histogram}{section.3.3}% 45

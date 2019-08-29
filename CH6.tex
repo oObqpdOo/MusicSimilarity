@@ -62,8 +62,8 @@ Although multiple different implementations were tested to evaluate the fastest 
 
 \subsection{Data Preparation}
 
-The features are stored in text files as described in chapter \ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contain the features of a small number of songs. Because many small files are inefficient to process with Spark \cite[p. 153]{sparkbook1} all files containing the same feature type are merged to one large file, before being loaded into the HDFS. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition\_count)} command. 
-Finally to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of integer numbers, each representing a certain note. To compare these using the Levenshtein distance, these lists are converted into strings. 
+The features are stored in text files as described in chapter \ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contain the features of a small number of songs. Because many small files are inefficient to process with Spark \cite[p. 153]{sparkbook1} all files containing the same feature type are merged to one large file, before being loaded into the HDFS. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition_count)} command. 
+Finally to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of integers, each representing a certain note. To compare these using the Levenshtein distance, these lists are converted into strings. 
 
 \begin{pythonCode}[frame=single,label={lst:prep1},caption={notes preprocessing},captionpos=b]
 chroma = sc.textFile("features/out[0-9]*.notes").repartition(repartition_count)
@@ -72,7 +72,7 @@ chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("0",'A').replace("
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
 
-\noindent All the other features are stored as lists of floats and have to be converted to vectors. The Spark ML library and the older MLlib library offer sparse and dense vectors as a data type. The only feature type that contains a lot of zeros and where sparse vectors could improve performance is the beat histogram. But compared to other features like the chromagram they are relatively small (with a length of only 200 values), so all lists including the beat histograms are converted to dense vectors by calling \lstinline{Vectors.dense(l)}. 
+\noindent All the other features are stored as lists of floats and have to be converted into vectors. The Spark ML library and the older MLlib library offer sparse and dense vectors as a data type. The only feature type that contains a lot of zeros and where sparse vectors could improve performance is the beat histogram. But compared to other features like the chromagram, the beat histogram vectors are relatively small with a length of only 200 values, so all lists including the beat histograms are converted to dense vectors by calling \lstinline{Vectors.dense()}. 
 
 \begin{pythonCode}[frame=single,label={lst:rpp},caption={rp preprocessing},captionpos=b]
 from pyspark.mllib.linalg import Vectors
@@ -84,7 +84,7 @@ rp_df = spark.createDataFrame(kv_rp, ["id", "rp"])
 rp_df = rp_df.select(rp_df["id"],list_to_vector_udf(rp_df["rp"]).alias("rp"))
 \end{pythonCode}
 
-\noindent An example is given for the rhythm pattern features in code snippet \ref{lst:rpp}. The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("name.txt")}. The repartitioning is optional but improves the overall performance (see \ref{sparkperf}). After the pre-processing steps are performed the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame()} to ease up the access to the data and improve the code readability. The features can then be accessed via column names instead of the RDD indices, making the code better readable and understandable.\\
+\noindent An example is given for the rhythm pattern features in code snippet \ref{lst:rpp}. The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("feaures.txt")}. The repartitioning is optional but improves the overall performance (see \ref{sparkperf}). After the pre-processing steps are performed the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame(rdd)} to ease up the access to the data and improve the code readability. The features can then be accessed via column names instead of the RDD indices, making the code better readable and understandable.\\
 For the performance tests, three different kinds of implementations were tested. The first one merges all audio features into one large DataFrame in the beginning and persists this to the main memory. The second implementation uses single DataFrames for each feature set, and the third uses RDDs instead of DataFrames. The results of the performance analysis of DataFrames vs. RDDs are given in section \ref{sparkperf}
 
 \subsection{Distance Computation}
