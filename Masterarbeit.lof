@@ -1,7 +1,11 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {german}{}
+\babel@toc {german}{}
 \babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Structure\relax }}{3}{figure.1.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -87,13 +91,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Lazy evaluation and caching\relax }}{68}{figure.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \#Executors spawned\relax }}{71}{figure.4.5}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \#Executors spawned\relax }}{72}{figure.4.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Performance of different feature types\relax }}{73}{figure.4.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Performance ARA, full workload, (MFCC + Notes + RP)\relax }}{74}{figure.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Performance ARA, full workload, (JS + Chroma + RP)\relax }}{75}{figure.4.8}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Performance ARA, full workload, (JS + Chroma + RP)\relax }}{74}{figure.4.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Workflow Merged DF\relax }}{75}{figure.4.9}
 \defcounter {refsection}{0}\relax 
@@ -101,32 +105,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Descending importance filter and refine, all features\relax }}{77}{figure.4.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Performance / Executors (36 CPU cores each)\relax }}{79}{figure.4.12}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Performance / Executors (36 CPU cores each)\relax }}{78}{figure.4.12}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature space example\relax }}{82}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Feature space example\relax }}{81}{figure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{82}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{81}{figure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Cumulative distributions\relax }}{83}{figure.5.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Cumulative distributions\relax }}{82}{figure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Correlation of features depending on SKL scaling\relax }}{84}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Correlation of features depending on SKL scaling\relax }}{83}{figure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Correlation of features\relax }}{84}{figure.5.5}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Correlation of features\relax }}{83}{figure.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{85}{figure.5.6}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces correlation 95 songs, 19 genres (5 each), 1517 artists\relax }}{84}{figure.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces genre recall\relax }}{88}{figure.5.7}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces genre recall\relax }}{87}{figure.5.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song, Rock\&Pop, 1517 artists, 4 genres\relax }}{89}{figure.5.8}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces distances 1 song, Rock\&Pop, 1517 artists, 4 genres\relax }}{88}{figure.5.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces distances 1 song, electronic, 1517 artists, 4 genres\relax }}{90}{figure.5.9}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces distances 1 song, electronic, 1517 artists, 4 genres\relax }}{89}{figure.5.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Rhythm features/ BPM\relax }}{91}{figure.5.10}
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Rhythm features/ BPM\relax }}{90}{figure.5.10}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{102}{figure.7.1}
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces distances 1 song (Soundtrack), 5 genres (10 songs each)\relax }}{101}{figure.7.1}

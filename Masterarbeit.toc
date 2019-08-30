@@ -1,5 +1,5 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {english}{}
+\babel@toc {german}{}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Abbreviations}{iv}{section*.2}
 \defcounter {refsection}{0}\relax 
@@ -8,14 +8,14 @@
 \contentsline {chapter}{List of Tables}{vii}{section*.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{List of Code Snippets}{viii}{section*.7}
+\babel@toc {german}{}
+\babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Why and How?}{1}{section.1.1}
+\contentsline {section}{\numberline {1.1}Goals}{2}{section.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Overview}{2}{section.1.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Big Data}{3}{section.1.3}
+\contentsline {section}{\numberline {1.2}Outline}{2}{section.1.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Music Information Retrieval and Big Data}{4}{chapter.2}
 \defcounter {refsection}{0}\relax 
@@ -187,15 +187,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Cross-Correlation}{62}{lstnumber.4.11.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Jensen-Shannon-Like Divergence}{64}{lstnumber.4.13.26}
+\contentsline {subsubsection}{Jensen-Shannon-Like Divergence}{64}{lstnumber.4.13.25}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Symmetric Kullback-Leibler Divergence}{65}{lstnumber.4.14.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Levenshtein Distance}{66}{lstnumber.4.15.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Lazy Evaluation and Data Caching}{67}{lstnumber.4.17.6}
+\contentsline {subsubsection}{Lazy Evaluation and Data Caching}{66}{lstnumber.4.17.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Distance Scaling}{69}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}Distance Scaling}{68}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.6}Combining Different Measurements}{70}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
@@ -203,11 +203,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Cluster Configuration}{70}{subsection.4.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Differences Between the Feature Types}{73}{figure.4.5}
+\contentsline {subsubsection}{Differences Between the Feature Types}{72}{figure.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Data Representation}{74}{figure.4.6}
+\contentsline {subsubsection}{Data Representation}{73}{figure.4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Performance for Subsequent Song Requests}{76}{figure.4.9}
+\contentsline {subsubsection}{Performance for Subsequent Song Requests}{75}{figure.4.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Descending Importance Filter and Refine}{76}{figure.4.10}
 \defcounter {refsection}{0}\relax 
@@ -215,40 +215,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.8}Possible Improvements and Additions}{79}{subsection.4.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results}{81}{chapter.5}
+\contentsline {chapter}{\numberline {5}Results}{80}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Objective Evaluation}{81}{section.5.1}
+\contentsline {section}{\numberline {5.1}Objective Evaluation}{80}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Feature Correlation and Distance Distribution}{81}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.1}Feature Correlation and Distance Distribution}{80}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Cover Song Identification}{86}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.2}Cover Song Identification}{85}{subsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Genre Similarity}{88}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.3}Genre Similarity}{87}{subsection.5.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.4}Rhythm Features}{91}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.4}Rhythm Features}{90}{subsection.5.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Subjective Evaluation}{92}{section.5.2}
+\contentsline {section}{\numberline {5.2}Subjective Evaluation}{91}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Beyond Genre Boundaries}{92}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}Beyond Genre Boundaries}{91}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Personal Music Taste}{93}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Personal Music Taste}{92}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Summary}{94}{chapter.6}
+\contentsline {chapter}{\numberline {6}Summary}{93}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Conclusion}{94}{section.6.1}
+\contentsline {section}{\numberline {6.1}Conclusion}{93}{section.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Outlook}{95}{section.6.2}
+\contentsline {section}{\numberline {6.2}Outlook}{94}{section.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{96}{section*.12}
+\contentsline {chapter}{References}{95}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Appendix}{102}{chapter.7}
+\contentsline {chapter}{\numberline {7}Appendix}{101}{chapter.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Feature Analysis}{102}{section.7.1}
+\contentsline {section}{\numberline {7.1}Feature Analysis}{101}{section.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Spotipy Data Miner}{103}{section.7.2}
+\contentsline {section}{\numberline {7.2}Spotipy Data Miner}{102}{section.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Contend on the CD}{105}{section.7.3}
+\contentsline {section}{\numberline {7.3}Contend on the CD}{104}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Code}{105}{section.7.3}
+\contentsline {subsubsection}{Code}{104}{section.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{...}{105}{section.7.3}
+\contentsline {subsubsection}{...}{104}{section.7.3}

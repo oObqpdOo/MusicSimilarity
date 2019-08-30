@@ -1,6 +1,6 @@
 %==============================================================
 
-\chapter{Implementation}
+\chapter{Implementation}\label{implementationdet}
 
 The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored in the feature files. These features files then have to be processed with the big data framework Spark to compute the similarities between songs.\\ 
 Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub \cite{github-code}. Details for the usage of the python scripts are also documented there.
@@ -120,7 +120,7 @@ The calculation with the essentia streaming and standard library for 100 songs t
 
 \subsubsection{Parallel Python}
 
-Parallel python is a Python library to distribute different tasks to multiple processes. On a single PC, multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
+Parallel python is a Python module that enables the execution of python code in parallel. On a single PC, multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
 %\newpage
 \begin{pythonCode}[frame=single,label={lst:pp},caption={parallel python},captionpos=b]
 job_server = pp.Server()

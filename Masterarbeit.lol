@@ -43,6 +43,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.19}Minimum and maximum aggregation separate}{69}{lstlisting.4.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.20}Minimum and maximum aggregation optimized}{70}{lstlisting.4.20}
+\contentsline {lstlisting}{\numberline {4.20}Minimum and maximum aggregation optimized}{69}{lstlisting.4.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.21}cluster setup}{70}{lstlisting.4.21}
+\contentsline {lstlisting}{\numberline {4.21}cluster setup}{71}{lstlisting.4.21}

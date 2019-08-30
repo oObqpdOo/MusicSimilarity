@@ -17,6 +17,15 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{soundcloudgo}{inproceedings}{}
+    \field{labeltitlesource}{title}
+    \field{title}{SoundCloud Go+ tracks}
+    \verb{url}
+    \verb https://help.soundcloud.com/hc/en-us/articles/115003453667-SoundCloud
+    \verb -Go-tracks
+    \endverb
+  \endentry
+
   \entry{knees1}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=KP}{%

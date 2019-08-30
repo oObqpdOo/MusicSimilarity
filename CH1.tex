@@ -1,9 +1,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{german}
 \begin{abstract}
-	\noindent \textbf{Estimating music similarity by merging various similarity measurements of timbral, melodic and rhythmic features of the music with the help of the big data framework Spark.}\\
-	This thesis is about the comparison of construction noise and modern-day music. 
-	The field of music information retrieval (MIR) in computer science is mostly a data-driven and purely mathematical topic. The goal of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potential weak spots of current music similarity algorithms focusing on single aspects like melody, rhythm, and timbre. 
+	\begin{center}
+	\noindent\textbf{Schätzung der Ähnlichkeit von Musikstücken unter Verwendung mehrerer Abstandsmaße mithilfe des Big Data Frameworks Spark}
+	\end{center}
+	Die Musikinformationsverarbeitung ist ein Teilgebiet der Informatik, das meist datengetrieben und sehr mathematisch angegangen wird. Das Ziel dieser Arbeit ist es, verschiedene Teilgebiete der Informatik mit musiktheoretischem Wissen zu verbinden um Schwachstellen aktueller Algorithmen zur Empfehlung ähnlicher Musikstücke, die sich auf einzelne Teilaspekte der Musik, wie Melodie, Rhythmus oder Klangfarbe beschränken, zu finden. 
+	
+\end{abstract}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{english}
+\begin{abstract}
+	\begin{center}
+	\noindent\textbf{Estimating music similarity by merging various similarity measurements with the help of the big data framework Spark.}
+	\end{center}
+	The field of music information retrieval (MIR) in computer science is mostly a data-driven and purely mathematical topic. The goal of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potential weak spots of current music recommender systems focusing on single aspects like melody, rhythm, and timbre. 
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -16,63 +27,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}\label{intro}
 
-The idea originated from Dr. T. Bosse from the chair for advanced computing at the Friedrich-Schiller-University (FSU) in Jena. When proposing the idea for a master thesis with the topic of "Music similarity measurement using genre-specific features" using different guitar play styles in modern-day metal music, he jokingly said that he would also like to know how metal music compares to construction building noise. The idea is actually not so groundless, considering that most people would agree on the fact that metal music is often described as noise by people not used to listening to genres like death and black metal.
-While refining the original idea of the theme for this master's thesis and during the first tests, it became obvious, that while there is a lot of research in the area of music similarity for single aspects of music like melody or rhythm, there was no attempt to 
-
-
-
-%This thesis is meant to evaluate how music similarity algorithms compare construction noise to common musical genres and how to possibly improve these algorithms.
-
-\section{Why and How?}
-
-\underline{Why is music similarity research even necessary?} 
+The idea originated from Dr. T. Bosse from the chair for advanced computing at the Friedrich-Schiller-University (FSU) in Jena. When proposing the idea for a master thesis with the topic of "Music similarity measurement using genre-specific features" by using different guitar play styles in modern-day metal music, he jokingly said that he would also like to know how metal music compares to construction building noise. The idea is actually not so groundless, considering that most people would agree on the fact that metal music is often described as noise by people not used to listening to genres like death and black metal.
+While refining the original idea of the theme for this master's thesis and during the first tests, it became apparent, that while there is a lot of research in the area of music similarity for single aspects of music like melody, timbre, or rhythm and even for a few fixed combinations thereof, there was no attempt made yet, to build a parameterizable system combining various of these features in a big data environment.\\
+With music streaming services like Spotify, Amazon Music, Deezer or Tidal and music sharing websites like SoundCloud, access to millions of songs is given. To explore this humongous amount of data, the need for music recommender systems rises. SoundCloud Go+, the streaming service of SoundCloud alone gives access to more than 135 million songs \cite{soundcloudgo}. 
+Of course the streaming platforms are aware of these challenges. When using services like "[ . . . ] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}\\
+But music similarity is not well defined. This is one of the first problems, dealing with this topic. It is a rather subjective value that can differ from listener to listener. Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics, or a combination of more than a few of these features.\\
 \ \\
-\ \\
-With music streaming services like Spotify, Amazon Music, Deezer or Tidal and music sharing websites like SoundCloud, access to millions of songs is giving. To explore this humongous amount of data, the need for music recommender systems rises. SoundCloud Go+, the streaming service of SoundCloud alone gives access to more than 135 million songs \cite{bibid}. 
-Of course the streaming platforms are aware of these challenges. When using services like "[ . . . ] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}
-And also in academic research, a lot of work was done researching music similarity metrics for different aspects of music and some even for combinations of features. But all of these recommendation engines are fixed. Music 
- 
-\underline{What to improve?}
+\section{Goals}
 
-First of all, there is no fixed definition of music similarity so far. This is one of the first problems, dealing with this topic. Instead, there is a wide spectrum of multifaceted approaches using various feature sets and aspects of the music that has to be evaluated. Merging multiple approaches with different weights can offer a more diverse music recommendation system. To do this, a lot of different features would be required and have to be extracted from the audio data.\\
-Content (music features) and context (listener behavior) data can then be fed into a big data framework to speed up operations.
-Collecting this data for large amounts of songs results in big datasets that need to be explored efficiently.\\
-\ \\
+The goal of this thesis is to propose a transparent music similarity recommendation system based on various weighted aspects of the music instead of a fixed combination. Applying different weights to different features allows similarity retrieval methods to search for different kinds of similarities, empowering the user to decide which aspects are most important to him and returning song recommendations based on the user's preferences. E.g., weighing the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, while melodic/ timbre, etc. similarities allows to search for similar songs from musical subgenres.\\ 
+The usage of a big data framework Spark allows the creation of a variable/ fuzzy metric definition. Various aspects of the music could easily be merged and taken into consideration when calculating the musical distance between two different pieces. Using a big data framework, the problem of the fuzzy definition of music similarity can be avoided, by using a similarity estimation algorithm, that takes multiple of the accounted features of this thesis into consideration. Merging multiple approaches with different weights can offer a more diverse music recommendation system than already existing ones.\\ 
+To do this, a lot of different features are required and have to be extracted from the audio data first. Content (e.g., audio features) and context (e.g., listener behavior) data can then be fed into a big data framework to speed up operations. For this thesis, however, the focus lies on content-based data/ audio features only.\\ 
+Context-based collaborative-filtering techniques in combination with big data frameworks are already well researched. Also they take the music taste of other users into account. But this thesis is meant to propose a user-centric recommendation engine, relying on musical properties of the songs only. By solely relying on the musical features of the songs, no biasing due to the popularity of artists is to be expected.\\
 
+\section{Outline}
 
-The goal of this thesis is to propose a transparent music similarity retrieval method based on various weighted content-based data. 
-Applying different weights to different features allows similarity retrieval methods to search for different kinds of similarities. 
-E.g., weighing the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, whilst melodic/ timbre, etc. similarities allows to search for similar songs from musical subgenres. 
-The user would get to decide what kind of playlist he wants to create. 
-Adding contextual data and feeding it to an algorithm could add more or less popular music to the playlist with the goal to discover new upcoming artists or get other popular and most listened to music. 
-For this thesis, however, the focus lies on content-based data/ audio features.\\ 
-\ \\
-\underline{How to approach this?}
-\ \\
-\ \\
-First of all, a lot of data is required. In the first part, different scientific datasets are evaluated. 
-Secondly, the available features are shown and explained. 
-In the third part, different metrics are explained using the previously explored features. 
-Lastly, a big data approach to efficiently use the gathered features is proposed and evaluated. A way to evaluate the results is also proposed.
+\noindent The thesis is structured into four main problems, pictured in figure \ref{structh}. These different tasks are solved throughout the chapters of the thesis.
 
-\section{Overview}
-
-\textit{Structure: \\}
-\ \\
 \begin{figure}[htbp]
 	\centering
 	%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
 	\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
-	\smartdiagram[priority descriptive diagram]{PART IV: Performance Tuning, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
+	\smartdiagram[priority descriptive diagram]{PART IV: Evaluation of the Results, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
+	\captionof{figure}{Structure}
+	\label{structh}
 \end{figure}
 
-\section{Big Data}
+\noindent First of all, a lot of data is required. In chapter \ref{audiofeat}, different scientific datasets and sources for audio files are evaluated. The first chapter also explains the basics of Music Information Retrieval (MIR) and gives a short overview of different similarity measurements based on different audio features and aspects of the music. In the last section of this chapter an introduction to big data frameworks is given and the choice of Spark as the big data processing framework is explained.\\
+Chapter \ref{simanal} multiple algorithms and approaches for the computation of similarity between timbral, melodic and rhythmic features are evaluated and selected.\\
+The following chapter \ref{implementationdet} explains the implementation of the feature extraction process in parallel on a cluster and the implementation of the recommender system with Spark.\\
+Lastly, in chapter \ref{bds2} the resulting song recommendations are proposed and evaluated, and chapter \ref{summarych} summarizes all results, and provides an outlook for possible future research. 
 
-Why using a big data framework would help: 
-music similarity is not well defined. It is a rather subjective value that differs from listener to listener. 
-Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics or a combination of more than a few of these features. The usage of a big data framework allows creating a variable/ fuzzy metric definition. Various parameters could easily be taken into consideration when calculating the musical distance of two different pieces. 
-Using a Big Data framework, the problem of the fuzzy definition of music similarity could be avoided, if a metric can be found, that takes multiple of the accounted features of this thesis into consideration.
-Available information includes metadata, user data, audio features, sheet music, and more.
+
+
+
+
+
+
 
 \chapter{Music Information Retrieval and Big Data}\label{audiofeat}
 
@@ -443,7 +434,7 @@ Rhythm based music similarity algorithms use timing information of various event
 
 \subsection{Metadata Based/ Collaborative Filtering}\label{collaborative}
 
-Most of the research that combines the field of music information retrieval with big data frameworks relies on data based on the listening behaviour of many users of, e.g., music streaming platforms. In 2012 the MSD Challenge was brought to the MIR community. Researchers were challenged to give a list of song recommendations based on a large set of user data, the Million Song Dataset (MSD, see section \ref{datasets}). As an example, if user X listens a lot to artist A and B and user Y listens mostly to artist A and C, then user X could probably like artist C as well. These kinds of collective listening behavior based recommendations are called collaborative filtering and are pretty common in large music streaming services, although not necessarily representing direct musical similarity. \cite[p. 192f.]{knees1}\\
+Most of the research that combines the field of music information retrieval with big data frameworks relies on data based on the listening behavior of many users of, e.g., music streaming platforms. In 2012 the MSD Challenge was brought to the MIR community. Researchers were challenged to give a list of song recommendations based on a large set of user data, the Million Song Dataset (MSD, see section \ref{datasets}). As an example, if user X listens a lot to artist A and B and user Y listens mostly to artist A and C, then user X could probably like artist C as well. These kinds of collective listening behavior based recommendations are called collaborative filtering and are pretty common in large music streaming services, although not necessarily representing direct musical similarity. \cite[p. 192f.]{knees1}\\
 Recommendation systems based on collaborative filtering tend to propose commonly well-known artists rather than not so well-known ones, possibly biasing the resulting recommendation. On the other hand, these kinds of similarity algorithms can work very fast and efficient in a big data environment. The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on lyrics and also hybrid recommendation systems that combine lyrics, metadata, and collaborative filtering are also possible.\\
 However, all of these recommendation strategies are not directly based on musical features and are not evaluated further throughout this thesis. But they are a possible addition for a hybrid recommendation engine for future research. 
 An example using user-based collaborative filtering is the paper "Design and Implementation of Music Recommendation System Based on Hadoop" \cite{metadat1}. 
