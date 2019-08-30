@@ -59,7 +59,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Private Music Collection}{16}{figure.2.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{1517 Artists and Musicnet}{16}{figure.2.13}
+\contentsline {subsubsection}{1517-Artists and Musicnet}{16}{figure.2.13}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Covers80}{16}{figure.2.13}
 \defcounter {refsection}{0}\relax 

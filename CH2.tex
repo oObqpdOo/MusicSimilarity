@@ -5,7 +5,7 @@
 
 \section{Timbre Similarity} \label{musly}
 
-This section focuses on different similarity measurements and metrics based on MFCCs. Mel Frequency Cepstral Coefficients have already been introduced in chapter \ref{mfccsim} as a feature to describe timbre.\\
+This section focuses on different similarity measurements and metrics based on MFCCs. Mel Frequency Cepstral Coefficients have already been introduced in Section \ref{mfccsim} as a feature to describe timbre.\\
 
 \subsection{Euclidean Distance}\label{mfcceuc}
 
@@ -31,7 +31,7 @@ As a second step the result has to be symmetrized.
 \begin{equation} \label{eq:KL2}
 d_{KL}(P, Q) = \frac{1}{2} (KL_{(P||Q)} + KL_{(Q||P)}) 
 \end{equation}
-This approach is one of the two available similarity metrics in the Musly \cite{musly1} toolkit (see section \ref{mirtoolkit}). It can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
+This approach is one of the two available similarity metrics in the Musly \cite{musly1} toolkit (see Section \ref{mirtoolkit}). It can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:SKL}
 d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
 \end{equation}
@@ -50,7 +50,7 @@ JS(P, Q) = \frac{1}{2} log|\Sigma_m| - \frac{1}{4} log |\Sigma_P| - \frac{1}{4} 
 \end{equation}
 
 \subsubsection{Mutual Proximity}\label{mprox}
-After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP). \cite{musly2}. This method wants to reduce the effect of a phenomenon called hubness that appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
+After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP). \cite{musly2}. This method wants to reduce the effect of a phenomenon called "hubness", which appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
 Schedl and Knees state: "To apply MP to a distance matrix, it is assumed that the distances $D_{x,i = 1..N}$ from an object $x$ to all other objects in the data set follow a certain probability distribution; thus, any distance $D_{x,y}$ can be reinterpreted as the probability of $y$ being the nearest neighbor of $x$, given the distance $D_{x,y}$ and the probability distribution $P(x)$ [...] MP is then defined as the probability that $y$ is the nearest neighbor of $x$ given $P(x)$ and $x$ is the nearest neighbor of $y$ given $P(y)$" \cite[p. 80]{knees1}\\
 Resulting in: 
 \begin{equation} \label{eq:mp1}
@@ -64,7 +64,7 @@ according to \cite[p. 80]{knees1}\\
 
 \subsection{Gaussian Mixture Models and Block-Level Features}\label{blocklevel}
 Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models (GMMs) of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations." \cite[p. 65]{knees1} Therefore, the usage of GMMs is not further considered in this thesis.\\
-The last method mentioned, but not implemented in this thesis for timbral similarity uses block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g., multiple second long, audio frames. Features like fluctuation patterns (later introduced in section \ref{flucpat}) and spectral patterns (containing timbre information) are computed for these larger blocks of frames. 
+The last method mentioned, but not implemented in this thesis for timbral similarity uses block-level features as proposed by Seyerlehner \cite{seyerlehnerblock} and described in short by Knees and Schedl \cite[p. 67]{knees1}. Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g., multiple-second long, audio frames. Features like fluctuation patterns (later introduced in Section \ref{flucpat}) and spectral patterns (containing timbre information) are computed for these larger blocks of frames. 
 
 \subsection{Validation}
 
@@ -73,7 +73,7 @@ Using the Musly toolkit, a first evaluation unsing the symmetric KL divergence i
 
 \subsubsection{Genre Recall Rate/ Construction Noise}
 In general, a good measurement for the efficiency of timbre similarity algorithms, is the ability to recommend songs of the same genre. 
-Alternatively, the example proposed by Dr. Bosse from the introduction was tested (see chapter \ref{intro}). Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results were returned in descending order: 
+Alternatively, the example proposed by Dr. Bosse from the introduction was tested (see Chapter \ref{intro}). Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results were returned in descending order: 
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
@@ -107,7 +107,7 @@ Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 
 	\label{fig:constn}
 \end{figure}
 
-\noindent Using an extended dataset consisting of the private music collection, private field recordings, the full fma-dataset, and the musicnet data, the following results could be achieved: 
+\noindent Using an extended dataset consisting of the private music collection, private field recordings, the full FMA dataset, and the musicnet data, the following results could be achieved: 
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}

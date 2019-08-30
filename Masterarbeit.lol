@@ -7,9 +7,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.1}librosa}{51}{lstlisting.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.2}essentia standard}{52}{lstlisting.4.2}
+\contentsline {lstlisting}{\numberline {4.2}Essentia standard}{52}{lstlisting.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.3}essentia streaming}{53}{lstlisting.4.3}
+\contentsline {lstlisting}{\numberline {4.3}Essentia streaming}{53}{lstlisting.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.4}parallel python}{54}{lstlisting.4.4}
 \defcounter {refsection}{0}\relax 
@@ -19,7 +19,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.7}rp preprocessing}{59}{lstlisting.4.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {4.8}euclidean distance DF}{60}{lstlisting.4.8}
+\contentsline {lstlisting}{\numberline {4.8}Euclidean distance DF}{60}{lstlisting.4.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {4.9}Filter for requested song}{61}{lstlisting.4.9}
 \defcounter {refsection}{0}\relax 

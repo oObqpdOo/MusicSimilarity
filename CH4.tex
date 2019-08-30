@@ -8,8 +8,8 @@ This chapter presents some of the most promising approaches to compute rhythm si
 
 \subsection{Beat Histogram}\label{beathist}
 
-One possible similarity measurements is, e.g., the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. The essentia toolkit offers methods to extract the beat histogram. The different detected BPMs are normalized to 1. If a song changes its tempo, then multiple peaks can be seen.\\ 
-Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the Swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as the singer in 1999. The 1994 version changes its tempo in the outro of the song, and the tempo change can be seen in the histogram in figure \ref{ssbh} as a second large peak around 120 BPM.
+One possible similarity measurements is, e.g., the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. The Essentia toolkit offers methods to extract the beat histogram. The different detected BPMs are normalized to 1. If a song changes its tempo, then multiple peaks can be seen.\\ 
+Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the Swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as the singer in 1999. The 1994 version changes its tempo in the outro of the song, and the tempo change can be seen in the histogram in Figure \ref{ssbh} as a second large peak around 120 BPM.
 Similarities between two beat histograms can be computed using the Euclidean distance. 
 
 \begin{figure}[htbp]
@@ -93,7 +93,7 @@ The Bark of a frequency $f$ can be determined using formula \ref{eq:bark}.
 \begin{equation} \label{eq:bark}
 Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
 \end{equation}
-The algorithm to extract the rhythm patterns, the rhythm histogram, and statistical spectrum descriptors measuring the variations over the critical frequency bands, can be seen in figure \ref{fig:rpe}.
+The algorithm to extract the rhythm patterns, the rhythm histogram, and statistical spectrum descriptors measuring the variations over the critical frequency bands, can be seen in Figure \ref{fig:rpe}.
 
 \begin{center}
   % setting the typeface to sans serif and the font size to small
@@ -167,7 +167,7 @@ Pohle, Schnitzer et al. later refined fluctuation patterns into onset patterns, 
 \subsection{Rhythm Histogram}
 
 A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
-The difference in comparison to the beat histogram mentioned earlier in section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefore the sub-rhythms of single instruments into account. 
+The difference in comparison to the beat histogram mentioned earlier in Section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefore the sub-rhythms of single instruments into account. 
 
 \begin{figure}[htbp]
 	\centering
@@ -240,7 +240,7 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 	\label{fig:ons1}
 \end{figure}	
 
-\noindent Looking at the extracted onset features of the Song "Behind Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in figure \ref{fig:ons1}, one can see that the quality of these signals is greatly dependent on the underlying beat extraction and onset detection algorithms. E.g., the librosa toolkit struggles to detect beats in the first 10 seconds of the song "Behind Space" recorded in 1999. Also, this representation seems to contain a lot less valuable and comparable information in contrast to fluctuation patterns. In conclusion, this approach is discarded and not further considered and tested in this thesis.  
+\noindent Looking at the extracted onset features of the Song "Behind Space" by In Flames (sung by Anders Frieden 99' and Stanne Mikkels 94') in Figure \ref{fig:ons1}, one can see that the quality of these signals is greatly dependent on the underlying beat extraction and onset detection algorithms. E.g., the librosa toolkit struggles to detect beats in the first 10 seconds of the song "Behind Space" recorded in 1999. Also, this representation seems to contain a lot less valuable and comparable information in contrast to fluctuation patterns. In conclusion, this approach is discarded and not further considered and tested in this thesis.  
 
 \section{Summary}\label{sumfeat}
 
@@ -252,8 +252,8 @@ The chosen similarity metrics for timbre similarity are :
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item Euclidean Distance
-	\item Symmetric Kullback-Leibler Divergence
-	\item Jensen-Shannon like Divergence
+	\item symmetric Kullback-Leibler divergence
+	\item Jensen-Shannon-like Divergence
 \end{itemize}
 To calculate the distances, for each song the mean and variance vectors and covariance matrix has to be computed from the MFCCs. These are stored in two different output text files: 
 \begin{itemize}
@@ -261,7 +261,7 @@ To calculate the distances, for each song the mean and variance vectors and cova
 	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $\frac{b \cdot (b+1)}{2}$))
 	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix (length $b \cdot b$)
 \end{itemize}
-The amount of Mel-bands chosen is $b = 13$. The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the big data framework and reduce the computation time when a similarity estimation request is processed. To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in section \ref{mfcceuc}) in the triangular matrix.\\
+The amount of Mel-bands chosen is $b = 13$. The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the big data framework and reduce the computation time when a similarity estimation request is processed. To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in Section \ref{mfcceuc}) in the triangular matrix.\\
 
 \subsubsection{Melodic Similarity}
 
