@@ -179,10 +179,10 @@ When running on top of a Hadoop installation, Spark can additionally take advant
 
 There are multiple options of passing a Spark programm to the cluster. The first one is to use a spark shell e.g. by calling \lstinline{pyspark} when working with the Spark Python API or \lstinline{spark-shell} (Scala). If the interactive option of using a spark shell is chosen, a SparkSession is automatically created and exited once the spark shell gets closed. 
 Alternatively the Spark application can be passed to the cluster directly using \lstinline{spark-submit application.py -options} (Python).
-As mentioned previously the configuration of the Spark cluster can be changed. This can either be done by using a cluster configuration file (e.g. spark-defaults.conf), by submitting the parameters as arguments passed to pyspark, spark-console or spark-submit or by directly setting the configuration properties inside the Spark application code (see example code \ref{lst:cconf})\\
+As mentioned previously the configuration of the Spark cluster can be changed. This can either be done by using a cluster configuration file (e.g. spark-defaults.conf), by submitting the parameters as arguments passed to pyspark, spark-console or spark-submit or by directly setting the configuration properties inside the Spark application code (see Code Snippet \ref{lst:cconf})\\
 
 
-\begin{pythonCode}[frame=single,label={lst:cconf},caption={example cluster configuration python},captionpos=b]
+\begin{pythonCode}[frame=single,label={lst:cconf},caption={Example cluster configuration python},captionpos=b]
 confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
 confCluster.set("spark.driver.memory", "1g")
 confCluster.set("spark.executor.memory", "1g")
@@ -207,9 +207,9 @@ spark = SparkSession.builder.master("cluster").appName("MusicSimilarity").
 
 For this thesis, the programming language of choice is Python. With its high-level Python API, Spark applications can take advantage of commonly known and widely used Python libraries such as Numpy or Scipy. It also contains its own powerful libraries like the Spark ML library for machine learning applications or GraphX for the work with large graphs.\\ 
 Spark can be used in combination with SQL (e.g., the Hive project) and NoSQL Systems like Cassandra and HBase. Spark SQL enables the transformation of RDDs to well structured DataFrames. The DataFrame concept is later used in Section \ref{bds1}.\\
-One other important concept Spark uses is its lazy evaluation or lazy execution. Spark differentiates between data transformations (e.g. \lstinline{filter()}, \lstinline{join()}, and \lstinline{map()}) and actions (e.g. \lstinline{take} or \lstinline{count}). The actual processing and transformation of data is deferred until an action is called. In the example code snippet \ref{lst:lev} the \lstinline{map()} and \lstinline{filter()} transformations are only executed once the \lstinline{count()} action is called. Only then a DAG is created together with logical and physical execution plans and the tasks are distributed across the Executors. The lazy evaluation allows Spark to combine as many operations as possible which may lead to a drastic reduction of processing stages and data shuffling (data transferred between executors) and thus reducing unnecessary overhead and data/ network traffic. But the lazy execution has to be kept in mind during debugging and performance testing. \cite[p.73]{sparkbook1}
+One other important concept Spark uses is its lazy evaluation or lazy execution. Spark differentiates between data transformations (e.g. \lstinline{filter()}, \lstinline{join()}, and \lstinline{map()}) and actions (e.g. \lstinline{take} or \lstinline{count}). The actual processing and transformation of data is deferred until an action is called. In the example Code Snippet \ref{lst:lev} the \lstinline{map()} and \lstinline{filter()} transformations are only executed once the \lstinline{count()} action is called. Only then a DAG is created together with logical and physical execution plans and the tasks are distributed across the Executors. The lazy evaluation allows Spark to combine as many operations as possible which may lead to a drastic reduction of processing stages and data shuffling (data transferred between executors) and thus reducing unnecessary overhead and data/ network traffic. But the lazy execution has to be kept in mind during debugging and performance testing. \cite[p.73]{sparkbook1}
 
-\begin{pythonCode}[frame=single,label={lst:lev},caption={lazy evaluation},captionpos=b]
+\begin{pythonCode}[frame=single,label={lst:lev},caption={Lazy evaluation},captionpos=b]
 chroma = sc.textFile("features.txt").repartition(repartition_count)
 chroma = chroma.map(lambda x: x.split(';'))
 chroma = chroma.filter(lambda x: x[0] == "OrbitCulture_SunOfAll.mp3")

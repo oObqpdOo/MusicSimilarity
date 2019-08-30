@@ -73,7 +73,7 @@ The field of music information retrieval (MIR) is a large research area combinin
 
 \subsection{Fourier Transformation}\label{featsec}
 
-Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then computing the power spectrum (equation \ref{eq:absfft}) 
+Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then computing the power spectrum (equation \ref{eq:absfft}).
 \begin{equation} \label{eq:fft}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 X_m = \sum_{k=0}^{K-1}{x_k \cdot e^ { - \frac{K}{ 2 \cdot \pi \cdot i}\cdot k\cdot m}}
@@ -114,7 +114,7 @@ Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a s
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 K = f_s \cdot t
 \end{equation}
-Calculating an FFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \ref{eq:hop})\cite[p. 41]{knees1}, the full, resulting spectrogram would contain 11627 frames with 1024 frequency values per frame. (eq: \ref{eq:hop}) 
+Calculating an FFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \ref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain 11627 frames with 1024 frequency values per frame. (eq: \ref{eq:hop}) 
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
@@ -291,12 +291,12 @@ The plot in Figure \ref{laylacbeat} depictures the onsets and estimated beats in
 To extract audio features like the ones presented in Section \ref{featsec} (MFCCs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in \cite{audiofeattoolb}.
 The YAAFE toolkit \cite{yaafe1} is able to extract a lot of different audio features like energy, MFCC, or loudness directly into the Hadoop file format *.h5 making it ideal for big data frameworks to use. It can be used with C++, Python, or Matlab.\\
 The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of rhythm descriptors, bpm, etc. It can also be used with C++ and Python\\
-The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well documented, and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots in this chapter were created using librosa. Code snippets for the extraction of low-level features with Essentia and librosa is given in Section \ref{simmet} as well as a performance analysis of both.\\
+The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well documented, and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots in this chapter were created using librosa. Code snippets for the extraction of low-level features with Essentia and librosa are given in Section \ref{simmet} as well as a performance analysis of both.\\
 
 \subsection{Music Similarity}
 
 An easy way to test state-of-the-art music similarity algorithms is to use the open-source toolkit Musly \cite{musly1}. It is based on statistical models of MFCC features and calculates the distances between songs very fast, supporting OpenMP acceleration. It automatically extracts the features it requires from the audio files. To compare the extracted features and calculate the distances, it implements the method introduced by Mandel-Ellis \cite{mandelellis1} and a timbre based improved version of the Mandel-Ellis algorithm using a Jensen-Shannon-like divergence \cite{musly2}. More details and a re-implementation of some of the features from this toolkit are presented in Section \ref{musly}\\
-As another option, the MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \cite{matl1}. A port to GNU Octave \cite{octave1} is also available \cite{mirtoolbox2}. The code snippet \ref{lst:MIRmat} is all it takes to compute a similarity matrix based on MFCC features, but the calculation is rather slow.
+As another option, the MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \cite{matl1}. A port to GNU Octave \cite{octave1} is also available \cite{mirtoolbox2}. The Code Snippet \ref{lst:MIRmat} is all it takes to compute a similarity matrix based on MFCC features, but the calculation is rather slow.
 
 \lstset{language=Matlab}          % Set your language (you can change the language for each code-block optionally)
 %\newpage
@@ -543,7 +543,7 @@ The music sources and amounts of songs used for the task at hand are listed in T
 			\hline
 		\end{tabular}
 	\end{center}
-	\caption{music datasets}
+	\caption{Music datasets}
 	\label{table_dsets}
 \end{table}
 \FloatBarrier
@@ -556,7 +556,7 @@ Another way of getting music samples, audio features, and metadata could be by u
 %A part of the available audio features comes from the Echo Nest\cite{echonest1}.
 The Downside using the Spotify API is that there is no packed and ready to use test dataset containing the relevant features. So for scientific purposes, a test dataset would have to be created first. With a small Python library named Spotipy, the available information can be accessed very easily. \cite{spotipy1}\\
 %For the purpose of this thesis, the option of creating an own dataset using the Spotify API and Spotipy was considered and ten very small test playlists of different genres were created using the Spotify Playlist Miner \cite{spotmin1}. 
-Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from selected songs in a playlist that contain a preview URL with to 30-second audio snippet. The audio features and analysis data is saved as a JSON file containing information over:
+Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from selected songs in a playlist that contain a preview URL to a 30-second audio snippet. The audio features and analysis data is saved as a JSON file containing information over:
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item acousticness
@@ -612,7 +612,7 @@ Another addition is the secondhand dataset, containing a list of cover songs in 
 	\centering
 	\framebox{\parbox{3in}{      
 			\includegraphics[scale=0.5]{Images/MSD_Tagtraum.JPG}}}
-	\caption{million song dataset genre distribution \cite[p. 6]{msd5}}
+	\caption{Million Song Dataset genre distribution \cite[p. 6]{msd5}}
 	\label{msddist}
 \end{figure}
 \FloatBarrier
