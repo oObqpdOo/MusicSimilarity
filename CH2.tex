@@ -10,7 +10,7 @@ This section focuses on different similarity measurements and metrics based on M
 \subsection{Euclidean Distance}\label{mfcceuc}
 
 To further reduce the dimensionality of the original MFCC features, a statistical summarization can be calculated. For each of the Mel-bands (13 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 13 mean values, a 13 by 13 covariance matrix ($\frac{13*(13-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the covariances and the main diagonal contains the variances) and 13 variances. These vectors are not dependent on the length of the actual song. \cite[pp. 51ff]{knees1}\\
-Using such a model, the distance between two songs can be calculated using the $L_p$ distance as in equation \ref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
+Using such a model, the distance between two songs can be calculated using the $L_p$ distance as in equation \eqref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
 \begin{equation} \label{eq:distGmm}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}

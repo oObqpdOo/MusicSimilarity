@@ -4,7 +4,8 @@
 	\begin{center}
 	\noindent\textbf{Schätzung der Ähnlichkeit von Musikstücken unter Verwendung mehrerer Abstandsmaße mithilfe des Big Data Frameworks Spark}
 	\end{center}
-	Die Musikinformationsverarbeitung ist ein Teilgebiet der Informatik, das meist datengetrieben und sehr mathematisch angegangen wird. Das Ziel dieser Arbeit ist es, verschiedene Teilgebiete der Informatik mit musiktheoretischem Wissen zu verbinden um Schwachstellen aktueller Algorithmen zur Empfehlung ähnlicher Musikstücke, die sich auf einzelne Teilaspekte der Musik, wie Melodie, Rhythmus oder Klangfarbe beschränken, zu finden. 
+	Die Musikinformationsverarbeitung ist ein Teilgebiet der Informatik, das meist datengetrieben und sehr mathematisch angegangen wird. Das Ziel dieser Arbeit ist es, verschiedene Teilgebiete der Informatik mit musiktheoretischem Wissen zu verbinden, um Schwachstellen aktueller Algorithmen zur Empfehlung ähnlicher Musikstücke, die sich auf einzelne Teilaspekte der Musik, wie Melodie, Rhythmus oder Klangfarbe beschränken, zu finden. 
+	Ein parametrisierbares Empfehlungssystem, basierend auf dem Big Data Framwork Spark, wird präsentiert. Dieses berücksichtigt verschiedene klangliche Eigenschaften der Musik und erstellt Musikempfehlungen basierend auf den persönlichen Vorlieben eines Nutzers.
 	
 \end{abstract}
 
@@ -14,7 +15,8 @@
 	\begin{center}
 	\noindent\textbf{Estimating music similarity by merging various similarity measurements with the help of the big data framework Spark.}
 	\end{center}
-	The field of music information retrieval (MIR) in computer science is mostly a data-driven and purely mathematical topic. The goal of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potential weak spots of current music recommender systems focusing on single aspects like melody, rhythm, and timbre. 
+	The field of music information retrieval in computer science is mostly a data-driven and purely mathematical topic. The goal of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potential weak spots of current music recommender systems focusing on single aspects like melody, rhythm, and timbre.
+	A parameterizable recommender system based on the big data processing framework Spark is introduced, which takes multiple tonal properties of music into account and is able to recommend music based on a user's personal preferences.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -31,14 +33,14 @@ The idea originated from Dr. T. Bosse from the chair for advanced computing at t
 While refining the original idea of the theme for this master's thesis and during the first tests, it became apparent, that while there is a lot of research in the area of music similarity for single aspects of music like melody, timbre, or rhythm and even for a few fixed combinations thereof, there was no attempt made yet, to build a parameterizable system combining various of these features in a big data environment.\\
 With music streaming services like Spotify, Amazon Music, Deezer or Tidal and music sharing websites like SoundCloud, access to millions of songs is given. To explore this humongous amount of data, the need for music recommender systems rises. SoundCloud Go+, the streaming service of SoundCloud alone gives access to more than 135 million songs \cite{soundcloudgo}. 
 Of course the streaming platforms are aware of these challenges. When using services like "[ . . . ] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}\\
-But music similarity is not well defined. This is one of the first problems, dealing with this topic. It is a rather subjective value that can differ from listener to listener. Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics, or a combination of more than a few of these features.\\
+But music similarity is not well defined. This is one of the first problems while dealing with this topic. It is a rather subjective value that can differ from listener to listener. Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics, or a combination of more than a few of these features.\\
 \ \\
 \section{Goals}
 
-The goal of this thesis is to propose a transparent music similarity recommendation system based on various weighted aspects of the music instead of a fixed combination. Applying different weights to different features allows similarity retrieval methods to search for different kinds of similarities, empowering the user to decide which aspects are most important to him and returning song recommendations based on the user's preferences. E.g., weighing the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, while melodic/ timbre, etc. similarities allows to search for similar songs from musical subgenres.\\ 
+The goal of this thesis is to propose a transparent music similarity recommendation system based on various weighted aspects of the music instead of a fixed combination. Applying different weights to different features allows similarity retrieval methods to search for different kinds of similarities, empowering the user to decide which aspects are most important to the user and returning song recommendations based on the user's preferences. E.g., weighting the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, while melodic/ timbre, etc. similarities allows searching for similar songs from musical subgenres.\\ 
 The usage of a big data framework Spark allows the creation of a variable/ fuzzy metric definition. Various aspects of the music could easily be merged and taken into consideration when calculating the musical distance between two different pieces. Using a big data framework, the problem of the fuzzy definition of music similarity can be avoided, by using a similarity estimation algorithm, that takes multiple of the accounted features of this thesis into consideration. Merging multiple approaches with different weights can offer a more diverse music recommendation system than already existing ones.\\ 
-To do this, a lot of different features are required and have to be extracted from the audio data first. Content (e.g., audio features) and context (e.g., listener behavior) data can then be fed into a big data framework to speed up operations. For this thesis, however, the focus lies on content-based data/ audio features only.\\ 
-Context-based collaborative-filtering techniques in combination with big data frameworks are already well researched. Also they take the music taste of other users into account. But this thesis is meant to propose a user-centric recommendation engine, relying on musical properties of the songs only. By solely relying on the musical features of the songs, no biasing due to the popularity of artists is to be expected.\\
+To do this, a lot of different features are required and have to be extracted from the audio data first. Content (e.g., audio features) and context (e.g., listener behavior) data can then be fed into a big data framework to speed up operations. For this thesis, however, the focus lies on content-based data only.\\ 
+Context-based collaborative-filtering techniques, which take the listening behavior of other users into account, in combination with big data frameworks are already well researched. But this thesis is meant to propose a user-centric recommendation engine, relying on musical properties of the songs only. By solely relying on the musical features of the songs, no biasing due to the popularity of artists is to be expected.\\
 
 \section{Outline}
 
@@ -48,41 +50,35 @@ Context-based collaborative-filtering techniques in combination with big data fr
 	\centering
 	%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
 	\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
-	\smartdiagram[priority descriptive diagram]{PART IV: Evaluation of the Results, PART III: Similarity Estimation, PART II: Feature Extraction, PART I: Data Aggregation}
+	\smartdiagram[priority descriptive diagram]{Evaluation of the Results, Similarity Estimation, Feature Extraction, Data Aggregation}
 	\captionof{figure}{Structure}
 	\label{structh}
 \end{figure}
 
-\noindent First of all, a lot of data is required. In Chapter \ref{audiofeat}, different scientific datasets and sources for audio files are evaluated. It also explains the basics of Music Information Retrieval (MIR) and gives a short overview of different similarity measurements based on different audio features and aspects of the music. In the last section of this chapter an introduction to big data frameworks is given and the choice of Spark as the big data processing framework is explained.\\
-Chapter \ref{simanal} multiple algorithms and approaches for the computation of similarity between timbral, melodic and rhythmic features are evaluated and selected.\\
-The following Chapter \ref{implementationdet} explains the implementation of the feature extraction process in parallel on a cluster and the implementation of the recommender system with Spark.\\
+\noindent First of all, a lot of data is required. In Chapter \ref{audiofeat}, different scientific datasets and sources for audio files are evaluated. It also explains the basics of music information retrieval (MIR) and gives a short overview of different similarity measurements based on different audio features and aspects of the music. In the last section of this chapter an introduction to big data frameworks is given and the choice of Spark as the big data processing framework is explained.\\
+In Chapter \ref{simanal} multiple algorithms and approaches for the computation of similarity between timbral, melodic and rhythmic features are evaluated and selected.\\
+Chapter \ref{implementationdet} explains the implementation of the feature extraction process in parallel on a cluster and the implementation of the recommender system with Spark.\\
 Lastly, in Chapter \ref{bds2} the resulting song recommendations are proposed and evaluated, and Chapter \ref{summarych} summarizes all results, and provides an outlook for possible future research. 
-
-
-
-
-
-
 
 
 \chapter{Music Information Retrieval and Big Data}\label{audiofeat}
 
-The field of music information retrieval (MIR) is a large research area combining studies in computer science like signal processing and machine learning with psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits, and different approaches to music similarity using various audio features. An overview over big data frameworks is included as well. More in-depth information about selected metrics is later given in Chapter \ref{simanal}. 
+The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning with psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits, and different approaches to music similarity using various audio features. An overview over big data frameworks is included as well. More in-depth information about selected metrics is given in Chapter \ref{simanal}. 
 
 \section{Audio Features}
 
 \subsection{Fourier Transformation}\label{featsec}
 
-Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a Discrete Fourier transform as described in equation \ref{eq:fft} and then computing the power spectrum (equation \ref{eq:absfft}).
+Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a discrete Fourier transform (DFT) as described in equation \eqref{eq:fft} and then computing the power spectrum (equation \eqref{eq:absfft}).
 \begin{equation} \label{eq:fft}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-X_m = \sum_{k=0}^{K-1}{x_k \cdot e^ { - \frac{K}{ 2 \cdot \pi \cdot i}\cdot k\cdot m}}
+X_k = \sum_{n=0}^{N-1}{x_n \cdot e^ { - \frac{ 2 \cdot \pi \cdot i}{N}\cdot k\cdot n}}
 \end{equation}
 \begin{equation} \label{eq:absfft}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-|X_m| = \sqrt{Re(X_m)^2 + Im(X_m)^2}
+|X_k| = \sqrt{\operatorname{Re}(X_k)^2 + \operatorname{Im}(X_k)^2}
 \end{equation}
-Figure \ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear matter, a logarithmic or Mel-scale fits better to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see equation \ref{eq:mel}) \cite[pp. 53f]{knees1}.
+Figure \ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear matter, a logarithmic (see Figure \ref{laylaspecfft}) or Mel-scale fits better to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see equation \eqref{eq:mel}) \cite[pp. 53f]{knees1}.
 \begin{equation} \label{eq:mel}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 m = 1127 \cdot ln(1 + \frac{f}{700})
@@ -108,22 +104,22 @@ m = 1127 \cdot ln(1 + \frac{f}{700})
 	\label{fig:test}
 \end{figure}
 \FloatBarrier
-The high dimensionality of the spectrogram is a problem for machine learning applications and music similarity tasks, as computation based on vectors with such a high dimensionality on larger datasets would take too long for real-time applications.
-Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a song of about $t = 180s$, the time domain contains 7938000 data points usually with 16-bit resolution for mono-channel audio. 
+\noindent The high dimensionality of the spectrogram is a problem for machine learning applications and music similarity tasks, as computation based on vectors with such a high dimensionality on larger datasets would take too long for real-time applications.
+Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a song of about $t = 180s$, the time domain contains $K = 7938000$ data points usually with 16-bit resolution for mono-channel audio, following equation \eqref{eq:points}. 
 \begin{equation} \label{eq:points}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 K = f_s \cdot t
 \end{equation}
-Calculating an FFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \ref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain 11627 frames with 1024 frequency values per frame. (eq: \ref{eq:hop}) 
+Calculating a DFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \eqref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain $N_{fv} = 11627$ frames with 1024 frequency values per frame.
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
 \end{equation}
 To reduce the dimensionality of the feature vector, a typical approach in MIR would be to calculate the so-called Mel Frequency Cepstral Coefficients (MFCCs).
 
-\subsection{MFCCs}\label{mfccsim}
+\subsection{Mel Frequency Cepstral Coefficients}\label{mfccsim}
 
-Out of all features presented in this chapter, the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical aspects of the audio files like pitch or rhythm. This section gives a brief overview of the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
+Of all features presented in this chapter, the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical aspects of audio files like pitch or rhythm. This section gives a brief overview of the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
 Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal as an example for better understanding.
 \begin{figure}[htbp]
 	\centering
@@ -145,11 +141,11 @@ Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal as a
 	\label{sweep}
 \end{figure}
 \FloatBarrier
-\noindent First of all the magnitude spectrum is transformed to the Mel-scale following equation \ref{eq:mel} by assigning each frequency value to a Mel-band.
+\noindent First of all the magnitude spectrum is transformed to the Mel-scale following equation \eqref{eq:mel} by assigning each frequency value to a Mel-band.
 Doing this, dimensionality reduction can be achieved by assigning multiple frequency values to one of typically 12 to 40 Mel-bands. The resulting vectors are then fed into a discrete cosine transformation (DCT) resulting in the MFCCs for each frame. 
 \begin{equation} \label{eq:dct}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-X_k = \sum_{n=0}^{N-1}{x_n cos\left[{\frac{\pi}{N}(n + \frac{1}{2})k}\right]}
+X_k = \sum_{n=0}^{N-1}{x_n \cos\left[{\frac{\pi}{N}(n + \frac{1}{2})k}\right]}
 \end{equation}
 Figure \ref{mfcc} shows the resulting MFCCs with a high resolution of 1024 Mel-bands. This is not what in a usual application would be done, because this is nearly as high-dimensional as the original spectrogram. In comparison, Figure \ref{mfccs} shows the MFCC reduced to 13 Mel-Bands.
 To better visualize the MFCCs, all values are typically scaled to have a standard deviation of 1 and a mean value of 0 per band in the plots. 
@@ -173,7 +169,14 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 	\label{fig:mfcc}
 \end{figure}
 \FloatBarrier
-MFCCs were found to be suited to represent the timbral attributes of music \cite[p. 55 ff]{knees1}. To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. Looking at an example melody line played on a electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played key) and so-called harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the overtones of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decline faster or slower or don't appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure \ref{timbreg}.
+\noindent MFCCs were found to be suited to represent the timbral attributes of music \cite[p. 55 ff]{knees1}. To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: %tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. 
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item tonal intensity perceived as loudness
+	\item tonal quality perceived as the pitch 
+	\item timbre or tonal color
+\end{itemize}
+\noindent Looking at an example melody line played on an electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played key) and so-called harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the overtones of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decline faster or slower or don't appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure \ref{timbreg}.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -194,7 +197,7 @@ MFCCs were found to be suited to represent the timbral attributes of music \cite
 	\label{fig:timbre}
 \end{figure}
 \FloatBarrier
-These differences in timbre are also visible when looking at the MFCCs in Figure \ref{fig:timbrmfcce}. This time the MFCC plots are pictured without the previously mentioned scaling. Additionally, the mean value and standard deviance of the MFCCs four to 13 are pictured in Figure \ref{fig:timbrstatmfcce}. This calculation of statistical features is later explained in Section \ref{musly}. Although both times the exact same melody is played in the same tempo, the MFCC features vary due to the different timbral properties of the instruments. 
+\noindent These differences in timbre are also visible when looking at the MFCCs in Figure \ref{fig:timbrmfcce}. This time the MFCC plots are pictured without the previously mentioned scaling. Additionally, the mean value and standard deviance of the MFCCs 4 to 13 are pictured in Figure \ref{fig:timbrstatmfcce}. This calculation of statistical features is later explained in Section \ref{musly}. Although both times the exact same melody is played in the same tempo, the MFCC features vary due to the different timbral properties of the instruments. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -239,10 +242,9 @@ These differences in timbre are also visible when looking at the MFCCs in Figure
 
 \subsection{Other Audio Features}
 
-As another, better comprehensible, higher-level set of features, the chromagram represents the melodic/ harmonic properties of a song. The chroma plot shows the distribution of the different pitches mapped to the various semi-tones in one octave (see Figure \ref{laylachroma}). The values of each time frame are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there is only noise or silence at that frame in the recording, as depicted in the first frames of Figure \ref{laylachroma}. The chromagram has one significant downside because it is reduced to one octave and thus can not represent the melody of a song to its full extent.\\
-Figure \ref{laylapitch} shows the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. In contrast to the chromagram the pitch curve provides information over the whole spectrum and is not limited to one octave. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in \ref{midiest}.\\
-The low-level rhythmic features of a song include the estimation of the overall tempo, beats, and onset events. 
-The plot in Figure \ref{laylacbeat} depictures the onsets and estimated beats in the first 10 seconds from a recording of the song Layla by Eric Clapton.
+As another, better comprehensible, higher-level set of features, the chromagram represents the melodic/ harmonic properties of a song. The chroma plot shows the distribution of the different pitches mapped to the various semi-tones in one octave (see Figure \ref{laylachroma}). The values of each time frame are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there will be only noise or silence at that frame in the recording, as depicted in the first frames of Figure \ref{laylachroma}. The chromagram has one significant downside because it is reduced to one octave and thus can not represent the melody of a song to its full extent.\\
+Figure \ref{laylapitch} shows the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. In contrast to the chromagram the pitch curve provides information over the whole spectrum and is not limited to one octave. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in Section \ref{midiest}.\\
+
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -262,6 +264,10 @@ The plot in Figure \ref{laylacbeat} depictures the onsets and estimated beats in
 	\caption{Features of the song Layla by Eric Clapton}
 	\label{fig:feat1}
 \end{figure}
+
+\noindent The low-level rhythmic features of a song include the estimation of the overall tempo, beats, and onset events. 
+The plot in Figure \ref{laylacbeat} depicts the onsets and estimated beats in the first 10 seconds from a recording of the song Layla by Eric Clapton. The extraction of these rhythm features is explained in Section \ref{rhythmsimc}.
+
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -388,7 +394,7 @@ The purple line is the estimated pitch; however, there are unwanted jumps betwee
 	\label{fig:melodia}
 \end{figure}
 
-\noindent Sadly the conversion from the extracted pitches to MIDI notes does not work flawlessly. It is apparent in Figure \ref{fig:transc} that the transcription does not work accurately enough, even for a classical music piece with only one instrument. Figure \ref{femm} shows the output of a python script using the Melodia VAMP plugin to calculate a MIDI file containing the main melody line, and Figure \ref{feam} shows the transcribed MIDI notes from Aubio. The detected melody lines are jumping between different octaves, and finding the right threshold for the separation between silence and detected notes turns out to be problematic as well.
+\noindent Sadly the conversion from the extracted pitches to MIDI notes does not work flawlessly. It is apparent in Figure \ref{fig:transc} that the transcription does not work accurately enough, even for a classical music piece with only one instrument. Figure \ref{femm} shows the output of a Python script using the Melodia VAMP plugin to calculate a MIDI file containing the main melody line, and Figure \ref{feam} shows the transcribed MIDI notes from Aubio. The detected melody lines are jumping between different octaves, and finding the right threshold for the separation between silence and detected notes turns out to be problematic as well.
 
 \begin{figure}[htbp]
 	\centering

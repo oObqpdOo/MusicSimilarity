@@ -55,12 +55,16 @@
 \renewcommand{\rmdefault}{cmr}
 \renewcommand{\sfdefault}{phv}
 \renewcommand{\ttdefault}{lmtt}
-\usepackage{subcaption}
+%\usepackage{subcaption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
 
 
 %% Packages f�r Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
 %\usepackage{subfig} %%Teilabbildungen in einer Abbildung
+%\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+
 %\usepackage{pst-all} %%PSTricks - nicht verwendbar mit pdfLaTeX
 
 %% Beachten Sie:
@@ -479,13 +483,22 @@ pdfstartview={XYZ null null 1.00}
     breaklines=true,
 }
 
+\selectlanguage{english}
+
 \renewcommand{\lstlistlistingname}{List of Code Snippets}
 \renewcommand{\lstlistingname}{Code Snippet}
+
+%\renewcommand*\listfigurename{List of Figures}
+%\renewcommand{\contentsname}{Table of Contents}
+%\renewcommand{\listfigurename}{List of Figures}
+%\renewcommand{\listtablename}{List of Tables}
 
 %\usepackage[parfill]{parskip}
 
 \begin{document}
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
+
+\selectlanguage{english}
 
 %\rmfamily
 %\sffamily
@@ -647,9 +660,10 @@ placeholderplaceplaceholder \= placeholder \kill
 \textbf{BH} \> Beat Histogram\\
 \textbf{BPM} \> Beats Per Minute\\
 \textbf{BRP} \> Bucketed Random Projection\\
-\textbf{DAG} \> Sirected Acyclic Graph\\
-\textbf{DCT} \> Siscrete Cosine Transformation\\
+\textbf{DAG} \> Directed Acyclic Graph\\
+\textbf{DCT} \> Discrete Cosine Transformation\\
 \textbf{DF} \> Spark DataFrame\\
+\textbf{DFT} \> Discrete Fourier Transform\\
 \textbf{DTW} \> Dynamic Time Warping\\
 \textbf{ESA} \> Explicit Semantic Analysis\\
 \textbf{FFT} \> Fast Fourier Transformation\\
@@ -876,9 +890,8 @@ placeholderplaceplaceholder \= placeholder \kill
 
 \section{Feature Analysis}
 
-\noindent Scatter Matrix, 1 Song (Soundtack) from 50 song sample\\
-Main diagonal = Kernel Density Estimationicked\\
-Subset of 5 genres in Figure \ref{fig:corr8}\\
+\noindent Scatter Matrix, 1 Song (Soundtack) from 50 (5 genres) song sample in Figure \ref{fig:corr8}\\
+Main diagonal = Kernel Density Estimation\\
 
 \begin{figure}[htbp]
 	\centering

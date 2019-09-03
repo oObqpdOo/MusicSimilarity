@@ -1,4 +1,3 @@
-
 \section{Rhythmic Similarity}\label{rhythmsimc}
 
 This chapter provides an overview of some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
@@ -9,8 +8,6 @@ This chapter presents some of the most promising approaches to compute rhythm si
 \subsection{Beat Histogram}\label{beathist}
 
 One possible similarity measurements is, e.g., the usage of beat histograms as proposed by Tsanetakis and Cook \cite{rhythm3}. The Essentia toolkit offers methods to extract the beat histogram. The different detected BPMs are normalized to 1. If a song changes its tempo, then multiple peaks can be seen.\\ 
-Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the Swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as the singer in 1999. The 1994 version changes its tempo in the outro of the song, and the tempo change can be seen in the histogram in Figure \ref{ssbh} as a second large peak around 120 BPM.
-Similarities between two beat histograms can be computed using the Euclidean distance. 
 
 \begin{figure}[htbp]
 	\centering
@@ -44,8 +41,11 @@ Similarities between two beat histograms can be computed using the Euclidean dis
 	\caption{Beat Histogram}
 	\label{fig:bh1}
 \end{figure}
-
 \FloatBarrier
+
+\noindent Figure \ref{fig:bh1} shows the beat histograms of the song "Rock you like a hurricane" by the Scorpions and covered by Knightsbridge as well as two different versions of the song "Behind Space" from the Swedish metal band In Flames, one is sung by Stanne Mikkels in 1994 and the second version was recorded with Anders Friden as the singer in 1999. The 1994 version changes its tempo in the outro of the song, and the tempo change can be seen in the histogram in Figure \ref{ssbh} as a second large peak around 120 BPM.
+Similarities between two beat histograms can be computed using the Euclidean distance. 
+
 
 \noindent Gruhne (et al.) further improved the beat histograms and suggested an additional post-processing step before calculating the similarity between songs with the euclidean distance. They found that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further (see \cite[182]{rbh1}). This thesis doesn't use the additional re-sampling.\\
 \noindent Another paper that is just mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature \cite{rhythm1} to compute similarities.
@@ -88,8 +88,8 @@ To extract these features, the rp\_extractor library for python \cite{rp_extract
 	\label{fig:rp1}
 \end{figure}
 
-\noindent The x-axis represents the frequency bands converted to the Bark-scale (a scale representing the human auditory system comparable to the Mel-scale from equation \ref{eq:mel}), and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (around 600 BPM).
-The Bark of a frequency $f$ can be determined using formula \ref{eq:bark}.
+\noindent The x-axis represents the frequency bands converted to the Bark-scale (a scale representing the human auditory system comparable to the Mel-scale from equation \eqref{eq:mel}), and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (around 600 BPM).
+The Bark of a frequency $f$ can be determined using equation \eqref{eq:bark}.
 \begin{equation} \label{eq:bark}
 Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
 \end{equation}
@@ -166,7 +166,7 @@ Pohle, Schnitzer et al. later refined fluctuation patterns into onset patterns, 
 
 \subsection{Rhythm Histogram}
 
-A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the Rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
+A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
 The difference in comparison to the beat histogram mentioned earlier in Section \ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefore the sub-rhythms of single instruments into account. 
 
 \begin{figure}[htbp]

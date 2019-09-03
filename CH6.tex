@@ -1,5 +1,5 @@
 %==============================================================
-
+%\newpage
 \section{Big Data Framework Spark}\label{bds1}
 
 \begin{figure}[htbp]
@@ -31,13 +31,13 @@
 	\label{filesize}
 \end{figure}
 
-After all features are extracted, the next step is to load the feature files into the HDFS.
+\noindent After all features are extracted, the next step is to load the feature files into the HDFS.
 All feature files of the same type (forming the feature sets) get merged into one large file. For the about 114000 songs all feature files sum up to about 11.2 GB (see Figure \ref{filesize}). 
 \noindent Large streaming platforms like Spotify give access to about 30 million songs in their databases. At this scale, the feature files would approximately sum up to about 3 TB.\\
 
 \subsection{Underlying Hardware}
 
-The first tests with Spark were performed on a single PC with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 32 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running an older version of Spark (1.6.0)\\
+The first tests with Spark were performed on a single pc with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 32 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running an older version of Spark (1.6.0)\\
 
 \subsection{Workflow}
 
@@ -104,7 +104,7 @@ result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\noindent This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the Euclidean distance is computed using python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
+\noindent This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF the Euclidean distance is computed using Python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
 
 \begin{pythonCode}[frame=single,label={lst:comp},caption={Filter for requested song},captionpos=b]
 song = fullFeatureDF.filter(fullFeatureDF.id == songname).collect()
@@ -113,7 +113,7 @@ comparator_value = song[0]["mfccEuc"]
 
 \noindent When working with RDDs instead of DataFrames, the computation of the distances between the feature vectors is performed with a \lstinline{map()} instead of a UDF (see Code Snippet \ref{lst:eucr}). 
 
-\begin{pythonCode}[frame=single,label={lst:eucr},caption={euclidean distance RDD},captionpos=b]
+\begin{pythonCode}[frame=single,label={lst:eucr},caption={Euclidean distance RDD},captionpos=b]
 resultRP = rp_vec.map(lambda x: (x[0], distance.euclidean(np.array(x[1]), np.array(comparator_value))))
 \end{pythonCode}
 
@@ -144,7 +144,7 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
 \subsubsection{Cross-Correlation}
 
-As laid out in Section \ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in equation \ref{eq:conv2}, \ref{eq:conv3}, and \ref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time, even without additional key-shifting (see Section \ref{sparkperf}), the implementation on the cluster and in Code Snippet \ref{lst:corrnp} calculates the simplified cross-correlation (equations \ref{eq:conv5} and \ref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
+As laid out in Section \ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in equation \eqref{eq:conv2}, \eqref{eq:conv3}, and \eqref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time, even without additional key-shifting (see Section \ref{sparkperf}), the implementation on the cluster and in Code Snippet \ref{lst:corrnp} calculates the simplified cross-correlation (equations \eqref{eq:conv5} and \eqref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
 \noindent The cross-correlation was used to detect cover songs on the same dataset Ellis and Cotton used in their paper \cite{cover802}. The results are presented in Section \ref{covsongid}. There are some differences in the returned recommendations compared to the original paper. These can be explained with the different underlying beat tracking, different filter parameters, and a few improvements that are left out compared to the implementation of Ellis \cite{cover802} as mentioned in Section \ref{chromafeat}.\\
 
 \begin{pythonCode}[frame=single,label={lst:corrsc},caption={Cross-correlation scipy},captionpos=b]
@@ -187,7 +187,7 @@ result = result.rdd.flatMap(list).collect()
 \subsubsection{Jensen-Shannon-Like Divergence}\label{jsld}
 
 While computing the Jensen-Shannon-like Divergence, for some of the MFCC features, a problem with negative determinants was encountered. Because the logarithm of negative numbers is not defined, no similarity for these features could be calculated.\\ 
-Schnitzer mentioned a problem with "skyrocketing values of determinants, which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \ref{eq:jsl3}. 
+Schnitzer mentioned a problem with "skyrocketing values of determinants, which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \eqref{eq:jsl3}. 
 This approach was also considered for the encountered issue mentioned above but ultimately did not work out because of the covariance matrices causing the error not being positive definite.\\
 
 \begin{pythonCode}[frame=single,label={lst:js},caption={Jensen-Shannon-like Divergence},captionpos=b]
@@ -256,7 +256,7 @@ df_levenshtein = df_merged.withColumn("word1_word2_levenshtein", levenshtein(col
 df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
 \end{pythonCode}
 
-\noindent As an alternative for the RDD based variant of the Spark application, the python wrapper for the C/C++ library "edlib" was used. During initial tests, when experimenting with a naive implementation of the Levenshtein distance using a python function with numpy, immense performance issues were encountered. Due to the underlying C/C++ code of the edlib the computation of the Levenshtein distance in Code Snippet \ref{lst:levr} performes comparably well as the Spark-native DataFrame equivalent and is a good alternative. 
+\noindent As an alternative for the RDD based variant of the Spark application, the Python wrapper for the C/C++ library "edlib" was used. During initial tests, when experimenting with a naive implementation of the Levenshtein distance using a python function with numpy, immense performance issues were encountered. Due to the underlying C/C++ code of the edlib the computation of the Levenshtein distance in Code Snippet \ref{lst:levr} performes comparably well as the Spark-native DataFrame equivalent and is a good alternative. 
 
 \begin{pythonCode}[frame=single,label={lst:levr},caption={Levenshtein RDD},captionpos=b]
 import edlib
@@ -328,14 +328,14 @@ That means that especially in the field of music similarity, all pre-processed f
 \subsection{Distance Scaling}\label{distsc}
 
 To combine different distance measurements into one combined distance, the various results from the different kinds of features have to be rescaled to avoid biasing the overall distance.
-The easiest way is to subtract the minimum $min(d)$ from all distances $d$ and to divide by the difference between the maximum $max(d)$ and the minimum distance, as described in equation \ref{eq:scaling}. 
+The easiest way is to subtract the minimum $min(d)$ from all distances $d$ and to divide by the difference between the maximum $max(d)$ and the minimum distance, as described in equation \eqref{eq:scaling}. 
 
 \begin{equation} \label{eq:scaling}
 d' = \frac{d - min(d)}{max(d) - min(d)}
 \end{equation}
 
 \noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this isn't always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section \ref{featqual} also shows that, e.g., the Levenshtein distances and cross-correlation results are unequally distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterward with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section \ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section \ref{featqual}.\\
-Another option to rescale the features, laid out by Sebastian Stober in \cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using equation \ref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
+Another option to rescale the features, laid out by Sebastian Stober in \cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using equation \eqref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
 A better way to rescale the data could be evaluated in future research. 
 
 \begin{equation} \label{eq:scaling2}
@@ -365,7 +365,7 @@ min_val = aggregated.collect()[0]["min(distances)"]
 
 \subsection{Combining Different Measurements}\label{weighedsum}
 
-To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in \cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using equation \ref{eq:distance}.
+To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in \cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using equation \eqref{eq:distance}.
 
 \begin{equation} \label{eq:distance}
 dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
@@ -777,8 +777,6 @@ This is also the reason this approach is called "descending importance filter an
 
 \subsubsection{Cluster Size}
 
-The runtime and its dependencies on cluster configuration, size of the input dataset, and implementation details were already given in the previous Section \ref{sparkperf}. With about twelve seconds response time for the filter and refine method and 16 seconds for the merged DataFrame approach on 16 compute nodes, and for 114000 songs, the result is reasonably fast but probably not yet fast enough for real-time processing.\\ 
-
 \FloatBarrier
 \begin{figure}[htbp]
    	\centering
@@ -818,6 +816,7 @@ The runtime and its dependencies on cluster configuration, size of the input dat
 \end{figure}
 \FloatBarrier
 
+\noindent The runtime and its dependencies on cluster configuration, size of the input dataset, and implementation details were already given in the previous Section \ref{sparkperf}. With about twelve seconds response time for the filter and refine method and 16 seconds for the merged DataFrame approach on 16 compute nodes, and for 114000 songs, the result is reasonably fast but probably not yet fast enough for real-time processing.\\ 
 \noindent To simulate the impact of growing cluster sizes in Figure \ref{perfspark6}, the cluster configuration was changed from one up to 16 Executors spawned, each reserving 36 CPU cores (the maximum number of available cores on one node (without HT)) and 64GB (+ 32GB overhead) of main memory. To do this, the parameters of the dynamic allocation were changed. When setting the minimum Executor count above 16 but there are not enough resources on the cluster, the Spark Driver only spawns as many as he is able to (16 on the ARA-cluster with 36 CPU cores/ Executor). As the tests algorithm, the merged DataFrame approach (repartitioned in 32 chunks) with two subsequent song requests was chosen, and the computation time of the second song request for all feature-sets is shown in Figure \ref{perfspark6}.\\
 
 \subsection{Possible Improvements and Additions}

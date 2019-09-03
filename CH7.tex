@@ -29,7 +29,7 @@ This section analyzes the results from the similarity analysis to find out how t
 \noindent The sampling of distances from different genres is vital for the analysis of the distribution of the distances, because the distances and their distribution vary, depending on where in the feature space the actual song is located. 
 \noindent A song taken from the edge of the distribution of the feature space will end up with different distances than a song taken from the center. To visualize this, Figure \ref{fig:featspace} shows a minimal example. While the distances from songs tagged with "Metal" to the songs tagged with "Rock" and "Classical" are about the same, the distances from a song taken off the Classical genre to the "Rock" or "Metal" songs are different in this example.\\ 
 %For 95 song request that results in eight very large vectors containing the distances of song pairs. This large set of distances is then analyzed. 
-\noindent Figure \ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following formula \ref{eq:distance} with all weights $w = 1$ ). This combined distance is labeled as "agg" in the following plots.
+\noindent Figure \ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following equation \eqref{eq:distance} with all weights $w = 1$). This combined distance is labeled as "agg" in the following plots.
 
 \begin{figure}[htbp]
 	\centering
@@ -298,15 +298,15 @@ Another way to quantify the quality of the distances and therefore the quality o
 \end{figure}
 \FloatBarrier
 
-\noindent To investigate the impact of different feature types on the overall recommendations and to visualize the distribution of distances for different genres, another test was performed. For single song requests, all distances to the songs from a subset of the 1517-Artists dataset containing the genres "classical music", "hip-hop", "electronic \& dance" and "rock \& pop" were computed. Figure \ref{fig:corr5} shows the scatter matrices of all distances from one song request from the genre Rock \& Pop. The different distances of the recommendations are colored by the genre of the recommended song. 
-\noindent On the main diagonal the Kernel Density Estimation of the respective feature type is shown. One interesting detail that should be pointed out is that the JS distance alone is unable to distinguish between Rock/Pop songs and Hip-Hop songs but is able to separate between classical music and the rest. On the other hand, the rhythm patterns alone can't separate classical music from Rock/Pop. But when both feature types are combined, all three genres can be separated. The scatter plot of the distances from the Rhythm Patterns and Jensen-Shannon-like divergence in combination shows three clusters of songs belonging to different genres. The fourth genre, "Electronic \& Dance" however can not be separated from Hip-Hop songs no matter what feature-set is used. But it has to be kept in mind that all these distances are distances coming from a song request from the Rock/Pop genre. 
+\noindent To investigate the impact of different feature types on the overall recommendations and to visualize the distribution of distances for different genres, another test was performed. For single song requests, all distances to the songs from a subset of the 1517-Artists dataset containing the genres "Classical", "Hip-Hop", "Electronic \& Dance" and "Rock \& Pop" were computed. Figure \ref{fig:corr5} shows the scatter matrices of all distances from one song request from the genre Rock \& Pop. The different distances of the recommendations are colored by the genre of the recommended song. 
+\noindent On the main diagonal the Kernel Density Estimation of the respective feature type is shown. One interesting detail that should be pointed out is that the JS distance alone is unable to distinguish between Rock/Pop songs and Hip-Hop songs but is able to separate between classical music and the rest. On the other hand, the rhythm patterns alone can't separate classical music from rock and pop. But when both feature types are combined, all three genres can be separated. The scatter plot of the distances from the rhythm patterns and Jensen-Shannon-like divergence in combination shows three clusters of songs belonging to different genres. The fourth genre, "Electronic \& Dance" however can not be separated from hip-hop songs no matter what feature-set is used. But it has to be kept in mind that all these distances are distances coming from a song request from the Rock/Pop genre. 
 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.29]{Images/SparkFeat/electronic.png}	
 	}}
-	\caption{Distances 1 song, electronic, 1517-Artists, 4 genres}
+	\caption{Distances 1 song, Electronic, 1517-Artists, 4 genres}
 	\label{fig:corr6}
 \end{figure}
 \FloatBarrier
