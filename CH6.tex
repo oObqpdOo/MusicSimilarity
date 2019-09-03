@@ -275,7 +275,7 @@ As described in Section \ref{sparksec}, Sparks main advantage is its ability to 
 import time
 #...
 featureDf = preprocess_features().persist()	#p3
-print(featureDf.first()) #p4
+print(featureDf.first()) #l4
 tic1 = int(round(time.time() * 1000))
 neighbors = get_distances(songname, featureDf).persist() #p6
 neighbors = neighbors.orderBy('scaled_dist', ascending=True).persist() #p7
