@@ -2,21 +2,22 @@
 %\newpage
 \chapter{Implementation}\label{implementationdet}
 
-The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored in the feature files. These features files then have to be processed with the big data framework Spark to compute the similarities between songs.\\ 
+The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored into feature files. These features files then have to be processed with the big data framework Spark to compute the similarities between songs.\\ 
 Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub \cite{github-code}. Details for the usage of the Python scripts are also documented there.
 
 \section{Audio Feature Extraction}\label{simmet}
 
 So far the required audio features as well as toolkits to extract those features from the audio data have been selected in Chapter \ref{audiofeat}.
 In Section \ref{data}, different sources for audio files have been presented. Section \ref{musly}, \ref{melsimc}, and \ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
-This section focuses on the selection of fitting datasets to extract features from and the performance of the feature extraction and pre-processing software implementation.  
+This section focuses on the selection of fitting datasets %to extract features from
+and the performance of the feature extraction and pre-processing software implementation.  
 
-\subsection{Test Datasets}
+\subsection{Test Datasets}\label{tdset}
 
-A lot of data is needed to test the algorithms in a big data environment, so the Free Music Archive with its over 106000 songs is a solid option for performance tests. It hast to be kept in mind, that the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic and rock. Also this dataset may not be representative for actual popular music, a lot of the songs are live recordings with poor audio quality. %possibly influencing the results.
+A lot of data is needed to test the algorithms in a big data environment, so the Free Music Archive with its over 106000 songs is a good option for performance tests. It has to be kept in mind, that the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic, and rock. Also this dataset may not be representative for actual popular music, a lot of the songs are live recordings with poor audio quality. %possibly influencing the results.
 The 1517-Artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms, e.g., by genre recall, this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
-The last source used in this thesis is the private music collection. This collection is biased towards metal music, but due to the match with personal taste, it enables a subjective evaluation of the results from the implemented recommender system.\\ 
-In conclusion that sums up to about 117000 songs for performance tests and about 12000 songs for a detailed evaluation of the algorithms in this thesis, from which at the end overall 114210 could be used (see Section \ref{totamsong} for the details on the dropout). As mentioned in Section \ref{datasets}, all albums from the private music collections are cataloged as well, and the associated document is in the appendices. 
+The last source used in this thesis is the private music collection. This collection is biased towards metal music, but due to the match with personal taste, it enables a subjective evaluation of the results from the implemented recommender system.
+In conclusion that sums up to about 117000 songs for performance tests, from which in the end 114210 could be used (see Section \ref{totamsong} for the details on the dropout), and about 11500 songs for a detailed evaluation of the algorithms in this thesis and the quality of the recommendations. As mentioned in Section \ref{datasets}, all albums from the private music collections are catalogued as well, and the associated document is in the appendices. 
 
 \begin{table}[h]
 	\label{used_dsets}
@@ -43,7 +44,7 @@ After evaluating the different features in the last three chapters, this section
 
 \subsubsection{Librosa}
 
-For most of the plots in Chapter \ref{audiofeat}, the Python toolkit librosa was used because of its ease of use and very good documentation. The following code example shows the necessary methods to extract the most important features like MFCC, chromagram and beats/ onsets.
+For most of the plots in Chapter \ref{audiofeat}, the Python toolkit librosa was used because of its ease of use and very good documentation. The following code example shows the necessary steps to extract the most important features like MFCC, chromagram, beats, and onsets.
 \lstset{language=Python} 
 \begin{pythonCode}[frame=single,label={lst:Librosa},caption={Librosa},captionpos=b]
 path = ('music/guitar2.mp3')
@@ -54,18 +55,18 @@ tempo, beats = librosa.beat.beat_track(onset_envelope=onset_env,sr=fs)
 times = librosa.frames_to_time(np.arange(len(onset_env)), sr=fs, hop_length= 512)
 chroma = librosa.feature.chroma_stft(x, fs)
 \end{pythonCode}	
-But when extracting features from batches of audio files, the librosa library turned out to be very slow. For a tiny dataset of 100 songs, the extraction of just the mean, variance, and covariance of the MFCCs and the estimated notes from the chromagram took about 48 minutes. 
+But when extracting features from batches of audio files, the librosa library turned out to be very slow. For a tiny dataset of 100 songs, the extraction of just the mean, variance, and covariance of the MFCCs and the estimated notes from the chromagram took about 48 minutes on a single computer (1 CPU core used). 
 For larger datasets like the 1517-Artists dataset, the feature extraction process would have taken about 22 hours. 
 
 \subsubsection{Essentia}
 
-Moffat (et al.) compares different Audio feature extraction toolboxes and shows that Essentia is a much faster alternative to librosa due to the underlying C++ code and provides even more features, but it is a bit less well documented and requires more effort in implementation at the same time \cite{audiofeattoolb}.\\ 
+Moffat (et al.) \cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that Essentia is a much faster alternative to librosa due to the underlying C++ code and provides even more features, but it is a bit less well documented and requires more effort for the implementation at the same time.\\ 
 In the end, the code to extract the necessary features had to be rewritten for the usage of Essentia due to the slow performance of librosa. Essentia offers two different ways to handle audio files. The first one is to use the Essentia standard library. It provides similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and pre-processed by hand. The second way is to use Essentia streaming. Basically, a network of connected algorithms is created, and they handle and schedule the "how and when" of the execution whenever a process is called. \\
-The melodic and timbral features and the beat histograms are all computed with Essentia. Only the rhythm patterns and rhythm histograms are computed in a separate step, as stated below. 
+The melodic and timbral features and the beat histograms are computed with Essentia. Only the rhythm patterns and rhythm histograms are computed in a separate step, as stated below. 
 
 \subsubsection{Essentia Standard}
 
-In the final code for the audio feature extraction, the computation of the MFCCs and beat histogram is done with the Essentia standard library, because it offers a fast and easy way to implement the basic feature extraction tasks. 
+In the final code for the audio feature extraction, the computation of the MFCCs and beat histogram is done with the Essentia standard library, because it offers a fast and easy way to implement the basic feature extraction tasks (see Code Snippet \ref{lst:esss}). 
 \begin{pythonCode}[frame=single,label={lst:esss},caption={Essentia standard},captionpos=b]
 audio = es.MonoLoader(filename=path, sampleRate=fs)()
 hamming_window = es.Windowing(type='hamming')
@@ -81,7 +82,7 @@ peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, hi
 
 \subsubsection{Essentia Streaming}
 
-The Essentia streaming library is used to calculate the chroma features in the final code. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various stages of processing and ultimately results in the chroma features of the high-pass filtered audio signal. 
+The Essentia streaming library is used to calculate the chroma features. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various processing stages and ultimately results in the chroma features of the band-pass filtered audio signal. 
 %\newpage
 \begin{pythonCode}[frame=single,label={lst:essst},caption={Essentia streaming},captionpos=b]
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
@@ -116,11 +117,11 @@ chroma = pool['tonal.hpcp'].T
 
 \subsubsection{Essentia Performance}
 
-The calculation with the Essentia streaming and standard library for 100 songs took less than half of the time librosa needed. This is a significant improvement, however the Essentia library uses only one CPU core so that performance was further improved by using the Parallel Python library.
+The calculation with the Essentia streaming and standard library for 100 songs took less than half of the time librosa needed. This is a significant improvement, however the Essentia library uses only one CPU core so that performance was further improved by using the Parallel Python and mpi4py library.
 
 \subsubsection{Parallel Python}
 
-Parallel python is a Python module that enables the execution of Python code in parallel. On a single pc, multiple CPU cores get a part of the filelist of all songs and can compute the features fully parallel.
+Parallel Python is a Python module that enables the execution of Python code in parallel. On a single pc, multiple CPU cores get parts of the full filelist and compute the features fully in parallel.
 %\newpage
 \begin{pythonCode}[frame=single,label={lst:pp},caption={Parallel Python},captionpos=b]
 job_server = pp.Server()
@@ -149,7 +150,8 @@ For the extraction of the rhythm patterns and rhythm histogram features as descr
 
 \subsubsection{Performance on a Single PC}
 
-The extraction of the rhythm patterns and the rhythm histogram is performed by the rp\_extractor tool. The feature extraction and processing of all the other features (beat histogram, MFCC statistics, notes and beat-aligned chromagram) had to be implemented separately and the performance of the different MIR toolkits is shown in Figure \ref{perfex}. 
+%The extraction of the rhythm patterns and the rhythm histogram is performed by the rp\_extractor tool. The feature extraction and processing of all the other features (beat histogram, MFCC statistics, notes and beat-aligned chromagram) had to be implemented separately and 
+The performance of the different MIR toolkits is shown in Figure \ref{perfex}. 
 
 \begin{figure}[htbp]
 	\centering
@@ -245,12 +247,12 @@ for index in xrange(start + rank, last, size):
         parallel_python_process(index, filelist[starti:endi])
 \end{pythonCode}
 
-\noindent All audio files larger than 25MB were filtered out of the FMA dataset in advance, to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available memory per CPU, only 18 CPU cores per node were used. Overall, 648 processes were spawned. During the computation of the audio features with Essentia, one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed in the end. For performance tests, this doesn't make a huge difference, but for future work, the feature extraction script should be adapted accordingly. 
-The extraction of the features took 1439 seconds (fastest process) up to 1950 seconds (slowest). With better balancing and messaging between the processes, the tasks could be distributed in a way where idle tasks take parts of the file list from other tasks that are still processing. 
+\noindent All audio files larger than 25MB were filtered out of the FMA dataset in advance, to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available memory per CPU core, only 18 CPU cores per node were used. So, overall, 648 processes were spawned. During the computation of the audio features with Essentia, one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed in the end. For performance tests, this doesn't make a huge difference, but for future work, the feature extraction script should be adapted accordingly.\\
+The extraction of the features took 1439 seconds (fastest process) up to 1950 seconds (slowest). With better balancing and messaging between the processes, the tasks could be distributed in a way where idle tasks take parts of the file list from other tasks that are still processing.\\
 \noindent For the extraction of the rhythm features with the rp\_extract tool, the script of the TU Wien was adapted for usage with mpi4py as well. The same amount of processes gets spawned on the cluster (648), but each of the processes is able to make use of two CPU cores plus HT. The fastest process finished after 1657 seconds and the slowest one took 1803 seconds.
 
 \subsubsection{Total Amount of Songs}\label{totamsong}
 
-Due to the above-mentioned filtering of audio files larger than 25MB, the out-of-memory error of one process executing the Essentia task, and since the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So, in the end, the overall amount of songs where all features could be obtained is 114210.\\
+Due to the above-mentioned filtering of audio files larger than 25MB, the out-of-memory error of one process executing the Essentia task, and since the rhythm pattern extraction script is not able to handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So, in the end, the overall count of songs where all features could be obtained is 114210.\\
 
 

@@ -394,8 +394,8 @@
     \field{labeltitlesource}{title}
     \field{title}{Prélude cis-Moll (Rachmaninow)}
     \verb{url}
-    \verb https://imslp.org/wiki/Morceaux\_de\_fantaisie\%2C\_Op.3\_(Rachmanino
-    \verb ff\%2C\_Sergei)
+    \verb https://imslp.org/wiki/Morceaux_de_fantaisie%2C_Op.3_(Rachmaninoff%2C
+    \verb _Sergei)
     \endverb
   \endentry
 
@@ -403,8 +403,8 @@
     \field{labeltitlesource}{title}
     \field{title}{Für Elise}
     \verb{url}
-    \verb https://upload.wikimedia.org/wikipedia/commons/a/a9/BH\_116\_Vergleic
-    \verb h.png
+    \verb https://upload.wikimedia.org/wikipedia/commons/a/a9/BH_116_Vergleich.
+    \verb png
     \endverb
   \endentry
 
@@ -910,7 +910,7 @@
     \field{labeltitlesource}{title}
     \field{title}{1517-Artists Dataset}
     \verb{url}
-    \verb http://www.seyerlehner.info/index.php?p=1\_3\_Download
+    \verb http://www.seyerlehner.info/index.php?p=1_3_Download
     \endverb
     \field{year}{2010}
   \endentry

@@ -13,15 +13,15 @@
 \BOOKMARK [1][-]{section.2.2}{MIR Toolkits}{chapter.2}% 13
 \BOOKMARK [2][-]{subsection.2.2.1}{Low-Level Audio Feature Extraction}{section.2.2}% 14
 \BOOKMARK [2][-]{subsection.2.2.2}{Music Similarity}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.3}{Melody/ Pitch Extraction}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Melody / Pitch Extraction}{section.2.2}% 16
 \BOOKMARK [1][-]{section.2.3}{Music Similarity Measurements}{chapter.2}% 17
 \BOOKMARK [2][-]{subsection.2.3.1}{Timbre Based}{section.2.3}% 18
 \BOOKMARK [2][-]{subsection.2.3.2}{Pitch Based}{section.2.3}% 19
 \BOOKMARK [2][-]{subsection.2.3.3}{Note Based}{section.2.3}% 20
 \BOOKMARK [2][-]{subsection.2.3.4}{Rhythm Based}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.5}{Metadata Based/ Collaborative Filtering}{section.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.3.5}{Metadata Based / Collaborative Filtering}{section.2.3}% 22
 \BOOKMARK [2][-]{subsection.2.3.6}{Genre Specific Features}{section.2.3}% 23
-\BOOKMARK [2][-]{subsection.2.3.7}{Summary}{section.2.3}% 24
+\BOOKMARK [2][-]{subsection.2.3.7}{Selection}{section.2.3}% 24
 \BOOKMARK [1][-]{section.2.4}{Data Aggregation}{chapter.2}% 25
 \BOOKMARK [2][-]{subsection.2.4.1}{Datasets}{section.2.4}% 26
 \BOOKMARK [2][-]{subsection.2.4.2}{Alternatives}{section.2.4}% 27
@@ -36,43 +36,42 @@
 \BOOKMARK [2][-]{subsection.3.1.3}{Gaussian Mixture Models and Block-Level Features}{section.3.1}% 36
 \BOOKMARK [2][-]{subsection.3.1.4}{Validation}{section.3.1}% 37
 \BOOKMARK [1][-]{section.3.2}{Melodic Similarity}{chapter.3}% 38
-\BOOKMARK [2][-]{subsection.3.2.1}{Representation}{section.3.2}% 39
-\BOOKMARK [2][-]{subsection.3.2.2}{Chroma Features Pre-Processing}{section.3.2}% 40
-\BOOKMARK [2][-]{subsection.3.2.3}{Similarity of Melodic Features}{section.3.2}% 41
-\BOOKMARK [2][-]{subsection.3.2.4}{Validation}{section.3.2}% 42
-\BOOKMARK [1][-]{section.3.3}{Rhythmic Similarity}{chapter.3}% 43
-\BOOKMARK [2][-]{subsection.3.3.1}{Beat Histogram}{section.3.3}% 44
-\BOOKMARK [2][-]{subsection.3.3.2}{Rhythm Patterns}{section.3.3}% 45
-\BOOKMARK [2][-]{subsection.3.3.3}{Rhythm Histogram}{section.3.3}% 46
-\BOOKMARK [2][-]{subsection.3.3.4}{Cross-Correlation}{section.3.3}% 47
-\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 48
-\BOOKMARK [0][]{chapter.4}{Implementation}{}% 49
-\BOOKMARK [1][-]{section.4.1}{Audio Feature Extraction}{chapter.4}% 50
-\BOOKMARK [2][-]{subsection.4.1.1}{Test Datasets}{section.4.1}% 51
-\BOOKMARK [2][-]{subsection.4.1.2}{Feature Extraction Performance}{section.4.1}% 52
-\BOOKMARK [1][-]{section.4.2}{Big Data Framework Spark}{chapter.4}% 53
-\BOOKMARK [2][-]{subsection.4.2.1}{Underlying Hardware}{section.4.2}% 54
-\BOOKMARK [2][-]{subsection.4.2.2}{Workflow}{section.4.2}% 55
-\BOOKMARK [2][-]{subsection.4.2.3}{Data Preparation}{section.4.2}% 56
-\BOOKMARK [2][-]{subsection.4.2.4}{Distance Computation}{section.4.2}% 57
-\BOOKMARK [2][-]{subsection.4.2.5}{Distance Scaling}{section.4.2}% 58
-\BOOKMARK [2][-]{subsection.4.2.6}{Combining Different Measurements}{section.4.2}% 59
-\BOOKMARK [2][-]{subsection.4.2.7}{Performance}{section.4.2}% 60
-\BOOKMARK [2][-]{subsection.4.2.8}{Possible Improvements and Additions}{section.4.2}% 61
-\BOOKMARK [0][]{chapter.5}{Results}{}% 62
-\BOOKMARK [1][-]{section.5.1}{Objective Evaluation}{chapter.5}% 63
-\BOOKMARK [2][-]{subsection.5.1.1}{Feature Correlation and Distance Distribution}{section.5.1}% 64
-\BOOKMARK [2][-]{subsection.5.1.2}{Cover Song Identification}{section.5.1}% 65
-\BOOKMARK [2][-]{subsection.5.1.3}{Genre Similarity}{section.5.1}% 66
-\BOOKMARK [2][-]{subsection.5.1.4}{Rhythm Features}{section.5.1}% 67
-\BOOKMARK [1][-]{section.5.2}{Subjective Evaluation}{chapter.5}% 68
-\BOOKMARK [2][-]{subsection.5.2.1}{Beyond Genre Boundaries}{section.5.2}% 69
-\BOOKMARK [2][-]{subsection.5.2.2}{Personal Music Taste}{section.5.2}% 70
-\BOOKMARK [0][]{chapter.6}{Summary}{}% 71
-\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 72
-\BOOKMARK [1][-]{section.6.2}{Outlook}{chapter.6}% 73
-\BOOKMARK [0][]{section*.12}{References}{}% 74
-\BOOKMARK [0][]{chapter.7}{Appendix}{}% 75
-\BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 76
-\BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 77
-\BOOKMARK [1][-]{section.7.3}{Contend on the CD}{chapter.7}% 78
+\BOOKMARK [2][-]{subsection.3.2.1}{Chroma Features Pre-Processing}{section.3.2}% 39
+\BOOKMARK [2][-]{subsection.3.2.2}{Similarity of Melodic Features}{section.3.2}% 40
+\BOOKMARK [2][-]{subsection.3.2.3}{Validation}{section.3.2}% 41
+\BOOKMARK [1][-]{section.3.3}{Rhythmic Similarity}{chapter.3}% 42
+\BOOKMARK [2][-]{subsection.3.3.1}{Beat Histogram}{section.3.3}% 43
+\BOOKMARK [2][-]{subsection.3.3.2}{Rhythm Patterns}{section.3.3}% 44
+\BOOKMARK [2][-]{subsection.3.3.3}{Rhythm Histogram}{section.3.3}% 45
+\BOOKMARK [2][-]{subsection.3.3.4}{Cross-Correlation}{section.3.3}% 46
+\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 47
+\BOOKMARK [0][]{chapter.4}{Implementation}{}% 48
+\BOOKMARK [1][-]{section.4.1}{Audio Feature Extraction}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.1.1}{Test Datasets}{section.4.1}% 50
+\BOOKMARK [2][-]{subsection.4.1.2}{Feature Extraction Performance}{section.4.1}% 51
+\BOOKMARK [1][-]{section.4.2}{Big Data Framework Spark}{chapter.4}% 52
+\BOOKMARK [2][-]{subsection.4.2.1}{Underlying Hardware}{section.4.2}% 53
+\BOOKMARK [2][-]{subsection.4.2.2}{Workflow}{section.4.2}% 54
+\BOOKMARK [2][-]{subsection.4.2.3}{Data Preparation}{section.4.2}% 55
+\BOOKMARK [2][-]{subsection.4.2.4}{Distance Computation}{section.4.2}% 56
+\BOOKMARK [2][-]{subsection.4.2.5}{Distance Scaling}{section.4.2}% 57
+\BOOKMARK [2][-]{subsection.4.2.6}{Combining Different Measurements}{section.4.2}% 58
+\BOOKMARK [2][-]{subsection.4.2.7}{Performance}{section.4.2}% 59
+\BOOKMARK [2][-]{subsection.4.2.8}{Possible Improvements and Additions}{section.4.2}% 60
+\BOOKMARK [0][]{chapter.5}{Results}{}% 61
+\BOOKMARK [1][-]{section.5.1}{Objective Evaluation}{chapter.5}% 62
+\BOOKMARK [2][-]{subsection.5.1.1}{Feature Correlation and Distance Distribution}{section.5.1}% 63
+\BOOKMARK [2][-]{subsection.5.1.2}{Cover Song Identification}{section.5.1}% 64
+\BOOKMARK [2][-]{subsection.5.1.3}{Genre Similarity}{section.5.1}% 65
+\BOOKMARK [2][-]{subsection.5.1.4}{Rhythm Features}{section.5.1}% 66
+\BOOKMARK [1][-]{section.5.2}{Subjective Evaluation}{chapter.5}% 67
+\BOOKMARK [2][-]{subsection.5.2.1}{Beyond Genre Boundaries}{section.5.2}% 68
+\BOOKMARK [2][-]{subsection.5.2.2}{Personal Music Taste}{section.5.2}% 69
+\BOOKMARK [0][]{chapter.6}{Summary}{}% 70
+\BOOKMARK [1][-]{section.6.1}{Conclusion}{chapter.6}% 71
+\BOOKMARK [1][-]{section.6.2}{Outlook}{chapter.6}% 72
+\BOOKMARK [0][]{section*.12}{References}{}% 73
+\BOOKMARK [0][]{chapter.7}{Appendix}{}% 74
+\BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 75
+\BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 76
+\BOOKMARK [1][-]{section.7.3}{Contend on the CD}{chapter.7}% 77

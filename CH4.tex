@@ -38,7 +38,7 @@ One possible similarity measurements is, e.g., the usage of beat histograms as p
 				\label{sabh}
 			\end{subfigure}%			
 	}}
-	\caption{Beat Histogram}
+	\caption{Beat histogram}
 	\label{fig:bh1}
 \end{figure}
 \FloatBarrier
@@ -53,7 +53,7 @@ Similarities between two beat histograms can be computed using the Euclidean dis
 \subsection{Rhythm Patterns}\label{flucpat}
 
 A more state-of-the-art feature is the so-called rhythm pattern, also known as fluctuation patterns, for instance evaluated by Lidy and Rauber in \cite{rp1}. 
-To extract these features, the rp\_extractor library for python \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible, while at the same time substantial differences between the different songs are recognizable.
+To extract these features, the rp\_extractor library for Python \cite{rp_extract} was made publicly available by the TU Vienna \cite{rp_extract2}. Figure \ref{fig:rp1} shows the extracted rhythmic patterns of the previously mentioned songs "Rock you like a Hurricane" and "Behind Space". The similarities of the different versions from the same songs are quite visible, while at the same time substantial differences between the different songs are recognizable.
 
 \begin{figure}[htbp]
 	\centering
@@ -84,7 +84,7 @@ To extract these features, the rp\_extractor library for python \cite{rp_extract
 				\label{sarp}
 			\end{subfigure}%			
 	}}
-	\caption{Rhythmic Patterns}
+	\caption{Rhythm patterns}
 	\label{fig:rp1}
 \end{figure}
 
@@ -137,7 +137,7 @@ The algorithm to extract the rhythm patterns, the rhythm histogram, and statisti
        % follow-up - row 8
       \node [block_center] (fsw) {Fluctuation Strength Weighting};\\
       % follow-up - row 9
-      \node [block_center] (filt) {Filtering/ Blurring};
+      \node [block_center] (filt) {Filtering / Blurring};
    	  & \node [block_assign] (rp) {Rhythmic Patterns $\rightarrow$ \textit{\textbf{RP}}};\\
     };% end matrix
     % connecting nodes with paths
@@ -156,7 +156,7 @@ The algorithm to extract the rhythm patterns, the rhythm histogram, and statisti
       \path (filt) -- (rp);
     \end{scope}
   \end{tikzpicture}
-  	\captionof{figure}{Rhythm Pattern extraction \cite{rp_extract2}}
+  	\captionof{figure}{Rhythm pattern extraction \cite{rp_extract2}}
 	\label{fig:rpe}
 \end{center}
 
@@ -198,7 +198,7 @@ The difference in comparison to the beat histogram mentioned earlier in Section 
 				\label{sarh}
 			\end{subfigure}%			
 	}}
-	\caption{Rhythm Histogram}
+	\caption{Rhythm histogram}
 	\label{fig:rh1}
 \end{figure}
 
@@ -236,7 +236,7 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 			\end{subfigure}%			
 				
 	}}
-	\caption{Detected Onsets (first 30 seconds)}
+	\caption{Detected onsets (first 30 seconds)}
 	\label{fig:ons1}
 \end{figure}	
 
@@ -244,7 +244,7 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 
 \section{Summary}\label{sumfeat}
 
-After evaluating various options of similarity measurements for different aspects of music (timbre, rhythm, and melody/ pitch), all of the chosen approaches that are implemented in the next chapters are summarized in this section. 
+After evaluating various options of similarity measurements for different aspects of music (timbre, rhythm, and melody), all of the chosen approaches that are implemented in the next chapters are summarized in this section. 
 
 \subsubsection{Timbre Similarity}
 
@@ -253,7 +253,7 @@ The chosen similarity metrics for timbre similarity are :
 	\setlength\itemsep{-0.5em}
 	\item Euclidean Distance
 	\item symmetric Kullback-Leibler divergence
-	\item Jensen-Shannon-like Divergence
+	\item Jensen-Shannon-like divergence
 \end{itemize}
 To calculate the distances, for each song the mean and variance vectors and covariance matrix has to be computed from the MFCCs. These are stored in two different output text files: 
 \begin{itemize}

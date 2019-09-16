@@ -3,20 +3,21 @@
 
 %\textit{\textbf{This needs an introduction, the smaller the distance the more similar the songs are etc. -> smilarity = 1 / distance}}
 
+This chapter introduces and evaluates different similarity measurements for timbral, melodic, and rhythmic features of music data. It explains the feature extraction, pre-processing and similarity estimation between different songs based on the different feature types. 
+
 \section{Timbre Similarity} \label{musly}
 
 This section focuses on different similarity measurements and metrics based on MFCCs. Mel Frequency Cepstral Coefficients have already been introduced in Section \ref{mfccsim} as a feature to describe timbre.\\
 
 \subsection{Euclidean Distance}\label{mfcceuc}
 
-To further reduce the dimensionality of the original MFCC features, a statistical summarization can be calculated. For each of the Mel-bands (13 in this case) the mean and standard deviation over all frames is calculated, resulting in a vector of 13 mean values, a 13 by 13 covariance matrix ($\frac{13*(13-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the covariances and the main diagonal contains the variances) and 13 variances. These vectors are not dependent on the length of the actual song. \cite[pp. 51ff]{knees1}\\
+To further reduce the dimensionality of the original MFCC features, a statistical summarization can be calculated. For each of the Mel-bands (13 in this case) the mean and standard deviation over all frames are calculated, resulting in a vector of 13 mean values, a 13 by 13 covariance matrix ($\frac{13*(13-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the covariances and the main diagonal contains the variances) and 13 variances. These vectors are not dependent on the length of the actual song. \cite[pp. 51ff]{knees1}\\
 Using such a model, the distance between two songs can be calculated using the $L_p$ distance as in equation \eqref{eq:distGmm}, where x and y are the n-dimensional feature vectors of two different musical pieces:
 \begin{equation} \label{eq:distGmm}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}
 \end{equation}
-Most of the times, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real-world scenarios. \cite[p. 58]{knees1}\\
-This very basic metric of timbre similarity has been refined and improved over the past years.
+Usually, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real-world scenarios. \cite[p. 58]{knees1}. This very basic metric of timbre similarity has been refined and improved over the past years.
 
 \subsection{Single Gaussian Model}
 
@@ -33,7 +34,7 @@ d_{KL}(P, Q) = \frac{1}{2} (KL_{(P||Q)} + KL_{(Q||P)})
 \end{equation}
 This approach is one of the two available similarity metrics in the Musly \cite{musly1} toolkit (see Section \ref{mirtoolkit}). It can be simplified and written as a closed form according to \cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:SKL}
-d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu2)^2) - 2d)
+d_{SKL}(P, Q) = \frac{1}{4} (tr(\Sigma_P\Sigma_Q^{-1}) + tr(\Sigma_Q\Sigma_P^{-1}) + tr((\Sigma_Q^{-1}\Sigma_P^{-1})(\mu_P - \mu_Q)^2) - 2d)
 \end{equation}
 
 \subsubsection{Jensen-Shannon-Like Divergence}
@@ -50,7 +51,7 @@ JS(P, Q) = \frac{1}{2} log|\Sigma_m| - \frac{1}{4} log |\Sigma_P| - \frac{1}{4} 
 \end{equation}
 
 \subsubsection{Mutual Proximity}\label{mprox}
-After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP). \cite{musly2}. This method wants to reduce the effect of a phenomenon called "hubness", which appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
+After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP). \cite{musly2}. This method aims to reduce the effect of a phenomenon called "hubness", which appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points." \cite[p. 66]{schnitzer1}.\\
 Schedl and Knees state: "To apply MP to a distance matrix, it is assumed that the distances $D_{x,i = 1..N}$ from an object $x$ to all other objects in the data set follow a certain probability distribution; thus, any distance $D_{x,y}$ can be reinterpreted as the probability of $y$ being the nearest neighbor of $x$, given the distance $D_{x,y}$ and the probability distribution $P(x)$ [...] MP is then defined as the probability that $y$ is the nearest neighbor of $x$ given $P(x)$ and $x$ is the nearest neighbor of $y$ given $P(y)$" \cite[p. 80]{knees1}\\
 Resulting in: 
 \begin{equation} \label{eq:mp1}
@@ -59,7 +60,7 @@ P(X > D_{x,y}) = 1 - P(X \leq D_{x,y}) = 1 - \mathscr{F}(D_{x,y})
 \begin{equation} \label{eq:mp2}
 MP(D_{x,y}) = P(X > D_{x,y} \cap Y > D_{x,y})
 \end{equation}
-according to \cite[p. 80]{knees1}\\
+according to \cite[p. 80]{knees1}.\\
 %Because in this thesis the full similarity matrix is not calculated, 
 
 \subsection{Gaussian Mixture Models and Block-Level Features}\label{blocklevel}
@@ -69,9 +70,9 @@ The last method mentioned, but not implemented in this thesis for timbral simila
 \subsection{Validation}
 
 For this thesis, the Kullback-Leibler divergence, the Jensen-Shannon divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of the distance computing algorithms and a re-implementation of the block-level features remains left open for future research due to its rather compute heavy nature.\\
-Using the Musly toolkit, a first evaluation unsing the symmetric KL divergence is presented in this section. The feature extraction and distance calculation can also be done in python using the librosa library, and a small re-implementation of the Mandel-Ellis approach was tested as well.\\
+Using the Musly toolkit, a first evaluation using the symmetric KL divergence is presented in this section. The feature extraction and distance calculation can also be done in Python using the librosa library, and a re-implementation of the Mandel-Ellis approach was tested as well.\\
 
-\subsubsection{Genre Recall Rate/ Construction Noise}
+\subsubsection{Genre Recall Rate / Construction Noise}
 In general, a good measurement for the efficiency of timbre similarity algorithms, is the ability to recommend songs of the same genre. 
 Alternatively, the example proposed by Dr. Bosse from the introduction was tested (see Chapter \ref{intro}). Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results were returned in descending order: 
 
@@ -85,7 +86,7 @@ Alternatively, the example proposed by Dr. Bosse from the introduction was teste
 	\item 100 Meisterwerke der Klassik - Orpheus In The Underworld (Orph\'ee aux enfers) - Can-Can (Live At Grosser Saal, Musikverein) (Klassik)
 \end{itemize}
 
-Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 most similar songs compared to the construction noise sample.  
+\noindent Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 most similar songs compared to the construction noise sample.  
 
 \begin{figure}[htbp]
 	\centering
@@ -103,7 +104,7 @@ Figure \ref{const1} and \ref{const2} show the distribution of the genres of 100 
 				\label{const2}
 			\end{subfigure}
 	}}
-	\caption{Construction Noise}
+	\caption{Construction noise}
 	\label{fig:constn}
 \end{figure}
 

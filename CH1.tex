@@ -32,7 +32,7 @@
 The idea originated from Dr. T. Bosse from the chair for advanced computing at the Friedrich-Schiller-University (FSU) in Jena. When proposing the idea for a master thesis with the topic of "Music similarity measurement using genre-specific features" by using different guitar play styles in modern-day metal music, he jokingly said that he would also like to know how metal music compares to construction building noise. The idea is actually not so groundless, considering that most people would agree on the fact that metal music is often described as noise by people not used to listening to genres like death and black metal.
 While refining the original idea of the theme for this master's thesis and during the first tests, it became apparent, that while there is a lot of research in the area of music similarity for single aspects of music like melody, timbre, or rhythm and even for a few fixed combinations thereof, there was no attempt made yet, to build a parameterizable system combining various of these features in a big data environment.\\
 With music streaming services like Spotify, Amazon Music, Deezer or Tidal and music sharing websites like SoundCloud, access to millions of songs is given. To explore this humongous amount of data, the need for music recommender systems rises. SoundCloud Go+, the streaming service of SoundCloud alone gives access to more than 135 million songs \cite{soundcloudgo}. 
-Of course the streaming platforms are aware of these challenges. When using services like "[ . . . ] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}\\
+Of course the streaming platforms are aware of these challenges. When using services like "[...] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}\\
 But music similarity is not well defined. This is one of the first problems while dealing with this topic. It is a rather subjective value that can differ from listener to listener. Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics, or a combination of more than a few of these features.\\
 \ \\
 \section{Goals}
@@ -65,7 +65,9 @@ Lastly, in Chapter \ref{bds2} the resulting song recommendations are proposed an
 
 The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning with psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits, and different approaches to music similarity using various audio features. An overview over big data frameworks is included as well. More in-depth information about selected metrics is given in Chapter \ref{simanal}. 
 
-\section{Audio Features}
+\section{Audio Features}\label{featsec2}
+
+This section provides a short overview of commonly used audio features in MIR. These audio features are the starting point for the later following calculation of the distances between songs.
 
 \subsection{Fourier Transformation}\label{featsec}
 
@@ -78,7 +80,7 @@ X_k = \sum_{n=0}^{N-1}{x_n \cdot e^ { - \frac{ 2 \cdot \pi \cdot i}{N}\cdot k\cd
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 |X_k| = \sqrt{\operatorname{Re}(X_k)^2 + \operatorname{Im}(X_k)^2}
 \end{equation}
-Figure \ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear matter, a logarithmic (see Figure \ref{laylaspecfft}) or Mel-scale fits better to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see equation \eqref{eq:mel}) \cite[pp. 53f]{knees1}.
+Figure \ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear fashion, a logarithmic (see Figure \ref{laylaspecfft}) or Mel-scale is more suitable to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see equation \eqref{eq:mel}) \cite[pp. 53f]{knees1}.
 \begin{equation} \label{eq:mel}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 m = 1127 \cdot ln(1 + \frac{f}{700})
@@ -97,47 +99,47 @@ m = 1127 \cdot ln(1 + \frac{f}{700})
 		\centering
 		\framebox{\parbox{2.96in}{      
 		\includegraphics[scale=0.25]{Images/Layla/laylacfftlog.png}}}
-		\captionof{figure}{log-scaled spectrogram}
+		\captionof{figure}{Log-scaled spectrogram}
 		\label{laylaspecfft}
 	\end{subfigure}
 	\caption{Frequency Space}
 	\label{fig:test}
 \end{figure}
 \FloatBarrier
-\noindent The high dimensionality of the spectrogram is a problem for machine learning applications and music similarity tasks, as computation based on vectors with such a high dimensionality on larger datasets would take too long for real-time applications.
+\noindent The high dimensionality of the spectrogram is a problem for machine learning applications and music similarity tasks, as computation based on vectors with such a high dimensionality on larger datasets would require excessive computational power, e.g., for real-time applications.
 Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a song of about $t = 180s$, the time domain contains $K = 7938000$ data points usually with 16-bit resolution for mono-channel audio, following equation \eqref{eq:points}. 
 \begin{equation} \label{eq:points}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 K = f_s \cdot t
 \end{equation}
-Calculating a DFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \eqref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain $N_{fv} = 11627$ frames with 1024 frequency values per frame.
+Calculating a DFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \eqref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain $N_{fv} = 11627$ frames with 1024 amplitude values per frame.
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
 \end{equation}
-To reduce the dimensionality of the feature vector, a typical approach in MIR would be to calculate the so-called Mel Frequency Cepstral Coefficients (MFCCs).
+To reduce the dimensionality of the feature vector, a possible approach in MIR would be to calculate the so-called Mel Frequency Cepstral Coefficients (MFCCs).
 
 \subsection{Mel Frequency Cepstral Coefficients}\label{mfccsim}
 
 Of all features presented in this chapter, the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical aspects of audio files like pitch or rhythm. This section gives a brief overview of the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
-Figure \ref{sweep} shows the magnitude spectrum of a frequency sweep signal as an example for better understanding.
+Figure \ref{sweep} shows the magnitude spectrum of a logarithmic frequency sweep signal as an example for better understanding.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
 	\begin{subfigure}{.495\textwidth}
 		\centering 
 		\includegraphics[scale=0.25]{Images/MFCC/sweep.png}
-		\caption{Sweep signal linear}
+		\caption{Spectrogram with linear frequency axis}
 		\label{sweeplog}
 	\end{subfigure}
 	\begin{subfigure}{.495\textwidth}
 		\centering
 		\includegraphics[scale=0.25]{Images/MFCC/sweeplog.png}
-		\caption{Sweep signal logarithmic}
+		\caption{Spectrogram with logarithmic frequency axis}
 		\label{sweeplin}
 	\end{subfigure}
 	}}
-	\caption{Sweep signal}	
+	\caption{Example spectrograms of a logarithmic frequency sweep}	
 	\label{sweep}
 \end{figure}
 \FloatBarrier
@@ -155,7 +157,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 	\begin{subfigure}{.495\textwidth}
 		\centering 
 		\includegraphics[scale=0.25]{Images/MFCC/mfccscaled.png}
-		\caption{MFCC High Resolution}
+		\caption{MFCC high resolution}
 		\label{mfcc}
 	\end{subfigure}
 	\begin{subfigure}{.495\textwidth}
@@ -169,14 +171,15 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 	\label{fig:mfcc}
 \end{figure}
 \FloatBarrier
-\noindent MFCCs were found to be suited to represent the timbral attributes of music \cite[p. 55 ff]{knees1}. To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: %tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. 
+\noindent To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: %tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item tonal intensity perceived as loudness
 	\item tonal quality perceived as the pitch 
 	\item timbre or tonal color
 \end{itemize}
-\noindent Looking at an example melody line played on an electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played key) and so-called harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the overtones of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decline faster or slower or don't appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure \ref{timbreg}.
+
+\noindent MFCCs were found to be suited to represent the timbral attributes of music \cite[p. 55 ff]{knees1}. Looking at an example melody line played on an electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played note) and harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the harmonics of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decay faster or slower or don't appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure \ref{timbreg}.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -197,7 +200,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 	\label{fig:timbre}
 \end{figure}
 \FloatBarrier
-\noindent These differences in timbre are also visible when looking at the MFCCs in Figure \ref{fig:timbrmfcce}. This time the MFCC plots are pictured without the previously mentioned scaling. Additionally, the mean value and standard deviance of the MFCCs 4 to 13 are pictured in Figure \ref{fig:timbrstatmfcce}. This calculation of statistical features is later explained in Section \ref{musly}. Although both times the exact same melody is played in the same tempo, the MFCC features vary due to the different timbral properties of the instruments. 
+\noindent These differences in timbre are also visible when looking at the MFCCs in Figure \ref{fig:timbrmfcce}. This time the MFCC plots are pictured without the previously mentioned scaling. Additionally, the mean value and standard deviation of the MFCCs 4 to 13 are pictured in Figure \ref{fig:timbrstatmfcce}. This calculation of statistical features is later explained in Section \ref{musly}. Although both times the exact same melody is played in the same tempo, the MFCC features vary due to the different timbral properties of the instruments. 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -214,7 +217,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{mfccp}
 	\end{subfigure}
 	}}
-	\caption{MFCC statistics guitar vs. piano}	
+	\caption{MFCCs (guitar vs. piano)}	
 	\label{fig:timbrmfcce}
 \end{figure}
 \FloatBarrier
@@ -235,14 +238,14 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{mfccsp}
 	\end{subfigure}
 	}}
-	\caption{MFCC statistics guitar vs. piano}	
+	\caption{MFCCs mean and standard deviation (guitar vs. piano)}	
 	\label{fig:timbrstatmfcce}
 \end{figure}
 \FloatBarrier
 
 \subsection{Other Audio Features}
 
-As another, better comprehensible, higher-level set of features, the chromagram represents the melodic/ harmonic properties of a song. The chroma plot shows the distribution of the different pitches mapped to the various semi-tones in one octave (see Figure \ref{laylachroma}). The values of each time frame are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there will be only noise or silence at that frame in the recording, as depicted in the first frames of Figure \ref{laylachroma}. The chromagram has one significant downside because it is reduced to one octave and thus can not represent the melody of a song to its full extent.\\
+As another, better comprehensible, higher-level set of features, the chromagram represents the melodic and harmonic properties of a song. The chroma plot shows the distribution of the different pitches mapped to the various semi-tones in one octave (see Figure \ref{laylachroma}). The values of each time frame are normalized to one by the strongest dimension. So if all values are close to one, it is most likely that there will be only noise or silence at that frame in the recording, as depicted in the first frames of Figure \ref{laylachroma}. The chromagram has one significant downside because it is reduced to one octave and thus can not represent the melody of a song to its full extent. The chromagram and the extraction of melody information from chroma features is further evaluated in Section \ref{melsimc}.\\
 Figure \ref{laylapitch} shows the pitch curve of the recording. None but the most dominant frequencies are shown. Pitches below a certain threshold are filtered out. In contrast to the chromagram the pitch curve provides information over the whole spectrum and is not limited to one octave. These Pitch curves can be used to estimate and transcribe musical notes from audio data as presented in Section \ref{midiest}.\\
 
 \begin{figure}[htbp]
@@ -261,13 +264,12 @@ Figure \ref{laylapitch} shows the pitch curve of the recording. None but the mos
 				\label{laylachroma}
 			\end{subfigure}%
 	}}
-	\caption{Features of the song Layla by Eric Clapton}
+	\caption{Melodic and timbral features of the song Layla by Eric Clapton}
 	\label{fig:feat1}
 \end{figure}
 
 \noindent The low-level rhythmic features of a song include the estimation of the overall tempo, beats, and onset events. 
-The plot in Figure \ref{laylacbeat} depicts the onsets and estimated beats in the first 10 seconds from a recording of the song Layla by Eric Clapton. The extraction of these rhythm features is explained in Section \ref{rhythmsimc}.
-
+The plot in Figure \ref{laylacbeat} depicts the onsets and estimated beats in the first few seconds from a recording of the song Layla by Eric Clapton. The extraction of these rhythm features is explained in Section \ref{rhythmsimc}.
 
 \FloatBarrier
 \begin{figure}[htbp]
@@ -282,26 +284,28 @@ The plot in Figure \ref{laylacbeat} depicts the onsets and estimated beats in th
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.26]{Images/Layla/laylabeat.png}
-				\caption{Rhythm/ Beat}
+				\caption{Rhythm / beat}
 				\label{laylacbeat}
 			\end{subfigure}%
 	}}
-	\caption{Features of the song Layla by Eric Clapton}
+	\caption{Rhythm features of the song Layla by Eric Clapton}
 	\label{fig:feat2}
 \end{figure}
 \FloatBarrier
 
 \section{MIR Toolkits}\label{mirtoolkit}
 
+This section provides a short overview of available toolkits for MIR, note extraction, and similarity estimation between songs. Some of the toolkits are used in Chapter \ref{implementationdet} for the extraction and pre-processing of the audio features.
+
 \subsection{Low-Level Audio Feature Extraction}
-To extract audio features like the ones presented in Section \ref{featsec} (MFCCs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in \cite{audiofeattoolb}.
+To extract audio features like the ones presented in Section \ref{featsec2} (MFCCs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in \cite{audiofeattoolb}.
 The YAAFE toolkit \cite{yaafe1} is able to extract a lot of different audio features like energy, MFCC, or loudness directly into the Hadoop file format *.h5 making it ideal for big data frameworks to use. It can be used with C++, Python, or Matlab.\\
-The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of rhythm descriptors, bpm, etc. It can also be used with C++ and Python\\
-The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well documented, and can be called from a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots in this chapter were created using librosa. Code snippets for the extraction of low-level features with Essentia and librosa are given in Section \ref{simmet} as well as a performance analysis of both.\\
+The Essentia toolkit \cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of rhythm descriptors, bpm, etc. It can also be used with C++ and Python.\\
+The Librosa Toolkit provides similar functionality \cite{labrosa1} as Essentia. It is user-friendly, well-documented, and can be used from within a Jupyter-Notebook \cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots in this chapter were created using librosa. Code snippets for the extraction of low-level features with Essentia and librosa are given in Section \ref{simmet} as well as a performance analysis of both.\\
 
 \subsection{Music Similarity}
 
-An easy way to test state-of-the-art music similarity algorithms is to use the open-source toolkit Musly \cite{musly1}. It is based on statistical models of MFCC features and calculates the distances between songs very fast, supporting OpenMP acceleration. It automatically extracts the features it requires from the audio files. To compare the extracted features and calculate the distances, it implements the method introduced by Mandel-Ellis \cite{mandelellis1} and a timbre based improved version of the Mandel-Ellis algorithm using a Jensen-Shannon-like divergence \cite{musly2}. More details and a re-implementation of some of the features from this toolkit are presented in Section \ref{musly}\\
+An easy way to test state-of-the-art music similarity algorithms is to use the open-source toolkit Musly \cite{musly1}. It is based on statistical models of MFCC features and calculates the similarities between songs very fast, supporting OpenMP acceleration. It automatically extracts the features it requires from the audio files. To compare the extracted features and calculate the distances, it implements the method introduced by Mandel-Ellis \cite{mandelellis1} and a timbre based improved version of the Mandel-Ellis algorithm using a Jensen-Shannon-like divergence \cite{musly2}. More details and a re-implementation of some of the features from this toolkit are presented in Section \ref{musly}.\\
 As another option, the MIR Toolkit \cite{mirtoolbox1} is a toolbox for Matlab \cite{matl1}. A port to GNU Octave \cite{octave1} is also available \cite{mirtoolbox2}. The Code Snippet \ref{lst:MIRmat} is all it takes to compute a similarity matrix based on MFCC features, but the calculation is rather slow.
 
 \lstset{language=Matlab}          % Set your language (you can change the language for each code-block optionally)
@@ -328,15 +332,15 @@ endfor
 \end{lstlisting}
 \FloatBarrier
 
-\subsection{Melody/ Pitch Extraction}\label{midiest}
-To test the various pitch extraction toolkits, one piece by Rachmaninoff and one composed by Beethoven was used. The first three bars of Rachmaninoff's Prelude in C Sharp Minor can be found in Figure \ref{rm}. Figure \ref{fe} shows the first five bars of Beethoven's Bagatelle in A Minor ("Für Elise").
+\subsection{Melody / Pitch Extraction}\label{midiest}
+To test the various pitch extraction toolkits, one piece by Rachmaninoff and one composed by Beethoven was used. The first three bars of Rachmaninoff's Prelude in C\# minor can be found in Figure \ref{rm}. Figure \ref{fe} shows the first five bars of Beethoven's Bagatelle in A Minor ("Für Elise").
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
 	\begin{subfigure}{0.5\textwidth}
 		\centering      
 		\includegraphics[scale=0.25]{Images/rachm.png}
-		\caption{Rachmaninoff Prelude in C Sharp Minor \cite{rm1}}
+		\caption{Rachmaninoff prelude in C\# minor \cite{rm1}}
 		\label{rm}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
@@ -356,13 +360,13 @@ The first toolkit tested is called "aubio" \cite{aubio1}. The result can be seen
 	\begin{subfigure}{0.5\textwidth}
 		\centering      
 		\includegraphics[scale=0.4]{Images/feliseaubio.png}
-		\caption{Für Elise Aubio Pitch}
+		\caption{Für Elise Aubio pitch}
 		\label{fea}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering 
 		\includegraphics[scale=0.4]{Images/rachaubio.png}
-		\caption{Rachmaninoff Prelude Aubio Pitch}
+		\caption{Rachmaninoff prelude Aubio pitch}
 		\label{raa}
 	\end{subfigure}
 	}}
@@ -370,7 +374,7 @@ The first toolkit tested is called "aubio" \cite{aubio1}. The result can be seen
 	\label{fig:aubio}
 \end{figure}
 \FloatBarrier
-\noindent The other melody extraction tool is called "Melodia" \cite{melodia1}, which is available as a VAMP plugin and can be used together with the Sonic Visualizer \cite{sonviz1}.\\
+\noindent The other melody extraction tool is called "Melodia" \cite{melodia1}, which is available as a VAMP plugin and can be used together with the "Sonic Visualiser" \cite{sonviz1}.\\
 The results are shown in Figure \ref{fem} and \ref{ram}.
 The purple line is the estimated pitch; however, there are unwanted jumps between different octaves of the harmonics. 
 
@@ -380,13 +384,13 @@ The purple line is the estimated pitch; however, there are unwanted jumps betwee
 	\begin{subfigure}{0.5\textwidth}
 		\centering      
 		\includegraphics[scale=0.13]{Images/femelodia.png}
-		\caption{Für Elise Melodia Pitch}
+		\caption{Für Elise Melodia pitch}
 		\label{fem}
 	\end{subfigure}%
 	\begin{subfigure}{0.5\textwidth}
 		\centering 
 		\includegraphics[scale=0.13]{Images/rmmelodia.png}
-		\caption{Rachmaninoff Melodia Pitch}
+		\caption{Rachmaninoff Melodia pitch}
 		\label{ram}
 	\end{subfigure}
 	}}
@@ -394,7 +398,7 @@ The purple line is the estimated pitch; however, there are unwanted jumps betwee
 	\label{fig:melodia}
 \end{figure}
 
-\noindent Sadly the conversion from the extracted pitches to MIDI notes does not work flawlessly. It is apparent in Figure \ref{fig:transc} that the transcription does not work accurately enough, even for a classical music piece with only one instrument. Figure \ref{femm} shows the output of a Python script using the Melodia VAMP plugin to calculate a MIDI file containing the main melody line, and Figure \ref{feam} shows the transcribed MIDI notes from Aubio. The detected melody lines are jumping between different octaves, and finding the right threshold for the separation between silence and detected notes turns out to be problematic as well.
+\noindent Unfortunately the conversion from the extracted pitches to MIDI notes does not work flawlessly. It is apparent in Figure \ref{fig:transc} that the transcription does not work accurately enough, even for a classical music piece with only one instrument. Figure \ref{femm} shows the output of a Python script using the Melodia VAMP plugin to calculate a MIDI file containing the main melody line, and Figure \ref{feam} shows the transcribed MIDI notes from Aubio. The detected melody lines are jumping between different octaves, and finding the right threshold for the separation between silence and detected notes turns out to be problematic as well.
 
 \begin{figure}[htbp]
 	\centering
@@ -412,12 +416,14 @@ The purple line is the estimated pitch; however, there are unwanted jumps betwee
 		\label{feam}
 	\end{subfigure}
 	}}
-	\caption{Transcription}
+	\caption{MIDI transcription Für Elise}
 	\label{fig:transc}
 \end{figure}
 \FloatBarrier 
 
 \section{Music Similarity Measurements}
+
+This section gives an introduction to the possibilities of the estimation of similarities based on the proposed audio features. Selected metrics and similarity measurements are selected and will be later evaluated in Chapter \ref{simanal}.
 
 \subsection{Timbre Based}
 
@@ -431,36 +437,36 @@ One proposed approach by Matija Marolt in 2006 is, to take mid-level melodic rep
 \subsection{Note Based}
 
 For comparing musical pieces by their symbolic representation (notes, tablatures, etc.) different text retrieval methods can be used. MIDI files as a digital representation of notes are a good starting point. For example Xia (et. al) uses a variation of the Levenshtein distance measurement to compute similarities between MIDI files \cite{chroma4}. 
-The problem with notation based algorithms is that there are not many datasets available containing audio and MIDI information. As shown in Section \ref{midiest}, the automatic transcription of notes from raw audio does not work flawlessly. There is still ongoing research to automatically annotate musical notes with the help of neural networks \cite{crepe1}.
+The problem with notation based algorithms is that there are not many datasets available containing audio and MIDI information. As shown in Section \ref{midiest}, the automatic transcription of notes from raw audio does not work flawlessly. There is still ongoing research to automatically annotate musical notes with the help of neural networks (for example \cite{crepe1}).
 In Section \ref{rhythmsimc} an attempt to extract note information as text features from chromagrams and calculating the similarity by using the Levenshtein distance is shown and evaluated.
 
 \subsection{Rhythm Based}
 
 Rhythm based music similarity algorithms use timing information of various events as a baseline. For example low-level features like the onset and beat data from the plot in Figure \ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. As an example, Foote (et. al) introduced a feature called the "beat spectrum" for the computation of rhythmic similarities. Other more recent or advanced approaches make use of the rhythm histogram, beat histogram, and rhythm patterns later evaluated in Section \ref{rhythmsimc}.
 
-\subsection{Metadata Based/ Collaborative Filtering}\label{collaborative}
+\subsection{Metadata Based / Collaborative Filtering}\label{collaborative}
 
 Most of the research that combines the field of music information retrieval with big data frameworks relies on data based on the listening behavior of many users of, e.g., music streaming platforms. In 2012 the MSD Challenge was brought to the MIR community. Researchers were challenged to give a list of song recommendations based on a large set of user data, the Million Song Dataset (MSD, see Section \ref{datasets}). As an example, if user X listens a lot to artist A and B and user Y listens mostly to artist A and C, then user X could probably like artist C as well. These kinds of collective listening behavior based recommendations are called "collaborative filtering" and are pretty common in large music streaming services, although not necessarily representing direct musical similarity. \cite[p. 192f.]{knees1}\\
 Recommendation systems based on collaborative filtering tend to propose commonly well-known artists rather than not so well-known ones, possibly biasing the resulting recommendation. On the other hand, these kinds of similarity algorithms can work very fast and efficient in a big data environment. The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on lyrics and also hybrid recommendation systems that combine lyrics, metadata, and collaborative filtering are also possible.\\
-However, all of these recommendation strategies are not directly based on musical features and are not evaluated further throughout this thesis. But they are a possible addition for a hybrid recommendation engine for future research. 
+However, all of these recommendation strategies are not directly based on musical features and are, therefore, not evaluated further throughout this thesis. But they are a possible addition for a hybrid recommendation engine for future research. 
 An example using user-based collaborative filtering is the paper "Design and Implementation of Music Recommendation System Based on Hadoop" \cite{metadat1}. 
 
 \subsection{Genre Specific Features}
 
-The impact of the choice of parameters for similarity measurements on different music subgenres was evaluated by Gulati (et al.) for Indian art music (Carnatic and Hindustani music) \cite{mussim1}. They state: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation discussed in Section 2.  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed that the choice of features and parameters for music similarity measurement is a critical point. "Sampling rates do not have a significant impact for Hindustani music, but can significantly degrade the performance for Carnatic music." \cite[p. 3]{mussim1}. So using different kind of feature sets and parameters for the recommendation of songs from different genres could be an option but would go beyond the frame of this thesis.\\
-As another idea, e.g., in Rock, Pop and Metal music, the analysis of different guitar playing techniques would be imaginable. Guitar tablature extraction \cite{guitext1} Toolkits could be used to extract information, whether the guitar in a song is mostly plucked or strummed, for instance. Or if there are Hammer-on/ Pull-off/ side bending or tapping techniques used. In classical music, the play style of the string section of an orchestra could be taken into consideration (staccato, pizzicato, etc.). These kinds of information could be used as a baseline for song recommandations. 
+The impact of the choice of parameters for similarity measurements on different music subgenres was evaluated by Gulati (et al.) for Indian art music (Carnatic and Hindustani music) \cite{mussim1}. They state: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation [...].  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed that the choice of features and parameters for music similarity measurement is a critical point. "Sampling rates do not have a significant impact for Hindustani music, but can significantly degrade the performance for Carnatic music." \cite[p. 3]{mussim1}. So using different kind of feature sets and parameters for the recommendation of songs from different genres could be an option but would go beyond the frame of this thesis.\\
+As another idea, e.g., in Rock, Pop and Metal music, the analysis of different guitar playing techniques would be beneficial. Guitar tablature extraction \cite{guitext1} toolkits could be used to extract information, whether the guitar in a song is, for instance, mostly plucked or strummed or if there are hammer-on, pull-off, side bending, or tapping techniques used. In classical music, the play style of the string section of an orchestra could be taken into consideration (staccato, pizzicato, etc.). These kinds of information could be used as a baseline for song recommendations. 
 However, there is no MIR toolkit available for the estimation of play styles, so this idea would have to be evaluated in future research.
 
-\subsection{Summary}
+\subsection{Selection}
 
-In this thesis, music similarity measurements based on three different types of features are evaluated. The first is based on MFCCs to represent timbral features of the songs and therefore offering a set of features to make recommendations that are similar in tone color and should be able to make recommendations inside the boundaries of different genres. The second is based on chroma features/ note information to provide a measurement of melodic similarity. With these features, the detection of cover versions should be possible. The third set of features is based on the rhythmic properties of a song. This should enable the recommendation of songs with the same tempo and rhythmic structure, and possibly also enable the recommendation of songs within the same genre.\\
+In this thesis, music similarity measurements based on three different types of features are evaluated. The first is based on MFCCs to represent timbral features of the songs and therefore offering a set of features to make recommendations that are similar in tone color and should be able to make recommendations inside the boundaries of different genres. The second is based on chroma features and note information to provide a measurement of melodic similarity. Utilizing these features targets the detection of cover versions. The third set of features is based on the rhythmic properties of a song. This should enable the recommendation of songs with the same tempo and rhythmic structure, and possibly also enable the recommendation of songs within the same genre.\\
 The usage of MIDI files is not considered further due to the rather poor performance of automatic score extraction tools for songs with multiple instruments and melody lines, and the lack of datasets containing MIDI and audio files. Also, the melodic component of the songs is already represented by the chroma features, although that limits the representation to one or at most a few octaves.\\
 Collaborative filtering is left out because it does not necessarily represent the musical features and properties, but instead the personal taste of other people. And secondly, it is left out because no fitting dataset with the required information and matching music files was found (see Section \ref{data}).\\
-Lastly, genre-specific features are also not an option because this field is not very well researched yet, and the development of algorithms and the extraction of features would go beyond the scope of this thesis.
+Lastly, genre-specific features are also not an option because this field is not very well-researched yet, and the development of algorithms and the extraction of features would go beyond the scope of this thesis.
 
 \section{Data Aggregation}\label{data}
 
-To evaluate the music similarity algorithms and metrics, a lot of music data is needed.
+To evaluate the music similarity algorithms and metrics, a lot of music data is needed. This section provides an overview of publicly available sources for audio data. A selection from which the audio features are extracted is given in Section \ref{tdset}.
 
 \subsection{Datasets}\label{datasets}
 
@@ -470,7 +476,7 @@ To evaluate the music similarity algorithms and metrics, a lot of music data is 
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[scale=0.45]{Images/privmus.jpg}
-		\caption{private music collection}
+		\caption{Private music collection}
 		\label{privmusdist}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
@@ -500,26 +506,26 @@ To evaluate the music similarity algorithms and metrics, a lot of music data is 
 
 \subsubsection{Free Music Archive}
 
-The largest dataset is the Free Music Archive (FMA) consisting of 106733 different songs totaling an amount of nearly one terabyte of music data from all kinds of different music genres \cite{fma1}. There is also a lot of metadata like genre tags available for most of the songs.
+The largest dataset is the Free Music Archive (FMA) consisting of 106733 different songs totaling an amount of nearly one terabyte of music data from a variety of different music genres \cite{fma1} (see Figure \ref{fmadist}). There is also a lot of metadata like genre tags available for most of the songs.
 
 \subsubsection{Private Music Collection}
 
-The private music collection used in this work consists mainly of metal music. The music was legally purchased; all rights belong to the respective owners. Therefore this dataset can not be published alongside this thesis. But the private music collection is fully cataloged, and the according PDF file is the appendices. The distribution of different songs per genre for this dataset is visualized in Figure \ref{privmusdist}.\\
+The private music collection used in this work consists mainly of metal music. The music was legally purchased; all rights belong to the respective owners. Therefore this dataset can not be published alongside this thesis. But the private music collection is fully cataloged, and the according PDF file is in the appendices. The distribution of different songs per genre for this dataset is visualized in Figure \ref{privmusdist}.\\
 \noindent Additionally, a private recording dataset was used, consisting of ambient recordings and self-produced music. Most of these files are available on SoundCloud \cite{bqpd1}.\\
-Because music recommendation is always something personal and the perception of the quality of the results may differ, the inclusion of the private music collection is necessary to enable a subjective evaluation of the results from the developed recommendation engine.
+Because music recommendations are always related to personal taste and the perception of the quality of the results may differ, the inclusion of the private music collection is necessary to enable a subjective evaluation of the results from the developed recommendation engine.
 
 \subsubsection{1517-Artists and Musicnet}
 
-Other sources of music are the Musicnet dataset \cite{musicnet1} and the 1517-Artists dataset \cite{1517artists1}. The Musicnet dataset includes 330 pieces of classical music with musical notes as annotations and the 1517-Artists dataset contains 3180 songs of multiple genres (see Figure \ref{1517dist}). 
+Other sources of music are the Musicnet dataset \cite{musicnet1} and the 1517-Artists dataset \cite{1517artists1}. The Musicnet dataset includes 330 pieces of classical music with musical note values and positions as annotations and the 1517-Artists dataset contains 3180 songs of multiple genres (see Figure \ref{1517dist}). 
 
 \subsubsection{Covers80}\label{cov801}
 
-For cover song detection analysis, the covers80 dataset is available \cite{cover80} containing eighty original songs mostly from the musical genres rock and pop and 84 cover versions. These cover versions tend to differ significantly from the original in musical style, rhythm, and timbre.\\
+For cover song detection analysis, the covers80 dataset is available \cite{cover80} containing eighty original songs predominantly from the musical genres rock and pop and 84 cover versions. These cover versions tend to differ significantly from the original in musical style, rhythm, and timbre.
 %The ability to detect cover songs or different versions/ recording of a musical piece could be a good measurement for the efficiency of music similarity algorithms. In the next chapter \ref{simanal}, one test case is presented, showing, that for instance an MFCC based music similarity algorithm isn't able to detect different recordings of the same piano piece as most similar to each other. 
 
 \subsubsection{MedleyDB}
 
-For a melody/ pitch based similarity analysis, multitrack datasets could provide useful data, because the pitch estimation can be done instrument by instrument. There is, e.g., the MedleyDB \cite{medleydb1} and MedleyDB2 \cite{medleydb2} dataset, as well as the Open Multitrack Dataset \cite{openmult1} currently consisting of 593 multitracks in which the MedleyDB dataset is already included, leaving 481 other tracks for analysis.
+For a melody or pitch based similarity analysis, multitrack datasets could provide useful data, because the pitch estimation can be done instrument by instrument. There are, e.g., the MedleyDB \cite{medleydb1} (see Figure \ref{medleydbdist}) and MedleyDB2 \cite{medleydb2} datasets, as well as the Open Multitrack Dataset \cite{openmult1} currently consisting of 593 multitracks in which the MedleyDB dataset is already included, leaving 481 other tracks for analysis.
 
 \subsubsection{Overview and Other Sources}
 
@@ -527,25 +533,28 @@ The music sources and amounts of songs used for the task at hand are listed in T
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|c||c|}
+		\begin{tabular}{|c||c|c|}
 			\hline
-			FMA & 106.733 Songs\\
+			dataset & \#songs & features\\
 			\hline
-			private & 8484 Songs\\
 			\hline
-			1517-Artists & 3180 Songs\\
+			FMA & 106.733 & -\\
 			\hline
-			Maestro & 1184 Songs (piano) + MIDI\\
+			private & 8.484 & -\\
 			\hline
-			musicnet & 330 Songs (classical) + note annotation\\
+			1517-Artists & 3.180 & -\\
 			\hline
-			Open Multitrack Testbed & 593(481) Songs/ Multitracks\\
+			Maestro & 1.184 & MIDI (piano sheet music)\\
 			\hline
-			covers80 & 164 Songs (80 originals + 84 covers)\\
+			musicnet & 330  & note annotation\\
 			\hline
-			MedleyDB &  122 Songs/ Multitracks\\
+			Open Multitrack Testbed & 593(481) & multitracks\\
 			\hline
-			MedleyDB2 &  74 Songs/ Multitracks\\
+			covers80 & 164  & 80 originals + 84 covers\\
+			\hline
+			MedleyDB &  122  & multitracks\\
+			\hline
+			MedleyDB2 &  74  & multitracks\\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -556,13 +565,13 @@ The music sources and amounts of songs used for the task at hand are listed in T
 
 \subsection{Alternatives}
 
-\subsubsection{Spotify API/ Echonest}\label{spotipy}
+\subsubsection{Spotify API}\label{spotipy}
 
 Another way of getting music samples, audio features, and metadata could be by using the Spotify API \cite{spotifyapi1}.
 %A part of the available audio features comes from the Echo Nest\cite{echonest1}.
-The Downside using the Spotify API is that there is no packed and ready to use test dataset containing the relevant features. So for scientific purposes, a test dataset would have to be created first. With a small Python library named Spotipy, the available information can be accessed very easily. \cite{spotipy1}\\
+The downside of using the Spotify API is that no packed and ready to use test dataset containing the relevant features is available. Therefore, for scientific purposes, a test dataset would have to be created first. Using a small Python library named Spotipy, the available information can be accessed very easily. \cite{spotipy1}\\
 %For the purpose of this thesis, the option of creating an own dataset using the Spotify API and Spotipy was considered and ten very small test playlists of different genres were created using the Spotify Playlist Miner \cite{spotmin1}. 
-Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from selected songs in a playlist that contain a preview URL to a 30-second audio snippet. The audio features and analysis data is saved as a JSON file containing information over:
+Appendix \ref{spotcrawl} lists a small script, that is able to download all audio features and analysis data from selected songs in a playlist that contain a preview URL to a 30-second audio snippet. The audio features and analysis data is saved as a JSON file containing information about:
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item acousticness
@@ -574,9 +583,12 @@ Appendix \ref{spotcrawl} lists a small script, that is able to download all audi
 	\item valence
 	\item predicted key
 	\item tempo 
+	\item pitch 
+	\item tempo 
+	\item timbre information 
+	\item beats and bars 
 \end{itemize}
-as well as pitch and timbre information, beats, and bars.
-In Figure \ref{spp} the returned chroma features of the piano piece "Für Elise" by Beethoven are shown and Figure \ref{spp2} shows the beginning of the piece in more detail, including green dots that resemble estimated bar markings. The blue dots represent the note values of one octave. That means they can resemble a value between zero and eleven with zero representing the key C and 11 is representing a B. The Spotify API actually returns a chroma feature value for every single one of the semi-tones per segment, with one segment being a section of samples that are relatively uniform in timbre and harmony. But in the plots, only the most dominant key per segment is shown.
+\noindent In Figure \ref{spp} the returned chroma features of the piano piece "Für Elise" by Beethoven are shown and Figure \ref{spp2} shows the beginning of the piece in more detail, including green dots that resemble estimated bar markings. The blue dots represent the note values of one octave. That means they can resemble a value between zero and eleven with 0 representing the key C and 11 is representing a B. The Spotify API actually returns a chroma feature value for every single one of the semi-tones per segment, with one segment being a section of samples that are relatively uniform in timbre and harmony. But in the plots, only the most dominant key per segment is shown to visualize the main melody line.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -611,8 +623,8 @@ Upon an initial request, the Spotify API developer team did not respond and ther
 
 \subsubsection{Million Song Dataset}
 
-Another outstanding and very large dataset is the Million Song Dataset (MSD)\cite{msd1}. 
-It contains a large set of metadata per track as well as a lot of supplementary datasets, like the tagtraum genre annotation (Figure \ref{msddist})\cite{msd5} and the Last.fm dataset\cite{msd2}. On top of that, the Echo Nest API dataset contains a lot of additional audio features like pitch, loudness, energy, and danceability to name just a few \cite{msd3}. 
+Another outstanding and very large dataset is the Million Song Dataset (MSD) \cite{msd1}. 
+It contains a large set of metadata per track as well as a lot of supplementary datasets, like the tagtraum genre annotation (Figure \ref{msddist}) \cite{msd5} and the Last.fm dataset \cite{msd2}. On top of that, the Echo Nest API dataset contains a lot of additional audio features like pitch, loudness, energy, and danceability to name just a few \cite{msd3}. 
 Another addition is the secondhand dataset, containing a list of cover songs in the Million Song Dataset\cite{msd6}
 \begin{figure}[thpb]
 	\centering
