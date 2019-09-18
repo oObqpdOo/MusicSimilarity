@@ -437,6 +437,8 @@ pdfstartview={XYZ null null 1.00}
 \usetikzlibrary{shapes.symbols}
 \usetikzlibrary{arrows,calc}
 
+\usepackage{marvosym}
+
 \newcommand{\SetListingOptions}{\lstset{
   	language=Python,
   	keywordstyle=\color{blue},
@@ -444,7 +446,6 @@ pdfstartview={XYZ null null 1.00}
     commentstyle=\color{black!60!green}\textit, 
     backgroundcolor=\color{lightgray!10},
    	morecomment=[l][\color{magenta}]{\#}
-    breaklines=true,
     basicstyle=\ttfamily\footnotesize,
     keywordstyle=\color{blue},
     numbers=left,
@@ -457,11 +458,14 @@ pdfstartview={XYZ null null 1.00}
     %numbersyle=\tiny
 	breaklines=true,               % automatic line breaking
 	columns=fullflexible,
-	breakautoindent=false,
+	%prebreak={\carriagereturn},
+	breakautoindent=true,
+	%breakautoindent=false,
+	prebreak={\:\Righttorque},
 	framerule=1pt,
 	xleftmargin=0pt,
 	xrightmargin=0pt,
-	breakindent=0pt,
+	%breakindent=0pt,
 	resetmargins=true,    
     frame=single,
     xleftmargin=5pt,

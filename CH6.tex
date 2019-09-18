@@ -196,15 +196,12 @@ import numpy as np
 def jensen_shannon(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
 	mean_m = 0.5 * (mean1 + mean2)
-	cov_m = 0.5 * (cov1 + mean1 * np.transpose(mean1)) + 0.5 * 
-		(cov2 + mean2 * np.transpose(mean2)) - (mean_m * np.transpose(mean_m))
-	div = 0.5 * np.log(np.linalg.det(cov_m)) - 0.25 * np.log(np.linalg.det(cov1)) - 
-		0.25 * np.log(np.linalg.det(cov2))  
+	cov_m = 0.5 * (cov1 + mean1 * np.transpose(mean1)) + 0.5 * (cov2 + mean2 * np.transpose(mean2)) - (mean_m * np.transpose(mean_m))
+	div = 0.5 * np.log(np.linalg.det(cov_m)) - 0.25 * np.log(np.linalg.det(cov1)) - 0.25 * np.log(np.linalg.det(cov2))  
 	if np.isnan(div):
 		div = np.inf
 	return div
-distance_udf = F.udf(lambda x: float(jensen_shannon(x, comparator_value)), 
-	DoubleType())
+distance_udf = F.udf(lambda x: float(jensen_shannon(x, comparator_value)), DoubleType())
 result = df_vec.withColumn('distances', distance_udf(F.col('features')))
 result = result.filter(result.distances_js != np.inf)    
 result = result.select("id", "distances").orderBy('distances', ascending=True)
@@ -225,10 +222,7 @@ def symmetric_kullback_leibler(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
 	if (is_invertible(cov1) and is_invertible(cov2)):
 		d = 13
-		div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + 
-			np.trace(cov2 * np.linalg.inv(cov1)) + 
-			np.trace((np.linalg.inv(cov1) + 
-			np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
+		div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + np.trace(cov2 * np.linalg.inv(cov1)) + np.trace((np.linalg.inv(cov1) + np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
 	else: 
 		div = np.inf
 		#print("ERROR: NON INVERTIBLE SINGULAR COVARIANCE MATRIX\n")  
