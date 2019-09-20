@@ -17,7 +17,7 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
-  \entry{soundcloudgo}{inproceedings}{}
+  \entry{soundcloudgo}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{SoundCloud Go+ tracks}
     \verb{url}
@@ -26,7 +26,7 @@
     \endverb
   \endentry
 
-  \entry{knees1}{inproceedings}{}
+  \entry{knees1}{book}{}
     \name{author}{2}{}{%
       {{hash=KP}{%
          family={Knees},
@@ -55,30 +55,47 @@
   \endentry
 
   \entry{musicdata}{book}{}
-    \name{author}{1}{}{%
-      {{hash=RCWDJIVG}{%
+    \name{author}{4}{}{%
+      {{hash=WC}{%
+         family={Weihs},
+         familyi={W\bibinitperiod},
+         given={Claus},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=JD}{%
+         family={Jannach},
+         familyi={J\bibinitperiod},
+         given={Dietmar},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=VI}{%
+         family={Vatolkin},
+         familyi={V\bibinitperiod},
+         given={Igor},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=RG}{%
          family={Rudolph},
          familyi={R\bibinitperiod},
-         given={C.\bibnamedelima Weihs; D. Jannach; I. Vatolkin;\bibnamedelima
-  G.},
-         giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod D\bibinitperiod
-  J\bibinitperiod I\bibinitperiod V\bibinitperiod\bibinitdelim
-  G\bibinitperiod},
+         given={Guenter},
+         giveni={G\bibinitperiod},
       }}%
     }
     \list{publisher}{2}{%
       {New York: Chapman}%
       {Hall/CRC}%
     }
-    \strng{namehash}{RCWDJIVG1}
-    \strng{fullhash}{RCWDJIVG1}
+    \strng{namehash}{WC+1}
+    \strng{fullhash}{WCJDVIRG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Music Data Analysis}
+    \field{edition}{1st}
+    \field{isbn}{1498719562, 9781498719568}
+    \field{title}{Music Data Analysis: Foundations and Applications}
     \verb{url}
     \verb https://doi.org/10.1201/9781315370996
     \endverb
-    \field{year}{2017}
+    \field{year}{2016}
   \endentry
 
   \entry{audiofeattoolb}{inproceedings}{}
@@ -116,35 +133,46 @@
 
   \entry{yaafe1}{inproceedings}{}
     \name{author}{5}{}{%
-      {{hash=B}{%
-         family={B.Mathieu},
-         familyi={B\bibinitperiod},
+      {{hash=MB}{%
+         family={Mathieu},
+         familyi={M\bibinitperiod},
+         given={Benoît},
+         giveni={B\bibinitperiod},
       }}%
-      {{hash=S}{%
-         family={S.Essid},
-         familyi={S\bibinitperiod},
+      {{hash=ES}{%
+         family={Essid},
+         familyi={E\bibinitperiod},
+         given={Slim},
+         giveni={S\bibinitperiod},
       }}%
-      {{hash=T}{%
-         family={T.Fillon},
-         familyi={T\bibinitperiod},
+      {{hash=FT}{%
+         family={Fillon},
+         familyi={F\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
       }}%
-      {{hash=J}{%
-         family={J.Prado},
-         familyi={J\bibinitperiod},
+      {{hash=PJ}{%
+         family={Prado},
+         familyi={P\bibinitperiod},
+         given={Jacques},
+         giveni={J\bibinitperiod},
       }}%
-      {{hash=G}{%
-         family={G.Richard},
-         familyi={G\bibinitperiod},
+      {{hash=RG}{%
+         family={Richard},
+         familyi={R\bibinitperiod},
+         given={Gaël},
+         giveni={G\bibinitperiod},
       }}%
     }
-    \strng{namehash}{B+1}
-    \strng{fullhash}{BSTJG1}
+    \strng{namehash}{MB+1}
+    \strng{fullhash}{MBESFTPJRG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 11th ISMIR conference, Utrecht,
-  Netherlands, 2010}
+    \field{pages}{441\bibrangedash 446}
     \field{title}{YAAFE, an Easy to Use and Efficient Audio Feature Extraction
-  Software}
+  Software.}
+    \field{month}{01}
+    \field{year}{2010}
   \endentry
 
   \entry{essentia1}{inproceedings}{}
@@ -205,13 +233,13 @@
       {{hash=MMI}{%
          family={Mandel},
          familyi={M\bibinitperiod},
-         given={Michael\bibnamedelima I.},
+         given={Michael\bibnamedelima I},
          giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
       }}%
       {{hash=EDPW}{%
          family={Ellis},
          familyi={E\bibinitperiod},
-         given={Daniel P.\bibnamedelima W.},
+         given={Daniel P\bibnamedelima W},
          giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
   W\bibinitperiod},
       }}%
@@ -220,12 +248,13 @@
     \strng{fullhash}{MMIEDPW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Labrosa's audio music similarity and classification
+    \field{booktitle}{Music Information Retrieval Information Exchange (MIREX)}
+    \field{title}{LABROSA’s audio music similarity and classification
   submissions}
     \field{year}{2007}
   \endentry
 
-  \entry{jupyter}{inproceedings}{}
+  \entry{jupyter}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Jupyter}
     \verb{url}
@@ -233,17 +262,17 @@
     \endverb
   \endentry
 
-  \entry{musly1}{inproceedings}{}
+  \entry{musly1}{misc}{}
     \name{author}{1}{}{%
-      {{hash=SDD}{%
+      {{hash=SD}{%
          family={Schnitzer},
          familyi={S\bibinitperiod},
-         given={Dr.\bibnamedelima Dominik},
-         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+         given={Dominik},
+         giveni={D\bibinitperiod},
       }}%
     }
-    \strng{namehash}{SDD1}
-    \strng{fullhash}{SDD1}
+    \strng{namehash}{SD1}
+    \strng{fullhash}{SD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{title}{Audio Music Similarity}
@@ -278,24 +307,41 @@
   \endentry
 
   \entry{musly2}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=eaDS}{%
-         prefix={et},
-         prefixi={e\bibinitperiod},
-         family={al},
-         familyi={a\bibinitperiod},
-         given={D.\bibnamedelima Schnitzer},
-         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+    \name{author}{4}{}{%
+      {{hash=SD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dominik},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Flexer},
+         familyi={F\bibinitperiod},
+         given={Arthur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Schedl},
+         familyi={S\bibinitperiod},
+         given={Markus},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WG}{%
+         family={Widmer},
+         familyi={W\bibinitperiod},
+         given={Gerhard},
+         giveni={G\bibinitperiod},
       }}%
     }
-    \strng{namehash}{aDSe1}
-    \strng{fullhash}{aDSe1}
+    \strng{namehash}{SD+1}
+    \strng{fullhash}{SDFASMWG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 12th International Society for Music
-  Information Retrieval Conference, ISMIR, 2011}
-    \field{title}{Using mutual proximity to improve content-based audio
-  similarity}
+    \field{pages}{79\bibrangedash 84}
+    \field{title}{Using Mutual Proximity to Improve Content-Based Audio
+  Similarity.}
+    \field{month}{01}
+    \field{year}{2011}
   \endentry
 
   \entry{mirtoolbox1}{inproceedings}{}
@@ -323,7 +369,7 @@
   from Audio}
   \endentry
 
-  \entry{matl1}{inproceedings}{}
+  \entry{matl1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{MATLAB}
     \verb{url}
@@ -390,7 +436,7 @@
     \field{year}{2016}
   \endentry
 
-  \entry{rm1}{inproceedings}{}
+  \entry{rm1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Prélude cis-Moll (Rachmaninow)}
     \verb{url}
@@ -399,7 +445,7 @@
     \endverb
   \endentry
 
-  \entry{fe1}{inproceedings}{}
+  \entry{fe1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Für Elise}
     \verb{url}
@@ -520,17 +566,17 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{schnitzer1}{inproceedings}{}
+  \entry{schnitzer1}{book}{}
     \name{author}{1}{}{%
-      {{hash=SDD}{%
+      {{hash=SD}{%
          family={Schnitzer},
          familyi={S\bibinitperiod},
-         given={Dr.\bibnamedelima Dominik},
-         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+         given={Dominik},
+         giveni={D\bibinitperiod},
       }}%
     }
-    \strng{namehash}{SDD1}
-    \strng{fullhash}{SDD1}
+    \strng{namehash}{SD1}
+    \strng{fullhash}{SD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{isbn}{9781477494158}
@@ -635,11 +681,11 @@
 
   \entry{crepe1}{inproceedings}{}
     \name{author}{4}{}{%
-      {{hash=KJW}{%
+      {{hash=KJ}{%
          family={Kim},
          familyi={K\bibinitperiod},
-         given={Jong\bibnamedelima Wook},
-         giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+         given={Jong},
+         giveni={J\bibinitperiod},
       }}%
       {{hash=SJ}{%
          family={Salamon},
@@ -653,20 +699,24 @@
          given={Peter},
          giveni={P\bibinitperiod},
       }}%
-      {{hash=BJP}{%
+      {{hash=BJ}{%
          family={Bello},
          familyi={B\bibinitperiod},
-         given={Juan\bibnamedelima Pablo},
-         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+         given={Juan},
+         giveni={J\bibinitperiod},
       }}%
     }
-    \strng{namehash}{KJW+1}
-    \strng{fullhash}{KJWSJLPBJP1}
+    \strng{namehash}{KJ+1}
+    \strng{fullhash}{KJSJLPBJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the IEEE International Conference on
-  Acoustics, Speech, and Signal Processing (ICASSP), 2018}
-    \field{title}{CREPE: A Convolutional Representation for Pitch Estimation}
+    \verb{doi}
+    \verb 10.1109/ICASSP.2018.8461329
+    \endverb
+    \field{pages}{161\bibrangedash 165}
+    \field{title}{Crepe: A Convolutional Representation for Pitch Estimation}
+    \field{month}{04}
+    \field{year}{2018}
   \endentry
 
   \entry{metadat1}{inproceedings}{}
@@ -770,7 +820,7 @@
       {{hash=DM}{%
          family={Defferrard},
          familyi={D\bibinitperiod},
-         given={Michäel},
+         given={Michaël},
          giveni={M\bibinitperiod},
       }}%
       {{hash=BK}{%
@@ -796,12 +846,13 @@
     \strng{fullhash}{DMBKVPBX1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{18th International Society for Music Information
-  Retrieval Conference, 2017}
-    \field{title}{FMA: A Dataset for Music Analysis}
-    \verb{url}
-    \verb https://arxiv.org/abs/1612.01840
+    \verb{eprint}
+    \verb 1612.01840
     \endverb
+    \field{title}{FMA: A Dataset For Music Analysis}
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{cs.SD}
+    \field{year}{2016}
   \endentry
 
   \entry{medleydb1}{inproceedings}{}
@@ -849,11 +900,11 @@
     \field{labeltitlesource}{title}
     \field{booktitle}{15th International Society for Music Information
   Retrieval Conference, 2014}
-    \field{title}{"MedleyDB: A Multitrack Dataset for Annotation-Intensive MIR
-  Research"}
+    \field{title}{MedleyDB: A Multitrack Dataset for Annotation-Intensive MIR
+  Research}
   \endentry
 
-  \entry{bqpd1}{inproceedings}{}
+  \entry{bqpd1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Soundcloud bqpd}
     \verb{url}
@@ -895,7 +946,7 @@
     \field{year}{2017}
   \endentry
 
-  \entry{1517artists1}{inproceedings}{}
+  \entry{1517artists1}{misc}{}
     \name{author}{1}{}{%
       {{hash=SK}{%
          family={Seyerlehner},
@@ -976,41 +1027,36 @@
   \endentry
 
   \entry{openmult1}{inproceedings}{}
-    \name{author}{4}{}{%
+    \name{author}{3}{}{%
       {{hash=MBD}{%
          family={Man},
          familyi={M\bibinitperiod},
-         given={B.\bibnamedelima De},
+         given={Brecht\bibnamedelima De},
          giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
-      {{hash=MMM}{%
-         family={Mora-Mcginity},
-         familyi={M\bibinitperiod-M\bibinitperiod},
-         given={M.},
+      {{hash=MmM}{%
+         family={Mora-mcginity},
+         familyi={M\bibinitperiod-m\bibinitperiod},
+         given={Mariano},
          giveni={M\bibinitperiod},
       }}%
-      {{hash=FG}{%
-         family={Fazekas},
-         familyi={F\bibinitperiod},
-         given={G.},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=RJ}{%
+      {{hash=RJD}{%
          family={Reiss},
          familyi={R\bibinitperiod},
-         given={J.D.},
-         giveni={J\bibinitperiod},
+         given={Joshua\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MBD+1}
-    \strng{fullhash}{MBDMMMFGRJ1}
+    \strng{namehash}{MBDMmMRJD1}
+    \strng{fullhash}{MBDMmMRJD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{137th Convention of the Audio Engineering Society, 2014}
+    \field{booktitle}{In 137th Convention of the Audio Engineering Society}
     \field{title}{The Open Multitrack Testbed}
+    \field{year}{2014}
   \endentry
 
-  \entry{spotifyapi1}{inproceedings}{}
+  \entry{spotifyapi1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Spotify API}
     \verb{url}
@@ -1018,7 +1064,7 @@
     \endverb
   \endentry
 
-  \entry{spotipy1}{inproceedings}{}
+  \entry{spotipy1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Spotipy - a Python client for The Spotify Web API}
     \verb{url}
@@ -1026,7 +1072,7 @@
     \endverb
   \endentry
 
-  \entry{spottac1}{inproceedings}{}
+  \entry{spottac1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Spotify Terms and Conditions of Use}
     \verb{url}
@@ -1034,7 +1080,7 @@
     \endverb
   \endentry
 
-  \entry{spottac3}{inproceedings}{}
+  \entry{spottac3}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Spotify Commercial Restrictions}
     \verb{url}
@@ -1098,7 +1144,7 @@
     \field{title}{Improving Genre Annotations for the Million Song Dataset}
   \endentry
 
-  \entry{msd2}{inproceedings}{}
+  \entry{msd2}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Last.fm dataset, the official song tags and song similarity
   collection for the Million Song Dataset}
@@ -1107,7 +1153,7 @@
     \endverb
   \endentry
 
-  \entry{msd3}{inproceedings}{}
+  \entry{msd3}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{The Echo Nest Taste profile subset, the official user data
   collection for the Million Song Dataset}
@@ -1116,7 +1162,7 @@
     \endverb
   \endentry
 
-  \entry{msd6}{inproceedings}{}
+  \entry{msd6}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{SecondHandSongs dataset, the official list of cover songs
   within the Million Song Dataset}
@@ -1125,7 +1171,7 @@
     \endverb
   \endentry
 
-  \entry{echonest1}{inproceedings}{}
+  \entry{echonest1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{The Echo Nest}
     \verb{url}
@@ -1246,7 +1292,7 @@
     \field{year}{2016}
   \endentry
 
-  \entry{hadoop}{inproceedings}{}
+  \entry{hadoop}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Apache Hadoop}
     \verb{url}
@@ -1342,7 +1388,7 @@
     \field{year}{2004}
   \endentry
 
-  \entry{mapred1im}{inproceedings}{}
+  \entry{mapred1im}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{MapReduce}
     \verb{url}
@@ -1499,7 +1545,7 @@
          giveni={O\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MB+1}
+    \strng{namehash}{MB+2}
     \strng{fullhash}{MBRCLDEDPMMBENO1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
@@ -1666,7 +1712,7 @@
     \field{year}{2007}
   \endentry
 
-  \entry{mathcorr}{inproceedings}{}
+  \entry{mathcorr}{misc}{}
     \name{author}{1}{}{%
       {{hash=M}{%
          family={Mathworks},
@@ -1702,8 +1748,9 @@
     \strng{namehash}{PWEDCC1}
     \strng{fullhash}{PWEDCC1}
     \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{The 2007 LabROSA cover song detection system}
+    \verb{doi}
+    \verb DOI:10.7916/D8959SXK
+    \endverb
     \field{month}{01}
     \field{year}{2007}
   \endentry
@@ -1763,6 +1810,7 @@
     \strng{fullhash}{GMDCGD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR}
     \field{pages}{177\bibrangedash 182}
     \field{title}{Improving Rhythmic Similarity Computation by Beat Histogram
   Transformations.}
@@ -1819,6 +1867,7 @@
     \strng{fullhash}{LTRA1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{ISMIR}
     \field{pages}{34\bibrangedash 41}
     \field{title}{Evaluation of Feature Extractors and Psycho-Acoustic
   Transformations for Music Genre Classification.}
@@ -1826,7 +1875,7 @@
     \field{year}{2005}
   \endentry
 
-  \entry{rp_extract}{inproceedings}{}
+  \entry{rp_extract}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Audio Feature Extraction}
     \verb{url}
@@ -1834,7 +1883,7 @@
     \endverb
   \endentry
 
-  \entry{rp_extract2}{inproceedings}{}
+  \entry{rp_extract2}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Audio Feature Extraction - Rhythm Patterns}
     \verb{url}
@@ -1897,13 +1946,15 @@
     \strng{fullhash}{PTSDSMKPWG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{10th International Society for Music Information
+  Retrieval Conference (ISMIR’09)}
     \field{pages}{525\bibrangedash 530}
     \field{title}{On Rhythm and General Music Similarity.}
     \field{month}{01}
     \field{year}{2009}
   \endentry
 
-  \entry{github-code}{inproceedings}{}
+  \entry{github-code}{misc}{}
     \name{author}{1}{}{%
       {{hash=SJ}{%
          family={Schoder},
@@ -1922,7 +1973,7 @@
     \endverb
   \endentry
 
-  \entry{mpi4py}{inproceedings}{}
+  \entry{mpi4py}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{mpi4py}
     \verb{url}
@@ -1930,7 +1981,7 @@
     \endverb
   \endentry
 
-  \entry{beegfs}{inproceedings}{}
+  \entry{beegfs}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{beegfs}
     \verb{url}
@@ -1938,7 +1989,7 @@
     \endverb
   \endentry
 
-  \entry{lshspark}{inproceedings}{}
+  \entry{lshspark}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Locality Sensitive Hashing}
     \verb{url}

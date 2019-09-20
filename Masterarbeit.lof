@@ -41,7 +41,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.15}{\ignorespaces Million Song Dataset genre distribution \cite [p. 6]{msd5}\relax }}{20}{figure.2.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.16}{\ignorespaces MapReduce \cite {mapred1im}\relax }}{22}{figure.2.16}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces MapReduce~\cite {mapred1im}\relax }}{22}{figure.2.16}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.17}{\ignorespaces Spark cluster\relax }}{23}{figure.2.17}
 \defcounter {refsection}{0}\relax 
@@ -75,7 +75,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Rhythm patterns\relax }}{45}{figure.3.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Rhythm pattern extraction \cite {rp_extract2}\relax }}{46}{figure.3.14}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Rhythm pattern extraction~\cite {rp_extract2}\relax }}{46}{figure.3.14}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Rhythm histogram\relax }}{47}{figure.3.15}
 \defcounter {refsection}{0}\relax 

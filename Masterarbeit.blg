@@ -19,47 +19,53 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated field_info (elt_size=4) to 15425 items from 5000.
 Database file #1: Masterarbeit-blx.bib
 Database file #2: literatur.bib
+I was expecting a `,' or a `}'---line 496 of file literatur.bib
+ :  
+ :  title = {The 2007 LabROSA cover song detection system}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Biblatex version: 3.8
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 75 entries,
             6268 wiz_defined-function locations,
-            1502 strings with 19863 characters,
-and the built_in function-call counts, 331179 in all, are:
-= -- 21954
-> -- 5568
-< -- 1368
-+ -- 8182
-- -- 2133
-* -- 21813
-:= -- 32510
+            1508 strings with 19818 characters,
+and the built_in function-call counts, 335442 in all, are:
+= -- 22232
+> -- 5687
+< -- 1388
++ -- 8501
+- -- 2193
+* -- 22132
+:= -- 33193
 add.period$ -- 0
 call.type$ -- 75
-change.case$ -- 582
-chr.to.int$ -- 109
+change.case$ -- 586
+chr.to.int$ -- 127
 cite$ -- 148
-duplicate$ -- 38118
-empty$ -- 32942
-format.name$ -- 3743
-if$ -- 68104
+duplicate$ -- 39016
+empty$ -- 33089
+format.name$ -- 3821
+if$ -- 68690
 int.to.chr$ -- 0
-int.to.str$ -- 141
+int.to.str$ -- 142
 missing$ -- 0
-newline$ -- 1894
-num.names$ -- 2228
-pop$ -- 25559
+newline$ -- 1951
+num.names$ -- 2231
+pop$ -- 25614
 preamble$ -- 1
-purify$ -- 980
+purify$ -- 996
 quote$ -- 0
-skip$ -- 9989
+skip$ -- 10036
 stack$ -- 0
-substring$ -- 35053
-swap$ -- 8154
-text.length$ -- 1342
+substring$ -- 35169
+swap$ -- 8353
+text.length$ -- 1361
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 2538
 warning$ -- 0
-while$ -- 4130
+while$ -- 4294
 width$ -- 0
-write$ -- 1820
+write$ -- 1877
+(There was 1 error message)

@@ -3,12 +3,12 @@
 \chapter{Implementation}\label{implementationdet}
 
 The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored into feature files. These features files then have to be processed with the big data framework Spark to compute the similarities between songs.\\ 
-Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub \cite{github-code}. Details for the usage of the Python scripts are also documented there.
+Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub~\cite{github-code}. Details for the usage of the Python scripts are also documented there.
 
 \section{Audio Feature Extraction}\label{simmet}
 
-So far the required audio features as well as toolkits to extract those features from the audio data have been selected in Chapter \ref{audiofeat}.
-In Section \ref{data}, different sources for audio files have been presented. Section \ref{musly}, \ref{melsimc}, and \ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
+So far the required audio features as well as toolkits to extract those features from the audio data have been selected in Chapter~\ref{audiofeat}.
+In Section~\ref{data}, different sources for audio files have been presented. Section~\ref{musly},~\ref{melsimc}, and~\ref{rhythmsimc} presented algorithms to pre-process the low-level features and use these to compute similarities. 
 This section focuses on the selection of fitting datasets %to extract features from
 and the performance of the feature extraction and pre-processing software implementation.  
 
@@ -17,7 +17,7 @@ and the performance of the feature extraction and pre-processing software implem
 A lot of data is needed to test the algorithms in a big data environment, so the Free Music Archive with its over 106000 songs is a good option for performance tests. It has to be kept in mind, that the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic, and rock. Also this dataset may not be representative for actual popular music, a lot of the songs are live recordings with poor audio quality. %possibly influencing the results.
 The 1517-Artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms, e.g., by genre recall, this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
 The last source used in this thesis is the private music collection. This collection is biased towards metal music, but due to the match with personal taste, it enables a subjective evaluation of the results from the implemented recommender system.
-In conclusion that sums up to about 117000 songs for performance tests, from which in the end 114210 could be used (see Section \ref{totamsong} for the details on the dropout), and about 11500 songs for a detailed evaluation of the algorithms in this thesis and the quality of the recommendations. As mentioned in Section \ref{datasets}, all albums from the private music collections are catalogued as well, and the associated document is in the appendices. 
+In conclusion that sums up to about 117000 songs for performance tests, from which in the end 114210 could be used (see Section~\ref{totamsong} for the details on the dropout), and about 11500 songs for a detailed evaluation of the algorithms in this thesis and the quality of the recommendations. As mentioned in Section~\ref{datasets}, all albums from the private music collections are catalogued as well, and the associated document is in the appendices. 
 
 \begin{table}[h]
 	\label{used_dsets}
@@ -44,7 +44,7 @@ After evaluating the different features in the last three chapters, this section
 
 \subsubsection{Librosa}
 
-For most of the plots in Chapter \ref{audiofeat}, the Python toolkit librosa was used because of its ease of use and very good documentation. The following code example shows the necessary steps to extract the most important features like MFCC, chromagram, beats, and onsets.
+For most of the plots in Chapter~\ref{audiofeat}, the Python toolkit librosa was used because of its ease of use and very good documentation. The following code example shows the necessary steps to extract the most important features like MFCC, chromagram, beats, and onsets.
 \lstset{language=Python} 
 \begin{pythonCode}[frame=single,label={lst:Librosa},caption={Librosa},captionpos=b]
 path = ('music/guitar2.mp3')
@@ -60,13 +60,13 @@ For larger datasets like the 1517-Artists dataset, the feature extraction proces
 
 \subsubsection{Essentia}
 
-Moffat (et al.) \cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that Essentia is a much faster alternative to librosa due to the underlying C++ code and provides even more features, but it is a bit less well documented and requires more effort for the implementation at the same time.\\ 
+Moffat (et al.)~\cite{audiofeattoolb} compares different Audio feature extraction toolboxes and shows that Essentia is a much faster alternative to librosa due to the underlying C++ code and provides even more features, but it is a bit less well documented and requires more effort for the implementation at the same time.\\ 
 In the end, the code to extract the necessary features had to be rewritten for the usage of Essentia due to the slow performance of librosa. Essentia offers two different ways to handle audio files. The first one is to use the Essentia standard library. It provides similar methods to librosa and uses an imperative programming style. The audio file has to be read, sliced and pre-processed by hand. The second way is to use Essentia streaming. Basically, a network of connected algorithms is created, and they handle and schedule the "how and when" of the execution whenever a process is called. \\
 The melodic and timbral features and the beat histograms are computed with Essentia. Only the rhythm patterns and rhythm histograms are computed in a separate step, as stated below. 
 
 \subsubsection{Essentia Standard}
 
-In the final code for the audio feature extraction, the computation of the MFCCs and beat histogram is done with the Essentia standard library, because it offers a fast and easy way to implement the basic feature extraction tasks (see Code Snippet \ref{lst:esss}). 
+In the final code for the audio feature extraction, the computation of the MFCCs and beat histogram is done with the Essentia standard library, because it offers a fast and easy way to implement the basic feature extraction tasks (see Code Snippet~\ref{lst:esss}). 
 \begin{pythonCode}[frame=single,label={lst:esss},caption={Essentia standard},captionpos=b]
 audio = es.MonoLoader(filename=path, sampleRate=fs)()
 hamming_window = es.Windowing(type='hamming')
@@ -137,16 +137,16 @@ time = \frac{\#songs}{\#CPUs} \cdot 15.4s
 \end{equation}
 Parallel Python also opens up the possibility to use a cluster instead of a single-node pc.\\
 For convenience, every processor gets a batch of files instead of single songs. For every batch, different output files for the various features are created. The batch size determines the overall size of these feature-files. For example, for the 1517-Artists dataset a batch size of 400 songs was chosen, so overall four CPUs had to process two batches, resulting in eight different output files with the chroma feature files being the largest with about 25MB per file.\\
-One problem that appeared when using Parallel Python was that the main memory usage increased over time. The explicit usage of the garbage collector and the deletion of unwanted objects also couldn't solve that problem. So after processing a few hundred songs, the processes eventually ran out of memory and had to be restarted. By replacing Parallel Python with mpi4py, this problem could be solved later (see Section \ref{mpi4py}). 
+One problem that appeared when using Parallel Python was that the main memory usage increased over time. The explicit usage of the garbage collector and the deletion of unwanted objects also couldn't solve that problem. So after processing a few hundred songs, the processes eventually ran out of memory and had to be restarted. By replacing Parallel Python with mpi4py, this problem could be solved later (see Section~\ref{mpi4py}). 
 
 \subsubsection{Rp\_extractor}
 
-For the extraction of the rhythm patterns and rhythm histogram features as described in Section \ref{rhythmsimc}, the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 344 seconds.
+For the extraction of the rhythm patterns and rhythm histogram features as described in Section~\ref{rhythmsimc}, the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs takes about 344 seconds.
 
 \subsubsection{Performance on a Single PC}
 
 %The extraction of the rhythm patterns and the rhythm histogram is performed by the rp\_extractor tool. The feature extraction and processing of all the other features (beat histogram, MFCC statistics, notes and beat-aligned chromagram) had to be implemented separately and 
-The performance of the different MIR toolkits is shown in Figure \ref{perfex}. 
+The performance of the different MIR toolkits is shown in Figure~\ref{perfex}. 
 
 \begin{figure}[htbp]
 	\centering
@@ -222,8 +222,8 @@ The performance of the different MIR toolkits is shown in Figure \ref{perfex}.
 \subsubsection{Performance on a Cluster with mpi4py}\label{mpi4py}
 
 For the extraction of the features from the audio files of the FMA dataset on the computer cluster of the Friedrich-Schiller-University in Jena (the "ARA-cluster"), Parallel Python had to be replaced with mpi4py. 
-Mpi4py provides Python bindings for the Message Passing Interface standard (MPI) \cite{mpi4py}. 
-Every compute-process gets a rank number and is aware of the overall count of all processes. With these two values, the file list of all audio files is split, and each process only processes its respective data. The audio files were stored in a parallel cluster file system called "beegfs" \cite{beegfs}. Equally to the implementation using Parallel Python every process stores the results in separate output files, each of them containing batches of 25 songs.\\
+Mpi4py provides Python bindings for the Message Passing Interface standard (MPI)~\cite{mpi4py}. 
+Every compute-process gets a rank number and is aware of the overall count of all processes. With these two values, the file list of all audio files is split, and each process only processes its respective data. The audio files were stored in a parallel cluster file system called "beegfs"~\cite{beegfs}. Equally to the implementation using Parallel Python every process stores the results in separate output files, each of them containing batches of 25 songs.\\
 
 \begin{pythonCode}[frame=single,label={lst:mpi4py},caption={Mpi4py},captionpos=b]
 comm = MPI.COMM_WORLD   # get MPI communicator object

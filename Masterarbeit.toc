@@ -109,7 +109,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Genre Recall Rate / Construction Noise}{32}{subsection.3.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Different Recordings and Cover Versions}{33}{figure.3.1}
+\contentsline {subsubsection}{Different Recordings and Cover Versions}{33}{Item.11}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Melodic Similarity}{34}{section.3.2}
 \defcounter {refsection}{0}\relax 

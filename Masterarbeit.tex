@@ -413,8 +413,16 @@ pdfstartview={XYZ null null 1.00}
 \setlength{\oldskip}{\baselineskip}
 
 %\usepackage{cite}
-\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+%\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+
+\usepackage[backend=bibtex,style=numeric,giveninits=true,sorting=none]{biblatex}
+
 \bibliography{literatur}
+%\bibliographystyle{numeric}
+
+\DeclareNameAlias{default}{family-given}
+\renewcommand*\newunitpunct{\addcomma\space} % <========================
+
 \usepackage{ragged2e}
 \AtBeginBibliography{\RaggedRight}
 \renewcommand*{\bibsetup}{\RaggedRight}
