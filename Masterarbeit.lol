@@ -1,5 +1,5 @@
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {2.1}MIR Toolkit Similarity}{10}{lstlisting.2.1}
+\contentsline {lstlisting}{\numberline {2.1}MATLAB code for estimating similarities based on MFCCs}{10}{lstlisting.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {2.2}Example cluster configuration Python}{25}{lstlisting.2.2}
 \defcounter {refsection}{0}\relax 

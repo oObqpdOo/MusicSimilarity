@@ -13,10 +13,10 @@
 \selectlanguage{english}
 \begin{abstract}
 	\begin{center}
-	\noindent\textbf{Estimating music similarity by merging various similarity measurements with the help of the big data framework Spark.}
+	\noindent\textbf{Estimating music similarity by merging various similarity measurements with the help of the Big Data framework Spark.}
 	\end{center}
 	The field of music information retrieval in computer science is mostly a data-driven and purely mathematical topic. The goal of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potential weak spots of current music recommender systems focusing on single aspects like melody, rhythm, and timbre.
-	A parameterizable recommender system based on the big data processing framework Spark is introduced, which takes multiple tonal properties of music into account and is able to recommend music based on a user's personal preferences.
+	A parameterizable recommender system based on the Big Data processing framework Spark is introduced, which takes multiple tonal properties of music into account and is able to recommend music based on a user's personal preferences.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -30,17 +30,17 @@
 \chapter{Introduction}\label{intro}
 
 The idea originated from Dr. T. Bosse from the chair for advanced computing at the Friedrich-Schiller-University (FSU) in Jena. When proposing the idea for a master thesis with the topic of "Music similarity measurement using genre-specific features" by using different guitar play styles in modern-day metal music, he jokingly said that he would also like to know how metal music compares to construction building noise. The idea is actually not so groundless, considering that most people would agree on the fact that metal music is often described as noise by people not used to listening to genres like death and black metal.
-While refining the original idea of the theme for this master's thesis and during the first tests, it became apparent, that while there is a lot of research in the area of music similarity for single aspects of music like melody, timbre, or rhythm and even for a few fixed combinations thereof, there was no attempt made yet, to build a parameterizable system combining various of these features in a big data environment.\\
+While refining the original idea of the theme for this master's thesis and during the first tests, it became apparent, that while there is a lot of research in the area of music similarity for single aspects of music like melody, timbre, or rhythm and even for a few fixed combinations thereof, there was no attempt made yet, to build a parameterizable system combining various of these features in a Big Data environment.\\
 With music streaming services like Spotify, Amazon Music, Deezer or Tidal and music sharing websites like SoundCloud, access to millions of songs is given. To explore this humongous amount of data, the need for music recommender systems rises. SoundCloud Go+, the streaming service of SoundCloud alone gives access to more than 135 million songs~\cite{soundcloudgo}. 
-Of course the streaming platforms are aware of these challenges. When using services like "[...] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof." \cite[p. 9]{knees1}\\
+Of course the streaming platforms are aware of these challenges. When using services like "[...] Spotify Radio, iTunes Radio, Google Play Access All Areas and Xbox Music. Recommendations are typically made using (undisclosed) content-based retrieval techniques, collaborative filtering data or a combination thereof."~\cite[p. 9]{knees1}\\
 But music similarity is not well defined. This is one of the first problems while dealing with this topic. It is a rather subjective value that can differ from listener to listener. Two tracks could be considered as "similar" when they are equal in tempo, loudness, melody, instrumentation, key, rhythm mood, lyrics, or a combination of more than a few of these features.\\
 \ \\
 \section{Goals}
 
 The goal of this thesis is to propose a transparent music similarity recommendation system based on various weighted aspects of the music instead of a fixed combination. Applying different weights to different features allows similarity retrieval methods to search for different kinds of similarities, empowering the user to decide which aspects are most important to the user and returning song recommendations based on the user's preferences. E.g., weighting the tempo and beat of a song more then melodic similarity allows the creation of playlists for workout and sport, while melodic/ timbre, etc. similarities allows searching for similar songs from musical subgenres.\\ 
-The usage of a big data framework Spark allows the creation of a variable/ fuzzy metric definition. Various aspects of the music could easily be merged and taken into consideration when calculating the musical distance between two different pieces. Using a big data framework, the problem of the fuzzy definition of music similarity can be avoided, by using a similarity estimation algorithm, that takes multiple of the accounted features of this thesis into consideration. Merging multiple approaches with different weights can offer a more diverse music recommendation system than already existing ones.\\ 
-To do this, a lot of different features are required and have to be extracted from the audio data first. Content (e.g., audio features) and context (e.g., listener behavior) data can then be fed into a big data framework to speed up operations. For this thesis, however, the focus lies on content-based data only.\\ 
-Context-based collaborative-filtering techniques, which take the listening behavior of other users into account, in combination with big data frameworks are already well researched. But this thesis is meant to propose a user-centric recommendation engine, relying on musical properties of the songs only. By solely relying on the musical features of the songs, no biasing due to the popularity of artists is to be expected.\\
+The usage of a Big Data framework Spark allows the creation of a variable/ fuzzy metric definition. Various aspects of the music could easily be merged and taken into consideration when calculating the musical distance between two different pieces. Using a Big Data framework, the problem of the fuzzy definition of music similarity can be avoided, by using a similarity estimation algorithm, that takes multiple of the accounted features of this thesis into consideration. Merging multiple approaches with different weights can offer a more diverse music recommendation system than already existing ones.\\ 
+To do this, a lot of different features are required and have to be extracted from the audio data first. Content (e.g., audio features) and context (e.g., listener behavior) data can then be fed into a Big Data framework to speed up operations. For this thesis, however, the focus lies on content-based data only.\\ 
+Context-based collaborative-filtering techniques, which take the listening behavior of other users into account, in combination with Big Data frameworks are already well researched. But this thesis is meant to propose a user-centric recommendation engine, relying on musical properties of the songs only. By solely relying on the musical features of the songs, no biasing due to the popularity of artists is to be expected.\\
 
 \section{Outline}
 
@@ -51,11 +51,11 @@ Context-based collaborative-filtering techniques, which take the listening behav
 	%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white}}
 	\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}
 	\smartdiagram[priority descriptive diagram]{Evaluation of the Results, Similarity Estimation, Feature Extraction, Data Aggregation}
-	\captionof{figure}{Structure}
+	\captionof{figure}{Structure of the thesis}
 	\label{structh}
 \end{figure}
 
-\noindent First of all, a lot of data is required. In Chapter~\ref{audiofeat}, different scientific datasets and sources for audio files are evaluated. It also explains the basics of music information retrieval (MIR) and gives a short overview of different similarity measurements based on different audio features and aspects of the music. In the last section of this chapter an introduction to big data frameworks is given and the choice of Spark as the big data processing framework is explained.\\
+\noindent First of all, a lot of data is required. In Chapter~\ref{audiofeat}, different scientific datasets and sources for audio files are evaluated. It also explains the basics of music information retrieval (MIR) and gives a short overview of different similarity measurements based on different audio features and aspects of the music. In the last section of this chapter an introduction to Big Data frameworks is given and the choice of Spark as the Big Data processing framework is explained.\\
 In Chapter~\ref{simanal} multiple algorithms and approaches for the computation of similarity between timbral, melodic and rhythmic features are evaluated and selected.\\
 Chapter~\ref{implementationdet} explains the implementation of the feature extraction process in parallel on a cluster and the implementation of the recommender system with Spark.\\
 Lastly, in Chapter~\ref{bds2} the resulting song recommendations are proposed and evaluated, and Chapter~\ref{summarych} summarizes all results, and provides an outlook for possible future research. 
@@ -63,7 +63,7 @@ Lastly, in Chapter~\ref{bds2} the resulting song recommendations are proposed an
 
 \chapter{Music Information Retrieval and Big Data}\label{audiofeat}
 
-The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning with psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits, and different approaches to music similarity using various audio features. An overview over big data frameworks is included as well. More in-depth information about selected metrics is given in Chapter~\ref{simanal}. 
+The field of music information retrieval is a large research area combining studies in computer science like signal processing and machine learning with psychology and academic music study. To get started, a brief overview is given in the next section providing the most important information about publicly available datasets, MIR toolkits, and different approaches to music similarity using various audio features. An overview over Big Data frameworks is included as well. More in-depth information about selected metrics is given in Chapter~\ref{simanal}. 
 
 \section{Audio Features}\label{featsec2}
 
@@ -71,7 +71,7 @@ This section provides a short overview of commonly used audio features in MIR. T
 
 \subsection{Fourier Transformation}\label{featsec}
 
-Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a discrete Fourier transform (DFT) as described in equation \eqref{eq:fft} and then computing the power spectrum (equation \eqref{eq:absfft}).
+Most of the algorithms for audio data analysis start with switching from the time domain to the frequency domain, by performing a discrete Fourier transform (DFT) as described in Equation~\eqref{eq:fft} and then computing the power spectrum (Equation~\eqref{eq:absfft}).
 \begin{equation} \label{eq:fft}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 X_k = \sum_{n=0}^{N-1}{x_n \cdot e^ { - \frac{ 2 \cdot \pi \cdot i}{N}\cdot k\cdot n}}
@@ -80,10 +80,10 @@ X_k = \sum_{n=0}^{N-1}{x_n \cdot e^ { - \frac{ 2 \cdot \pi \cdot i}{N}\cdot k\cd
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 |X_k| = \sqrt{\operatorname{Re}(X_k)^2 + \operatorname{Im}(X_k)^2}
 \end{equation}
-Figure~\ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear fashion, a logarithmic (see Figure~\ref{laylaspecfft}) or Mel-scale is more suitable to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see equation \eqref{eq:mel}) \cite[pp. 53f]{knees1}.
+Figure~\ref{laylaspec} shows the resulting spectrogram (spectrum of frequencies over time) of the first bars of the song Layla by Eric Clapton. The sound sample was recorded on an electric guitar. Since the human ear perceives sound in a non-linear fashion, a logarithmic (see Figure~\ref{laylaspecfft}) or Mel-scale is more suitable to represent different pitches. For example, the note A4 is perceived at a frequency of 440Hz, the A note of next octave (A5) is at 880Hz and the next one is at 1600Hz and so on. The Mel-scale was introduced to resemble the non-linear human perception of frequency (see Equation~\eqref{eq:mel})~\cite[pp. 53f]{knees1}.
 \begin{equation} \label{eq:mel}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-m = 1127 \cdot ln(1 + \frac{f}{700})
+m = 1127 \cdot \text{ln}(1 + \frac{f}{700})
 \end{equation}
 %The following plots were created with the librosa library~\cite{librosa1}.
 \begin{figure}[htbp]
@@ -102,26 +102,26 @@ m = 1127 \cdot ln(1 + \frac{f}{700})
 		\captionof{figure}{Log-scaled spectrogram}
 		\label{laylaspecfft}
 	\end{subfigure}
-	\caption{Frequency Space}
+	\caption{Example spectrograms linear (a) and log-scaled (b)}
 	\label{fig:test}
 \end{figure}
 \FloatBarrier
 \noindent The high dimensionality of the spectrogram is a problem for machine learning applications and music similarity tasks, as computation based on vectors with such a high dimensionality on larger datasets would require excessive computational power, e.g., for real-time applications.
-Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a song of about $t = 180s$, the time domain contains $K = 7938000$ data points usually with 16-bit resolution for mono-channel audio, following equation \eqref{eq:points}. 
+Given a sample rate $f_s = 44,1kHz$ (usual CD sample-rate) and the length of a song of about $t = 180s$, the time domain contains $K = 7938000$ data points usually with 16-bit resolution for mono-channel audio, following Equation~\eqref{eq:points}. 
 \begin{equation} \label{eq:points}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
 K = f_s \cdot t
 \end{equation}
-Calculating a DFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in equation \eqref{eq:hop}) \cite[p. 41]{knees1}, the full, resulting spectrogram would contain $N_{fv} = 11627$ frames with 1024 amplitude values per frame.
+Calculating a DFT with a window size of 1024 samples and a hop size of 512 samples (resulting in the factor 1.5 in Equation~\eqref{eq:hop})~\cite[p. 41]{knees1}, the full, resulting spectrogram would contain $N_{fv} = 11627$ frames with 1024 amplitude values per frame.
 \begin{equation} \label{eq:hop}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-N_{fv} = 1.5 \cdot (\frac{44100 \ samples/s}{1024 \ samples/frame}) \cdot t
+N_{fv} = 1.5 \cdot (\frac{44100 \ \text{samples/s}}{1024 \ \text{samples/frame}}) \cdot t
 \end{equation}
 To reduce the dimensionality of the feature vector, a possible approach in MIR would be to calculate the so-called Mel Frequency Cepstral Coefficients (MFCCs).
 
 \subsection{Mel Frequency Cepstral Coefficients}\label{mfccsim}
 
-Of all features presented in this chapter, the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical aspects of audio files like pitch or rhythm. This section gives a brief overview of the computation of the MFCC as stated in \cite[pp. 55ff]{knees1}.
+Of all features presented in this chapter, the MFCC is the hardest one to grasp because of its abstract nature and hardly visible relatedness to musical aspects of audio files like pitch or rhythm. This section gives a brief overview of the computation of the MFCC as stated in~\cite[pp. 55ff]{knees1}.
 Figure~\ref{sweep} shows the magnitude spectrum of a logarithmic frequency sweep signal as an example for better understanding.
 \begin{figure}[htbp]
 	\centering
@@ -143,7 +143,7 @@ Figure~\ref{sweep} shows the magnitude spectrum of a logarithmic frequency sweep
 	\label{sweep}
 \end{figure}
 \FloatBarrier
-\noindent First of all the magnitude spectrum is transformed to the Mel-scale following equation \eqref{eq:mel} by assigning each frequency value to a Mel-band.
+\noindent First of all the magnitude spectrum is transformed to the Mel-scale following Equation~\eqref{eq:mel} by assigning each frequency value to a Mel-band.
 Doing this, dimensionality reduction can be achieved by assigning multiple frequency values to one of typically 12 to 40 Mel-bands. The resulting vectors are then fed into a discrete cosine transformation (DCT) resulting in the MFCCs for each frame. 
 \begin{equation} \label{eq:dct}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
@@ -167,11 +167,11 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{mfccs}
 	\end{subfigure}
 	}}
-	\caption{MFCCs}	
+	\caption{MFCCs of a logarithmic frequency sweep}	
 	\label{fig:mfcc}
 \end{figure}
 \FloatBarrier
-\noindent To describe a tone, three moments can be used according to \cite[pp. 15]{musicdata}: %tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. 
+\noindent To describe a tone, three moments can be used according to~\cite[pp. 15f]{musicdata}: %tonal intensity perceived as loudness, the tonal quality perceived as the pitch and the timbre or tonal color as the third moment. 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item tonal intensity perceived as loudness
@@ -179,7 +179,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 	\item timbre or tonal color
 \end{itemize}
 
-\noindent MFCCs were found to be suited to represent the timbral attributes of music \cite[p. 55 ff]{knees1}. Looking at an example melody line played on an electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played note) and harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the harmonics of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decay faster or slower or don't appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure~\ref{timbreg}.
+\noindent MFCCs were found to be suited to represent the timbral attributes of music~\cite[pp. 55 ff]{knees1}. Looking at an example melody line played on an electric distorted guitar and a piano, distinct differences can be seen. Due to the physical properties of a string, every note played consists of the main frequency (the actually played note) and harmonic overtones because of the way a string, e.g. in a piano, vibrates and the wooden body resonates. Typically the harmonics of a piano consist of the main key, the same key a few octaves higher and major thirds and fifths of the octave. Depending on the instrument, these harmonics decay faster or slower or do not appear at all. An electrically amplified guitar amplifies these overtones as well, which is visible in Figure~\ref{timbreg}.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
@@ -196,7 +196,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{timbreg}
 	\end{subfigure}
 	}}
-	\caption{Timbre guitar vs. piano}	
+	\caption{Spectrogram of a guitar (a) and piano (b) sample}	
 	\label{fig:timbre}
 \end{figure}
 \FloatBarrier
@@ -217,7 +217,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{mfccp}
 	\end{subfigure}
 	}}
-	\caption{MFCCs (guitar vs. piano)}	
+	\caption{MFCCs of a guitar (a) and piano (b) sample}	
 	\label{fig:timbrmfcce}
 \end{figure}
 \FloatBarrier
@@ -238,7 +238,7 @@ To better visualize the MFCCs, all values are typically scaled to have a standar
 		\label{mfccsp}
 	\end{subfigure}
 	}}
-	\caption{MFCCs mean and standard deviation (guitar vs. piano)}	
+	\caption{MFCCs mean and standard deviation of a guitar (a) and piano (b) sample}	
 	\label{fig:timbrstatmfcce}
 \end{figure}
 \FloatBarrier
@@ -299,21 +299,21 @@ This section provides a short overview of available toolkits for MIR, note extra
 
 \subsection{Low-Level Audio Feature Extraction}
 To extract audio features like the ones presented in Section~\ref{featsec2} (MFCCs, chromagram, beats, onsets), a wide variety of toolkits is publicly available, a few are presented in~\cite{audiofeattoolb}.
-The YAAFE toolkit~\cite{yaafe1} is able to extract a lot of different audio features like energy, MFCC, or loudness directly into the Hadoop file format *.h5 making it ideal for big data frameworks to use. It can be used with C++, Python, or Matlab.\\
+The YAAFE toolkit~\cite{yaafe1} is able to extract a lot of different audio features like energy, MFCC, or loudness directly into the Hadoop file format *.h5 making it ideal for Big Data frameworks to use. It can be used with C++, Python~\cite{pylang}, or MATLAB~\cite{matl1}.\\
 The Essentia toolkit~\cite{essentia1} is pretty similar to YAAFE, extending it by the calculation of rhythm descriptors, bpm, etc. It can also be used with C++ and Python.\\
 The Librosa Toolkit provides similar functionality~\cite{labrosa1} as Essentia. It is user-friendly, well-documented, and can be used from within a Jupyter-Notebook~\cite{jupyter}, allowing rapid prototyping and testing of different algorithms. Most of the plots in this chapter were created using librosa. Code snippets for the extraction of low-level features with Essentia and librosa are given in Section~\ref{simmet} as well as a performance analysis of both.\\
 
 \subsection{Music Similarity}
 
 An easy way to test state-of-the-art music similarity algorithms is to use the open-source toolkit Musly~\cite{musly1}. It is based on statistical models of MFCC features and calculates the similarities between songs very fast, supporting OpenMP acceleration. It automatically extracts the features it requires from the audio files. To compare the extracted features and calculate the distances, it implements the method introduced by Mandel-Ellis~\cite{mandelellis1} and a timbre based improved version of the Mandel-Ellis algorithm using a Jensen-Shannon-like divergence~\cite{musly2}. More details and a re-implementation of some of the features from this toolkit are presented in Section~\ref{musly}.\\
-As another option, the MIR Toolkit~\cite{mirtoolbox1} is a toolbox for Matlab~\cite{matl1}. A port to GNU Octave~\cite{octave1} is also available~\cite{mirtoolbox2}. The Code Snippet~\ref{lst:MIRmat} is all it takes to compute a similarity matrix based on MFCC features, but the calculation is rather slow.
+As another option, the MIR Toolkit~\cite{mirtoolbox1} is a toolbox for MATLAB. A port to GNU Octave~\cite{octave1} is also available~\cite{mirtoolbox2}. The Code Snippet~\ref{lst:MIRmat} is all it takes to compute a similarity matrix based on MFCC features, but the calculation is rather slow.
 
 \lstset{language=Matlab}          % Set your language (you can change the language for each code-block optionally)
 %\newpage
 \FloatBarrier
 
 \begin{lstlisting}[frame=single,label={lst:MIRmat},
-caption={MIR Toolkit Similarity},captionpos=b]  % Start your code-block
+caption={MATLAB code for estimating similarities based on MFCCs},captionpos=b]  % Start your code-block
 numfiles = 326;
 mydata = cell(1, numfiles);
 for k = 1:numfiles
@@ -333,13 +333,13 @@ endfor
 \FloatBarrier
 
 \subsection{Melody / Pitch Extraction}\label{midiest}
-To test the various pitch extraction toolkits, one piece by Rachmaninoff and one composed by Beethoven was used. The first three bars of Rachmaninoff's Prelude in C\# minor can be found in Figure~\ref{rm}. Figure~\ref{fe} shows the first five bars of Beethoven's Bagatelle in A Minor ("Für Elise").
+To test the various pitch extraction toolkits, one piece by Rachmaninoff and one composed by Beethoven was used. Two bars of Rachmaninoff's Prelude in C\# minor can be found in Figure~\ref{rm}. Figure~\ref{fe} shows the first five bars of Beethoven's Bagatelle in A Minor ("Für Elise").
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
 	\begin{subfigure}{0.5\textwidth}
 		\centering      
-		\includegraphics[scale=0.25]{Images/rachm.png}
+		\includegraphics[scale=0.6]{Images/rachm.png}
 		\caption{Rachmaninoff prelude in C\# minor~\cite{rm1}}
 		\label{rm}
 	\end{subfigure}%
@@ -350,7 +350,7 @@ To test the various pitch extraction toolkits, one piece by Rachmaninoff and one
 		\label{fe}
 	\end{subfigure}
 	}}
-	\caption{Original Scores}
+	\caption{Original scores, Rachmaninoff (a) and Beethoven (b)}
 	\label{fig:sheets}
 \end{figure}
 The first toolkit tested is called "aubio"~\cite{aubio1}. The result can be seen in Figure~\ref{fea} and Figure~\ref{raa}. The upper subplot shows the waveform of the first few seconds of each piece. The second subplot figures the estimated pitch with green dots. If the pitch is zero, then no pitch can be estimated, most likely because the associated frame contains silence. The blue dots resemble the estimated pitches where the confidence (shown as the blue graphs in the third subplot) is above a certain threshold (the orange lines in the third subplots).
@@ -370,7 +370,7 @@ The first toolkit tested is called "aubio"~\cite{aubio1}. The result can be seen
 		\label{raa}
 	\end{subfigure}
 	}}
-	\caption{Aubio}
+	\caption{Pitch extraction with Aubio}
 	\label{fig:aubio}
 \end{figure}
 \FloatBarrier
@@ -394,7 +394,7 @@ The purple line is the estimated pitch; however, there are unwanted jumps betwee
 		\label{ram}
 	\end{subfigure}
 	}}
-	\caption{Melodia}
+	\caption{Pitch extraction with Melodia}
 	\label{fig:melodia}
 \end{figure}
 
@@ -442,18 +442,18 @@ In Section~\ref{rhythmsimc} an attempt to extract note information as text featu
 
 \subsection{Rhythm Based}
 
-Rhythm based music similarity algorithms use timing information of various events as a baseline. For example low-level features like the onset and beat data from the plot in Figure~\ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. As an example, Foote (et. al) introduced a feature called the "beat spectrum" for the computation of rhythmic similarities. Other more recent or advanced approaches make use of the rhythm histogram, beat histogram, and rhythm patterns later evaluated in Section~\ref{rhythmsimc}.
+Rhythm based music similarity algorithms use timing information of various events as a baseline. For example low-level features like the onset and beat data from the plot in Figure~\ref{laylacbeat} could be used as a starting point for rhythmic similarity retrieval. As an example, Foote (et. al) introduced a feature called the "beat spectrum" for the computation of rhythmic similarities~\cite{rhythm1}. Other more recent or advanced approaches make use of the rhythm histogram, beat histogram, and rhythm patterns later evaluated in Section~\ref{rhythmsimc}.
 
 \subsection{Metadata Based / Collaborative Filtering}\label{collaborative}
 
-Most of the research that combines the field of music information retrieval with big data frameworks relies on data based on the listening behavior of many users of, e.g., music streaming platforms. In 2012 the MSD Challenge was brought to the MIR community. Researchers were challenged to give a list of song recommendations based on a large set of user data, the Million Song Dataset (MSD, see Section~\ref{datasets}). As an example, if user X listens a lot to artist A and B and user Y listens mostly to artist A and C, then user X could probably like artist C as well. These kinds of collective listening behavior based recommendations are called "collaborative filtering" and are pretty common in large music streaming services, although not necessarily representing direct musical similarity. \cite[p. 192f.]{knees1}\\
-Recommendation systems based on collaborative filtering tend to propose commonly well-known artists rather than not so well-known ones, possibly biasing the resulting recommendation. On the other hand, these kinds of similarity algorithms can work very fast and efficient in a big data environment. The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on lyrics and also hybrid recommendation systems that combine lyrics, metadata, and collaborative filtering are also possible.\\
+Most of the research that combines the field of music information retrieval with Big Data frameworks relies on data based on the listening behavior of many users of, e.g., music streaming platforms. In 2012 the MSD Challenge was brought to the MIR community. Researchers were challenged to give a list of song recommendations based on a large set of user data, the Million Song Dataset (MSD, see Section~\ref{datasets}). As an example, if user X listens a lot to artist A and B and user Y listens mostly to artist A and C, then user X could probably like artist C as well. These kinds of collective listening behavior based recommendations are called "collaborative filtering" and are pretty common in large music streaming services, although not necessarily representing direct musical similarity.~\cite[pp. 192f.]{knees1}\\
+Recommendation systems based on collaborative filtering tend to propose commonly well-known artists rather than not so well-known ones, possibly biasing the resulting recommendation. On the other hand, these kinds of similarity algorithms can work very fast and efficient in a Big Data environment. The usage of annotations and metadata information like genre and artist based recommendations are common as well. The recommendation of songs based on lyrics and also hybrid recommendation systems that combine lyrics, metadata, and collaborative filtering are also possible.\\
 However, all of these recommendation strategies are not directly based on musical features and are, therefore, not evaluated further throughout this thesis. But they are a possible addition for a hybrid recommendation engine for future research. 
 An example using user-based collaborative filtering is the paper "Design and Implementation of Music Recommendation System Based on Hadoop"~\cite{metadat1}. 
 
 \subsection{Genre Specific Features}
 
-The impact of the choice of parameters for similarity measurements on different music subgenres was evaluated by Gulati (et al.) for Indian art music (Carnatic and Hindustani music)~\cite{mussim1}. They state: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation [...].  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants" \cite[p. 3]{mussim1}. This evaluation showed that the choice of features and parameters for music similarity measurement is a critical point. "Sampling rates do not have a significant impact for Hindustani music, but can significantly degrade the performance for Carnatic music." \cite[p. 3]{mussim1}. So using different kind of feature sets and parameters for the recommendation of songs from different genres could be an option but would go beyond the frame of this thesis.\\
+The impact of the choice of parameters for similarity measurements on different music subgenres was evaluated by Gulati (et al.) for Indian art music (Carnatic and Hindustani music)~\cite{mussim1}. They state: "We evaluate all possible combinations of the choices made at each step of the melodic similarity computation [...].  We consider 5 different sampling rates of the melody representation, 8 different normalization scenarios, 2 possibilities of uniform time-scaling and 7 variants of the distance measures.  In total, we evaluate 560 different variants"~\cite[p. 3]{mussim1}. This evaluation showed that the choice of features and parameters for music similarity measurement is a critical point. "Sampling rates do not have a significant impact for Hindustani music, but can significantly degrade the performance for Carnatic music."~\cite[p. 3]{mussim1}. So using different kind of feature sets and parameters for the recommendation of songs from different genres could be an option but would go beyond the frame of this thesis.\\
 As another idea, e.g., in Rock, Pop and Metal music, the analysis of different guitar playing techniques would be beneficial. Guitar tablature extraction~\cite{guitext1} toolkits could be used to extract information, whether the guitar in a song is, for instance, mostly plucked or strummed or if there are hammer-on, pull-off, side bending, or tapping techniques used. In classical music, the play style of the string section of an orchestra could be taken into consideration (staccato, pizzicato, etc.). These kinds of information could be used as a baseline for song recommendations. 
 However, there is no MIR toolkit available for the estimation of play styles, so this idea would have to be evaluated in future research.
 
@@ -489,17 +489,17 @@ To evaluate the music similarity algorithms and metrics, a lot of music data is 
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[scale=0.35]{Images/fma_genre.JPG}
-		\caption{FMA \cite[p. 4]{fma1}}
+		\caption{FMA~\cite[p. 4]{fma1}}
 		\label{fmadist}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
 		\centering
 		\includegraphics[scale=0.35]{Images/MedleyDB1.png}
-		\caption{MedleyDB \cite[p. 2]{medleydb1}}
+		\caption{MedleyDB~\cite[p. 2]{medleydb1}}
 		\label{medleydbdist}
 	\end{subfigure}
 	}}
-	\caption{Datasets}
+	\caption{Genre distribution of songs in various datasets}
 	\label{fig:datasetdist}
 \end{figure}
 \FloatBarrier
@@ -558,7 +558,7 @@ The music sources and amounts of songs used for the task at hand are listed in T
 			\hline
 		\end{tabular}
 	\end{center}
-	\caption{Music datasets}
+	\caption{Number of songs in different music datasets}
 	\label{table_dsets}
 \end{table}
 \FloatBarrier
@@ -605,7 +605,7 @@ Appendix~\ref{spotcrawl} lists a small script, that is able to download all audi
 		\label{spp2}
 	\end{subfigure}
 	}}
-	\caption{Spotify API}
+	\caption{Extracted pitches, Spotify API (Spotipy)}
 	\label{fig:spotify}
 \end{figure}
 \FloatBarrier
@@ -619,7 +619,7 @@ One could argue, that there is a difference between data mining and data crawlin
 %, when the purpose the recommendations would be the creation of Spotify playlists.\\ 
 %In the sense of the Spotify Developer Terms of Service~\cite{spottac2} there may be no legal infringements by creating a non-commercial playlist generation tool. 
 Spotify states that by creating an algorithmically generated playlists similar to the "Discover Weekly" playlists one may run into challenges if using such features commercially~\cite{spottac3}. However it does not prohibit the usage for non-commercial cases.\\ 
-Upon an initial request, the Spotify API developer team did not respond and therefore in this thesis the Spotify API won't be used to create a test dataset. Without further reaching out to Spotify, using the Spotify API to create a test dataset is not an option. 
+Upon an initial request, the Spotify API developer team did not respond and therefore in this thesis the Spotify API will not be used to create a test dataset. Without further reaching out to Spotify, using the Spotify API to create a test dataset is not an option. 
 
 \subsubsection{Million Song Dataset}
 
@@ -630,8 +630,8 @@ Another addition is the secondhand dataset, containing a list of cover songs in 
 	\centering
 	\framebox{\parbox{3in}{      
 			\includegraphics[scale=0.5]{Images/MSD_Tagtraum.JPG}}}
-	\caption{Million Song Dataset genre distribution \cite[p. 6]{msd5}}
+	\caption{Million Song Dataset genre distribution~\cite[p. 6]{msd5}}
 	\label{msddist}
 \end{figure}
 \FloatBarrier
-\noindent Due to the fact that the Spotify API\cite{spotifyapi1} also works with audio features from the Echo Nest\cite{echonest1}, the MSD could be used in a big data environment to simulate the work with Spotify data, without the need of mining the actual data. The MSD was already used with big data frameworks for music similarity retrieval based on metadata and user information (see~\cite{msd4}). Although the MSD does not contain any audio files in the first place, 30-second samples could be gathered through simple scripts from 7digital.com when the dataset was made publicly available. Sadly 7digital does not offer the download of the 30-second sample files any longer, which makes this dataset unusable for this thesis, because missing audio features like MFCCs can not be computed from the audio files itself. 
+\noindent Due to the fact that the Spotify API\cite{spotifyapi1} also works with audio features from the Echo Nest\cite{echonest1}, the MSD could be used in a Big Data environment to simulate the work with Spotify data, without the need of mining the actual data. The MSD was already used with Big Data frameworks for music similarity retrieval based on metadata and user information (see~\cite{msd4}). Although the MSD does not contain any audio files in the first place, 30-second samples could be gathered through simple scripts from 7digital.com when the dataset was made publicly available. Sadly 7digital does not offer the download of the 30-second sample files any longer, which makes this dataset unusable for this thesis, because missing audio features like MFCCs can not be computed from the audio files itself. 

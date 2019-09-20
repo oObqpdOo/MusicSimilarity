@@ -3,7 +3,7 @@
 This chapter provides an overview of some of the possibilities for computing music similarity by focusing on rhythmic features of different songs. \\
 Nearly every MIR toolkit provides an extraction tool for the beats per minute (BPM) and thus the tempo of each song. The most trivial solution of computing very low-level rhythmic similarities is by sorting and comparing songs only by their main tempo (BPM). Of course, there are far better and more accurate solutions.
 %By just comparing the tempo of songs, a lot of rhythm information is lost, e.g., the rhythmic structures of songs like the time signature, up- and downbeats, etc.\\ 
-This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a big data framework.\\
+This chapter presents some of the most promising approaches to compute rhythm similarities regarding the applicability in a Big Data framework.\\
 
 \subsection{Beat Histogram}\label{beathist}
 
@@ -15,30 +15,30 @@ One possible similarity measurements is, e.g., the usage of beat histograms as p
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_o_bh.png}
-				\caption{Scorpions}
+				\caption{Rock You Like A Hurricane, Scorpions}
 				\label{hobh}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_c_bh.png}
-				\caption{Knightsbridge}
+				\caption{Rock You Like A Hurricane, Knightsbridge}
 				\label{hcbh}
 			\end{subfigure}% 
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_s_bh.png}
-				\caption{94' Version Stanne}
+				\caption{Behind Space, 94' version}
 				\label{ssbh}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_a_bh.png}
-				\caption{99' Version Anders}
+				\caption{Behind Space, 99' version}
 				\label{sabh}
 			\end{subfigure}%			
 	}}
-	\caption{Beat histogram}
+	\caption{Beat histogram examples}
 	\label{fig:bh1}
 \end{figure}
 \FloatBarrier
@@ -47,7 +47,7 @@ One possible similarity measurements is, e.g., the usage of beat histograms as p
 Similarities between two beat histograms can be computed using the Euclidean distance. 
 
 
-\noindent Gruhne (et al.) further improved the beat histograms and suggested an additional post-processing step before calculating the similarity between songs with the euclidean distance. They found that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further (see \cite[182]{rbh1}). This thesis doesn't use the additional re-sampling.\\
+\noindent Gruhne (et al.) further improved the beat histograms and suggested an additional post-processing step before calculating the similarity between songs with the euclidean distance. They found that logarithmic re-sampling of the lag axis of the histogram and cross-correlation with an artificial rhythmic grid improves the performance of this similarity measurement further (see~\cite[182]{rbh1}). This thesis does not use the additional re-sampling.\\
 \noindent Another paper that is just mentioned here (one of the older ones from 2002) uses the beat spectrum as a feature~\cite{rhythm1} to compute similarities.
 
 \subsection{Rhythm Patterns}\label{flucpat}
@@ -61,37 +61,37 @@ To extract these features, the rp\_extractor library for Python~\cite{rp_extract
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_o_rp.png}
-				\caption{Scorpions}
+				\caption{Rock You Like A Hurricane, Scorpions}
 				\label{horp}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_c_rp.png}
-				\caption{Knightsbridge}
+				\caption{Rock You Like A Hurricane, Knightsbridge}
 				\label{hcrp}
 			\end{subfigure}% 
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_s_rp.png}
-				\caption{94' Version Stanne}
+				\caption{Behind Space, 94' version}
 				\label{ssrp}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_a_rp.png}
-				\caption{99' Version Anders}
+				\caption{Behind Space, 99' version}
 				\label{sarp}
 			\end{subfigure}%			
 	}}
-	\caption{Rhythm patterns}
+	\caption{Rhythm pattern examples}
 	\label{fig:rp1}
 \end{figure}
 
-\noindent The x-axis represents the frequency bands converted to the Bark-scale (a scale representing the human auditory system comparable to the Mel-scale from equation \eqref{eq:mel}), and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (around 600 BPM).
-The Bark of a frequency $f$ can be determined using equation \eqref{eq:bark}.
+\noindent The x-axis represents the frequency bands converted to the Bark-scale (a scale representing the human auditory system comparable to the Mel-scale from Equation~\eqref{eq:mel}), and the y-axis represents the modulation frequency index representing the modulation frequencies up to 10Hz (around 600 BPM).
+The Bark of a frequency $f$ can be determined using Equation~\eqref{eq:bark}.
 \begin{equation} \label{eq:bark}
-Bark = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
+\text{Bark} = 13 \arctan(0.00076 f) + 3.5 \arctan ((f / 7500)^2)
 \end{equation}
 The algorithm to extract the rhythm patterns, the rhythm histogram, and statistical spectrum descriptors measuring the variations over the critical frequency bands, can be seen in Figure~\ref{fig:rpe}.
 
@@ -156,17 +156,17 @@ The algorithm to extract the rhythm patterns, the rhythm histogram, and statisti
       \path (filt) -- (rp);
     \end{scope}
   \end{tikzpicture}
-  	\captionof{figure}{Rhythm pattern extraction~\cite{rp_extract2}}
+  	\captionof{figure}{Rhythm pattern extraction procedure~\cite{rp_extract2}}
 	\label{fig:rpe}
 \end{center}
 
 \noindent So in conclusion, the rhythm patterns basically represent the BPM of various frequency bands.
-To compare two different songs the euclidean distance between the vectorized rhythm pattern matrices can be calculated as Pampalk suggests \cite[p. 40]{fp1}.\\
+To compare two different songs the euclidean distance between the vectorized rhythm pattern matrices can be calculated as Pampalk suggests~\cite[p. 40]{fp1}.\\
 Pohle, Schnitzer et al. later refined fluctuation patterns into onset patterns, e.g., by using semitone bands instead of fewer critical bands to detect onsets~\cite{rp2}. This thesis, however, focuses on fluctuation-/ rhythm patterns extracted with the rp\_extractor library. 
 
 \subsection{Rhythm Histogram}
 
-A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz." \cite[p. 3]{rp1}. 
+A more simplistic and lower-dimensional feature coming with the rp\_extract toolkit is the rhythm histogram. "The Rhythm Histogram features we use are a descriptor for general rhythmics in an audio document. Contrary to the Rhythm Patterns and the Statistical Spectrum Descriptor, information is not stored per critical band. Rather, the magnitudes of each modulation frequency bin of all 24 critical bands are summed up, to form a histogram of "rhythmic energy" per modulation frequency. The histogram contains 60 bins which reflect modulation frequency between 0 and 10 Hz."~\cite[p. 3]{rp1}. 
 The difference in comparison to the beat histogram mentioned earlier in Section~\ref{beathist} appears to be, that the beat histogram focuses on the basic tempo of the whole song while the rhythm histogram takes all frequency bands and therefore the sub-rhythms of single instruments into account. 
 
 \begin{figure}[htbp]
@@ -175,30 +175,30 @@ The difference in comparison to the beat histogram mentioned earlier in Section~
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_o_rh.png}
-				\caption{Scorpions}
+				\caption{Rock You Like A Hurricane, Scorpions}
 				\label{horh}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/h_c_rh.png}
-				\caption{Knightsbridge}
+				\caption{Rock You Like A Hurricane, Knightsbridge}
 				\label{hcrh}
 			\end{subfigure}% 
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_s_rh.png}
-				\caption{94' Version Stanne}
+				\caption{Behind Space, 94' version}
 				\label{ssrh}
 			\end{subfigure}%
 			\begin{subfigure}{.495\textwidth}
 				\centering
 				\includegraphics[scale=0.25]{Images/Beat/s_a_rh.png}
-				\caption{99' Version Stanne}
+				\caption{Behind Space, 99' version}
 				\label{sarh}
 			\end{subfigure}%			
 	}}
-	\caption{Rhythm histogram}
+	\caption{Rhythm histogram examples}
 	\label{fig:rh1}
 \end{figure}
 
@@ -212,31 +212,31 @@ Estimating the onset strength per beat and creating a discrete-time signal for e
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Beat/h_o_on.png}
-				\caption{Scorpions}
+				\caption{Rock You Like A Hurricane, Scorpions}
 				\label{hoon}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Beat/h_c_on.png}
-				\caption{Knightsbridge}
+				\caption{Rock You Like A Hurricane, Knightsbridge}
 				\label{hcon}
 			\end{subfigure}%	
 				
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Beat/s_s_on.png}
-				\caption{94' Version Stanne}
+				\caption{Behind Space, 94' version}
 				\label{saon}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Beat/s_a_on.png}
-				\caption{99' Version Stanne}
+				\caption{Behind Space, 99' version}
 				\label{sson}
 			\end{subfigure}%			
 				
 	}}
-	\caption{Detected onsets (first 30 seconds)}
+	\caption{Detected onset examples (30 second song snippets)}
 	\label{fig:ons1}
 \end{figure}	
 
@@ -261,7 +261,7 @@ To calculate the distances, for each song the mean and variance vectors and cova
 	\item out.mfcc (containing mean vector (length $b$), variance vector (length $b$) and vectorized upper triangular covariance matrix (length $\frac{b \cdot (b+1)}{2}$))
 	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix (length $b \cdot b$)
 \end{itemize}
-The amount of Mel-bands chosen is $b = 13$. The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the big data framework and reduce the computation time when a similarity estimation request is processed. To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in Section~\ref{mfcceuc}) in the triangular matrix.\\
+The amount of Mel-bands chosen is $b = 13$. The second *.mfcckl file is created to get rid of the necessity to rearrange the covariance matrix inside the Big Data framework and reduce the computation time when a similarity estimation request is processed. To even further safe storage space the variance vector from the *.mfcc files could have been left out because these values are also stored within the main diagonal of the covariance matrix and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values (as mentioned in Section~\ref{mfcceuc}) in the triangular matrix.\\
 
 \subsubsection{Melodic Similarity}
 
@@ -275,7 +275,7 @@ These are stored in two different output text files. The vector length is depend
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
 	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key-shifted to the A key (length $n$))
-	\item out.chroma (full beat aligned chromagram, containing a $12 \times n$ matrix)
+	\item out.chroma (full beat-aligned and key-shifted chromagram, containing a $12 \times n$ matrix)
 \end{itemize}
 
 

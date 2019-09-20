@@ -2,7 +2,7 @@
 %\newpage
 \chapter{Implementation}\label{implementationdet}
 
-The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored into feature files. These features files then have to be processed with the big data framework Spark to compute the similarities between songs.\\ 
+The implementation consists of two separate parts. The first one contains the feature extraction and preparation of the data from the audio files. The results are stored into feature files. These features files then have to be processed with the Big Data framework Spark to compute the similarities between songs.\\ 
 Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub~\cite{github-code}. Details for the usage of the Python scripts are also documented there.
 
 \section{Audio Feature Extraction}\label{simmet}
@@ -14,7 +14,7 @@ and the performance of the feature extraction and pre-processing software implem
 
 \subsection{Test Datasets}\label{tdset}
 
-A lot of data is needed to test the algorithms in a big data environment, so the Free Music Archive with its over 106000 songs is a good option for performance tests. It has to be kept in mind, that the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic, and rock. Also this dataset may not be representative for actual popular music, a lot of the songs are live recordings with poor audio quality. %possibly influencing the results.
+A lot of data is needed to test the algorithms in a Big Data environment, so the Free Music Archive with its over 106000 songs is a good option for performance tests. It has to be kept in mind, that the genre distribution in the FMA dataset is quite one sided. Most of the songs are tagged as experimental, electronic, and rock. Also this dataset may not be representative for actual popular music, a lot of the songs are live recordings with poor audio quality. %possibly influencing the results.
 The 1517-Artists dataset offers 19 different genres with songs relatively equally distributed. For an objective evaluation of the proposed algorithms, e.g., by genre recall, this dataset is ideal. For cover song detection, the covers80 dataset is included as well.
 The last source used in this thesis is the private music collection. This collection is biased towards metal music, but due to the match with personal taste, it enables a subjective evaluation of the results from the implemented recommender system.
 In conclusion that sums up to about 117000 songs for performance tests, from which in the end 114210 could be used (see Section~\ref{totamsong} for the details on the dropout), and about 11500 songs for a detailed evaluation of the algorithms in this thesis and the quality of the recommendations. As mentioned in Section~\ref{datasets}, all albums from the private music collections are catalogued as well, and the associated document is in the appendices. 
@@ -82,7 +82,7 @@ peak1_bpm, peak1_weight, peak1_spread, peak2_bpm, peak2_weight, peak2_spread, hi
 
 \subsubsection{Essentia Streaming}
 
-The Essentia streaming library is used to calculate the chroma features. It eases up the filtering with the high- and a lowpass filter. The audio signal is passed through various processing stages and ultimately results in the chroma features of the band-pass filtered audio signal. 
+The Essentia streaming library is used to calculate the chroma features. It eases up the filtering with the high- and a low-pass filter. The audio signal is passed through various processing stages and ultimately results in the chroma features of the band-pass filtered audio signal. 
 %\newpage
 \begin{pythonCode}[frame=single,label={lst:essst},caption={Essentia streaming},captionpos=b]
 loader = ess.MonoLoader(filename=path, sampleRate=44100)
@@ -133,11 +133,11 @@ job_server.print_stats()
 \end{pythonCode}
 The computation time takes about 15.4 seconds per song and processor core. Using 4 CPU cores for 100 songs, the overall processing time could be reduced to about 385 seconds. 
 \begin{equation} \label{eq:parallelp}
-time = \frac{\#songs}{\#CPUs} \cdot 15.4s
+\text{time} = \frac{\#\text{songs}}{\#\text{CPUs}} \cdot 15.4s
 \end{equation}
 Parallel Python also opens up the possibility to use a cluster instead of a single-node pc.\\
 For convenience, every processor gets a batch of files instead of single songs. For every batch, different output files for the various features are created. The batch size determines the overall size of these feature-files. For example, for the 1517-Artists dataset a batch size of 400 songs was chosen, so overall four CPUs had to process two batches, resulting in eight different output files with the chroma feature files being the largest with about 25MB per file.\\
-One problem that appeared when using Parallel Python was that the main memory usage increased over time. The explicit usage of the garbage collector and the deletion of unwanted objects also couldn't solve that problem. So after processing a few hundred songs, the processes eventually ran out of memory and had to be restarted. By replacing Parallel Python with mpi4py, this problem could be solved later (see Section~\ref{mpi4py}). 
+One problem that appeared when using Parallel Python was that the main memory usage increased over time. The explicit usage of the garbage collector and the deletion of unwanted objects also could not solve that problem. So after processing a few hundred songs, the processes eventually ran out of memory and had to be restarted. By replacing Parallel Python with mpi4py, this problem could be solved later (see Section~\ref{mpi4py}). 
 
 \subsubsection{Rp\_extractor}
 
@@ -242,7 +242,7 @@ for index in xrange(start + rank, last, size):
         parallel_python_process(index, filelist[starti:endi])
 \end{pythonCode}
 
-\noindent All audio files larger than 25MB were filtered out of the FMA dataset in advance, to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available memory per CPU core, only 18 CPU cores per node were used. So, overall, 648 processes were spawned. During the computation of the audio features with Essentia, one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed in the end. For performance tests, this doesn't make a huge difference, but for future work, the feature extraction script should be adapted accordingly.\\
+\noindent All audio files larger than 25MB were filtered out of the FMA dataset in advance, to avoid memory overflows, still leaving 102813 songs out of the 106733 songs to process. A total of 36 compute nodes were used. Every node had 192GB of RAM and 36 CPU cores (72 using hyper-threading (HT)). To increase the available memory per CPU core, only 18 CPU cores per node were used. So, overall, 648 processes were spawned. During the computation of the audio features with Essentia, one out of the 648 processes ran out of memory, so only 102793 out of the 102813 songs were processed in the end. For performance tests, this does not make a huge difference, but for future work, the feature extraction script should be adapted accordingly.\\
 The extraction of the features took 1439 seconds (fastest process) up to 1950 seconds (slowest). With better balancing and messaging between the processes, the tasks could be distributed in a way where idle tasks take parts of the file list from other tasks that are still processing.\\
 \noindent For the extraction of the rhythm features with the rp\_extract tool, the script of the TU Wien was adapted for usage with mpi4py as well. The same amount of processes gets spawned on the cluster (648), but each of the processes is able to make use of two CPU cores plus HT. The fastest process finished after 1657 seconds and the slowest one took 1803 seconds.
 

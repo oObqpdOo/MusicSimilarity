@@ -175,6 +175,22 @@
     \field{year}{2010}
   \endentry
 
+  \entry{pylang}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Python}
+    \verb{url}
+    \verb https://www.python.org
+    \endverb
+  \endentry
+
+  \entry{matl1}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{MATLAB}
+    \verb{url}
+    \verb https://de.mathworks.com/help/matlab/index.html
+    \endverb
+  \endentry
+
   \entry{essentia1}{inproceedings}{}
     \name{author}{6}{}{%
       {{hash=BD}{%
@@ -283,21 +299,22 @@
 
   \entry{mandelellis1}{inproceedings}{}
     \name{author}{2}{}{%
-      {{hash=MM}{%
+      {{hash=MMI}{%
          family={Mandel},
          familyi={M\bibinitperiod},
-         given={M.},
-         giveni={M\bibinitperiod},
+         given={Michael\bibnamedelima I},
+         giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
       }}%
-      {{hash=ED}{%
+      {{hash=EDPW}{%
          family={Ellis},
          familyi={E\bibinitperiod},
-         given={D.},
-         giveni={D\bibinitperiod},
+         given={Daniel P\bibnamedelima W},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MMED1}
-    \strng{fullhash}{MMED1}
+    \strng{namehash}{MMIEDPW1}
+    \strng{fullhash}{MMIEDPW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{Proceedings of the 6th International Conference on Music
@@ -369,14 +386,6 @@
   from Audio}
   \endentry
 
-  \entry{matl1}{misc}{}
-    \field{labeltitlesource}{title}
-    \field{title}{MATLAB}
-    \verb{url}
-    \verb https://de.mathworks.com/help/matlab/index.html
-    \endverb
-  \endentry
-
   \entry{octave1}{inproceedings}{}
     \name{author}{4}{}{%
       {{hash=EJW}{%
@@ -440,8 +449,8 @@
     \field{labeltitlesource}{title}
     \field{title}{Prélude cis-Moll (Rachmaninow)}
     \verb{url}
-    \verb https://imslp.org/wiki/Morceaux_de_fantaisie%2C_Op.3_(Rachmaninoff%2C
-    \verb _Sergei)
+    \verb https://upload.wikimedia.org/score/5/m/5m046ksmmlpu0s4xbwna50qx9nmoh8
+    \verb v/5m046ksm.png
     \endverb
   \endentry
 
@@ -580,6 +589,7 @@
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{isbn}{9781477494158}
+    \field{note}{PhD thesis}
     \field{title}{Dealing with the Music of the World: Indexing Content-Based
   Music Similarity Models for Fast Retrieval in Massive Databases, 1st ed.}
     \field{year}{2012}
@@ -719,6 +729,38 @@
     \field{year}{2018}
   \endentry
 
+  \entry{rhythm1}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FJ}{%
+         family={Foote},
+         familyi={F\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CM}{%
+         family={Cooper},
+         familyi={C\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NU}{%
+         family={Nam},
+         familyi={N\bibinitperiod},
+         given={Unjung},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FJCMNU1}
+    \strng{fullhash}{FJCMNU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the International Conference on Music
+  Information Retrieval}
+    \field{pages}{265\bibrangedash 266}
+    \field{title}{Audio Retrieval by Rhythmic Similarity}
+    \field{year}{2002}
+  \endentry
+
   \entry{metadat1}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=YZ}{%
@@ -738,6 +780,8 @@
     \strng{fullhash}{YZXL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{Second International Conference of Sensor Network and
+  Computer Engineering (ICSNCE 2018)}
     \verb{doi}
     \verb 10.2991/icsnce-18.2018.36.
     \endverb
@@ -810,9 +854,14 @@
     \strng{fullhash}{ECVVKMLM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{Audio Engineering Society Convention 108}
     \field{title}{Extraction of Physical and Expressive Parameters for
-  Model-based Sound Synthesis of the Classical Guitar}
-    \field{year}{2002}
+  Model-Based Sound Synthesis of the Classical Guitar}
+    \verb{url}
+    \verb http://www.aes.org/e-lib/browse.cfm?elib=9224
+    \endverb
+    \field{year}{2000}
+    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{fma1}{inproceedings}{}
@@ -1138,9 +1187,9 @@
     \strng{fullhash}{SH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{In Proceedings of the 16th International Society for
-  Music Information Retrieval Conference (ISMIR), pages 241-247, Málaga,
-  Spain, Oct. 2015}
+    \field{booktitle}{Proceedings of the 16th International Society for Music
+  Information Retrieval Conference (ISMIR), pages 241-247, Málaga, Spain, Oct.
+  2015}
     \field{title}{Improving Genre Annotations for the Million Song Dataset}
   \endentry
 
@@ -1280,9 +1329,6 @@
     \field{number}{11}
     \field{pages}{56\bibrangedash 65}
     \field{title}{Apache Spark: A Unified Engine for Big Data Processing}
-    \verb{url}
-    \verb http://doi.acm.org/10.1145/2934664
-    \endverb
     \field{volume}{59}
     \list{location}{1}{%
       {New York, NY, USA}%
@@ -1396,6 +1442,14 @@
     \endverb
   \endentry
 
+  \entry{scalalang}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Scala}
+    \verb{url}
+    \verb https://www.scala-lang.org/
+    \endverb
+  \endentry
+
   \entry{nextgenbig}{book}{}
     \name{author}{1}{}{%
       {{hash=QB}{%
@@ -1452,7 +1506,7 @@
     \field{year}{2016}
   \endentry
 
-  \entry{seyerlehnerblock}{inproceedings}{}
+  \entry{seyerlehnerblock}{misc}{}
     \name{author}{2}{}{%
       {{hash=SK}{%
          family={Seyerlehner},
@@ -1494,7 +1548,9 @@
     \strng{fullhash}{ONRA1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{ISMIR}
+    \field{booktitle}{10th International Society for Music Information
+  Retrieval Conference (ISMIR 2009)}
+    \field{pages}{543 \bibrangedash  548}
     \field{title}{A Measure of Melodic Similarity based on a Graph
   Representation of the Music Structure}
     \field{year}{2009}
@@ -1550,6 +1606,10 @@
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{Proceedings of the 14th Python in Science Conference}
+    \verb{doi}
+    \verb DOI: 10.25080/Majora-7b98e3ed-003
+    \endverb
+    \field{pages}{18\bibrangedash 24}
     \field{title}{LibROSA: Audio and Music Signal Analysis in Python}
   \endentry
 
@@ -1748,9 +1808,11 @@
     \strng{namehash}{PWEDCC1}
     \strng{fullhash}{PWEDCC1}
     \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
     \verb{doi}
     \verb DOI:10.7916/D8959SXK
     \endverb
+    \field{title}{The 2007 LabROSA cover song detection system}
     \field{month}{01}
     \field{year}{2007}
   \endentry
@@ -1818,36 +1880,6 @@
     \field{year}{2009}
   \endentry
 
-  \entry{rhythm1}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=FJ}{%
-         family={Foote},
-         familyi={F\bibinitperiod},
-         given={Jonathan},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=CM}{%
-         family={Cooper},
-         familyi={C\bibinitperiod},
-         given={Matthew},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=NU}{%
-         family={Nam},
-         familyi={N\bibinitperiod},
-         given={Unjung},
-         giveni={U\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{FJCMNU1}
-    \strng{fullhash}{FJCMNU1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Audio Retrieval by Rhythmic Similarity.}
-    \field{month}{01}
-    \field{year}{2002}
-  \endentry
-
   \entry{rp1}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=LT}{%
@@ -1891,7 +1923,7 @@
     \endverb
   \endentry
 
-  \entry{fp1}{inproceedings}{}
+  \entry{fp1}{thesis}{}
     \name{author}{1}{}{%
       {{hash=PE}{%
          family={Pampalk},
@@ -1904,6 +1936,7 @@
     \strng{fullhash}{PE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{note}{PhD thesis}
     \field{title}{Computational Models of Music Similarity and their
   Application in Music Information Retrieval}
     \field{year}{2006}

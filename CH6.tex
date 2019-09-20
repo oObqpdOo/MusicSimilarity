@@ -38,7 +38,7 @@ For the about 114000 songs all feature files sum up to about 11.2 GB (see Figure
 
 \subsection{Underlying Hardware}
 
-The first tests with Spark were performed on a single pc with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 36 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running with an older version of Spark (1.6.0)\\
+The first tests with Spark were performed on a single PC with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 36 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running with an older version of Spark (1.6.0)\\
 
 \subsection{Workflow}
 
@@ -62,7 +62,7 @@ Although multiple different implementations were tested to evaluate the fastest 
 
 \subsection{Data Preparation}
 
-The features are stored into many small text files as described in Section~\ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contains the features of a small number of songs. Because many small files are inefficient to process with Spark, all files containing the same feature type are merged to one large file, before being loaded into the HDFS \cite[p. 153]{sparkbook1}. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition_count)} command. 
+The features are stored into many small text files as described in Section~\ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contains the features of a small number of songs. Because many small files are inefficient to process with Spark, all files containing the same feature type are merged to one large file, before being loaded into the HDFS~\cite[p. 153]{sparkbook1}. By loading larger files into the HDFS, the partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition_count)} command. 
 Finally, to work with the features a few transformations have to be performed on the data. For example the extracted note values are stored as lists of integers, each representing a certain note. To compare these using the Levenshtein distance, the lists are converted into strings (see Code Snippet~\ref{lst:prep1}). 
 
 \begin{pythonCode}[frame=single,label={lst:prep1},caption={Notes preprocessing},captionpos=b]
@@ -145,7 +145,7 @@ result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 
 \subsubsection{Cross-Correlation}
 
-As laid out in Section~\ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in equation \eqref{eq:conv2}, \eqref{eq:conv3}, and \eqref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time, even without additional key-shifting (see Section~\ref{sparkperf}), the implementation on the cluster and in Code Snippet~\ref{lst:corrnp} calculates the simplified cross-correlation (equations \eqref{eq:conv5} and \eqref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
+As laid out in Section~\ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in Equation~\eqref{eq:conv2},~\eqref{eq:conv3}, and~\eqref{eq:conv4} still exists. But due to the fact that the computation of the cross-correlation already takes the most time, even without additional key-shifting (see Section~\ref{sparkperf}), the implementation on the cluster and in Code Snippet~\ref{lst:corrnp} calculates the simplified cross-correlation (Equations~\eqref{eq:conv5} and~\eqref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
 \noindent The cross-correlation was used to detect cover songs on the same dataset Ellis and Cotton used in their paper~\cite{cover802}. The results are presented in Section~\ref{covsongid}. There are some differences in the returned recommendations compared to the original paper. These can be explained with the different underlying beat tracking, different filter parameters, and a few improvements that are left out compared to the implementation of Ellis~\cite{cover802} as mentioned in Section~\ref{chromafeat}.\\
 
 \begin{pythonCode}[frame=single,label={lst:corrsc},caption={Cross-correlation scipy},captionpos=b]
@@ -188,7 +188,7 @@ result = result.rdd.flatMap(list).collect()
 \subsubsection{Jensen-Shannon-Like Divergence}\label{jsld}
 
 While computing the Jensen-Shannon-like divergence, for some of the MFCC features, a problem with negative determinants was encountered. Because the logarithm of negative numbers is not defined, no similarity for these features could be calculated.\\ 
-Schnitzer mentioned a problem with "skyrocketing values of determinants, which lead to inaccurate results" \cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in equation \eqref{eq:jsl3}. 
+Schnitzer mentioned a problem with "skyrocketing values of determinants, which lead to inaccurate results"~\cite[p.45]{schnitzer1}. He proposed a solution by using the sum of the upper triangular matrix of the Cholesky decomposition to compute the logarithm of the determinant of the covariance matrix in Equation~\eqref{eq:jsl3}. 
 This approach was also considered for the encountered issue mentioned above but ultimately did not work out because of the covariance matrices causing the error not being positive definite.\\
 
 \begin{pythonCode}[frame=single,label={lst:js},caption={Jensen-Shannon-like divergence},captionpos=b]
@@ -312,7 +312,7 @@ When further removing the print command in line 4, the lazy evaluation no longer
 			\legend{performance}
 		\end{axis}
 	\end{tikzpicture}
-	\caption{Lazy evaluation and caching}
+	\caption{Lazy evaluation and caching optimization}
 	\label{lazcach}
 \end{figure}
 \FloatBarrier
@@ -323,14 +323,14 @@ That means that especially in this application in the field of music similarity,
 \subsection{Distance Scaling}\label{distsc}
 
 To combine different distance measurements into one combined distance, the various results from the different kinds of features have to be rescaled to avoid biasing the overall distance.
-The easiest way is to subtract the minimum $min(d)$ from all distances $d$ and to divide by the difference between the maximum $max(d)$ and the minimum distance, as described in equation \eqref{eq:scaling}. 
+The easiest way is to subtract the minimum $min(d)$ from all distances $d$ and to divide by the difference between the maximum $max(d)$ and the minimum distance, as described in Equation~\eqref{eq:scaling}. 
 
 \begin{equation} \label{eq:scaling}
-d' = \frac{d - min(d)}{max(d) - min(d)}
+d' = \frac{d - \text{min}(d)}{\text{max}(d) - \text{min}(d)}
 \end{equation}
 
-\noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this isn't always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section~\ref{featqual} also shows that, e.g., the Levenshtein distances and cross-correlation results are unequally distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterward with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section~\ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section~\ref{featqual}.\\
-Another option to rescale the features, laid out by Sebastian Stober in \cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using equation \eqref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
+\noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this is not always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section~\ref{featqual} also shows that, e.g., the Levenshtein distances and cross-correlation results are unequally distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterward with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section~\ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section~\ref{featqual}.\\
+Another option to rescale the features, laid out by Sebastian Stober in~\cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using Equation~\eqref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
 A better way to rescale the data could be evaluated in future research. 
 
 \begin{equation} \label{eq:scaling2}
@@ -360,10 +360,10 @@ min_val = aggregated.collect()[0]["min(distances)"]
 
 \subsection{Combining Different Measurements}\label{weighedsum}
 
-To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in \cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using equation \eqref{eq:distance}.
+To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in~\cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using Equation~\eqref{eq:distance}.
 
 \begin{equation} \label{eq:distance}
-dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
+\text{dist} = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 \end{equation}
 
 \noindent In this thesis, only binary weights were tested by either including a facet distance with a weight of one or just leaving it out of the overall similarity by setting its weight to zero. The impact of different weights is left open for future research. 
@@ -374,8 +374,8 @@ dist = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 
 \noindent The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster, as described in Section~\ref{cconfexp}.
 \noindent The cluster configuration in the Code Snippet~\ref{lst:clust} turned out to perform well compared to other test configurations. The cluster is configured in a way where 16 up to 32 Executors are spawned with each Executor requesting as many CPU cores and memory resources as possible. The \lstinline{repartition_count} variable is used with the \lstinline{repartition()} method during the data preparation stage to evenly distribute all chunks of feature files across the cluster.\\
-\noindent With the help of the \lstinline{spark.dynamicAllocation} parameters, the number of Executors spawned can be determined \cite[p. 153]{sparkbook1}. While normally the Executors are spawned and then retained for the life of the application, with dynamic allocation Spark is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources. 
-It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when the dynamic allocation is used, and an external shuffle service should be configured to avoid shuffle that data gets lost in case whenever an Executor gets deleted, but during the tests this option was disabled. This shouldn't be a problem because the dynamic allocation is only used to ensure that a certain fixed minimum amount of Executors is spawned and with this configuration, no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration, the Executors never actually get killed and no shuffling data gets lost.\\
+\noindent With the help of the \lstinline{spark.dynamicAllocation} parameters, the number of Executors spawned can be determined~\cite[p. 153]{sparkbook1}. While normally the Executors are spawned and then retained for the life of the application, with dynamic allocation Spark is able to free the resources of Executors that are idle for a long time and to reassign the belonging system resources. 
+It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when the dynamic allocation is used, and an external shuffle service should be configured to avoid shuffle that data gets lost in case whenever an Executor gets deleted, but during the tests this option was disabled. This should not be a problem because the dynamic allocation is only used to ensure that a certain fixed minimum amount of Executors is spawned and with this configuration, no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration, the Executors never actually get killed and no shuffling data gets lost.\\
 
 \begin{pythonCode}[frame=single,label={lst:clust},caption={Cluster setup},captionpos=b]
 confCluster = SparkConf().setAppName("MusicSimilarity Cluster")
@@ -426,13 +426,13 @@ Later, when calculating the similarities on already cached feature data for cons
    		\addlegendentry{song request on cached feature DF}  					
    	\end{axis}
    	\end{tikzpicture}
-   	\caption{\#Executors spawned}
+   	\caption{Performance dependent on the \#Executors spawned}
    	\label{perfspark7}
 \end{figure}
 \FloatBarrier
 
 \noindent Figure~\ref{perfspark7} shows the execution time of one full song request for all features on all 114210 songs on an already cached large DataFrame containing all of the different features (this approach is explained later on in more detail, see Figure~\ref{mergeddf}).
-The x-axis shows the numbers of Executors that are spawned on the cluster. Because there are limited resources on the cluster, the number of CPU cores assigned to each Executor decreases when more Executors get spawned. In total there are 576 cores on 16 nodes, so the number of CPU cores per Executor can be calculated as $\#CPUs = \frac{576}{\#Executors}$. The available main memory per node (192GB) is split equally. The large DataFrame is cached and split in twice as many parts as Executors are spawned, so every Executor has to handle two data chunks.
+The x-axis shows the numbers of Executors that are spawned on the cluster. Because there are limited resources on the cluster, the number of CPU cores assigned to each Executor decreases when more Executors get spawned. In total there are 576 cores on 16 nodes, so the number of CPU cores per Executor can be calculated as $\#\text{CPUs} = \frac{576}{\#\text{Executors}}$. The available main memory per node (192GB) is split equally. The large DataFrame is cached and split in twice as many parts as Executors are spawned, so every Executor has to handle two data chunks.
 
 %16 exec / 36 core / 32 part: {'CSV1: ': 6381, 'AGG: ': 1174, 'RH: ': 49, 'MERGED_FULL_SONG2: ': 13499, 'PREPROCESS: ': 43445, 'MERGED_TOTAL: ': 102807, 'JOIN: ': 595, 'JS: ': 49, 'NOTE: ': 55, 'CHROMA: ': 43, 'COMPARATOR: ': 457, 'SKL: ': 59, 'MERGED_FULL_SONG1: ': 34298, 'BH: ': 72, 'CSV2: ': 8151, 'SCALE: ': 10470, 'RP: ': 69, 'MFCC: ': 63}
 %32 exec / 18 core / 64 part: {'CSV1: ': 8880, 'AGG: ': 903, 'RH: ': 49, 'MERGED_FULL_SONG2: ': 13513, 'PREPROCESS: ': 38266, 'MERGED_TOTAL: ': 109907, 'JOIN: ': 580, 'JS: ': 46, 'NOTE: ': 51, 'CHROMA: ': 43, 'COMPARATOR: ': 311, 'SKL: ': 44, 'MERGED_FULL_SONG1: ': 25913, 'BH: ': 42, 'CSV2: ': 6652, 'SCALE: ': 10971, 'RP: ': 70, 'MFCC: ': 49}
@@ -497,7 +497,7 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
 	\item mfcc (MFCCs, Euclidean distance)
 	\item js (MFCCs, Jensen-Shannon-like divergence)
 	\item skl (MFCCs, symmetric Kullback-Leibler divergence)
-	\item chroma (beat aligned chromagram, cross-correlation)
+	\item chroma (beat-aligned chromagram, cross-correlation)
 \end{itemize}
 
 \subsubsection{Data Representation}
@@ -633,20 +633,20 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Becau
       \path (b6) -- (c6);
     \end{scope}
   \end{tikzpicture}
-  \captionof{figure}{Workflow Merged DF}
+  \captionof{figure}{Workflow of Merged DF approach}
   \label{mergeddf}
 \end{center}
 
 %The consideration to join the resulting distances with the large cached feature DataFrame was made but this approach would alter the original feature DataFrame, making it necessary to create a copy of the original DataFrame which leads to additional overhead. 
 \noindent The second approach annotated with "DF" also uses DataFrames, but stores the different pre-processed feature types in separate smaller DataFrames instead. This increases the shuffling during the computation of the similarities but has less initial overhead during the pre-processing stage.\\
-The third approach doesn't use DataFrames at all and uses single RDDs for the pre-processed features instead. This approach has no additional overhead during the pre-processing stage, but the code is harder to read, and the workload during the computation of the similarities is also higher.\\
+The third approach does not use DataFrames at all and uses single RDDs for the pre-processed features instead. This approach has no additional overhead during the pre-processing stage, but the code is harder to read, and the workload during the computation of the similarities is also higher.\\
 Each of the times measured in Figure~\ref{perfspark2} and~\ref{perfspark3} include the full workflow, including data pre-processing, calculating, scaling, and combining the similarities for a single song request. The plots show the time required to compute the similarities for that single requested song for growing datasets starting from 163 (covers80) to 114210 songs (all datasets combined). 
 \noindent Unsurprisingly the Merged DF approach performed relatively poorly compared to the other approaches due to its initial overhead. The next section will make up for this when presenting the performance on the calculation of subsequent song requests on the same, already cached and pre-processed features.
 
 \subsubsection{Performance of Subsequent Song Requests}
 
 In contrast to the performance analysis from the last section, Figure~\ref{perfspark4} shows the time measured to process two subsequent song requests. That means that the second consecutive song request is able to use the already pre-processed and cached feature data.\\ %Figure~\ref{perfspark4} shows the results.\\
-\noindent The plots annotated with "Merge DF total", "DF total" and "RDD total" depict the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request on persisted data, including the calculation of the distances, the scaling, and the join operation of the different result-types.
+\noindent The plots annotated with "Merged DF total", "DF total" and "RDD total" depict the overall computation time including the pre-processing and the handling of both song requests. The other graphs show the computation time of only the second song request on persisted data, including the calculation of the distances, the scaling, and the join operation of the different result-types.
 
 \begin{figure}[htbp]
    	\centering
@@ -700,7 +700,7 @@ In contrast to the performance analysis from the last section, Figure~\ref{perfs
    		\addlegendentry{RDD 2nd song}   			
    	\end{axis}
    	\end{tikzpicture}
-   	\caption{Two subsequent song requests, all features}
+   	\caption{Performance of two subsequent song requests, all features}
    	\label{perfspark4}
 \end{figure}
 \FloatBarrier
@@ -710,7 +710,7 @@ In contrast to the performance analysis from the last section, Figure~\ref{perfs
 \subsubsection{Descending Importance Filter and Refine}\label{farfs}
 
 To improve the performance even further, a filter and refine method was tested. The similarities are computed for one feature set at a time, and all songs to which the distance is larger than the mean value of these distances get filtered out of the feature DataFrame. From the thinned-out dataset, another less important feature set is chosen, and this is repeated until all feature sets were used. 
-The implementation is based on the "Merge DF" approach described and pictured in Figure~\ref{mergeddf} earlier on, but a few changes had to be made. After all features are pre-processed, joined and repartitioned, this large feature DataFrame gets cloned and persisted to the main memory as well. It is important that the cluster has enough main memory available to cache the full feature DataFrame twice. 
+The implementation is based on the "Merged DF" approach described and pictured in Figure~\ref{mergeddf} earlier on, but a few changes had to be made. After all features are pre-processed, joined and repartitioned, this large feature DataFrame gets cloned and persisted to the main memory as well. It is important that the cluster has enough main memory available to cache the full feature DataFrame twice. 
 \noindent The first feature set is chosen, and the distances are calculated and appended to the cloned version of the full feature DataFrame. Then, the column with the original features gets dropped out of the cloned DataFrame to free some memory. In the next step, all rows of the DataFrame where the freshly calculated distances are larger than some threshold (the mean value of the distance column in this case) get dropped out of the DataFrame, drastically reducing the size of all feature sets remaining.
 When using the mean value, about half of the songs get dropped out of the DataFrame, reducing the problem size for the next feature set to half the size. This is also the reason why the data had to be copied in-memory because now the clone can be altered and thinned out without impacting the original DataFrame. Of course, the copying of the data, on the other hand, is an additional overhead and requires more memory. 
 
@@ -756,7 +756,7 @@ When using the mean value, about half of the songs get dropped out of the DataFr
    		\addlegendentry{Filter bh first}   					
    	\end{axis}
    	\end{tikzpicture}
-   	\caption{Descending importance filter and refine, all features}
+   	\caption{Performance of descending importance filter and refine, all features}
    	\label{perfspark5}
 \end{figure}
 \FloatBarrier
@@ -809,7 +809,7 @@ This is also the reason this approach is called "descending importance filter an
    		\addlegendentry{Song request}   					
    	\end{axis}
    	\end{tikzpicture}
-   	\caption{Performance / Executors (36 CPU cores each)}
+   	\caption{Performance depending on \#Executors (36 CPU cores each)}
    	\label{perfspark6}
 \end{figure}
 \FloatBarrier

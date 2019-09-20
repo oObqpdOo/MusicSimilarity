@@ -29,14 +29,14 @@ This section evaluates the results from the similarity analysis to find out how 
 \noindent The sampling of distances from different genres is vital for the analysis of the distribution of the distances, because the distances and their distribution vary, depending on where in the feature space the actual song is located. 
 \noindent A song taken from the edge of the distribution of the feature space will end up with different distances than a song taken from the center. To visualize this, Figure~\ref{fig:featspace} shows a minimal example. While the distances from songs tagged with "Metal" to the songs tagged with "Rock" and "Classical" are about the same, the distances from a song taken off the Classical genre to the "Rock" or "Metal" songs are different in this example.\\ 
 %For 95 song request that results in eight very large vectors containing the distances of song pairs. This large set of distances is then analyzed. 
-\noindent Figure~\ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following equation \eqref{eq:distance} with all weights $w = 1$). This combined distance is labeled as "agg" in the following plots.
+\noindent Figure~\ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following Equation~\eqref{eq:distance} with all weights $w = 1$). This combined distance is labeled as "agg" in the following plots.
 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.4]{Images/SparkFeat/corr_95_1517.png}	
 	}}
-	\caption{Correlation 95 songs, 19 genres (5 each), 1517-Artists}
+	\caption{Correlation matrix, 95 songs, 19 genres (5 each), 1517-Artists}
 	\label{fig:corr2}
 \end{figure}\FloatBarrier
 
@@ -71,7 +71,7 @@ This section evaluates the results from the similarity analysis to find out how 
 				\label{cum4}
 			\end{subfigure}	
 	}}
-	\caption{Cumulative distributions}
+	\caption{Cumulative distributions of distances}
 	\label{fig:cumdist}
 \end{figure}
 \FloatBarrier
@@ -95,7 +95,7 @@ This section evaluates the results from the similarity analysis to find out how 
 		\label{scklsc}
 	\end{subfigure}%
 	}}
-	\caption{Correlation of features depending on SKL scaling}
+	\caption{Impact of SKL scaling on the weighted sum}
 	\label{fig:sklsc}
 \end{figure}
 \FloatBarrier
@@ -118,7 +118,7 @@ This section evaluates the results from the similarity analysis to find out how 
 		\label{corrsc}
 	\end{subfigure}%
 	}}
-	\caption{Correlation of features}
+	\caption{Correlation of features depending on SKL scaling}
 	\label{fig:corr}
 \end{figure}
 \FloatBarrier
@@ -129,7 +129,7 @@ This section evaluates the results from the similarity analysis to find out how 
 	\centering
 	\framebox{\parbox{1\textwidth}{	
 	\includegraphics[scale=0.36]{Images/SparkFeat/scatter1517_KernelDensityEstimationHD.png}	
-	\caption{Correlation 95 songs, 19 genres (5 each), 1517-Artists}
+	\caption{Scatter matrix, correlation 95 songs, 19 genres (5 each), 1517-Artists}
 	\label{fig:corr3}
 	}}
 \end{figure}
@@ -217,7 +217,7 @@ In a third request where only the Jensen-Shannon-like divergence was tested to d
 				\hline
 			\end{tabular}
 		\end{center}
-		\captionof{table}{Cover recognition - Top 1\label{cov_1}}
+		\captionof{table}{Cover recognition rate - Top 1\label{cov_1}}
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
 		\begin{center}
@@ -260,12 +260,12 @@ In a third request where only the Jensen-Shannon-like divergence was tested to d
 				\hline
 			\end{tabular}
 		\end{center}
-		\captionof{table}{Cover recognition - Top 5\label{cov_2}}
+		\captionof{table}{Cover recognition rate - Top 5\label{cov_2}}
 	\end{minipage}
 \end{table}
 
 \noindent Table~\ref{cov_1} counts the appearance of the "B-version" songs as the first recommendations while Table~\ref{cov_2} lists the count of the recommended cover versions in the top five results, when using different combinations of feature sets. As expected, the approaches using melodic similarity features perform best. The combination of the different timbre based features performs worst. Interestingly the distances based on rhythm patterns are also able to detect some cover songs.\\
-\noindent Although 30 out of 80 detected cover songs doesn't seem like a surprisingly good hit rate and is not quite as good as the results from the original paper, it has to be mentioned that most of the cover versions in the cover80 dataset differ a lot in musical style, instrumentation, rhythm and even genre from the original recordings. These differences in musical style were also mentioned in the original paper from Ellis and Cotton \cite[p. 3]{cover802}.
+\noindent Although 30 out of 80 detected cover songs does not seem like a surprisingly good hit rate and is not quite as good as the results from the original paper, it has to be mentioned that most of the cover versions in the cover80 dataset differ a lot in musical style, instrumentation, rhythm and even genre from the original recordings. These differences in musical style were also mentioned in the original paper from Ellis and Cotton~\cite[p. 3]{cover802}.
 \noindent As an interesting side note, it has to be mentioned that the detected cover versions of the "chroma-" and "notes-only" requests were mostly the same. Aside from two songs, the chroma feature cross-correlation approach detected all of the cover songs that the Levenshtein distance also detected. So in conclusion, the cross-correlation is more precise but also more compute heavy.
 
 
@@ -289,7 +289,7 @@ Another way to quantify the quality of the distances and therefore the quality o
 				\label{fig:genrerec2}
 			\end{subfigure}		
 	}}
-	\caption{Genre recall}
+	\caption{Genre recall rate on 1517-Artists dataset}
 	\label{fig:1517gen}
 \end{figure}
 %\FloatBarrier
@@ -301,20 +301,20 @@ Another way to quantify the quality of the distances and therefore the quality o
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.29]{Images/SparkFeat/rock.png}	
 	}}
-	\caption{Distances 1 song, Rock\&Pop, 1517-Artists, 4 genres}
+	\caption{Scatter matrix, distances 1 song, Rock\&Pop, 1517-Artists, 4 genres}
 	\label{fig:corr5}
 \end{figure}
 \FloatBarrier
 
 \noindent To investigate the impact of different feature types on the overall recommendations and to visualize the distribution of distances for different genres, another test was performed. For single song requests, all distances to the songs from a subset of the 1517-Artists dataset containing the genres "Classical", "Hip-Hop", "Electronic \& Dance" and "Rock \& Pop" were computed. Figure~\ref{fig:corr5} shows the scatter matrices of all distances from one song request from the genre Rock \& Pop. The different distances of the recommendations are colored by the genre of the recommended song. 
-\noindent On the main diagonal the Kernel Density Estimation of the respective feature type is shown. One interesting detail that should be pointed out is that the JS distance alone is unable to distinguish between Rock/Pop songs and Hip-Hop songs but is able to separate between classical music and the rest. On the other hand, the rhythm patterns alone can't separate classical music from rock and pop. But when both feature types are combined, all three genres can be separated. The scatter plot of the distances from the rhythm patterns and Jensen-Shannon-like divergence in combination shows three clusters of songs belonging to different genres. The fourth genre, "Electronic \& Dance" however can not be separated from hip-hop songs no matter what feature-set is used. But it has to be kept in mind that all these distances are distances coming from a song request from the Rock/Pop genre. 
+\noindent On the main diagonal the Kernel Density Estimation of the respective feature type is shown. One interesting detail that should be pointed out is that the JS distance alone is unable to distinguish between Rock/Pop songs and Hip-Hop songs but is able to separate between classical music and the rest. On the other hand, the rhythm patterns alone can not separate classical music from rock and pop. But when both feature types are combined, all three genres can be separated. The scatter plot of the distances from the rhythm patterns and Jensen-Shannon-like divergence in combination shows three clusters of songs belonging to different genres. The fourth genre, "Electronic \& Dance" however can not be separated from hip-hop songs no matter what feature-set is used. But it has to be kept in mind that all these distances are distances coming from a song request from the Rock/Pop genre. 
 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.29]{Images/SparkFeat/electronic.png}	
 	}}
-	\caption{Distances 1 song, Electronic, 1517-Artists, 4 genres}
+	\caption{Scatter matrix, distances 1 song, Electronic, 1517-Artists, 4 genres}
 	\label{fig:corr6}
 \end{figure}
 \FloatBarrier
@@ -354,7 +354,7 @@ When using only one feature type, the Spark recommendation engine would not be a
 				\label{fig:acbpm}
 			\end{subfigure}%			
 	}}
-	\caption{Rhythm features / BPM}
+	\caption{Scatter plots rhythm features / BPM}
 	\label{fig:rhythmfeat}
 \end{figure}
 \FloatBarrier
@@ -397,7 +397,7 @@ As a last side note on personal music taste, a song request using one of my favo
 
 \noindent This could be an indication that my taste in music is closely related to the rhythmic properties of the music. 
 An idea for future research could be to reverse engineer a user's musical taste by looking at a list of favorite songs. The information which songs a user likes the most is already available to all streaming platforms because most likely the songs a user listens to the most are also the songs he likes the best. Spark could be used to calculate the similarities between these favorite songs of a user and analyze the distances. Whether or not these songs are more similar in rhythm, melody or timbre could enhance the parametrization of a recommender engine and further personalize music recommendations by adapting the weights of a recommendation engine.\\
-Of course, the field of personalized music recommendation is an already existing one, but maybe the addition of Spark and big data opportunities of using audio content instead of contextual information and collaborative filtering could enhance these existing systems. 
+Of course, the field of personalized music recommendation is an already existing one, but maybe the addition of Spark and Big Data opportunities of using audio content instead of contextual information and collaborative filtering could enhance these existing systems. 
 
 \chapter{Summary}\label{summarych}
 
@@ -405,8 +405,8 @@ In this last chapter, the results of this thesis are summarized and a short outl
 
 \section{Conclusion}
 
-Looking back at the content of this thesis, Chapter~\ref{audiofeat} provided an overview of the field of music information retrieval. Different high- and low-level audio features were explained, and various ways to measure the similarities between audio files based on the audio features were introduced. Additionally, a short introduction to big data frameworks, especially Apache Spark and Hadoop was given, and different audio data sources were gathered. Chapter~\ref{simanal} presented ways to extract and pre-process timbre, rhythm, and melodic features from audio files and multiple algorithms for calculating the distances between the extracted features were given. With the theoretic knowledge from the first chapters, the implementation could be planned. The data was collected. Over 1TB of music files containing 114000 different songs were aggregated.\\ 
-In the first part of the implementation, the necessary audio features were extracted and pre-processed (e.g., by extracting the melody from chroma features) in parallel using MPI on a computer cluster, paving the way for the usage with the big data processing framework Spark.
+Looking back at the content of this thesis, Chapter~\ref{audiofeat} provided an overview of the field of music information retrieval. Different high- and low-level audio features were explained, and various ways to measure the similarities between audio files based on the audio features were introduced. Additionally, a short introduction to Big Data frameworks, especially Apache Spark and Hadoop was given, and different audio data sources were gathered. Chapter~\ref{simanal} presented ways to extract and pre-process timbre, rhythm, and melodic features from audio files and multiple algorithms for calculating the distances between the extracted features were given. With the theoretic knowledge from the first chapters, the implementation could be planned. The data was collected. Over 1TB of music files containing 114000 different songs were aggregated.\\ 
+In the first part of the implementation, the necessary audio features were extracted and pre-processed (e.g., by extracting the melody from chroma features) in parallel using MPI on a computer cluster, paving the way for the usage with the Big Data processing framework Spark.
 The features were loaded into the HDFS of a cluster, and multiple similarity measurements were implemented, tested, evaluated, and improved using the Spark framework. With Spark, multiple approaches (RDD, DataSet, Filter and Refine, Cluster Configurations) were tested, and the runtime was measured. The resulting distances are presented, analyzed, and visualized.\\
 \ \\
 The final application is able to recommend songs similar to a song request by computing the distances based on melodic, rhythmic and timbral properties of the music. The recommendations are parameterized, giving the user the option to prioritize different aspects of the music. The system is scalable. More songs can be added, the cluster size can be increased, and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is also given. 
@@ -417,7 +417,7 @@ There are still a few minor flaws, especially when looking at the implementation
 The next step would be to re-evaluate the Jensen-Shannon-like divergence and the symmetric Kullback-Leibler divergence and fix the issues with the outliers. Also, the issues with non-invertible or non-singular covariance matrices should be investigated (see Section~\ref{sparkskl}). Maybe also the proposed enhancements by Schnitzer~\cite{schnitzer1} of reducing the hubness with mutual proximity and by using more Mel-bands for the computation of the MFCCs would be sufficient to improve the quality of the recommendations (see Section~\ref{mprox}). The scaling of the different features could be improved in a way, where all features are evenly distributed over the unit interval (see Section~\ref{distsc}).\\
 Tests of the performance on larger clusters and with more songs would be critical to assess the scaling of the problem.
 An implementation of the Spark streaming abilities to enable real-time computation of similarities instead of using batch-processing jobs would be the next logical step if the goal is to develop a system able to run with music streaming platforms. When evaluating the genre recall rate with Spark, an issue with the garbage collection running out of memory after about 40 subsequent song requests was encountered and should be fixed first.\\
-\noindent As another way of improving the presented Spark application, more state-of-the-art similarity measurements like block-level features (Section~\ref{blocklevel}) or the TF-IDF weights (Section~\ref{textretr}) for melodic similarity could be added. The most promising enhancement for the developed recommendation engine in this thesis would be the addition of genre and metadata information, genre-specific features, collaborative filtering, and lyrics (see Section~\ref{collaborative}). All the contextual music information that would typically be processed by a big data framework wasn't included in this thesis but could significantly enhance the recommendations. Most streaming services already have all the information needed, like users listening behavior or audio metadata and services like Spotify are also already using Spark for collaborative filtering so the Spark application presented in this thesis could be added and integrated into running streaming systems. A last suggestion for future enhancements is to investigate the proposal from Section~\ref{personal} of personalized music recommendation based on the audio feature similarities of a user's favorite songs made available by the big data framework.
+\noindent As another way of improving the presented Spark application, more state-of-the-art similarity measurements like block-level features (Section~\ref{blocklevel}) or the TF-IDF weights (Section~\ref{textretr}) for melodic similarity could be added. The most promising enhancement for the developed recommendation engine in this thesis would be the addition of genre and metadata information, genre-specific features, collaborative filtering, and lyrics (see Section~\ref{collaborative}). All the contextual music information that would typically be processed by a Big Data framework was not included in this thesis but could significantly enhance the recommendations. Most streaming services already have all the information needed, like users listening behavior or audio metadata and services like Spotify are also already using Spark for collaborative filtering so the Spark application presented in this thesis could be added and integrated into running streaming systems. A last suggestion for future enhancements is to investigate the proposal from Section~\ref{personal} of personalized music recommendation based on the audio feature similarities of a user's favorite songs made available by the Big Data framework.
 
 %\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
 % on the last page of the document manually. It shortens

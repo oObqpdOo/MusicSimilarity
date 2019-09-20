@@ -3,7 +3,7 @@
 
 As presented in Section~\ref{midiest}, there are tools for the extraction of the pitch curve of the main melody line in a song. However, in polyphonic music, these kinds of algorithms struggle to get reasonable results. %even in pop music. 
 In musical genres like Metal with distorted instruments, it is hardly possible to get good results. 
-In conclusion, the main pitch-line extraction and the following conversion of a song with multiple concurrent audio tracks to MIDI using up-to-date open-source toolkits doesn't produce very reasonable results as shown in~\ref{midiest}.
+In conclusion, the main pitch-line extraction and the following conversion of a song with multiple concurrent audio tracks to MIDI using up-to-date open-source toolkits does not produce very reasonable results as shown in~\ref{midiest}.
 Another possible representation of melodic features is the transformation of the structural information to graphs, as Orio and Roda did~\cite{graph1}.\\ 
 But a better and also widely used approach is to use chroma features as described in the next Section~\ref{chromafeat}.
 
@@ -28,7 +28,7 @@ First of all Figure~\ref{fig:chroma1} shows the chromagram plots from two differ
 				\label{pv}
 			\end{subfigure}%	
 	}}
-	\caption{Chroma features}
+	\caption{Chroma feature examples}
 	\label{fig:chroma1}
 \end{figure}
 \noindent In the last third of each sample, the chroma features seemingly get noisier. At these timings in both songs, the bass and drum begin to play. To reduce the impact of rhythm elements over the melodic voice and instrument lines, the audio signal was filtered with a high-pass filter with a cut-off frequency at 128Hz (nearly equal to C3 Key) and secondly by a low-pass filter with a cut-off frequency at 4096Hz (C8 Key). This limits the frequency range to about 5 octaves. 
@@ -62,11 +62,11 @@ In Figure~\ref{fig:sia2}, the filter frequencies and the original audio signals 
 				\label{pvfft}
 			\end{subfigure}%			
 	}}
-	\caption{Bandpass - Sia}
+	\caption{Band-pass filter, Sia - Chandelier}
 	\label{fig:sia2}
 \end{figure}
 
-\noindent In the chromagram of the bandpass-filtered audio signal, the last 10 seconds look cleaner, and the melody line is more distinct from the rest in comparison to the chromagram of the unfiltered audio in Figure~\ref{fig:chroma1}.\\
+\noindent In the chromagram of the band-pass filtered audio signal, the last 10 seconds look cleaner, and the melody line is more distinct from the rest in comparison to the chromagram of the unfiltered audio in Figure~\ref{fig:chroma1}.\\
 The next step is to calculate the most dominant note value for each timeframe. Since the chromagram normalizes every timeframe to the maximum note value, the most dominant note is always assigned to the value 1. The closer the rest of the notes are to one, the more likely the timeframe contains silence. If only a few values are close to one, then a chord or harmony is played. To filter out silence the sum over all note values of every timeframe is calculated and if this sum is twice as high as the average sum of notes of the whole song, then the frame is considered as silence. Otherwise, the most dominant pitch is set to a fixed value while the rest of the notes are set to zero.\\
 \noindent To extract the main melody, in most cases only the most dominant pitch is needed, but sometimes the main melody is superimposed by other accompanying instruments. To prevent this the second most dominant pitches can also be taken into consideration if their values are greater then a specific threshold. The result is shown in Figure~\ref{fig:chromavg} with a threshold of 0.8.
 \begin{figure}[htbp]
@@ -85,7 +85,7 @@ The next step is to calculate the most dominant note value for each timeframe. S
 				\label{pvavg}
 			\end{subfigure}%			
 	}}
-	\caption{Thresholded chroma features - Sia}
+	\caption{Thresholded chroma features, Sia - Chandelier}
 	\label{fig:chromavg}
 \end{figure}
 \FloatBarrier
@@ -98,35 +98,35 @@ The next step is to calculate the most dominant note value for each timeframe. S
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/pvrisunfiltered.png}
-				\caption{Beat aligned of unfiltered audio - Pvris}
+				\caption{Beat-aligned chromagram of unfiltered audio - Pvris}
 				\label{pvubf}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/pvrisfiltered.png}
-				\caption{Beat aligned of filtered audio - Pvris}
+				\caption{Beat-aligned chromagram of filtered audio - Pvris}
 				\label{pvfb}
 			\end{subfigure}%	
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/siaunfiltered.png}
-				\caption{Beat aligned of unfiltered audio - Sia}
+				\caption{Beat-aligned chromagram of unfiltered audio - Sia}
 				\label{siaub}
 			\end{subfigure}
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/siafiltered.png}
-				\caption{Beat aligned of filtered audio - Sia}
+				\caption{Beat-aligned chromagram of filtered audio - Sia}
 				\label{siafb}
 			\end{subfigure}%		
 	}}
-	\caption{Processed chroma features - Sia}
+	\caption{Processed chroma features, Sia - Chandelier}
 	\label{beataligned}
 \end{figure}
 %\FloatBarrier
 
-\noindent Figure~\ref{beataligned} shows the different beat aligned features of both example songs with bandpass-filtered audio and unfiltered audio. The red lines resemble the detected beat events.
+\noindent Figure~\ref{beataligned} shows the different beat-aligned features of both example songs with band-pass filtered audio and unfiltered audio. The red lines resemble the detected beat events.
 \noindent Another option would be to separate the frames between the beats in even smaller sections. This would result in a better resolution of the melodic movement but at the same time increase the length of the data vectors that have to be compared to each other.
 \noindent The last processing step is to key shift the chroma features to make the similarity analysis key invariant. One way to do so would be to estimate the key in which each song is played in and then shift all chroma features to the same base key, e.g., C Major or A Minor. Due to the structure of the chroma features, this can easily be done by assigning all estimated notes a new value a few keys higher or lower and thus shifting the whole song by a few semitones. The whole workflow to extract the chroma features for this thesis is shown in Figure~\ref{workflowchrom}.\\
 
@@ -137,14 +137,14 @@ The next step is to calculate the most dominant note value for each timeframe. S
 		\ \\
 		%\smartdiagramset{set color list={blue!40!white, blue!40!white,blue!40!white, blue!40!white, blue!40!white, blue!40!white}}
 		\tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=30,}}			
-		\smartdiagram[priority descriptive diagram]{6) key shifting, 5) beat alignment, 4) extract most dominant pitches, 3) detect silence, 2) calculate chromagram, 1) filter audio (bandpass)} \\
+		\smartdiagram[priority descriptive diagram]{6) key shifting, 5) beat alignment, 4) extract most dominant pitches, 3) detect silence, 2) calculate chromagram, 1) filter audio (band-pass)} \\
 		\caption{Workflow chroma feature extraction}
 		\label{workflowchrom}
 	}}
 \end{figure}
 %\FloatBarrier
 
-\noindent Another consideration is to use the original chromagram without the extraction of only the most dominant keys and thus leaving the processing step 4 out. This means a possible tradeoff between accuracy and computation time. The results for the example song by Sia don't show a major impact, as can be seen in Figure~\ref{fig:nomax}. In this thesis, step 4 will be used in an attempt to get rid of the pitches of the accompaniment from the main melody line.
+\noindent Another consideration is to use the original chromagram without the extraction of only the most dominant keys and thus leaving the processing step 4 out. This means a possible tradeoff between accuracy and computation time. The results for the example song by Sia do not show a major impact, as can be seen in Figure~\ref{fig:nomax}. In this thesis, step 4 will be used in an attempt to get rid of the pitches of the accompaniment from the main melody line.
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -161,7 +161,7 @@ The next step is to calculate the most dominant note value for each timeframe. S
 				\label{pvdom}
 			\end{subfigure}%			
 	}}
-	\caption{Processing step 3 chroma features}
+	\caption{Processing step 3 of chroma features in detail}
 	\label{fig:nomax}
 \end{figure}
 
@@ -171,23 +171,37 @@ In this section, two completely different approaches to measure the melodic simi
 
 \subsubsection{Text Retrieval}\label{textretr}
 
-One possibility to process the chromagrams and to estimate the similarity between the melodic features of different songs is to handle the pre-processed chromagrams as texts consisting of note values. Due to the extraction of only the main melody line in our feature vector, there is only one note for every detected beat. This main melody line gets converted into a vector of subsequent notes and this vector is converted into a string. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors.~\cite{chroma4} mentions that this is indeed a problem when using the Levenshtein distance (also known as the edit-distance) to compute similarities. In their paper, they use MIDI files instead of chroma features, but both contain information about the melody of songs so an adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. The Levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as follows \cite[p. 7]{chroma4}
+One possibility to process the chromagrams and to estimate the similarity between the melodic features of different songs is to handle the pre-processed chromagrams as texts consisting of note values. Due to the extraction of only the main melody line in our feature vector, there is only one note for every detected beat. This main melody line gets converted into a vector of subsequent notes and this vector is converted into a string. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors. Xia (et al)~\cite{chroma4} mentions that this is indeed a problem when using the Levenshtein distance (also known as the edit-distance) to compute similarities. The Levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as 
 
 \begin{equation} \label{eq:tr1}
-lev_{S,T}(i, j) = \begin{cases}
-max(i, j), &\text{if } min(i, j) = 0\\
-min \begin{cases}
-lev_{S,T}(i-1, j) + 1\\
-lev_{S,T}(i, j-1) + 1\\
-lev_{S,T}(i-1, j-1)\\
-+cost[S_i \neq T_j]\\
-\end{cases} &\text{else} \\
-\end{cases}
+\text{lev}_{S,T}(i, j) = \begin{cases}
+\quad\text{max}(i, j), & \text{if} \, \text{min}(i, j) = 0\\
+\quad\text{min}(\\
+	\quad\quad\text{lev}_{S,T}(i-1, j) + 1,\\ 
+	\quad\quad\text{lev}_{S,T}(i, j-1) + 1,	& \text{else},\\
+	\quad\quad\text{lev}_{S,T}(i-1, j-1) + 1_{(S_i \neq T_j)}\\
+	\quad)\\ 
+	\end{cases}
 \end{equation}
-Xia (et al.) made some adjustments to this to be able to handle musical information.\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lengths between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and at the end of each song.\\
-Due to the fact that this thesis has no actual note information from MIDI files but rather short lists of estimated main pitches from the beat aligned chroma features, most of the feature vectors are already smaller than 200 notes. Therefore the implemented algorithm does not split the vectors. This tends to favor cover songs that share the same length. 
+
+\noindent with $1_{(S_i \neq T_j)}$ being the indicator function equal to 0 when $S_{i} = T_{j}$ and equal to 1 otherwise, following~\cite[p. 7]{chroma4}.
+
+%\begin{equation} \label{eq:tr1}
+%lev_{S,T}(i, j) = \begin{cases}
+%max(i, j), &\text{if } min(i, j) = 0\\
+%min \begin{cases}
+%lev_{S,T}(i-1, j) + 1\\
+%lev_{S,T}(i, j-1) + 1\\
+%lev_{S,T}(i-1, j-1)\\
+%+cost[S_i \neq T_j]\\
+%\end{cases} &\text{else} \\
+%\end{cases}
+%\end{equation}
+\noindent In their paper, they use MIDI files instead of chroma features, but both contain information about the melody of songs so an adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. 
+\noindent Xia (et al.) made some adjustments to this to be able to handle musical information.~\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lengths between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and at the end of each song.\\
+Due to the fact that this thesis has no actual note information from MIDI files but rather short lists of estimated main pitches from the beat-aligned chroma features, most of the feature vectors are already smaller than 200 notes. Therefore the implemented algorithm does not split the vectors. This tends to favor cover songs that share the same length. 
 \ \\
-Englmeier (et al.) uses a more advanced text information retrieval technique called "TF-IDF weights" (term frequency - inverse document frequency) and explicit semantic analysis (ESA). "The TF-IDF weight is a measure which expresses the meaning of a term or a document within a collection of documents." \cite[p. 186]{chroma1}
+Englmeier (et al.) uses a more advanced text information retrieval technique called "TF-IDF weights" (term frequency - inverse document frequency) and explicit semantic analysis (ESA). "The TF-IDF weight is a measure which expresses the meaning of a term or a document within a collection of documents."~\cite[p. 186]{chroma1}
 To do so, "audio words" have to be created from the song database by splitting the audio signal into snippets, creating chroma features and clustering them with the k-means algorithm. The centroids are then added to a database. These audio words can then be evaluated using the TF-IDF weights and ESA.
 Although their approach looks promising, a re-implementation of their algorithms would exceed the frame of this thesis.
 
@@ -200,7 +214,7 @@ Given two discrete-time signals $x[n]$ and $y[n]$ the cross-correlation between 
 \begin{equation} \label{eq:conv1}
 k[n] = (x \star y)[n] = \sum_{m = -\infty}^{\infty}{x[m] y[m - n]} 
 \end{equation}
-For two two-dimensional input matrices $X$ with the dimensions $M$ by $N$ and $Y$ as a $P$ by $Q$ matrix the cross-correlation result is a matrix $C$ of size $M + P - 1$ rows and $N + Q - 1$ columns. Its elements are given by equation \eqref{eq:conv2}~\cite{mathcorr}, the bar over $\overline{Y}$ denotes complex conjugation (in this case $Y$ is a matrix with real values only). 
+For two two-dimensional input matrices $X$ with the dimensions $M$ by $N$ and $Y$ as a $P$ by $Q$ matrix the cross-correlation result is a matrix $C$ of size $M + P - 1$ rows and $N + Q - 1$ columns. Its elements are given by Equation~\eqref{eq:conv2}~\cite{mathcorr}, the bar over $\overline{Y}$ denotes complex conjugation (in this case $Y$ is a matrix with real values only). 
 \begin{equation} \label{eq:conv2}
 C(k, l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{Y}(m - k, n - l)}}
 \end{equation}
@@ -217,17 +231,17 @@ An example for the one-dimensional cross-correlation is shown in Figure~\ref{fig
 	\framebox{\parbox{1\textwidth}{ \centering			
 	\includegraphics[scale=0.45]{Images/Chroma/correlation.png}
 	}}
-	\caption{Cross-correlation}
+	\caption{1D cross-correlation}
 	\label{fig:corr1}
 \end{figure}
 Ellis and Poliner did not transpose the songs in the pre-processing step to match the keys of both audio files. Instead, they calculated the full cross-correlation for all 12 possible transpositions and chose the best one. 
 As input matrices, they averaged all notes of the chroma features per beat and additionally scaled them to have unit norm at each time slice (beat frame).
 In the original paper, the cross-correlation is normalized by the length of the shorter song segment to bind the correlation result to an interval between 0 and 1. But in a later published work from Ellis and Cotton, this step was left out, as it seemingly resulted in slightly worse detection ratios of cover songs~\cite{cover802}. 
-Additionally, they filtered the result of the cross-correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample" \cite[p. 3]{chroma3}. The later published paper also states that changes to the filter parameters improved the cover song recognition rate further~\cite{cover802}. However, the exact values, e.g., for the cutoff frequency weren't given, so in this thesis, the older parameters for the filter are used.\\
+Additionally, they filtered the result of the cross-correlation with a high-pass filter. "We found that genuine matches were indicated not only by cross-correlations of large magnitudes, but that these large values occurred in narrow local maxima in the cross-correlations that fell off rapidly as the relative alignment changed from its best value. To emphasize these sharp local maxima, we choose the transposition that gives the largest peak correlation then high-pass filter that cross-correlation function with a 3dB point at 0.1 rad/sample"~\cite[p. 3]{chroma3}. The later published paper also states that changes to the filter parameters improved the cover song recognition rate further~\cite{cover802}. However, the exact values, e.g., for the cutoff frequency were not given, so in this thesis, the older parameters for the filter are used.\\
 Serra (et al.) also discusses the effects of different pre-processing steps that improve the algorithm even further, and they note that a higher chroma resolution of 3 octaves gives better results. Also, the key detection and transposition before the cross-correlation gives slightly worse results in comparison to the method Ellis and Poliner used.\\ 
 In this thesis, a version where the songs are all key aligned before the cross-correlation was tested, to reduce the computation time overhead when estimating the similarities on a cluster. 
 %but due to the fact, that the key detection algorithm in the librosa and Essentia frameworks weren't always correct a second version where additionally the cross-correlation for all key transpositions is calculated, was also implemented. 
-In summary, the implementation in this thesis is similar to the approach by Ellis and Poliner~\cite{chroma3}, but some of the steps from the newer paper~\cite{cover802} leave some space for further improvements.\\ The chroma features are beat aligned, averaged per beat, and normalized to unit length as well. Additionally, all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to equation \eqref{eq:conv2} including "key shifts" with zero padding at the edges, by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ is shown in the Figures~\ref{fig:beatalign} and~\ref{fig:crosscorr}. But due to the previously already performed key shift during the pre-processing steps and the fact that both input matrices share the same amount of rows (12, one per semi-tone) the full cross-correlation is not necessary and computation time can be saved by altering the computation according to equation \eqref{eq:conv5} resulting in a vector C with the correlation results without additional key-shifting
+In summary, the implementation in this thesis is similar to the approach by Ellis and Poliner~\cite{chroma3}, but some of the steps from the newer paper~\cite{cover802} leave some space for further improvements.\\ The chroma features are beat aligned, averaged per beat, and normalized to unit length as well. Additionally, all chroma features are transposed to a common key (A in this case) in the pre-processing step. The full cross-correlation according to Equation~\eqref{eq:conv2} including "key shifts" with zero padding at the edges, by letting $k$ run from $-(P - 1) \leq k \leq M - 1$ is shown in the Figures~\ref{fig:beatalign} and~\ref{fig:crosscorr}. But due to the previously already performed key shift during the pre-processing steps and the fact that both input matrices share the same amount of rows (12, one per semi-tone) the full cross-correlation is not necessary and computation time can be saved by altering the computation according to Equation~\eqref{eq:conv5} resulting in a vector $C$ with the correlation results without additional key-shifting
 \begin{equation} \label{eq:conv5}
 C(l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{H}(m, n - l)}}
 \end{equation}
@@ -239,27 +253,27 @@ or even faster without calculating the edges of the matrix (without zero-padding
 0 \leq l \leq N - Q
 \end{equation}
 \noindent This simplified version relies on an accurate key detection of the songs during the pre-processing. The post-processing step from Ellis and Poliner, more precisely the high-pass filtering of the result was also implemented.\\
-Figure~\ref{fig:beatalign} shows two beat aligned, key shifted and per beat averaged chroma features of two short guitar audio samples and their cross-correlation results. The most interesting row of the cross-correlation matrix is the middle row marked with the B key, where both chromagrams are aligned. %It shows that both already key shifted melodies do not correlate well in this example.  
+Figure~\ref{fig:beatalign} shows two beat aligned, key-shifted and per beat averaged chroma features of two short guitar audio samples and their cross-correlation results. The most interesting row of the cross-correlation matrix is the middle row marked with the B key, where both chromagrams are aligned. %It shows that both already key shifted melodies do not correlate well in this example.  
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma.png}
-				\caption{Beat aligned chroma sound1}
+				\caption{Beat-aligned chromagram sound1}
 				\label{c1}
 			\end{subfigure}				
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_ks.png}
-				\caption{Beat aligned chroma sound1 key shifted}
+				\caption{Beat-aligned chromagram sound1 key-shifted}
 				\label{cks1}
 			\end{subfigure}		
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma2_ks.png}
-				\caption{Beat aligned chroma sound2 key shifted}
+				\caption{Beat-aligned chromagram sound2 key-shifted}
 				\label{cks2}
 			\end{subfigure}%	
 			\begin{subfigure}{.495\textwidth}
@@ -269,7 +283,7 @@ Figure~\ref{fig:beatalign} shows two beat aligned, key shifted and per beat aver
 				\label{c2}
 			\end{subfigure}%			
 	}}
-	\caption{Beat-aligned chromagram}
+	\caption{2D cross-correlation of beat-aligned and key-shifted chromagrams (audio snippets)}
 	\label{fig:beatalign}
 \end{figure}
 
@@ -280,13 +294,13 @@ Figure~\ref{fig:beatalign} shows two beat aligned, key shifted and per beat aver
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/hurr1chrom.png}
-				\caption{Pvris}
+				\caption{Chandelier, Pvris}
 				\label{cch1}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/hurr2chrom.png}
-				\caption{Sia}
+				\caption{Chandelier, Sia}
 				\label{cch2}
 			\end{subfigure}%
 				
@@ -303,7 +317,7 @@ Figure~\ref{fig:beatalign} shows two beat aligned, key shifted and per beat aver
 				\label{cc2}
 			\end{subfigure}%			
 	}}
-	\caption{Cross-correlation}
+	\caption{2D cross-correlation of beat-aligned chromagrams (Sia / Pvris - Chandelier)}
 	\label{fig:crosscorr}
 \end{figure}
 \FloatBarrier
@@ -325,7 +339,7 @@ The center rows of the cross-correlation matrices from Figure~\ref{fig:crosscorr
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/beatalignedchroma_corr_mean2.png}
-				\caption{CSross-correlation of unrelated songs}
+				\caption{Cross-correlation of unrelated songs}
 				\label{cc4}
 			\end{subfigure}%			
 %	}}
@@ -350,7 +364,7 @@ The center rows of the cross-correlation matrices from Figure~\ref{fig:crosscorr
 				\label{ccf4}
 			\end{subfigure}%		
 	}}
-	\caption{Cross-correlation filtered}
+	\caption{Filtered cross-correlation (high-pass)}
 	\label{fig:crosscorr3}
 \end{figure}
 \FloatBarrier
