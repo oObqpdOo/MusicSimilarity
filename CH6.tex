@@ -237,7 +237,7 @@ result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
 \noindent After implementing this similarity measurement in Spark, some tests and comparisons to the results of the Musly toolkit~\cite{musly1} were done. While overall the genre recall is quite good (see Section~\ref{genrerec}) and the results seem reasonable, they do differ from the ones returned by Musly. 
-These differences could be explained with the choice of only 13 Mel-bands during the computation of the MFCCs in this thesis compared to the 25 bands in Musly~\cite{musly1} and some other decisions like omitting the normalization with mutual proximity (Section~\ref{mprox}). The same goes for the Jensen-Shannon-like divergence. 
+These differences could be explained with the choice of only 13 Mel-bands during the computation of the MFCCs in this thesis compared to the 25 bands in Musly~\cite{musly1} and some other decisions like omitting the normalization with mutual proximity (Section~\ref{mprox}). The same applies for the Jensen-Shannon-like divergence. 
 
 
 \subsubsection{Levenshtein Distance}
@@ -323,13 +323,13 @@ That means that especially in this application in the area of music similarity, 
 \subsection{Distance Scaling}\label{distsc}
 
 To combine different distance measurements into one combined distance, the various results from different kinds of features have to be rescaled to avoid biasing the overall distance.
-The easiest way is to subtract the minimum $min(d)$ from all distances $d$ and to divide by the difference between the maximum $max(d)$ and the minimum distance, as described in Equation~\eqref{eq:scaling}. 
+The easiest way is to subtract the minimum $\text{min}(d)$ from all distances $d$ and to divide by the difference between the maximum $\text{max}(d)$ and the minimum distance, as described in Equation~\eqref{eq:scaling}. 
 
 \begin{equation} \label{eq:scaling}
 d' = \frac{d - \text{min}(d)}{\text{max}(d) - \text{min}(d)}
 \end{equation}
 
-\noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this is not always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section~\ref{featqual} also shows that, e.g. the Levenshtein distances and cross-correlation results are unevenly distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterward with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section~\ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section~\ref{featqual}.\\
+\noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this is not always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section~\ref{featqual} also shows that, e.g. the Levenshtein distances and cross-correlation results are unevenly distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterwards with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section~\ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section~\ref{featqual}.\\
 Another option to rescale the features, laid out by Sebastian Stober in~\cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using Equation~\eqref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
 A better way to rescale the data could be evaluated in future research. 
 
@@ -372,7 +372,7 @@ To finally compute the overall similarity of what Stober calls the facet distanc
 
 \subsubsection{Cluster Configuration} %and data file size}
 
-\noindent The first thing that had to be done was to alter the spark cluster configuration for the ARA-cluster, as described in Section~\ref{cconfexp}.
+\noindent The first optimization step was to alter the spark cluster configuration for the ARA-cluster, as described in Section~\ref{cconfexp}.
 \noindent The cluster configuration in the Code Snippet~\ref{lst:clust} turned out to perform well compared to other test configurations. The cluster is configured in a way where between 16 and up to 32 Executors are spawned with each Executor requesting as many CPU cores and memory resources as possible. The \lstinline{repartition_count} variable is used with the \lstinline{repartition()} method during the data preparation stage to evenly distribute all chunks of feature files across the cluster.\\
 \noindent With the help of the \lstinline{spark.dynamicAllocation} parameters, the number of Executors spawned can be determined~\cite[p. 153]{sparkbook1}. While normally the Executors are spawned and then retained for the life span of the application, dynamic allocation allows Spark to free resources of idling Executors and to then reassign the pertinent system resources.
 It should be mentioned that normally \lstinline{spark.shuffle.service.enabled} should also be set to true when the dynamic allocation is used, and an external shuffle service should be configured to avoid the loss of shuffle data in case an Executor gets deleted. During the tests this option was disabled, though. This should not be a problem because the dynamic allocation is only used to ensure that a certain fixed minimum amount of Executors is spawned. With this configuration, no more than 16 Executors can be spawned anyway because of the missing resources on the ARA-cluster, so for this configuration, the Executors never actually get killed and no shuffling data gets lost.\\
@@ -490,13 +490,13 @@ The x-axis shows the numbers of Executors that are spawned on the cluster. Since
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item bh (beat histogram, Euclidean distance)
-	\item rh (rhythm histogram, Euclidean distance)
-	\item notes (notes, Levenshtein distance)
 	\item rp (rhythm patterns, Euclidean distance)
-	\item mfcc (MFCCs, Euclidean distance)
-	\item js (MFCCs, Jensen-Shannon-like divergence)
+	\item rh (rhythm histogram, Euclidean distance)
+	\item bh (beat histogram, Euclidean distance)
 	\item skl (MFCCs, symmetric Kullback-Leibler divergence)
+	\item js (MFCCs, Jensen-Shannon-like divergence)
+	\item mfcc (MFCCs, Euclidean distance)
+	\item notes (notes, Levenshtein distance)
 	\item chroma (beat-aligned chromagram, cross-correlation)
 \end{itemize}
 
@@ -773,7 +773,7 @@ This is also the reason this approach is called "descending importance filter an
 \subsubsection{Cluster Size}
 
 \noindent The runtime and its dependencies on cluster configuration, size of the input dataset, and implementation details were presented in the previous Sections. With about twelve seconds response time for the filter and refine method and 14 seconds for the merged DataFrame approach on 16 compute nodes, and for 114000 songs, the runtime is reasonably fast but not yet fast enough for real-time processing.\\ 
-\noindent To simulate the impact of growing cluster sizes in Figure~\ref{perfspark6}, the cluster configuration was changed from 1 up to 16 Executors spawned, each reserving 36 CPU cores (the maximum number of available cores on one node (without HT)) and 64GB (+ 32GB overhead) of main memory. To do this, the parameters of the dynamic allocation were changed. When setting the minimum Executor count above 16 without there being enough resources on the cluster, the Spark Driver only spawns as many as he is able to (16 on the ARA-cluster with 36 CPU cores/Executor). As a test algorithm, the merged DataFrame approach (repartitioned in 32 chunks) with two subsequent song requests was chosen. The computation time of the second song request for all feature-sets is shown in Figure~\ref{perfspark6}.\\
+\noindent To simulate the impact of growing cluster sizes in Figure~\ref{perfspark6}, the cluster configuration was changed from 1 up to 16 Executors spawned, each reserving 36 CPU cores (the maximum number of available cores on one node (without HT)) and 64GB (+ 32GB overhead) of main memory. To do this, the parameters of the dynamic allocation were changed. When setting the minimum Executor count above 16 without there being enough resources on the cluster, the Spark Driver only spawns as many as it is able to (16 on the ARA-cluster with 36 CPU cores/Executor). As a test algorithm, the merged DataFrame approach (repartitioned in 32 chunks) with two subsequent song requests was chosen. The computation time of the second song request for all feature-sets is shown in Figure~\ref{perfspark6}.\\
 
 \FloatBarrier
 \begin{figure}[htbp]

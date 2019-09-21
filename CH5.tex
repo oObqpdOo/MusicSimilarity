@@ -2,7 +2,7 @@
 %\newpage
 \chapter{Implementation}\label{implementationdet}
 
-The implementation consists of two separate parts. The first contains the feature extraction and preparation of data from the audio files. The results are stored into feature files. These features files then have to be processed with the Big Data framework Spark to compute the similarities between songs.\\ 
+The implementation consists of two separate parts. The first contains the feature extraction and preparation of data from the audio files. The results are stored into feature files. In the second part, these features files then have to be processed with the Big Data framework Spark to compute the similarities between songs.\\ 
 Both parts are implemented in Python and can be executed on computer clusters. The source code can be found on the CD in the appendices and it can be pulled from GitHub~\cite{github-code}. Details for the usage of the Python scripts are also documented there.
 
 \section{Audio Feature Extraction}\label{simmet}
@@ -20,7 +20,6 @@ The last source used in this thesis is the private music collection. This collec
 In conclusion that adds up to about 117000 songs for performance tests, from which in the end 114210 could be used (see Section~\ref{totamsong} for the details on the dropout), and about 11500 songs for a detailed evaluation of the algorithms in this thesis and the quality of the recommendations. As mentioned in Section~\ref{datasets}, all albums from the private music collections are catalogued as well, and the associated document is in the appendices. 
 
 \begin{table}[h]
-	\label{used_dsets}
 	\begin{center}
 		\begin{tabular}{|c||c|}
 			\hline
@@ -35,6 +34,7 @@ In conclusion that adds up to about 117000 songs for performance tests, from whi
 		\end{tabular}
 	\end{center}
 	\caption{Selected music datasets}
+	\label{used_dsets}
 \end{table}
 \FloatBarrier
 
@@ -131,7 +131,7 @@ for index in xrange(startjob, parts):
 times = sum([job() for job in jobs])
 job_server.print_stats()
 \end{pythonCode}
-The computation time takes about 15.4 seconds per song and processor core. Using 4 CPU cores for 100 songs, the overall processing time could be reduced to about 385 seconds. 
+The computation time takes on average approximately 18.6 seconds per song and processor core (assuming ideal data balancing). Using 4 CPU cores for 100 songs, the overall processing time could be reduced to about 465 seconds. 
 \begin{equation} \label{eq:parallelp}
 \text{time} = \frac{\#\text{songs}}{\#\text{CPUs}} \cdot 15.4s
 \end{equation}
@@ -141,7 +141,7 @@ One problem that appeared when using Parallel Python was that the main memory us
 
 \subsubsection{Rp\_extractor}
 
-For the extraction of the rhythm patterns and rhythm histogram features as described in Section~\ref{rhythmsimc}, the rp\_extractor tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs took about 344 seconds.
+For the extraction of the rhythm patterns and rhythm histogram features as described in Section~\ref{rhythmsimc}, the "rp\_extractor" tool provided by the TU Wien was used. Although running in parallel on all CPU cores on a single node, the extraction of the features from 100 songs took about 344 seconds.
 
 \subsubsection{Performance on a Single PC}
 
@@ -206,24 +206,24 @@ The performance of the different MIR toolkits is shown in Figure~\ref{perfex}.
 	\caption{Performance of various toolkits on a single computer}
 	\label{perfex}
 \end{figure}
-\noindent In summary, the estimated time for the feature extraction of larger datasets on a single computer based on the performance measurements was calculated and is listed below, leading to the conclusion that the features for the full dataset including the FMA dataset can only be extracted with the help of a computer cluster.
+\noindent In summary, the estimated time for the feature extraction of larger datasets on a single computer based on the performance measurements was extrapolated and is listed below, leading to the conclusion that the features for the full dataset including the FMA dataset can only be extracted with the help of a computer cluster.
 \ \\
 \textbf{Estimated feature extraction times}
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item 3h24 - 1517-Artists - Essentia parallel, single-node, 4 CPU cores
-	\item 3h54 - 1517-Artists - rp\_extract
-	\item 9h06 - private dataset - Essentia parallel, single-node, 4 CPU cores
-	\item 10h24 - private dataset - rp\_extract
-	\item (125h - full dataset - Essentia parallel, single-node, 4 CPU cores)
-	\item (143h - full dataset - rp\_extract)
+	\item 3h24min - 1517-Artists - Essentia parallel, single-node, 4 CPU cores
+	\item 3h54min - 1517-Artists - rp\_extract
+	\item 9h06min - private dataset - Essentia parallel, single-node, 4 CPU cores
+	\item 10h24min - private dataset - rp\_extract
+	\item (125h - all datasets - Essentia parallel, single-node, 4 CPU cores)
+	\item (143h - all datasets - rp\_extract)
 \end{itemize}
 
 \subsubsection{Performance on a Cluster with mpi4py}\label{mpi4py}
 
 For the extraction of the features from the audio files of the FMA dataset on the computer cluster of the Friedrich Schiller University in Jena (the "ARA-cluster"), Parallel Python had to be replaced with mpi4py. 
 Mpi4py provides Python bindings for the Message Passing Interface standard (MPI)~\cite{mpi4py}. 
-Every compute-process gets a rank number and recognizes the overall count of all processes. With these two values, the file list of all audio files is split, and each process only processes its respective data. The audio files were stored in a parallel cluster file system called "beegfs"~\cite{beegfs}. Similar to the implementation using Parallel Python, every process stores the results in separate output files, each of them containing batches of 25 songs.\\
+Every compute-process gets a rank number and recognizes the overall count of processes. With these two values, the file list of all audio files is split, and each process only processes its respective data. The audio files were stored in a parallel cluster file system called "beegfs"~\cite{beegfs}. Similar to the implementation using Parallel Python, every process stores the results in separate output files, each of them containing batches of 25 songs.\\
 
 \begin{pythonCode}[frame=single,label={lst:mpi4py},caption={Mpi4py},captionpos=b]
 comm = MPI.COMM_WORLD   # get MPI communicator object
@@ -248,6 +248,6 @@ The extraction of the features took between 1439 seconds (fastest process) and 1
 
 \subsubsection{Total Amount of Songs}\label{totamsong}
 
-Due to the above-mentioned filtering of audio files larger than 25MB, the out-of-memory error of one process executing the Essentia task, and since the rhythm pattern extraction script does not handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So, in the end, the overall count of songs where all features could be obtained is 114210.\\
+Due to the above-mentioned filtering of audio files larger than 25MB, the out-of-memory error of one process executing the Essentia task, and since the rhythm pattern extraction script does not handle some audio file formats like Ogg Vorbis, not all features from all songs could be extracted. So, in the end, the overall count of songs from the datasets listed in Table \ref{used_dsets} where all features could be obtained is 114210.\\
 
 
