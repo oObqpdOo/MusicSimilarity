@@ -15,7 +15,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Goals}{2}{section.1.1}
+\contentsline {section}{\numberline {1.1}Objectives}{2}{section.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Outline}{2}{section.1.2}
 \defcounter {refsection}{0}\relax 
@@ -159,7 +159,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Essentia Streaming}{54}{lstnumber.4.2.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Essentia Performance}{55}{lstnumber.4.3.24}
+\contentsline {subsubsection}{Essentia Performance}{54}{lstnumber.4.3.24}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Parallel Python}{55}{lstnumber.4.3.24}
 \defcounter {refsection}{0}\relax 
@@ -193,7 +193,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Levenshtein Distance}{67}{lstnumber.4.15.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Lazy Evaluation and Data Caching}{67}{lstnumber.4.17.6}
+\contentsline {subsubsection}{Lazy Evaluation and Data Caching}{68}{lstnumber.4.17.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.5}Distance Scaling}{70}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
@@ -247,7 +247,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7.2}Spotipy Data Miner}{103}{section.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Contend on the CD}{105}{section.7.3}
+\contentsline {section}{\numberline {7.3}CD Contents}{105}{section.7.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Code}{105}{section.7.3}
 \defcounter {refsection}{0}\relax 

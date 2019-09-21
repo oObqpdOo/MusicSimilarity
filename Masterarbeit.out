@@ -3,7 +3,7 @@
 \BOOKMARK [0][]{section*.5}{List of Tables}{}% 3
 \BOOKMARK [0][]{section*.7}{List of Code Snippets}{}% 4
 \BOOKMARK [0][]{chapter.1}{Introduction}{}% 5
-\BOOKMARK [1][-]{section.1.1}{Goals}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.1}{Objectives}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.2}{Outline}{chapter.1}% 7
 \BOOKMARK [0][]{chapter.2}{Music Information Retrieval and Big Data}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Audio Features}{chapter.2}% 9
@@ -74,4 +74,4 @@
 \BOOKMARK [0][]{chapter.7}{Appendix}{}% 74
 \BOOKMARK [1][-]{section.7.1}{Feature Analysis}{chapter.7}% 75
 \BOOKMARK [1][-]{section.7.2}{Spotipy Data Miner}{chapter.7}% 76
-\BOOKMARK [1][-]{section.7.3}{Contend on the CD}{chapter.7}% 77
+\BOOKMARK [1][-]{section.7.3}{CD Contents}{chapter.7}% 77

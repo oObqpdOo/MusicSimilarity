@@ -64,16 +64,16 @@ P(X > D_{x,y}) = 1 - P(X \leq D_{x,y})% = 1 - \mathscr{F}(D_{x,y})
 %Because in this thesis the full similarity matrix is not calculated, 
 
 \subsection{Gaussian Mixture Models and Block-Level Features}\label{blocklevel}
-Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models (GMMs) of MFCCs. As Knees and Schedl state "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations."~\cite[p. 65]{knees1} Therefore, the usage of GMMs is not further considered in this thesis.\\
+Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models (GMMs) of MFCCs. As Knees and Schedl state, "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations."~\cite[p. 65]{knees1} Therefore, the usage of GMMs is not further considered in this thesis.\\
 The last method mentioned, but not implemented in this thesis for timbral similarity uses block-level features as proposed by Seyerlehner~\cite{seyerlehnerblock} and described in short by Knees and Schedl~\cite[p. 67]{knees1}. Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g., multiple-second long, audio frames. Features like fluctuation patterns (later introduced in Section~\ref{flucpat}) and spectral patterns (containing timbre information) are computed for these larger blocks of frames. 
 
 \subsection{Validation}
 
-For this thesis, the symmetric Kullback-Leibler (SKL) divergence, the Jensen-Shannon-like (JS) divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of the distance computing algorithms and a re-implementation of the block-level features remains left open for future research due to its rather compute heavy nature.\\
+For this thesis, the symmetric Kullback-Leibler (SKL) divergence, the Jensen-Shannon-like (JS) divergence and the Euclidean distance are chosen and tested. There is always a trade-off between the complexity and functionality of distance computing algorithms. A re-implementation of block-level features remains left open for future research due to its rather compute heavy nature.\\
 Using the Musly toolkit, a first evaluation using the symmetric KL divergence is presented in this section. The feature extraction and distance calculation can also be done in Python using the librosa library, and a re-implementation of the Mandel-Ellis approach was tested as well.\\
 
 \subsubsection{Genre Recall Rate / Construction Noise}
-In general, a good measurement for the efficiency of timbre similarity algorithms, is the ability to recommend songs of the same genre. 
+In general, a good measurement for the efficiency of timbre similarity algorithms is the ability to recommend songs of the same genre. 
 Alternatively, the example proposed by Dr. Bosse from the introduction was tested (see Chapter~\ref{intro}). Comparing a construction noise sound sample with the private music collection containing mostly metal, rock, pop, classical and hip hop music, the following six best results based on the JS divergence were returned in descending order: 
 
 \begin{enumerate}
@@ -122,7 +122,7 @@ Alternatively, the example proposed by Dr. Bosse from the introduction was teste
 \noindent Especially the second test shows, that the timbre based recommendations are able to recommend similar sounding audio files by returning mostly music containing ambient noises once these were included to the dataset.
 
 \subsubsection{Different Recordings and Cover Versions}\label{covermfcc}
-Another experiment was, to get the most similar songs to the famous 'Rondo alla Turca' by Mozart.
+Another experiment was to get the most similar songs to the famous 'Rondo alla Turca' by Mozart.
 The recording used as a starting point was taken from the CD "100 Meisterwerke der Klassik" and has a length of 3:33 minutes. This piece by Mozart appears overall four times in the dataset and is recorded by different pianists.
 Every recording has a different length as listed in the following overview of the recordings by CD.
 
