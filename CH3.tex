@@ -5,7 +5,7 @@ As presented in Section~\ref{midiest}, there are tools for the extraction of the
 In musical genres like Metal with distorted instruments it is hardly possible to get good results. 
 In conclusion, the main pitch-line extraction and the following conversion of a song with multiple concurrent audio tracks to MIDI using up-to-date open-source toolkits does not produce very reasonable results as shown in~\ref{midiest}.
 Another possible representation of melodic features is the transformation of the structural information to graphs, as Orio and Roda did~\cite{graph1}.\\ 
-But a better, and also widely used approach is to use chroma features as described in the next Section~\ref{chromafeat}.
+But a better, and also widely used approach is to use chroma features.%as described in the next Section~\ref{chromafeat}.
 
 \subsection{Chroma Features Pre-Processing}\label{chromafeat}
 
@@ -98,38 +98,36 @@ The next step is to calculate the most dominant note value for each timeframe. S
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/pvrisunfiltered.png}
-				\caption{Beat-aligned chromagram of unfiltered audio - Pvris}
+				\caption{Beat-aligned chromagram, unfiltered, Pvris}
 				\label{pvubf}
 			\end{subfigure}		
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/pvrisfiltered.png}
-				\caption{Beat-aligned chromagram of filtered audio - Pvris}
+				\caption{Beat-aligned chromagram, filtered, Pvris}
 				\label{pvfb}
 			\end{subfigure}%	
 			
 			\begin{subfigure}{.495\textwidth}
 				\centering    
 				\includegraphics[scale=0.3]{Images/Chroma/siaunfiltered.png}
-				\caption{Beat-aligned chromagram of unfiltered audio - Sia}
+				\caption{Beat-aligned chromagram, unfiltered, Sia}
 				\label{siaub}
 			\end{subfigure}
 			\begin{subfigure}{.495\textwidth}
 				\centering     
 				\includegraphics[scale=0.3]{Images/Chroma/siafiltered.png}
-				\caption{Beat-aligned chromagram of filtered audio - Sia}
+				\caption{Beat-aligned chromagram, filtered, Sia}
 				\label{siafb}
 			\end{subfigure}%		
 	}}
 	\caption{Processed chroma features, Sia - Chandelier}
 	\label{beataligned}
 \end{figure}
-%\FloatBarrier
-
+\FloatBarrier
 \noindent Figure~\ref{beataligned} shows the different beat-aligned features of both example songs with band-pass filtered audio and unfiltered audio. The red lines resemble the detected beat events.
 \noindent Another option would be to separate the frames between the beats in even smaller sections. This would result in a better resolution of the melodic movement but at the same time increase the length of the data vectors that have to be compared to each other.
 \noindent The last processing step is to key shift the chroma features to make the similarity analysis key invariant. One way to do so would be to estimate the key in which each song is played and then shift all chroma features to the same base key, e.g., C Major or A Minor. Due to the structure of the chroma features, this can easily be done by assigning all estimated notes a new value a few keys higher or lower and thus shifting the whole song by a few semitones. The whole workflow to extract the chroma features for this thesis is shown in Figure~\ref{workflowchrom}.\\
-
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 	
@@ -142,8 +140,7 @@ The next step is to calculate the most dominant note value for each timeframe. S
 		\label{workflowchrom}
 	}}
 \end{figure}
-%\FloatBarrier
-
+\FloatBarrier
 \noindent Another consideration is to use the original chromagram without the extraction of only the most dominant keys and thus leaving the processing step 4 out. This means a possible tradeoff between accuracy and computation time. The results for the example song by Sia do not show a major impact as can be seen in Figure~\ref{fig:nomax}. In this thesis, step 4 will be used in an attempt to get rid of the pitches of the accompaniment from the main melody line.
 \begin{figure}[htbp]
 	\centering
@@ -171,7 +168,7 @@ In this section, two completely different approaches to measure the melodic simi
 
 \subsubsection{Text Retrieval}\label{textretr}
 
-One possibility to process the chromagrams and to estimate the similarity between the melodic features of different songs is to handle the pre-processed chromagrams as texts consisting of note values. Due to the extraction of only the main melody line in our feature vector, there is only one note for every detected beat. This main melody line gets converted into a vector of subsequent notes and the resulting vector is converted into a string. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors. Xia (et al)~\cite{chroma4} mentions that this is indeed a problem when using the Levenshtein distance (also known as the edit-distance) to compute similarities. The Levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as 
+One possibility to process the chromagrams and to estimate the similarity between the melodic features of different songs is to handle the pre-processed chromagrams as texts consisting of note values. Due to the extraction of only the main melody line in our feature vector, there is only one note for every detected beat. This main melody line gets converted into a vector of subsequent notes and the resulting vector is converted into a string. The beat- and pitch-alignment done in the previous steps makes the features relatively time- and key invariant. One problem that remains is the different length of the various feature vectors. Xia (et al)~\cite{chroma4} mentions that this is indeed a problem when using the Levenshtein distance (also known as the edit-distance) to compute similarities. The Levenshtein distance between the first $i$ characters of a string $S$ and the first $j$ characters of $T$ can be calculated as:
 
 \begin{equation} \label{eq:tr1}
 \text{lev}_{S,T}(i, j) = \begin{cases}
@@ -212,9 +209,9 @@ Ellis and Poliner use the cross-correlation in their 2007 published paper~\cite{
 They also discuss and improve another approach called "dynamic time warping" (DTW) further in their paper~\cite{chroma2}. The focus of this thesis is set on the cross-correlation method. 
 Given two discrete-time signals $x[n]$ and $y[n]$ the cross-correlation between both signals $k[n] = (x \star y)[n]$ can be denoted as follows:
 \begin{equation} \label{eq:conv1}
-k[n] = (x \star y)[n] = \sum_{m = -\infty}^{\infty}{x[m] y[m - n]} 
+k[n] = (x \star y)[n] = \sum_{m = -\infty}^{\infty}{x[m] y[m - n]}.
 \end{equation}
-For two two-dimensional input matrices $X$ with the dimensions $M$ by $N$ and $Y$ as a $P$ by $Q$ matrix the cross-correlation result is a matrix $C$ of size $M + P - 1$ rows and $N + Q - 1$ columns. Its elements are given by Equation~\eqref{eq:conv2}~\cite{mathcorr}, the bar over $\overline{Y}$ denotes complex conjugation (in this case $Y$ is a matrix with real values only). 
+For two two-dimensional input matrices $X$ with the dimensions $M$ by $N$ and $Y$ as a $P$ by $Q$ matrix the cross-correlation result is a matrix $C$ of size $M + P - 1$ rows and $N + Q - 1$ columns. Its elements are given by the equations~\cite{mathcorr}:
 \begin{equation} \label{eq:conv2}
 C(k, l) = \sum_{m = 0}^{M - 1}{\sum_{n = 0}^{N - 1}{X(m, n)\overline{Y}(m - k, n - l)}}
 \end{equation}
@@ -223,8 +220,9 @@ with
 -(P - 1) \leq k \leq M - 1
 \end{equation}
 \begin{equation} \label{eq:conv4}
--(Q - 1) \leq l \leq N - 1
+-(Q - 1) \leq l \leq N - 1.
 \end{equation}
+The bar over $\overline{Y}$ denotes complex conjugation (in this case $Y$ is a matrix with real values only). 
 An example for the one-dimensional cross-correlation is shown in Figure~\ref{fig:corr1} and the full two-dimensional cross-correlation of two songs is depicted in Figure~\ref{fig:beatalign} and~\ref{fig:crosscorr}.
 \begin{figure}[htbp]
 	\centering
@@ -253,7 +251,7 @@ or even faster without calculating the edges of the matrix (without zero-padding
 0 \leq l \leq N - Q
 \end{equation}
 \noindent This simplified version relies on an accurate key detection of the songs during the pre-processing. The post-processing step from Ellis and Poliner, more precisely the high-pass filtering of the result was also implemented.\\
-Figure~\ref{fig:beatalign} shows two beat aligned, key-shifted and per beat averaged chroma features of two short guitar audio samples and their cross-correlation results. The most interesting row of the cross-correlation matrix is the middle row marked with the B key, where both chromagrams are aligned. %It shows that both already key shifted melodies do not correlate well in this example.  
+Figure~\ref{fig:beatalign} shows two beat aligned, key-shifted and per beat averaged chroma features of two short guitar audio samples and their cross-correlation results. The most interesting row of the cross-correlation matrix is the middle row marked with the B key on the y-axis, where both chromagrams are aligned. %It shows that both already key shifted melodies do not correlate well in this example.  
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
@@ -320,12 +318,12 @@ Figure~\ref{fig:beatalign} shows two beat aligned, key-shifted and per beat aver
 	\caption{2D cross-correlation of beat-aligned chromagrams (Sia / Pvris - Chandelier)}
 	\label{fig:crosscorr}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
-\noindent Due to the previous key shifting, plot~\ref{cch1} shows the maximum peak right in the center row. Originally, the version by Sia is detected to be written in C sharp and the cover version in F sharp, but both songs are shifted to the A key during the pre-processing step.\\
-\noindent The unrelated songs result in much smaller correlation values, especially when looking at the middling row of the matrix (marked as the F-key), but also if the songs were transposed additionally even then they would not correlate well, but this is also related to the zero-padding when additional key-shifts are performed. 
+\noindent Due to the previous key shifting, plot~\ref{cc1} shows the maximum peak right in the center row. Originally, the version by Sia is detected to be written in C sharp and the cover version in F sharp, but both songs are shifted to the A key during the pre-processing step.\\
+\noindent The unrelated songs result in much smaller correlation values, especially when looking at the middle row of the matrix (marked with the F key on the y-axis in figure \ref{cc2}), but also if the songs were transposed additionally even then they would not correlate well, but this is also related to the zero-padding when additional key-shifts are performed. 
 In contrast to this, the cover songs have multiple visible peaks in the center row. 
-\noindent The row with the maximum correlation value is extracted, and the resulting plot shows the cover songs do correlate much better than the unrelated songs (\ref{cc3} and~\ref{cc4}).
+\noindent The row with the maximum correlation value is extracted, and the resulting plot shows that the cover songs do correlate much better than the unrelated songs (\ref{cc3} and~\ref{cc4}).
 The center rows of the cross-correlation matrices from Figure~\ref{fig:crosscorr} are separately pictured in Figure~\ref{fig:crosscorr3}. After applying the high-pass filter to the extracted row with the maximum correlation value, the peaks in~\ref{cc3} when cross-correlating the cover songs are clearly visible compared to the unrelated songs. An interesting detail that can be pointed out is that the song structure is also visible in plot~\ref{ccf3} with clearly visible recurring peaks when the refrain is repeated.
 \begin{figure}[htbp]
 	\centering
@@ -367,7 +365,7 @@ The center rows of the cross-correlation matrices from Figure~\ref{fig:crosscorr
 	\caption{Filtered cross-correlation (high-pass)}
 	\label{fig:crosscorr3}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \subsection{Validation}\label{chromavalid}
-A good measurement for the efficiency of a melodic similarity algorithm is the ability to find cover songs, remixes, and recordings of the same song from different artists. Chapter~\ref{covsongid} evaluates the cover song recognition rate of the implemented recommender system. 
+A good measurement for the efficiency of a melodic similarity algorithm is the ability to find cover songs, remixes, and different recordings of the same song. Chapter~\ref{covsongid} evaluates the cover song recognition rate of the implemented recommender system. 

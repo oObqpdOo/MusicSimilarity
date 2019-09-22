@@ -21,8 +21,8 @@
     \field{labeltitlesource}{title}
     \field{title}{SoundCloud Go+ tracks}
     \verb{url}
-    \verb https://help.soundcloud.com/hc/en-us/articles/115003453667-SoundCloud
-    \verb -Go-tracks
+    \verb https://blog.soundcloud.com/2017/03/27/soundcloudliveinthenetherlands
+    \verb /
     \endverb
   \endentry
 
@@ -278,89 +278,6 @@
     \endverb
   \endentry
 
-  \entry{musly1}{misc}{}
-    \name{author}{1}{}{%
-      {{hash=SD}{%
-         family={Schnitzer},
-         familyi={S\bibinitperiod},
-         given={Dominik},
-         giveni={D\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SD1}
-    \strng{fullhash}{SD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Audio Music Similarity}
-    \verb{url}
-    \verb http://www.musly.org/index.html
-    \endverb
-  \endentry
-
-  \entry{mandelellis1}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=MMI}{%
-         family={Mandel},
-         familyi={M\bibinitperiod},
-         given={Michael\bibnamedelima I},
-         giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
-      }}%
-      {{hash=EDPW}{%
-         family={Ellis},
-         familyi={E\bibinitperiod},
-         given={Daniel P\bibnamedelima W},
-         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
-  W\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{MMIEDPW1}
-    \strng{fullhash}{MMIEDPW1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Proceedings of the 6th International Conference on Music
-  Information Retrieval, ISMIR, 2005}
-    \field{title}{Song-level features and support vector machines for music
-  classification}
-  \endentry
-
-  \entry{musly2}{inproceedings}{}
-    \name{author}{4}{}{%
-      {{hash=SD}{%
-         family={Schnitzer},
-         familyi={S\bibinitperiod},
-         given={Dominik},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=FA}{%
-         family={Flexer},
-         familyi={F\bibinitperiod},
-         given={Arthur},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=SM}{%
-         family={Schedl},
-         familyi={S\bibinitperiod},
-         given={Markus},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=WG}{%
-         family={Widmer},
-         familyi={W\bibinitperiod},
-         given={Gerhard},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SD+1}
-    \strng{fullhash}{SDFASMWG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{79\bibrangedash 84}
-    \field{title}{Using Mutual Proximity to Improve Content-Based Audio
-  Similarity.}
-    \field{month}{01}
-    \field{year}{2011}
-  \endentry
-
   \entry{mirtoolbox1}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=LO}{%
@@ -445,13 +362,87 @@
     \field{year}{2016}
   \endentry
 
-  \entry{rm1}{misc}{}
+  \entry{musly1}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=SD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dominik},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SD1}
+    \strng{fullhash}{SD1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Prélude cis-Moll (Rachmaninow)}
+    \field{title}{Audio Music Similarity}
     \verb{url}
-    \verb https://upload.wikimedia.org/score/5/m/5m046ksmmlpu0s4xbwna50qx9nmoh8
-    \verb v/5m046ksm.png
+    \verb http://www.musly.org/index.html
     \endverb
+  \endentry
+
+  \entry{mandelellis1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=MMI}{%
+         family={Mandel},
+         familyi={M\bibinitperiod},
+         given={Michael\bibnamedelima I},
+         giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=EDPW}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={Daniel P\bibnamedelima W},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMIEDPW1}
+    \strng{fullhash}{MMIEDPW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 6th International Conference on Music
+  Information Retrieval, ISMIR, 2005}
+    \field{title}{Song-level features and support vector machines for music
+  classification}
+  \endentry
+
+  \entry{musly2}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=SD}{%
+         family={Schnitzer},
+         familyi={S\bibinitperiod},
+         given={Dominik},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Flexer},
+         familyi={F\bibinitperiod},
+         given={Arthur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Schedl},
+         familyi={S\bibinitperiod},
+         given={Markus},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WG}{%
+         family={Widmer},
+         familyi={W\bibinitperiod},
+         given={Gerhard},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SD+1}
+    \strng{fullhash}{SDFASMWG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{79\bibrangedash 84}
+    \field{title}{Using Mutual Proximity to Improve Content-Based Audio
+  Similarity.}
+    \field{month}{01}
+    \field{year}{2011}
   \endentry
 
   \entry{fe1}{misc}{}
@@ -460,6 +451,15 @@
     \verb{url}
     \verb https://upload.wikimedia.org/wikipedia/commons/a/a9/BH_116_Vergleich.
     \verb png
+    \endverb
+  \endentry
+
+  \entry{rm1}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Prélude cis-Moll (Rachmaninow)}
+    \verb{url}
+    \verb https://upload.wikimedia.org/score/5/m/5m046ksmmlpu0s4xbwna50qx9nmoh8
+    \verb v/5m046ksm.png
     \endverb
   \endentry
 
@@ -904,55 +904,6 @@
     \field{year}{2016}
   \endentry
 
-  \entry{medleydb1}{inproceedings}{}
-    \name{author}{6}{}{%
-      {{hash=BR}{%
-         family={Bittner},
-         familyi={B\bibinitperiod},
-         given={R.},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=SJ}{%
-         family={Salamon},
-         familyi={S\bibinitperiod},
-         given={J.},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=TM}{%
-         family={Tierney},
-         familyi={T\bibinitperiod},
-         given={M.},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=MM}{%
-         family={Mauch},
-         familyi={M\bibinitperiod},
-         given={M.},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=CC}{%
-         family={Cannam},
-         familyi={C\bibinitperiod},
-         given={C.},
-         giveni={C\bibinitperiod},
-      }}%
-      {{hash=BJP}{%
-         family={Bello},
-         familyi={B\bibinitperiod},
-         given={J.\bibnamedelima P.},
-         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{BR+1}
-    \strng{fullhash}{BRSJTMMMCCBJP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{15th International Society for Music Information
-  Retrieval Conference, 2014}
-    \field{title}{MedleyDB: A Multitrack Dataset for Annotation-Intensive MIR
-  Research}
-  \endentry
-
   \entry{bqpd1}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Soundcloud bqpd}
@@ -1015,26 +966,53 @@
     \field{year}{2010}
   \endentry
 
-  \entry{cover80}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=EDPW}{%
-         family={Ellis},
-         familyi={E\bibinitperiod},
-         given={D.\bibnamedelima P.\bibnamedelima W.},
-         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
-  W\bibinitperiod},
+  \entry{medleydb1}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=BR}{%
+         family={Bittner},
+         familyi={B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Salamon},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=TM}{%
+         family={Tierney},
+         familyi={T\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mauch},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={Cannam},
+         familyi={C\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BJP}{%
+         family={Bello},
+         familyi={B\bibinitperiod},
+         given={J.\bibnamedelima P.},
+         giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
       }}%
     }
-    \strng{namehash}{EDPW1}
-    \strng{fullhash}{EDPW1}
+    \strng{namehash}{BR+1}
+    \strng{fullhash}{BRSJTMMMCCBJP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{The "covers80" cover song data set}
-    \verb{url}
-    \verb available: http://labrosa.ee.columbia.edu/projects/coversongs/covers8
-    \verb 0/
-    \endverb
-    \field{year}{2007}
+    \field{booktitle}{15th International Society for Music Information
+  Retrieval Conference, 2014}
+    \field{title}{MedleyDB: A Multitrack Dataset for Annotation-Intensive MIR
+  Research}
   \endentry
 
   \entry{medleydb2}{inproceedings}{}
@@ -1083,9 +1061,9 @@
          given={Brecht\bibnamedelima De},
          giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
-      {{hash=MmM}{%
-         family={Mora-mcginity},
-         familyi={M\bibinitperiod-m\bibinitperiod},
+      {{hash=MMM}{%
+         family={Mora-Mcginity},
+         familyi={M\bibinitperiod-M\bibinitperiod},
          given={Mariano},
          giveni={M\bibinitperiod},
       }}%
@@ -1096,13 +1074,35 @@
          giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
     }
-    \strng{namehash}{MBDMmMRJD1}
-    \strng{fullhash}{MBDMmMRJD1}
+    \strng{namehash}{MBDMMMRJD1}
+    \strng{fullhash}{MBDMMMRJD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{In 137th Convention of the Audio Engineering Society}
     \field{title}{The Open Multitrack Testbed}
     \field{year}{2014}
+  \endentry
+
+  \entry{cover80}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=EDPW}{%
+         family={Ellis},
+         familyi={E\bibinitperiod},
+         given={D.\bibnamedelima P.\bibnamedelima W.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EDPW1}
+    \strng{fullhash}{EDPW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The "covers80" cover song data set}
+    \verb{url}
+    \verb available: http://labrosa.ee.columbia.edu/projects/coversongs/covers8
+    \verb 0/
+    \endverb
+    \field{year}{2007}
   \endentry
 
   \entry{spotifyapi1}{misc}{}
@@ -2022,12 +2022,73 @@
     \endverb
   \endentry
 
+  \entry{slurm}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Slurm Workload Manager}
+    \verb{url}
+    \verb https://slurm.schedmd.com/documentation.html
+    \endverb
+  \endentry
+
+  \entry{spotifyinfo}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Spotify company info}
+    \verb{url}
+    \verb https://newsroom.spotify.com/company-info/
+    \endverb
+  \endentry
+
   \entry{lshspark}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Locality Sensitive Hashing}
     \verb{url}
     \verb https://spark.apache.org/docs/2.4.0/ml-features.html#lsh-operations
     \endverb
+  \endentry
+
+  \entry{edlibpy}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{edlib}
+    \verb{url}
+    \verb https://github.com/Martinsos/edlib
+    \endverb
+  \endentry
+
+  \entry{edlib}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SM}{%
+         family={{\v S}o{\v s}i{\'c}},
+         familyi={{\v S}\bibinitperiod},
+         given={Martin},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={{\v S}iki{\'c}},
+         familyi={{\v S}\bibinitperiod},
+         given={Mile},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cold Spring Harbor Laboratory}%
+    }
+    \strng{namehash}{SMSM1}
+    \strng{fullhash}{SMSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1101/070649
+    \endverb
+    \verb{eprint}
+    \verb https://www.biorxiv.org/content/early/2016/08/23/070649.full.pdf
+    \endverb
+    \field{title}{Edlib: a C/C++ library for fast, exact sequence alignment
+  using edit distance}
+    \verb{url}
+    \verb https://www.biorxiv.org/content/early/2016/08/23/070649
+    \endverb
+    \field{journaltitle}{bioRxiv}
+    \field{year}{2016}
   \endentry
 \enddatalist
 \endinput

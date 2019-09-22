@@ -24,21 +24,22 @@ This section evaluates the results from the similarity analysis to determine how
 		\label{fig:featspace}
 	}}
 \end{figure}%
-\FloatBarrier
+%\FloatBarrier
 
 \noindent Sampling of distances from different genres is vital for the analysis of the distribution of distances. Distances and their distribution vary, depending on where in the feature space the actual song is located. 
-\noindent A song taken from the edge of the distribution of the feature space will end up with different distances than a song taken from the center. To demonstrate this, Figure~\ref{fig:featspace} shows a minimal example. While the distances from songs tagged with "Metal" to the songs tagged with "Rock" and "Classical" are about the same, the distances from a song taken off the Classical genre to the "Rock" or "Metal" songs are different in this example.\\ 
+\noindent A song taken from the edge of the distribution of the feature space will end up with different distances than a song taken from the center. To demonstrate this, Figure~\ref{fig:featspace} shows a minimal example. While the distances from songs tagged with "Metal" to the songs tagged with "Rock" and "Classical" are about the same, the distances from a song taken off the Classical genre to the "Rock" or "Metal" songs are different in this example. The Rock songs are twice as far from the Classical songs than from the Metal songs.\\ 
 %For 95 song request that results in eight very large vectors containing the distances of song pairs. This large set of distances is then analyzed. 
-\noindent Figure~\ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following Equation~\eqref{eq:distance} with all weights $w = 1$). This combined distance is labeled as "agg" in the following plots.
+\noindent Figure~\ref{fig:corr2} shows the correlation between the distances from the various feature types. The eight different distances for each song pair are summed up into one new combined distance (following Equation~\eqref{eq:distance} with all weights $w = 1$). This combined distance is labeled as "agg" in the following plots. Unsurprisingly the various rhythm features correlate well with each other and the JS and SKL features do so as well. The melodic features on the other hand are only weakly correlated. 
 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.4]{Images/SparkFeat/corr_95_1517.png}	
 	}}
-	\caption{Correlation matrix, 95 songs, 19 genres (5 each), 1517-Artists}
+	\caption{Correlation matrix, 95 random songs, 19 genres (5 each), 1517-Artists}
 	\label{fig:corr2}
-\end{figure}\FloatBarrier
+\end{figure}
+%\FloatBarrier
 
 \noindent The correlation of a feature type with the overall distance is a sign of the impact of the feature type on the overall distance from the weighted sum. But because not all distances are equally distributed over the unit interval, different feature types have different impacts on the sum of distances. This problem was already mentioned in Section~\ref{distsc} and Section~\ref{sparkskl}. Figure~\ref{fig:cumdist} shows how the distances are distributed with the cumulative histograms over the unit interval. It is apparent that especially the cross-correlation distances are not evenly distributed. In Section~\ref{distsc}, a few proposals were already given as to how this problem could be solved in the future. 
 
@@ -74,7 +75,7 @@ This section evaluates the results from the similarity analysis to determine how
 	\caption{Cumulative distributions of distances}
 	\label{fig:cumdist}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \noindent As mentioned in Section~\ref{sparkskl}, the SKL divergence was also prone to outliers and had shortcomings when scaling distances to the unit interval. The solution was to filter out all song pairs with an SKL divergence larger than a certain threshold before scaling the distances. If this filter operation is left out, nearly all distances calculated with the symmetric Kullback-Leibler divergence are close to zero after the scaling. The impact can be seen in Figure~\ref{fig:sklsc} and Figure~\ref{fig:corr}.
 \noindent If the outliers are not filtered, the correlation between the unfiltered SKL distances and the combined distance from the weighted sum ("agg") decreases significantly (see Figure~\ref{fig:corr}). Interestingly also the correlation between the Jensen-Shannon-like divergence and the combined distance ("agg") is decreasing. 
@@ -98,7 +99,7 @@ This section evaluates the results from the similarity analysis to determine how
 	\caption{Impact of SKL scaling on the weighted sum}
 	\label{fig:sklsc}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \noindent A possible explanation could be that the SKL and JS distances are highly correlated, but due to the bad scaling, the SKL has no impact on the overall distance. The results from the JS divergence alone are not able to impact the weighted sum of the combined distance in the same way both features together could. 
 
@@ -121,9 +122,9 @@ This section evaluates the results from the similarity analysis to determine how
 	\caption{Correlation of features depending on SKL scaling}
 	\label{fig:corr}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
-\noindent Finally, Figure~\ref{fig:corr3} shows the full scatter plot matrix of the various distances for the 95 song sample from different genres to visualize the correlation and distribution of the distances. The main diagonal shows the histograms of the distances from the respective unique feature-sets.
+\noindent Finally, Figure~\ref{fig:corr3} shows the full scatter plot matrix of the various distances for the 95 song sample from different genres to visualize the correlation and distribution of the distances. The main diagonal shows the histograms of the distances from the respective unique feature-sets. It shows that besides the chroma features all feature types correlate well with the weighted sum of all features. The strong correlation between the rhythm patterns and rhythm histograms as well as the Jense-Shannon-like divergence and the symmetric Kullback-Leibler divergence for all genres is clearly visible in the scatter plots. 
 
 \begin{figure}[htbp]
 	\centering
@@ -133,7 +134,7 @@ This section evaluates the results from the similarity analysis to determine how
 	\label{fig:corr3}
 	}}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 %\textit{\textbf{TODO: describe correlation of melodic features and AGG}}
 
@@ -301,7 +302,7 @@ Another way to quantify the quality of the distances and therefore the quality o
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.29]{Images/SparkFeat/rock.png}	
 	}}
-	\caption{Scatter matrix, distances 1 song, Rock\&Pop, 1517-Artists, 4 genres}
+	\caption{Scatter matrix, distances 1 random Rock\&Pop song, 1517-Artists, 4 genres}
 	\label{fig:corr5}
 \end{figure}
 \FloatBarrier
@@ -314,7 +315,7 @@ Another way to quantify the quality of the distances and therefore the quality o
 	\framebox{\parbox{1\textwidth}{ 			
 			\includegraphics[scale=0.29]{Images/SparkFeat/electronic.png}	
 	}}
-	\caption{Scatter matrix, distances 1 song, Electronic, 1517-Artists, 4 genres}
+	\caption{Scatter matrix, distances 1 random Electronic song, 1517-Artists, 4 genres}
 	\label{fig:corr6}
 \end{figure}
 \FloatBarrier
@@ -354,7 +355,7 @@ When using only one feature type, the Spark recommendation engine would not be a
 				\label{fig:acbpm}
 			\end{subfigure}%			
 	}}
-	\caption{Scatter plots rhythm features / BPM}
+	\caption{Scatter plots rhythm features / BPM for random Rock\&Pop and Classical songs}
 	\label{fig:rhythmfeat}
 \end{figure}
 \FloatBarrier
@@ -411,10 +412,16 @@ The features were loaded into the HDFS of a cluster, and multiple similarity mea
 \ \\
 The final application handles the recommendation of songs similar to a song request by computing the distances based on melodic, rhythmic and timbral properties of the music. The recommendations are parameterized, giving the user the option to prioritize different aspects of the music. The system is scalable. More songs can be added, the cluster size can be increased, and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is also given. 
 
+\section{Performance}
+
+The extraction of the features on a single PC would have taken approximately 258 hours for about 100000 songs using the Essentia toolkit. By using a computer cluster with 648 concurrent threads and Mpi4py the computation time could be reduced to about half an hour (32 minutes and 30 seconds). This is approximately 476 faster than on a single PC core. 
+The extraction of the rhythm patterns and rhythm histograms with the rp\_extractor tool provided by the TU Wien for the same number of songs takes about the same amount of time on the ARA-cluster (also parallelized with Mpi4py).\\
+The computation of similarities using the Big Data framework Spark on a 16 node computer cluster takes approximately 14 seconds for all of the 8 features types combined. This processing duration could be reduced to about 12 seconds by using a filter and refine method. It can also be reduced by using only subsets of the features types.\\
+
 \section{Outlook}
 
 There are still a few minor flaws, especially when looking at the implementation of the symmetric Kullback-Leibler divergence and the Jensen-Shannon divergence and the scaling of the distances. The different starting points for possible future research were laid out during the whole thesis and are summarized here. First of all the file format issues with *.wav and *.ogg audio files when using the rp\_extract tool from the TU Wien should be fixed to allow the computation of all features from all the songs of a dataset (see Section~\ref{totamsong}).
-The next step would be to re-evaluate the Jensen-Shannon-like divergence and the symmetric Kullback-Leibler divergence and fix the issues with outliers. The issues with non-invertible or non-singular covariance matrices should be investigated as well (see Section~\ref{sparkskl}). The proposed enhancements by Schnitzer~\cite{schnitzer1} of reducing the hubness with mutual proximity and by using more Mel-bands for the computation of the MFCCs might also be sufficient to improve the quality of recommendations (see Section~\ref{mprox}). Scaling of the different features could be improved in a way where all features are evenly distributed over the unit interval (see Section~\ref{distsc}).\\
+The next step would be to re-evaluate the Jensen-Shannon-like divergence and the symmetric Kullback-Leibler divergence and fix the issues with outliers. The issues with non-invertible or non-singular covariance matrices should be investigated as well (see Section~\ref{sparkskl}). The proposed enhancements by Schnitzer~\cite{schnitzer1} of reducing the hubness with mutual proximity and by using more mel bands for the computation of the MFCCs might also be sufficient to improve the quality of recommendations (see Section~\ref{mprox}). Scaling of the different features could be improved in a way where all features are evenly distributed over the unit interval (see Section~\ref{distsc}).\\
 Tests of the performance on larger clusters and with more songs would be critical to assess the scaling of the problem.
 An implementation of the Spark streaming abilities to enable real-time computation of similarities instead of using batch-processing jobs would be the next logical step if the objective was to develop a system able to run with music streaming platforms. When evaluating the genre recall rate with Spark, an issue with the garbage collection running out of memory after about 40 subsequent song requests was encountered and should be fixed first.\\
 \noindent As another way of improving the presented Spark application, more state-of-the-art similarity measurements like block-level features (Section~\ref{blocklevel}) or the TF-IDF weights (Section~\ref{textretr}) for melodic similarity could be added. The most promising enhancement for the developed recommendation engine in this thesis would be the addition of genre and metadata information, genre-specific features, collaborative filtering, and lyrics (see Section~\ref{collaborative}). All the contextual music information that would typically be processed by a Big Data framework was not included in this thesis but could significantly enhance recommendations. Most streaming services already have all the information needed like user's listening behavior or audio metadata available. Services like Spotify are already using Spark for collaborative filtering so the Spark application presented in this thesis could be added and integrated into running streaming systems. A last suggestion for future enhancements is to investigate the proposal from Section~\ref{personal} of personalized music recommendation based on the audio feature similarities of a user's favorite songs made available by the Big Data framework.

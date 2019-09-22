@@ -507,6 +507,10 @@ pdfstartview={XYZ null null 1.00}
 
 %\usepackage[parfill]{parskip}
 
+\usepackage{datetime}
+\newdate{dateappr}{17}{05}{2019}
+\newdate{datesub}{30}{09}{2019}
+
 \begin{document}
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
 
@@ -538,43 +542,36 @@ pdfstartview={XYZ null null 1.00}
 \ \\
 \ \\
 \ \\
-\ \\
-\ \\
-\ \\
-\begin{center}
-\begin{LARGE}
-\textbf{Master's Thesis\\}
-\end{LARGE}
-\end{center}
-
-\begin{center}
-%\textbf{Masterarbeit\\
-%\ \\
-%\ \\}
-%Bachelor of Engineering (B.Eng.)
-\end{center}
 \begin{center}
 \begin{Large}
-\textbf{Music Similarity Analysis Using the Big Data Framework Spark}
+\textbf{Master's Thesis\\}
 \end{Large}
 \end{center}
 \ \\
+\begin{center}
+\begin{LARGE}
+\textbf{Music Similarity Analysis Using the Big Data Framework Spark}
+\end{LARGE}
+\end{center}
 \ \\
+\begin{center}
+Submitted in partial fulfillment of the requirements for the degree\\
 \ \\
-\ \\
-\ \\
-\ \\
-\ \\
+\textbf{Master of Science (M.Sc.)\\}
+\textbf{Computer Science\\}
+\end{center}
 \ \\
 \ \\
 \flushleft
 \begin{tabbing}
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\= bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\kill
 presented by: \>Johannes Schoder\\
-born: \>03. September 1994\\
+born: \>3rd September 1994, Gera\\
 ID: \>169197\\
-course of studies: \>M.Sc. Informatik\\
+course of studies: \>M.Sc. Computer Science\\
 supervisors: \> Prof. Dr. Martin B\"ucker, Ralf Seidler\\
+date of approval: \> 17th May 2019\\
+date of submission: \> 23rd September 2019\\
 \end{tabbing}
 
 %Johannes Schoder, Hermsdorf, {\today}\\
@@ -585,6 +582,33 @@ supervisors: \> Prof. Dr. Martin B\"ucker, Ralf Seidler\\
 \pagenumbering{roman}
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
 \pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{german}
+\begin{abstract}
+	\begin{center}
+	%\noindent\textbf{Schätzung der Ähnlichkeit von Musikstücken unter Verwendung mehrerer Abstandsmaße mithilfe des Big Data Frameworks Spark}
+	\end{center}
+	\justifying
+	%Die Musikinformationsverarbeitung ist ein Teilgebiet der Informatik, das meist datengetrieben und sehr mathematisch angegangen wird. Das Ziel dieser Arbeit ist es, verschiedene Teilgebiete der Informatik mit musiktheoretischem Wissen zu verbinden, um Schwachstellen aktueller Algorithmen zur Empfehlung ähnlicher Musikstücke, die sich auf einzelne Teilaspekte der Musik, wie Melodie, Rhythmus oder Klangfarbe beschränken, zu finden. 
+	Ein parametrisierbares Empfehlungssystem, basierend auf dem Big Data Framwork Spark, wird präsentiert. Dieses berücksichtigt verschiedene klangliche Eigenschaften der Musik und erstellt Musikempfehlungen basierend auf den persönlichen Vorlieben eines Nutzers. Das implementierte Empfehlungssystem ist voll skalierbar. Mehr Lieder können dem Datensatz hinzugefügt werden, mehr Rechner können in das Computercluster eingebunden werden und die Möglichkeit andere Audiofeatures und aktuellere Ähnlichkeitsmaße hizuzufügen und zu verwenden, ist ebenfalls gegeben.
+	Des Weiteren behandelt die Arbeit die parallele Berechnung der benötigten Audiofeatures auf einem Computercluster.
+	Die Features werden von dem auf Spark basierenden Empfehlungssystem verarbeitet und Empfehlungen für einen Datensatz, bestehend aus ca. 114000 Liedern, können unter Berücksichtigung von acht verschiedenen Arten von Audiofeatures und Abstandsmaßen innerhalb von zwölf Sekunden auf einem Computercluster mit 16 Knoten berechnet werden.
+	
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{english}
+\begin{abstract}
+	\begin{center}
+	%\noindent\textbf{Estimating music similarity by merging various similarity measurements with the help of the Big Data framework Spark.}
+	\end{center}
+	\justifying
+	%The field of music information retrieval in computer science is mostly a data-driven and purely mathematical topic. The objective of this thesis is to merge the fields of computer science with music-theoretical knowledge and to find potentially weak spots of current music recommender systems focusing on single aspects like melody, rhythm, and timbre.
+	A parameterizable recommender system based on the Big Data processing framework Spark is introduced, which takes multiple tonal properties of music into account and is capable of recommending music based on a user's personal preferences. The implemented system is fully scalable; more songs can be added to the dataset, the cluster size can be increased, and the possibility to add different kinds of audio features and more state-of-the-art similarity measurements is given. 
+	This thesis also deals with the extraction of the required audio features in parallel on a computer cluster. The extracted features are then processed by the Spark based recommender system, and song recommendations for a dataset consisting of approximately 114000 songs are retrieved in less than 12 seconds on a 16 node Spark cluster, while combining eight different audio feature types and similarity measurements.
+\end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -682,6 +706,7 @@ placeholderplaceplaceholder \= placeholder \kill
 \textbf{FMA} \> Free Music Archive\\
 \textbf{GMM} \> Gaussian Mixture Model\\
 \textbf{HDFS} \> Hadoop Distributed File System\\
+\textbf{HPCP} \> Harmonic Pitch Class Profiles\\
 \textbf{HT} \> Hyperthreading\\
 \textbf{JS divergence} \> Jensen Shannon divergence\\
 \textbf{JVM} \> Java Virtual Machine\\
@@ -713,7 +738,6 @@ placeholderplaceplaceholder \= placeholder \kill
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
-
 %\
 
 
@@ -910,11 +934,11 @@ Main diagonal = Kernel Density Estimation\\
 	\framebox{\parbox{1\textwidth}{ 			
 	\includegraphics[scale=0.25]{Images/SparkFeat/soundtrack2.png}	
 	}}
-	\caption{Distances 1 song (Soundtrack), 5 genres (10 songs each)}
+	\caption{Distances 1 random song (Soundtrack), 5 genres (10 songs each)}
 	\label{fig:corr8}
 \end{figure}
 
-\section{Spotipy Data Miner}\label{spotcrawl}
+\section{Spotipy Data Extraction}\label{spotcrawl}
 
 \lstset{language=Python,
 	keywordstyle=\color{blue},
@@ -1036,21 +1060,33 @@ dist = distance.euclidean(feat_vec[0], feat_vec[1])
 
 \section{CD Contents}\label{DVD}
 
-\subsubsection{Code}
+\subsubsection{Feature Extraction Code}
 
 \begin{itemize}
 	\setlength\itemsep{-0.5em}
-	\item mpi4py\_ara\_features 
-	\item mpi4py\_ara\_files 
-	\item mpi4py\_ara\_rhythm
-	\item ... 
+	\item mpi4py\_ara\_features.py
+	\item mpi4py\_ara\_files.py
+	\item mpi4py\_ara\_rhythm.py
+	\item *.sbatch files
 \end{itemize}
 
-\subsubsection{...}
+\subsubsection{Spark Recommender Code}
 
-PDF private music collection\\
-...
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item spark\_ara\_df.py	(unique DataFrames approach)
+	\item spark\_ara\_filter\_refine.py (single merged DataFrame approach)
+	\item spark\_ara\_mergeddf.py (filter and refine approach)
+	\item spark\_ara\_rdd.py (single RDDs approach)
+\end{itemize}
 
+\subsubsection{PDFs}
+
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item PDF private music collection
+	\item digital copy of this thesis
+\end{itemize}
 
 
 \chapter*{Declaration of Authorship}
@@ -1058,9 +1094,10 @@ PDF private music collection\\
 I hereby declare that the thesis submitted is my own unaided work. All direct or indirect
 sources used are acknowledged as references.
 This thesis was not previously presented to another examination board and has not been
-published in German, English or any other language.\\
+published in German, English or any other language. The author has no objections to make the present master's thesis available for public use in the University Archives.\\
 \ \\
 Jena, \today
+\ \\
 \ \\
 \ \\
 \ \\

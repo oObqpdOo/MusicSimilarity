@@ -11,12 +11,13 @@ This section focuses on different similarity measurements and metrics based on M
 
 \subsection{Euclidean Distance}\label{mfcceuc}
 
-To further reduce the dimensionality of the original MFCC features, a statistical summarization can be calculated. For each of the Mel-bands (13 in this case) the mean and standard deviation over all frames are calculated, resulting in a vector of 13 mean values, a 13 by 13 covariance matrix ($\frac{13\cdot(13-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the covariances and the main diagonal contains the variances) and 13 variances. These vectors are not dependent on the length of the actual song.~\cite[pp. 51ff]{knees1}\\
-Using such a model, the distance between two songs can be calculated using the $L_p$ distance as in Equation~\eqref{eq:distGmm}, where $x$ and $y$ are the $n$-dimensional feature vectors of two different musical pieces:
+To further reduce the dimensionality of the original MFCC features, a statistical summarization can be calculated. For each of the mel bands (13 in this case to reduce dimensionality) the mean and standard deviation over all frames are calculated, resulting in a vector of 13 mean values, a 13 by 13 covariance matrix ($\frac{13\cdot(13-1)}{2}$ covariance values, because of the triangular shape - the upper triangle contains the covariances and the main diagonal contains the variances) and 13 variances. These vectors are not dependent on the length of the actual song.~\cite[pp. 51ff]{knees1}\\
+Using such a model, the distance between two songs can be calculated using the $L_p$ distance as in equation
 \begin{equation} \label{eq:distGmm}
 %p (v \vert \lambda)=\sum_{i=1}^{M}w_iN(v \vert \mu_i,\sum_i) \label{prob}
-d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}}
-\end{equation}
+d(x, y) = ||x - y||_p = \left(\sum_{i=1}^{n}{|x_i - y_i|^p}\right)^{\frac{1}{p}},
+\end{equation} 
+where $x$ and $y$ are the $n$-dimensional feature vectors of two different musical pieces.
 Usually, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used in real-world scenarios~\cite[p. 58]{knees1}. This very basic metric of timbre similarity has been refined and improved over the past years.
 
 \subsection{Single Gaussian Model}
@@ -24,7 +25,7 @@ Usually, the Euclidean ($L_2$) or the Manhattan ($L_1$) distance would be used i
 \subsubsection{Symmetric Kullback-Leibler Divergence}\label{klth}
 
 The second approach was first proposed by Mandel and Ellis in 2005~\cite{mandelellis1} and is briefly summarized in~\cite[pp. 65f]{knees1}.\\
-After computing the mean value of each MFCC ($\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$) of two musical pieces $P$ and $Q$, the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $tr(\cdot)$ being the trace (i.e., the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$.\\
+Assuming two musical pieces $P$ and $Q$ are given, after computing the mean value of each MFCC (resulting in the vectors $\mu_P$ and $\mu_Q$) and the covariance matrix of the different MFCC vectors ($\Sigma_P$ and $\Sigma_Q$), the Kullback-Leibler divergence (KL divergence) can be calculated as follows, with $\text{tr}(\cdot)$ being the trace (i.e., the sum of the diagonal of a matrix), $d$ being the dimensionality (number of MFCCs) and $|\Sigma_P|$ being the determinant of $\Sigma_P$~\cite[pp. 65f]{knees1}.\\
 \begin{equation} \label{eq:KL1}
 \text{KL}_{(P||Q)} = \frac{1}{2}[\text{log}\frac{|\Sigma_P|}{|\Sigma_Q|} + \text{tr}(\Sigma_P^{-1}\Sigma_Q) + (\mu_P - \mu_Q)^T \Sigma_P^{-1} (\mu_Q - \mu_P) - d]
 \end{equation}
@@ -51,7 +52,7 @@ The second available similarity method in the Musly toolkit by Schnitzer is usin
 \end{equation}
 
 \subsubsection{Mutual Proximity}\label{mprox}
-After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP).~\cite{musly2}. This method aims to reduce the effect of a phenomenon called "hubness", which appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points."~\cite[p. 66]{schnitzer1}.\\
+After calculating a similarity matrix for all songs, Musly normalizes the similarities with mutual proximity (MP)~\cite{musly2}. This method aims to reduce the effect of a phenomenon called "hubness", which appears as a general problem of machine learning in high-dimensional data spaces. "Hubs are data points which keep appearing unwontedly often as nearest neighbors of a large number of other data points."~\cite[p. 66]{schnitzer1}.\\
 Schedl and Knees state: "To apply MP to a distance matrix, it is assumed that the distances $D_{x,i = 1..N}$ from an object $x$ to all other objects in the data set follow a certain probability distribution; thus, any distance $D_{x,y}$ can be reinterpreted as the probability of $y$ being the nearest neighbor of $x$, given the distance $D_{x,y}$ and the probability distribution $P(x)$ [...] MP is then defined as the probability that $y$ is the nearest neighbor of $x$ given $P(x)$ and $x$ is the nearest neighbor of $y$ given $P(y)$"~\cite[p. 80]{knees1}\\
 Resulting in: 
 \begin{equation} \label{eq:mp1}
@@ -64,7 +65,7 @@ P(X > D_{x,y}) = 1 - P(X \leq D_{x,y})% = 1 - \mathscr{F}(D_{x,y})
 %Because in this thesis the full similarity matrix is not calculated, 
 
 \subsection{Gaussian Mixture Models and Block-Level Features}\label{blocklevel}
-Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models (GMMs) of MFCCs. As Knees and Schedl state, "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations."~\cite[p. 65]{knees1} Therefore, the usage of GMMs is not further considered in this thesis.\\
+Another, more compute-heavy distance measurement would make use of Gaussian Mixture Models (GMMs) of MFCCs. As Knees and Schedl state, "Other work on music audio feature modeling for similarity has shown that aggregating the MFCC vectors of each song via a single Gaussian may work almost as well as using a GMM [...] Doing so decreases computational complexity by several magnitudes, in comparison to GMM-based similarity computations"~\cite[p. 65]{knees1}. Therefore, the usage of GMMs is not further considered in this thesis.\\
 The last method mentioned, but not implemented in this thesis for timbral similarity uses block-level features as proposed by Seyerlehner~\cite{seyerlehnerblock} and described in short by Knees and Schedl~\cite[p. 67]{knees1}. Instead of using single frames and summarizing them into statistical or probabilistic models, block-level features use larger, e.g., multiple-second long, audio frames. Features like fluctuation patterns (later introduced in Section~\ref{flucpat}) and spectral patterns (containing timbre information) are computed for these larger blocks of frames. 
 
 \subsection{Validation}
@@ -86,25 +87,17 @@ Alternatively, the example proposed by Dr. Bosse from the introduction was teste
 	\item 100 Meisterwerke der Klassik - Orpheus In The Underworld (Orph\'ee aux enfers) - Can-Can (Live At Grosser Saal, Musikverein) (Klassik)
 \end{enumerate}
 
-\noindent Figure~\ref{const1} and~\ref{const2} show the distribution of the genres of 100 most similar songs compared to the construction noise sample.  
+\noindent Figure~\ref{fig:constn} show the distribution of the genres of 100 most similar songs compared to the construction noise sample.  
 
 \begin{figure}[htbp]
 	\centering
 	\framebox{\parbox{1\textwidth}{ 
-			\begin{subfigure}{0.49\textwidth}
-				\centering      
-				\includegraphics[scale=0.55]{Images/cnoise1.png}
-				\caption{Similar genres ()}
-				\label{const1}
-			\end{subfigure}%
-			\begin{subfigure}{0.49\textwidth}
-				\centering 
-				\includegraphics[scale=0.45]{Images/cnoise2.png}
-				\caption{Similar genres (detailed)}
-				\label{const2}
-			\end{subfigure}
+	\centering 
+	\includegraphics[scale=0.65]{Images/cnoise2.png}
+	\caption{Similar genres (detailed)}
+	\label{const2}
 	}}
-	\caption{Construction noise, song recommendations}
+	\caption{Construction noise, first 100 song recommendations based on Musly toolkit (JS)}
 	\label{fig:constn}
 \end{figure}
 
@@ -151,5 +144,5 @@ Every recording has a different length as listed in the following overview of th
 	\item Mozart - Piano Sonata No. 13 in B flat major, K. 333 (K. 315c): Allegretto grazioso
 	
 \end{enumerate}
-\noindent The interesting conclusion is that only two out of the three other versions were considered as most similar songs. The other recording was not even in the top 30 list of the most similar songs. However, the recommendations are all from the same genre (classical music). The inability to detect cover versions was also observable for other songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" and an orchestral recording of the same piece. This is probably due to the usage of MFCCs valuing the timbre of the music predominantly instead of the pitches and melody movements. 
+\noindent The interesting conclusion is that only two out of the three other versions were considered as most similar songs. The other recording was not even in the top 30 list of the most similar songs. However, the recommendations are all from the same genre (classical music). The inability to detect cover versions was also observable for other songs in the dataset like Serj Tankians song "Lie Lie Lie" from the CD "Harakiri" (just to give an example). This is probably due to the usage of MFCCs valuing the timbre of the music predominantly instead of the pitches and melody movements. 
 

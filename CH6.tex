@@ -2,6 +2,14 @@
 %\newpage
 \section{Big Data Framework Spark}\label{bds1}
 
+\noindent After all features are extracted, the next step is to load the feature files into the HDFS.
+
+\subsection{Feature Files}
+
+%All feature files of the same type (forming the feature sets) get merged into one large file. 
+For the about 114000 songs all feature files sum up to about 11.2 GB (see Figure~\ref{filesize}). 
+\noindent Large streaming platforms like Spotify give access to about 50 million songs in their databases \cite{spotifyinfo}. At this scale, the feature files would sum up to approximately 5 TB.\\
+
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
@@ -31,14 +39,39 @@
 	\label{filesize}
 \end{figure}
 
-\noindent After all features are extracted, the next step is to load the feature files into the HDFS.
-%All feature files of the same type (forming the feature sets) get merged into one large file. 
-For the about 114000 songs all feature files sum up to about 11.2 GB (see Figure~\ref{filesize}). 
-\noindent Large streaming platforms like Spotify give access to about 30 million songs in their databases. At this scale, the feature files would sum up to approximately 3 TB.\\
+To calculate the distances based on timbral features, for each song the mean and variance vectors and covariance matrix has to be computed from the MFCCs. These are stored in two different output text files: 
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item out.mfcc (containing mean vector (length $b$), variance vector (size $b$) and vectorized upper triangular covariance matrix (length $\frac{b \cdot (b+1)}{2}$))
+	\item out.mfcckl (containing mean vector (length $b$) and full covariance matrix (size $b \cdot b$)
+\end{itemize}
+\noindent The amount of mel bands chosen is $b = 13$. The second *.mfcckl file is created to dispose of the necessity to rearrange the covariance matrix inside the Big Data framework and reduce the computation time when a similarity estimation request is processed. To even further safe storage space the variance vector from the *.mfcc files could have been left out. These variance values are already stored within the main diagonal of the covariance matrix (as mentioned in Section~\ref{mfcceuc}) and left within the triangular matrix, leading to $\frac{b \cdot (b+1)}{2}$ instead of $\frac{b \cdot (b-1)}{2}$ values stored in the features files.\\
+The melodic features are stored in two different output text files. The vector length is dependent on the numbers of detected beats $n$:
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item out.notes (containing the estimated original key, the scale and a list of most dominant key per beat, key-shifted to the A key (size $n$))
+	\item out.chroma (full beat-aligned and key-shifted chromagram, containing a $12 \times n$ matrix)
+\end{itemize}
+\noindent The rhythm features are stored in three different output text files:
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item out.bh (containing the estimated overall bpm and a vector for the beat histogram normalized to one (size $250$))
+	\item out.rh (containing a vector for the rhythm histogram extracted with rp\_extract (size $60$))
+	\item out.rp (containing a vectorized matrix for the rhythm patterns extracted with rp\_extract (size $24 \times 60$))
+\end{itemize}
 
-\subsection{Underlying Hardware}
-
-The first tests with Spark were performed on a single PC with 4 CPU cores (8 with HT) (Intel Core i7-3610QM CPU, 2.30GHz × 4) running Spark 2.4.0.\\ The cluster tests were performed on the ARA-cluster, that offers 16 compute-nodes with 36 CPU-cores (Dual Socket, 2 x Intel Xeon "Scalable" 6140, 2.30 GHz x 18) per node (72 with HT), and 192GB of RAM. The cluster was running with an older version of Spark (1.6.0)\\
+%\noindent The feature files contain strings like the following:\\
+%\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763, ... ,4.321189]; [8943.487, ... ,61.624344]; [8944.3907652, ... ,74.17548092]}\\
+%\underline{out.mfcc}: \textit{music/song.mp3; [-498.03763, ... ,4.321189]; [[6568.27958735, ... ,74.64776425], ... , [74.64776425, ... ,69.1589048]]}\\
+%\underline{out.notes}: \textit{music/song.mp3; G; minor; [6, 2, 5, 7, 7 ... , 0, 0]}\\
+%\underline{out.chroma}: \textit{music/song.mp3; [[0.5209161, 0.82440507, ... , 0.68443549] ... [0.31470749, 0.02552716, ... ,0.01234249]]}\\
+%\underline{out.bh}: \textit{music/song.mp3; 86.9380264282; [0. ... 0.01453488 ...  0.  0.]}\\
+%\underline{out.rh}: \textit{music/song.mp3, 15.2521291416, 10.10441871, ... , 2.2519330706}\\
+%\underline{out.rp}: \textit{music/song.mp3, 0.0237481782333, 0.0208784207788, ... , 0.00204177442894}\\
+\noindent An additional file containing a list of all song names is stored as 
+\begin{itemize}
+	\item out.files
+\end{itemize}
 
 \subsection{Workflow}
 
@@ -56,7 +89,7 @@ Although multiple different implementations were tested to evaluate the fastest 
 		\label{workflowspark}
 	}}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 
 \noindent The following sections explain the various stages in more detail, also giving more details over a few subtle differences between the different implemented and tested approaches like the usage of RDDs, single DataFrames for each feature or one large DataFrame containing all features. 
 
@@ -64,16 +97,13 @@ Although multiple different implementations were tested to evaluate the fastest 
 
 The features are stored into many small text files as described in Section~\ref{sumfeat}. Due to the fact that the features were extracted in parallel and in batches of only a few songs, each of the feature files only contains the features of a small number of songs. As many small files are inefficient to process with Spark, all files containing the same feature type are merged to one large file, before being loaded into the HDFS~\cite[p. 153]{sparkbook1}. By loading larger files into the HDFS, partitioning into data blocks is performed according to the standard parameters of the HDFS (e.g. 128 MB partitions). Additional repartitioning on the cluster is later performed with Spark by using the \lstinline{rdd.repartition(repartition_count)} command. 
 Finally, to work with the features a few transformations have to be performed on the data. The extracted note values are stored as lists of integers for example, each representing a certain note. To compare them using the Levenshtein distance, the lists are converted into strings (see Code Snippet~\ref{lst:prep1}). 
-
 \begin{pythonCode}[frame=single,label={lst:prep1},caption={Notes preprocessing},captionpos=b]
 chroma = sc.textFile("features/out[0-9]*.notes").repartition(repartition_count)
 chroma = chroma.map(lambda x: x.split(';'))
 chroma = chroma.map(lambda x: (x[0], x[1], x[2], x[3].replace("0",'A').replace("1",'B').replace("2",'C').replace("3",'D').replace("4",'E').replace("5",'F').replace("6",'G').replace("7",'H').replace("8",'I').replace("9",'J').replace("10",'K').replace("11",'L'))).map(lambda x: (x[0], x[1], x[2], x[3].replace(',','').replace(' ','')))
 df = spark.createDataFrame(chroma, ["id", "key", "scale", "notes"])
 \end{pythonCode}
-
 \noindent All the other features are stored as lists of floats and have to be converted into vectors. 
-
 \begin{pythonCode}[frame=single,label={lst:rpp},caption={Rhythm patterns preprocessing},captionpos=b]
 from pyspark.mllib.linalg import Vectors
 list_to_vector_udf = udf(lambda l: Vectors.dense(l), VectorUDT())
@@ -83,9 +113,8 @@ kv_rp = rp.map(lambda x: (x[0].replace(";","").replace(".","").replace(",","").r
 rp_df = spark.createDataFrame(kv_rp, ["id", "rp"])
 rp_df = rp_df.select(rp_df["id"],list_to_vector_udf(rp_df["rp"]).alias("rp"))
 \end{pythonCode}
-
 \noindent The Spark ML library and the older MLlib library offer sparse and dense vectors as data types. The only feature type that contains a lot of zeros, where sparse vectors could improve performance, is the beat histogram. Compared to other features like the chromagram, the beat histogram vectors are relatively small, with a length of only 200 values, so all lists including the beat histograms are converted to dense vectors by calling \lstinline{Vectors.dense()}. 
-\noindent An example is given for the rhythm pattern features in Code Snippet~\ref{lst:rpp}. The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("feaures.txt").repartition(repartition_count)}. The repartitioning is optional but improves the overall performance (see Section~\ref{sparkperf}). After the execution of the pre-processing steps, the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame(rdd)}, to ease up the access to data and improve code readability. The features can then be accessed via column names instead of the RDD indices, making the code better readable and understandable.\\
+\noindent An example is given for the rhythm pattern features in Code Snippet~\ref{lst:rpp}. The data is read out of the HDFS into an RDD and repartitioned with \lstinline{sc.textFile("feaures.txt").repartition(repartition_count)}. The repartitioning is optional but improves the overall performance (see Section~\ref{sparkperf}). After the execution of the pre-processing steps, the RDD can be converted into a Spark SQL DataFrame by calling \lstinline{spark.createDataFrame(rdd)}, to ease up the access to data and improve code readability. The features can then be accessed via column names instead of the RDD indices.\\
 For performance tests, three different kinds of implementations were tested. The first one merges all audio features into one large DataFrame in the beginning and persists this to the main memory. The second implementation uses single DataFrames for each feature set, and the third uses RDDs instead of DataFrames. The results of the performance analysis of DataFrames vs. RDDs are given in Section~\ref{sparkperf}.
 
 \subsection{Distance Computation}
@@ -93,8 +122,6 @@ For performance tests, three different kinds of implementations were tested. The
 After the data preparation, the similarities between a requested single song and all other songs in the database can be calculated. The code differs slightly when RDDs instead of DataFrames are used. As already mentioned, the full source code is attached in the appendices on the included CD and can be checked out from GitHub~\cite{github-code}. Most of the following code examples were written for the usage with DataFrames. The examples for usage with RDDs are annotated accordingly.\\
 
 \subsubsection{Euclidean Distance}
-
-The Euclidean distance is used as a metric to compute the distances between vectors of beat histograms, rhythm histograms, rhythm patterns, and MFCCs, making it the most versatile distance measurement introduced in this thesis. To compute the Euclidean distance in Spark, a user-defined function (UDF) gets declared (see~\ref{lst:eucd}). 
 
 \begin{pythonCode}[frame=single,label={lst:eucd},caption={Euclidean distance DF},captionpos=b]
 from scipy.spatial import distance
@@ -105,7 +132,10 @@ result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
-\noindent This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF, the Euclidean distance is computed using Python's scipy library. Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
+\noindent The Euclidean distance is used as a metric to compute the distances between vectors of beat histograms, rhythm histograms, rhythm patterns, and MFCCs, making it the most versatile distance measurement introduced in this thesis. To compute the Euclidean distance in Spark, a user-defined function (UDF) gets declared (see Code Snippet~\ref{lst:eucd}). 
+\noindent This UDF is then applied to all elements of the \lstinline{'features'} column. Inside the UDF, the Euclidean distance is computed using Python's scipy library. 
+%Alternatively the numpy library could be used as well (\lstinline{numpy.linalg.norm(x-comparator_value)}). 
+The \lstinline{comparator_value} variable contains the feature of the requested example song to which the distances are calculated. Assuming that all features were merged into one large DataFrame (\lstinline{fullFeatureDF}) and cached to the main memory, the \lstinline{comparator_value} can be found by filtering the DataFrame for the requested song's ID (e.g., the pathname of the original song).
 
 \begin{pythonCode}[frame=single,label={lst:comp},caption={Filter for requested song},captionpos=b]
 song = fullFeatureDF.filter(fullFeatureDF.id == songname).collect()
@@ -120,19 +150,17 @@ resultRP = rp_vec.map(lambda x: (x[0], distance.euclidean(np.array(x[1]), np.arr
 
 \subsubsection{Bucketed Random Projection}
 
-As an alternative to the Euclidean UDF, Spark offers an implementation of a locality-sensitive hashing (LSH) family for the Euclidean distance called "Bucketed Random Projection". The Spark API documentation describes the idea behind LSH: "The general idea of LSH is to use a family of functions (“LSH families”) to hash data points into buckets, so that the data points which are close to each other are in the same buckets with high probability, while data points that are far away from each other are very likely in different buckets."~\cite{lshspark} The BRP projects the feature vectors $x$ onto a random unit vector $v$ and portions the projected result into hash buckets with the bucket-length $r$. "A larger bucket length (i.e., fewer buckets) increases the probability of features being hashed to the same bucket (increasing the numbers of true and false positives)."~\cite{lshspark}
-
+As an alternative to the Euclidean UDF, Spark offers an implementation of a locality-sensitive hashing (LSH) family for the Euclidean distance called "Bucketed Random Projection" (BRP). The Spark API documentation describes the idea behind LSH: "The general idea of LSH is to use a family of functions (“LSH families”) to hash data points into buckets, so that the data points which are close to each other are in the same buckets with high probability, while data points that are far away from each other are very likely in different buckets"~\cite{lshspark}. The BRP projects the feature vectors $x$ onto a random unit vector $v$ and portions the projected result into hash buckets with the bucket-length $r$, resulting in the equation 
 \begin{equation} \label{eq:brp}
-h(x) = \left \lfloor{\frac{x \cdot v}{r}}\right \rfloor 
+h(x) = \left \lfloor{\frac{x \cdot v}{r}}\right \rfloor.
 \end{equation}
-
+"A larger bucket length (i.e., fewer buckets) increases the probability of features being hashed to the same bucket (increasing the numbers of true and false positives)."~\cite{lshspark}
 \noindent The method \lstinline{model.approxNearestNeighbors(dfA, key, k)} searches for the \lstinline{k} nearest neighbors of \lstinline{dfA} to the \lstinline{key}, but the Spark API documentation mentions that, "Approximate nearest neighbor search will return fewer than k rows when there are not enough candidates in the hash bucket."~\cite{lshspark}
 This means that the smaller (and therefore more precise) the bucket length is, the fewer nearest neighbors get returned by this function. This is problematic when searching for the nearest neighbors of different feature sets because the resulting distances calculated from the different kinds of features have to be joined to get the resulting similarities as a combination of different distance measurements (see Section~\ref{weighedsum}). If the BRP only returns a handful of nearest neighbors, the overall distances to all the other songs can not be determined.\\
-\noindent Due to the fact that the ARA-cluster is running with PySpark version 1.6.0 and the Bucketed Random Projection (BRP) was introduced later with PySpark version 2.2.0, the algorithm could only be tested on the single-node test platform, where it performed worse than the naive Euclidean implementation from Code Snippet~\ref{lst:eucd} on a dataset consisting of about 11500 songs. Whether the BRP outperforms the naive approach on a cluster with larger datasets could be investigated further. 
+\noindent Due to the fact that the ARA-cluster is running with PySpark version 1.6.0 and the Bucketed Random Projection was introduced later with PySpark version 2.2.0, the algorithm could only be tested on the single-node test platform using Code Snippet~\ref{lst:brp}, where it performed worse than the naive Euclidean implementation from Code Snippet~\ref{lst:eucd} on a dataset consisting of about 11500 songs. Whether the BRP outperforms the naive approach on a cluster with larger datasets could be investigated further. 
 
 \begin{pythonCode}[frame=single,label={lst:brp},caption={Bucketed Random Projection},captionpos=b]
 from pyspark.ml.feature import BucketedRandomProjectionLSH
-#...
 brp = BucketedRandomProjectionLSH(inputCol="features", outputCol="hashes", seed=12345, bucketLength=100.0)
 model = brp.fit(feature_vec_df)
 comparator_value = Vectors.dense(comparator[0])
@@ -141,11 +169,9 @@ rf = spark.createDataFrame(result)
 result = rf.select("id", "distCol").rdd.flatMap(list).collect()
 \end{pythonCode}
 
- 
-
 \subsubsection{Cross-Correlation}
 
-As laid out in Section~\ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in Equation~\eqref{eq:conv2},~\eqref{eq:conv3}, and~\eqref{eq:conv4} still exists. Due to the fact that the computation of the cross-correlation already takes the longest time, even without additional key-shifting (see Section~\ref{sparkperf}), the implementation on the cluster and in Code Snippet~\ref{lst:corrnp} calculates the simplified cross-correlation (Equations~\eqref{eq:conv5} and~\eqref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
+As laid out in Section~\ref{melsimc}, there are different options to calculate the cross-correlation of the beat-aligned chroma features. The chroma features are already key-shifted to a common key, but the possibility to perform a full 2D-cross-correlation with additional key-shifting as explained in Equations~\eqref{eq:conv2},~\eqref{eq:conv3}, and~\eqref{eq:conv4} still exists. Due to the fact that the computation of the cross-correlation already takes the longest time, even without additional key-shifting (see Section~\ref{sparkperf}), the implementation on the cluster and in Code Snippet~\ref{lst:corrnp} calculates the simplified cross-correlation (Equations~\eqref{eq:conv5} and~\eqref{eq:conv7}). Whether or not the results are compromised because of that is left open and requires further investigation.\\
 \noindent The cross-correlation was used to detect cover songs on the same dataset Ellis and Cotton used in their paper~\cite{cover802}. The results are presented in Section~\ref{covsongid}. There are some differences in the resulting recommendations compared to the original paper. These can be explained with the different underlying beat tracking, different filter parameters, and a few improvements that are left out compared to the implementation of Ellis~\cite{cover802} as mentioned in Section~\ref{chromafeat}.\\
 
 \begin{pythonCode}[frame=single,label={lst:corrsc},caption={Cross-correlation scipy},captionpos=b]
@@ -183,7 +209,7 @@ result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
 \noindent The parameter \lstinline{mode='valid'} when using scipy, determines whether or not additional key shifting is included. The \lstinline{'valid'} option already includes additional key-shifting but without zero-padding. Other options would be \lstinline{mode='same'}(no key-shifting) and \lstinline{mode='full'} (with zero-padding).\\
-\noindent The other variant is shown in Code Snippet~\ref{lst:corrnp}. It uses the numpy library. Although numpy only offers a 1D-cross-correlation function, which had to be nested inside a for-loop to get the 2D-cross-correlation, performance tests showed that the numpy version was faster than the scipy version by orders of magnitude. Calculating and scaling the distances of the chroma features from one song to about 114000 other songs took about 22 seconds with numpy and around 725 seconds with scipy on the ARA-cluster. 
+\noindent The other variant is shown in Code Snippet~\ref{lst:corrnp}. It uses the numpy library. Although numpy only offers a 1D-cross-correlation function, which had to be nested inside a for-loop to get the 2D-cross-correlation, performance tests showed that the numpy version was faster than the scipy version by orders of magnitude. Calculating and scaling the distances of the chroma features from one song to about 114000 other songs took about 22 seconds with numpy and approximately 725 seconds with scipy on the ARA-cluster. 
 
 \subsubsection{Jensen-Shannon-Like Divergence}\label{jsld}
 
@@ -220,24 +246,23 @@ These songs get filtered out as well. The example code for the calculation of di
 import numpy as np
 def symmetric_kullback_leibler(vec1, vec2):
 	#preprocessing: splitting vec1 and vec2 into mean1, mean2, cov1 and cov2
-	if (is_invertible(cov1) and is_invertible(cov2)):
+	try:
 		d = 13
 		div = 0.25 * (np.trace(cov1 * np.linalg.inv(cov2)) + np.trace(cov2 * np.linalg.inv(cov1)) + np.trace((np.linalg.inv(cov1) + np.linalg.inv(cov2)) * (mean1 - mean2)**2) - 2*d)
-	else: 
+	catch: 
 		div = np.inf
-		#print("ERROR: NON INVERTIBLE SINGULAR COVARIANCE MATRIX\n")  
+		print("ERROR: NON INVERTIBLE SINGULAR COVARIANCE MATRIX\n")  
 	return div
 distance_udf = F.udf(lambda x: float(symmetric_kullback_leibler(x, comparator_value)), DoubleType())
 result = df_vec.withColumn('distances', distance_udf(F.col('features')))
 #thresholding for outliers
 result = result.filter(result.distances <= 100)  
-#result = result.filter(result.distances != np.inf)        
 result = result.select("id", "distances").orderBy('distances', ascending=True)
 result = result.rdd.flatMap(list).collect()
 \end{pythonCode}
 
 \noindent After implementing this similarity measurement in Spark, some tests and comparisons to the results of the Musly toolkit~\cite{musly1} were done. While overall the genre recall is quite good (see Section~\ref{genrerec}) and the results seem reasonable, they do differ from the ones returned by Musly. 
-These differences could be explained with the choice of only 13 Mel-bands during the computation of the MFCCs in this thesis compared to the 25 bands in Musly~\cite{musly1} and some other decisions like omitting the normalization with mutual proximity (Section~\ref{mprox}). The same applies for the Jensen-Shannon-like divergence. 
+These differences could be explained with the choice of only 13 mel bands during the computation of the MFCCs in this thesis compared to the 25 bands in Musly~\cite{musly1} and some other decisions like omitting the normalization with mutual proximity (Section~\ref{mprox}). The same applies for the Jensen-Shannon-like divergence. 
 
 
 \subsubsection{Levenshtein Distance}
@@ -251,7 +276,7 @@ df_levenshtein = df_merged.withColumn("word1_word2_levenshtein", levenshtein(col
 df_levenshtein.sort(col("word1_word2_levenshtein").asc()).show()
 \end{pythonCode}
 
-\noindent As an alternative for the RDD based variant of the Spark application, the Python wrapper for the C/C++ library "edlib" was used. During initial tests, when experimenting with a naive implementation of the Levenshtein distance using a Python function with numpy, immense performance issues were encountered. Due to the underlying C/C++ code of the edlib the computation of the Levenshtein distance in Code Snippet~\ref{lst:levr} performes comparably well as the Spark-native DataFrame equivalent and offers a good alternative. 
+\noindent As an alternative for the RDD based variant of the Spark application, the Python wrapper \cite{edlibpy} for the C/C++ library "edlib" \cite{edlib} was used. During initial tests, when experimenting with a naive implementation of the Levenshtein distance using a Python function with numpy, immense performance issues were encountered. Due to the underlying C/C++ code of the edlib the computation of the Levenshtein distance in Code Snippet~\ref{lst:levr} performes comparably well as the Spark-native DataFrame equivalent and offers a good alternative. 
 
 \begin{pythonCode}[frame=single,label={lst:levr},caption={Levenshtein RDD},captionpos=b]
 import edlib
@@ -264,7 +289,7 @@ resultNotes = notes.map(lambda x: (x[0], naive_levenshtein(str(x[1]), str(compar
 
 \subsubsection{Lazy Evaluation and Data Caching}\label{leval}
 
-As described in Section~\ref{sparksec}, Spark's main advantage is its ability to use the main memory of the nodes in a cluster to safe intermediate data without the need of writing it back to the disk. However Spark does not automatically cache the data. RDDs and DataFrames have to be explicitly assigned to the main memory, by either calling \lstinline{persist()} (optionally with the parameter \lstinline{storageLevel=StorageLevel.MEMORY_ONLY_SER}) or \lstinline{cache()} and even then Spark only takes this as a suggestion. If not enough main memory is available, the data is still written onto the hard drives.\\ As introduced in Section~\ref{sparksec}, Spark also uses an optimization technique called "lazy evaluation" that differentiates between transformations on data and actions. The \lstinline{cache()} and \lstinline{persist()} commands both do not count as actions. Instead they are executed only when an actual action on the data is called. This has to be kept in mind when optimizing Spark applications and evaluating the performance by measuring execution times. The Code Snippet~\ref{lst:persist} gives a short example. 
+As described in Section~\ref{sparksec}, Spark's main advantage is its ability to use the main memory of the nodes in a cluster to safe intermediate data without the need of writing it back to the disk. However Spark does not automatically cache the data. RDDs and DataFrames have to be explicitly assigned to the main memory, by either calling \lstinline{persist()} (optionally with the parameter \lstinline{storageLevel=StorageLevel.MEMORY_ONLY_SER}) or \mbox{\lstinline{cache()}} and even then Spark only takes this as a suggestion. If not enough main memory is available, the data is still written onto the hard drives.\\ As introduced in Section~\ref{sparksec}, Spark also uses an optimization technique called "lazy evaluation" that differentiates between transformations on data and actions. The \mbox{\lstinline{cache()}} and \mbox{\lstinline{persist()}} commands both do not count as actions. Instead they are executed only when an actual action on the data is called. This has to be kept in mind when optimizing Spark applications and evaluating the performance by measuring execution times. The Code Snippet~\ref{lst:persist} gives a short example. 
 
 \begin{pythonCode}[frame=single,label={lst:persist},caption={Spark lazy evaluation},captionpos=b]
 import time
@@ -282,9 +307,9 @@ time_dict['time: ']= tac1 - tic1
 print time_dict
 \end{pythonCode}
 
-\noindent \lstinline{preprocess_features()} is a function, where the chroma features get read into RDDs, pre-processed, repartitioned, and converted to a DataFrame. \lstinline{get_distances()} calculates all distances between the song belonging to the ID \lstinline{songname} and the other 114209 songs in the database. Within this function, the results are then scaled to an interval between 0 and 1 by dividing all distances by their maximum value. The result is stored in the DataFrame \lstinline{neighbors} and after that, two actions are performed subsequently on this result. The first (\lstinline{show()}) prints the 20 nearest neighbors to the standard output (e.g., the pyspark shell). The second action (\lstinline{toPandas().to_csv()}) prints the whole list of all 114210 distances into a *.csv file.\\
-In a simple experiment, the impact of ineffective caching and the impact of the lazy evaluation on time and performance tests is shown. The results are plotted in Figure~\ref{lazcach}. The first bar shows the \lstinline{print time_dict} output when executing the full code from Code Snippet~\ref{lst:persist}. In the second bar (labeled with "p6"), the \lstinline{persist()} command in line 6 got removed. Due to the fact that the scaling of the distances inside the function \lstinline{get_distances()} requires an action on the data stored in \lstinline{neighbors} but the results are no longer persistent in the cache, this part of the code has to be executed twice (in line 6 and again in line 7). For the third bar (labeled with "p7"), the \lstinline{persist()} command in line 7 is removed as well. The result \lstinline{neighbors} is no longer stored in the main memory, and every time an action requires the results of this DataFrame, it has to be recalculated which is the case for both actions in line 8 and line 9 in the code example.\\
-When further removing the print command in line 4, the lazy evaluation no longer executes line 3 before starting to measure the time in line 5 because the action \lstinline{first()} is no longer executed on the DataFrame. Instead, line 3 gets called later, when \lstinline{get_distances()} is executed, because only then an action on the \lstinline{featureDf} DataFrame is called for the first time. This is shown in the bar labeled with "l4". Up until this point, the original \lstinline{featureDf} still gets persisted to the main memory but if the \lstinline{persist()} command in line 3 gets removed as well in the last test labeled with "p3", \lstinline{preprocess_features()} has to be executed every time the \lstinline{featureDf} is needed.  
+\noindent The function \lstinline{preprocess_features()} is a function, where the chroma features get read into RDDs, pre-processed, repartitioned, and converted into a DataFrame. The function \lstinline{get_distances()} calculates all distances between the song belonging to the ID \lstinline{songname} and the other 114209 songs in the database. Within this function, the results are then scaled to an interval between 0 and 1 by dividing all distances by their maximum value. The result is stored in the DataFrame \lstinline{neighbors} and after that, two actions are performed subsequently on this result. The first (\lstinline{show()}) prints the 20 nearest neighbors to the standard output (e.g., the pyspark shell). The second action (\lstinline{toPandas().to_csv()}) prints the whole list of all 114210 distances into a *.csv file.\\
+In a simple experiment, the impact of ineffective caching and the impact of the lazy evaluation on time and performance tests is shown. The results are plotted in Figure~\ref{lazcach}. The first bar (labeled with "opt") shows the \lstinline{print time_dict} output when executing the full code from Code Snippet~\ref{lst:persist}. In the second bar (labeled with "p6"), the \lstinline{persist()} command in line 6 got removed. Due to the fact that the scaling of the distances inside the function \lstinline{get_distances()} requires an action on the data stored in \lstinline{neighbors} but the results are no longer persistent in the cache, this part of the code has to be executed twice (in line 6 and again in line 7). For the third bar (labeled with "p7"), the \lstinline{persist()} command in line 7 is removed as well. The result \lstinline{neighbors} is no longer stored in the main memory, and every time an action requires the results of this DataFrame, it has to be recalculated which is the case for both actions in line 8 and line 9 in the code example.\\
+When further removing the print command in line 4, the lazy evaluation no longer executes line 3 before starting to measure the time in line 5 because the action \mbox{\lstinline{first()}} is no longer executed on the DataFrame. Instead, line 3 gets called later, when \lstinline{get_distances()} is executed, because only then an action on the \lstinline{featureDf} DataFrame is called for the first time. This is shown in the bar labeled with "l4". Up until this point, the original \lstinline{featureDf} still gets persisted to the main memory but if the \lstinline{persist()} command in line 3 gets removed as well in the last test labeled with "p3", \lstinline{preprocess_features()} has to be executed every time the \lstinline{featureDf} is needed.  
 
 \begin{figure}[htbp]
 	\centering
@@ -323,19 +348,20 @@ That means that especially in this application in the area of music similarity, 
 \subsection{Distance Scaling}\label{distsc}
 
 To combine different distance measurements into one combined distance, the various results from different kinds of features have to be rescaled to avoid biasing the overall distance.
-The easiest way is to subtract the minimum $\text{min}(d)$ from all distances $d$ and to divide by the difference between the maximum $\text{max}(d)$ and the minimum distance, as described in Equation~\eqref{eq:scaling}. 
+The easiest way is to subtract the minimum $\text{min}(d)$ from all distances $d$ and to divide by the difference between the maximum $\text{max}(d)$ and the minimum distance, as described in the equation
 
 \begin{equation} \label{eq:scaling}
-d' = \frac{d - \text{min}(d)}{\text{max}(d) - \text{min}(d)}
+d' = \frac{d - \text{min}(d)}{\text{max}(d) - \text{min}(d)}.
 \end{equation}
 
 \noindent The minimum distance should always be the self-similarity of the requested song with a value of 0. But in the implementation of the symmetric Kullback-Leibler distance, this is not always the case. Sometimes the self-similarity is just very close to zero. The analysis of the distances in Section~\ref{featqual} also shows that, e.g. the Levenshtein distances and cross-correlation results are unevenly distributed over the unit interval $[0,1]$. Dropping the self-similarity out of the distance vector and rescaling it afterwards with a new minimum distance unequal to zero could solve this, but was not tested in this thesis. A second issue was already mentioned in Section~\ref{sparkskl}, where outliers tend to bias the results. These can get filtered out before rescaling the distances. This is further evaluated in Section~\ref{featqual}.\\
-Another option to rescale the features, laid out by Sebastian Stober in~\cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using Equation~\eqref{eq:scaling2} and by dividing the distance by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
+Another option to rescale the features, laid out by Sebastian Stober in~\cite[pp. 543ff]{musicdata}, but not implemented in this thesis, would be to rescale all distances to have a mean value of 1 by using \begin{equation} \label{eq:scaling2}
+d' = \frac{d}{\mu_f},
+\end{equation} 
+and by dividing the distances $d$ by the mean distance $\mu_f$. Outliers should be detected and removed before calculating the mean distance. 
 A better way to rescale the data could be evaluated in future research. 
 
-\begin{equation} \label{eq:scaling2}
-d' = \frac{d}{\mu_f}
-\end{equation} 
+
 
 \noindent Implementation-wise the aggregation of the minimum and maximum value went through different tests. 
 
@@ -360,12 +386,13 @@ min_val = aggregated.collect()[0]["min(distances)"]
 
 \subsection{Combining Different Measurements}\label{weighedsum}
 
-To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in~\cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using Equation~\eqref{eq:distance}.
+To finally compute the overall similarity of what Stober calls the facet distances (the different distances computed using different feature sets) in~\cite[pp. 543ff]{musicdata}, the weighted arithmetic mean of the previously scaled facet distances is calculated by using the equation
 
 \begin{equation} \label{eq:distance}
 \text{dist} = \frac{\sum_{m = 0}^{M - 1}{w_m \cdot d_m}}{\sum_{m = 0}^{M - 1}{w_m}}
 \end{equation}
 
+\noindent given $M$ different distances $d_1,d_2,...,d_m$ and weights $w_1,w_2,...,w_m$.
 \noindent In this thesis, only binary weights were tested by either including a facet distance with a weight of one or just leaving it out of the overall similarity by setting its weight to zero. The impact of different weights is left open for future research. 
 
 \subsection{Performance}\label{sparkperf}
@@ -426,7 +453,7 @@ Later, when calculating the similarities on already cached feature data for cons
    		\addlegendentry{song request on cached feature DF}  					
    	\end{axis}
    	\end{tikzpicture}
-   	\caption{Performance dependent on the \#Executors spawned}
+   	\caption{Performance depending on the \#Executors spawned}
    	\label{perfspark7}
 \end{figure}
 \FloatBarrier
