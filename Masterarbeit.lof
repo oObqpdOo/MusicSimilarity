@@ -49,39 +49,37 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Similar genres (detailed)\relax }}{33}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Construction noise, first 100 song recommendations based on Musly toolkit (JS)\relax }}{33}{figure.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Construction noise, first 100 song recommendations based on Musly toolkit (JS)\relax }}{33}{figure.3.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Chroma feature examples\relax }}{35}{figure.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Chroma feature examples\relax }}{35}{figure.3.3}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Band-pass filtered audio, Sia - Chandelier\relax }}{35}{figure.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Band-pass filter, Sia - Chandelier\relax }}{35}{figure.3.4}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Thresholded chroma features, Sia - Chandelier\relax }}{36}{figure.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Thresholded chroma features, Sia - Chandelier\relax }}{36}{figure.3.5}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Processed chroma features, Sia - Chandelier\relax }}{36}{figure.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Processed chroma features, Sia - Chandelier\relax }}{36}{figure.3.6}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Workflow chroma feature extraction\relax }}{37}{figure.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Workflow chroma feature extraction\relax }}{37}{figure.3.7}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Processing step 3 of chroma features in detail\relax }}{38}{figure.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Processing step 3 of chroma features in detail\relax }}{38}{figure.3.8}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 1D cross-correlation\relax }}{40}{figure.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.9}{\ignorespaces 1D cross-correlation\relax }}{40}{figure.3.9}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces 2D cross-correlation of beat-aligned and key-shifted chromagrams (audio snippets)\relax }}{42}{figure.3.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.10}{\ignorespaces 2D cross-correlation of beat-aligned and key-shifted chromagrams (audio snippets)\relax }}{42}{figure.3.10}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces 2D cross-correlation of beat-aligned chromagrams (Sia / Pvris - Chandelier)\relax }}{43}{figure.3.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.11}{\ignorespaces 2D cross-correlation of beat-aligned chromagrams (Sia / Pvris - Chandelier)\relax }}{43}{figure.3.11}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Filtered cross-correlation (high-pass)\relax }}{43}{figure.3.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Filtered cross-correlation (high-pass)\relax }}{43}{figure.3.12}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Beat histogram examples\relax }}{44}{figure.3.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Beat histogram examples\relax }}{44}{figure.3.13}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Rhythm pattern examples\relax }}{45}{figure.3.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Rhythm pattern examples\relax }}{45}{figure.3.14}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Rhythm pattern extraction procedure as suggested by~\cite {rp_extract2}\relax }}{46}{figure.3.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Rhythm pattern extraction procedure as suggested by~\cite {rp_extract2}\relax }}{46}{figure.3.15}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Rhythm histogram examples\relax }}{47}{figure.3.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Rhythm histogram examples\relax }}{47}{figure.3.16}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Detected onset examples (30 second song snippets)\relax }}{48}{figure.3.17}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Detected onset examples (30 second song snippets)\relax }}{48}{figure.3.16}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

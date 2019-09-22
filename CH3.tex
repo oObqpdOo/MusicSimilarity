@@ -62,7 +62,7 @@ In Figure~\ref{fig:sia2}, the filter frequencies and the original audio signals 
 				\label{pvfft}
 			\end{subfigure}%			
 	}}
-	\caption{Band-pass filter, Sia - Chandelier}
+	\caption{Band-pass filtered audio, Sia - Chandelier}
 	\label{fig:sia2}
 \end{figure}
 
@@ -194,8 +194,8 @@ One possibility to process the chromagrams and to estimate the similarity betwee
 %\end{cases} &\text{else} \\
 %\end{cases}
 %\end{equation}
-\noindent In their paper, they use MIDI files instead of chroma features, but both contain information about the melody of songs. An adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. 
-\noindent Xia (et al.) made some adjustments to this to be able to handle musical information.~\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lengths between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and at the end of each song.\\
+\noindent In their paper, Xia (et al.) use MIDI files instead of chroma features, but both contain information about the melody of songs. An adaption to chroma features is not an issue, because they can also easily be interpreted as simple strings. 
+\noindent They also made some adjustments to Equation~\ref{eq:tr1} to be able to handle musical information.~\cite[pp. 7ff]{chroma4} For example to get rid of the problem of various lengths between the songs, they only took the first 200 and the last 200 notes of every song because it could be observed that cover songs tend to share more common notes in the beginning and at the end of each song.\\
 Due to the fact that this thesis has no actual note information from MIDI files but rather short lists of estimated main pitches from the beat-aligned chroma features, most of the feature vectors are already smaller than 200 notes. Therefore the implemented algorithm does not split the vectors. This tends to favor cover songs that share the same length. 
 \ \\
 Englmeier (et al.) uses a more advanced text information retrieval technique called "TF-IDF weights" (term frequency - inverse document frequency) and explicit semantic analysis (ESA). "The TF-IDF weight is a measure which expresses the meaning of a term or a document within a collection of documents."~\cite[p. 186]{chroma1}

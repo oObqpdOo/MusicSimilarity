@@ -29,9 +29,9 @@ Assuming two musical pieces $P$ and $Q$ are given, after computing the mean valu
 \begin{equation} \label{eq:KL1}
 \text{KL}_{(P||Q)} = \frac{1}{2}[\text{log}\frac{|\Sigma_P|}{|\Sigma_Q|} + \text{tr}(\Sigma_P^{-1}\Sigma_Q) + (\mu_P - \mu_Q)^T \Sigma_P^{-1} (\mu_Q - \mu_P) - d]
 \end{equation}
-As a second step the result has to be symmetrized.
+As a second step the result has to be symmetrized~\cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:KL2}
-d_{SKL}(P, Q) = \frac{1}{2} (\text{KL}_{(P||Q)} + \text{KL}_{(Q||P)}) 
+d_{SKL}(P, Q) = \frac{1}{2} (\text{KL}_{(P||Q)} + \text{KL}_{(Q||P)})
 \end{equation}
 This approach is one of the two available similarity metrics in the Musly~\cite{musly1} toolkit (see Section~\ref{mirtoolkit}). It can be simplified and written as a closed form according to Schnitzer~\cite[p. 44]{schnitzer1}:
 \begin{equation} \label{eq:SKL}
@@ -94,8 +94,6 @@ Alternatively, the example proposed by Dr. Bosse from the introduction was teste
 	\framebox{\parbox{1\textwidth}{ 
 	\centering 
 	\includegraphics[scale=0.65]{Images/cnoise2.png}
-	\caption{Similar genres (detailed)}
-	\label{const2}
 	}}
 	\caption{Construction noise, first 100 song recommendations based on Musly toolkit (JS)}
 	\label{fig:constn}
@@ -125,7 +123,6 @@ Every recording has a different length as listed in the following overview of th
 	\item Piano Perlen (3:30)
 	\item The Piano Collection - Disk 18 (3:28)
 	\item Mozart Premium Edition - Disk 31 (4:29)
-	
 \end{itemize}
 
 \noindent The top ten most similar songs to the 3 minutes and 33 seconds version are listed below, and the recognized cover versions are underlined:
