@@ -511,6 +511,18 @@ pdfstartview={XYZ null null 1.00}
 \newdate{dateappr}{17}{05}{2019}
 \newdate{datesub}{30}{09}{2019}
 
+%\usepackage{paralist}
+\usepackage{enumitem}
+\usepackage{tipa}
+
+\usepackage[toc,page]{appendix}
+\usepackage{etoolbox}
+
+\newcommand{\toclesssection}[1]{\section*{#1}\addtocounter{section}{1}}
+\newcommand{\toclesssubsection}[1]{\subsection*{#1}\addtocounter{subsection}{1}}
+
+\usepackage[final]{pdfpages}
+
 \begin{document}
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
 
@@ -922,7 +934,10 @@ placeholderplaceplaceholder \= placeholder \kill
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
 \chapter{Appendix}
+%%\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
 
 \section{Feature Analysis}
 
@@ -1088,6 +1103,16 @@ dist = distance.euclidean(feat_vec[0], feat_vec[1])
 	\item digital copy of this thesis
 \end{itemize}
 
+\chapter{Appendix - Private Music Collection}
+
+%\include{CH1_mus}
+%\include{CH2_mus}
+%\include{CH3_mus}
+%\include{CH4_mus}
+%\include{CH5_mus}
+
+%\includepdf[pages=-,pagecommand={},width=\textwidth]{Data/PrivateMusicCollection/Musiksammlung.pdf}
+\includepdf[pages=-]{Data/PrivateMusicCollection/Musiksammlung.pdf}
 
 \chapter*{Declaration of Authorship}
 

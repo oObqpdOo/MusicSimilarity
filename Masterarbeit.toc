@@ -239,16 +239,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{References}{97}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Appendix}{103}{chapter.7}
+\contentsline {chapter}{\numberline {A}Appendix}{103}{appendix.A}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Feature Analysis}{103}{section.7.1}
+\contentsline {section}{\numberline {A.1}Feature Analysis}{103}{section.A.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Spotipy Data Extraction}{104}{section.7.2}
+\contentsline {section}{\numberline {A.2}Spotipy Data Extraction}{104}{section.A.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}CD Contents}{106}{section.7.3}
+\contentsline {section}{\numberline {A.3}CD Contents}{106}{section.A.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Feature Extraction Code}{106}{section.7.3}
+\contentsline {subsubsection}{Feature Extraction Code}{106}{section.A.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Spark Recommender Code}{106}{section.7.3}
+\contentsline {subsubsection}{Spark Recommender Code}{106}{section.A.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{PDFs}{106}{section.7.3}
+\contentsline {subsubsection}{PDFs}{106}{section.A.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Appendix - Private Music Collection}{107}{appendix.B}

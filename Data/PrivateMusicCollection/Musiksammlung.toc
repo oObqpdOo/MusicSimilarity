@@ -1,0 +1,289 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Metal}{8}{chapter.1}
+\contentsline {section}{\numberline {1.1}Melodic Death Metal}{8}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}In Flames}{8}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Dark Tranquillity}{10}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.3}Be'lakor}{11}{subsection.1.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Parius}{11}{subsection.1.1.4}
+\contentsline {subsection}{\numberline {1.1.5}Amon Amarth}{11}{subsection.1.1.5}
+\contentsline {subsection}{\numberline {1.1.6}At The Gates}{12}{subsection.1.1.6}
+\contentsline {subsection}{\numberline {1.1.7}Orbit Culture}{13}{subsection.1.1.7}
+\contentsline {subsection}{\numberline {1.1.8}Raunchy}{13}{subsection.1.1.8}
+\contentsline {subsection}{\numberline {1.1.9}Numenorean}{14}{subsection.1.1.9}
+\contentsline {subsection}{\numberline {1.1.10}Omnium Gatherum}{14}{subsection.1.1.10}
+\contentsline {subsection}{\numberline {1.1.11}Wolfheart}{14}{subsection.1.1.11}
+\contentsline {subsection}{\numberline {1.1.12}Gormathon}{15}{subsection.1.1.12}
+\contentsline {subsection}{\numberline {1.1.13}Nekrogoblikon}{15}{subsection.1.1.13}
+\contentsline {subsection}{\numberline {1.1.14}Amorphis}{15}{subsection.1.1.14}
+\contentsline {subsection}{\numberline {1.1.15}Bloodred Hourglass}{16}{subsection.1.1.15}
+\contentsline {subsection}{\numberline {1.1.16}Insomnium}{16}{subsection.1.1.16}
+\contentsline {subsection}{\numberline {1.1.17}Soilwork}{17}{subsection.1.1.17}
+\contentsline {subsection}{\numberline {1.1.18}Mors Principium Est}{17}{subsection.1.1.18}
+\contentsline {subsection}{\numberline {1.1.19}Parasite Inc.}{17}{subsection.1.1.19}
+\contentsline {subsection}{\numberline {1.1.20}Meadows End}{18}{subsection.1.1.20}
+\contentsline {subsection}{\numberline {1.1.21}Arch Enemy}{18}{subsection.1.1.21}
+\contentsline {subsection}{\numberline {1.1.22}Children Of Bodom}{18}{subsection.1.1.22}
+\contentsline {subsection}{\numberline {1.1.23}Shylmagoghnar}{19}{subsection.1.1.23}
+\contentsline {subsection}{\numberline {1.1.24}In Mourning}{19}{subsection.1.1.24}
+\contentsline {subsection}{\numberline {1.1.25}Deadlock}{19}{subsection.1.1.25}
+\contentsline {section}{\numberline {1.2}Technical Death Metal}{20}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Cattle Decapitation}{20}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Kardashev}{20}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Cytotoxin}{20}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Nile}{21}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Ophidius}{21}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.6}Obscura}{21}{subsection.1.2.6}
+\contentsline {subsection}{\numberline {1.2.7}Solipsismo}{22}{subsection.1.2.7}
+\contentsline {subsection}{\numberline {1.2.8}Aephanemer}{22}{subsection.1.2.8}
+\contentsline {subsection}{\numberline {1.2.9}Aether}{22}{subsection.1.2.9}
+\contentsline {subsection}{\numberline {1.2.10}Aetheric}{23}{subsection.1.2.10}
+\contentsline {subsection}{\numberline {1.2.11}Aronius}{23}{subsection.1.2.11}
+\contentsline {subsection}{\numberline {1.2.12}Fallujah}{23}{subsection.1.2.12}
+\contentsline {subsection}{\numberline {1.2.13}Irreversible Mechanism}{24}{subsection.1.2.13}
+\contentsline {subsection}{\numberline {1.2.14}Psygnosis}{24}{subsection.1.2.14}
+\contentsline {subsection}{\numberline {1.2.15}Transience}{24}{subsection.1.2.15}
+\contentsline {section}{\numberline {1.3}Death Metal}{25}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Lamb Of God}{25}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Gojira}{25}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Deserted Fear}{26}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Death}{26}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Six Feet Under}{26}{subsection.1.3.5}
+\contentsline {section}{\numberline {1.4}Deathcore}{27}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Thy Art Is Murder}{27}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Fit For An Autopsy}{27}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}The Acacia Strain}{27}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Whitechapel}{28}{subsection.1.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Suicide Silence}{28}{subsection.1.4.5}
+\contentsline {subsection}{\numberline {1.4.6}Faith In Ruin}{28}{subsection.1.4.6}
+\contentsline {section}{\numberline {1.5}Metalcore}{29}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Heaven Shall Burn}{29}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}While She Sleeps}{29}{subsection.1.5.2}
+\contentsline {subsection}{\numberline {1.5.3}Architects}{30}{subsection.1.5.3}
+\contentsline {subsection}{\numberline {1.5.4}The Amity Affliction}{30}{subsection.1.5.4}
+\contentsline {subsection}{\numberline {1.5.5}August Burns Red}{30}{subsection.1.5.5}
+\contentsline {subsection}{\numberline {1.5.6}Copia}{31}{subsection.1.5.6}
+\contentsline {subsection}{\numberline {1.5.7}Moments}{31}{subsection.1.5.7}
+\contentsline {subsection}{\numberline {1.5.8}Northlane}{31}{subsection.1.5.8}
+\contentsline {subsection}{\numberline {1.5.9}Caliban}{32}{subsection.1.5.9}
+\contentsline {subsection}{\numberline {1.5.10}Annisokay}{32}{subsection.1.5.10}
+\contentsline {subsection}{\numberline {1.5.11}Trivium}{32}{subsection.1.5.11}
+\contentsline {subsection}{\numberline {1.5.12}Rise Of The Northstar}{33}{subsection.1.5.12}
+\contentsline {subsection}{\numberline {1.5.13}Parkway Drive}{33}{subsection.1.5.13}
+\contentsline {subsection}{\numberline {1.5.14}The Browning}{33}{subsection.1.5.14}
+\contentsline {subsection}{\numberline {1.5.15}Bring Me The Horizon}{34}{subsection.1.5.15}
+\contentsline {section}{\numberline {1.6}Folk Metal}{34}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Eluveitie}{34}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}Finntroll}{35}{subsection.1.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Finsterforst}{35}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Korpiklaani}{35}{subsection.1.6.4}
+\contentsline {subsection}{\numberline {1.6.5}Skalm\IeC {\"o}ld}{36}{subsection.1.6.5}
+\contentsline {subsection}{\numberline {1.6.6}Equilibrium}{36}{subsection.1.6.6}
+\contentsline {subsection}{\numberline {1.6.7}Cellar Darling}{36}{subsection.1.6.7}
+\contentsline {subsection}{\numberline {1.6.8}Saltatio Mortis}{37}{subsection.1.6.8}
+\contentsline {subsection}{\numberline {1.6.9}Solstafir}{37}{subsection.1.6.9}
+\contentsline {subsection}{\numberline {1.6.10}In Extremo}{37}{subsection.1.6.10}
+\contentsline {subsection}{\numberline {1.6.11}Tyr}{38}{subsection.1.6.11}
+\contentsline {subsection}{\numberline {1.6.12}Arkona}{38}{subsection.1.6.12}
+\contentsline {subsection}{\numberline {1.6.13}Ensiferum}{38}{subsection.1.6.13}
+\contentsline {subsection}{\numberline {1.6.14}Fejd}{39}{subsection.1.6.14}
+\contentsline {subsection}{\numberline {1.6.15}Heidevolk}{39}{subsection.1.6.15}
+\contentsline {subsection}{\numberline {1.6.16}Alestorm}{39}{subsection.1.6.16}
+\contentsline {subsection}{\numberline {1.6.17}Cellar Darling}{40}{subsection.1.6.17}
+\contentsline {subsection}{\numberline {1.6.18}Grai}{40}{subsection.1.6.18}
+\contentsline {subsection}{\numberline {1.6.19}Helengard}{40}{subsection.1.6.19}
+\contentsline {section}{\numberline {1.7}Doom, Gothic, Stoner, etc.}{41}{section.1.7}
+\contentsline {subsection}{\numberline {1.7.1}Paradise Lost}{41}{subsection.1.7.1}
+\contentsline {subsection}{\numberline {1.7.2}Opeth}{41}{subsection.1.7.2}
+\contentsline {subsection}{\numberline {1.7.3}Katatonia}{42}{subsection.1.7.3}
+\contentsline {subsection}{\numberline {1.7.4}Alunah}{42}{subsection.1.7.4}
+\contentsline {subsection}{\numberline {1.7.5}Pet The Preacher}{42}{subsection.1.7.5}
+\contentsline {subsection}{\numberline {1.7.6}Lacrimas Profundere}{43}{subsection.1.7.6}
+\contentsline {section}{\numberline {1.8}Black Metal}{43}{section.1.8}
+\contentsline {subsection}{\numberline {1.8.1}Vindland}{43}{subsection.1.8.1}
+\contentsline {subsection}{\numberline {1.8.2}Uada}{43}{subsection.1.8.2}
+\contentsline {subsection}{\numberline {1.8.3}Zeal And Ardor}{44}{subsection.1.8.3}
+\contentsline {subsection}{\numberline {1.8.4}Der Weg Einer Freiheit}{44}{subsection.1.8.4}
+\contentsline {subsection}{\numberline {1.8.5}Ultar}{44}{subsection.1.8.5}
+\contentsline {subsection}{\numberline {1.8.6}Realm Of Wolves}{45}{subsection.1.8.6}
+\contentsline {subsection}{\numberline {1.8.7}Harakiri For The Sky}{45}{subsection.1.8.7}
+\contentsline {subsection}{\numberline {1.8.8}Ultha}{45}{subsection.1.8.8}
+\contentsline {subsection}{\numberline {1.8.9}Mg\IeC {\l }a}{46}{subsection.1.8.9}
+\contentsline {subsection}{\numberline {1.8.10}The Spirit}{46}{subsection.1.8.10}
+\contentsline {subsection}{\numberline {1.8.11}Carach Angren}{46}{subsection.1.8.11}
+\contentsline {subsection}{\numberline {1.8.12}Borknagar}{47}{subsection.1.8.12}
+\contentsline {subsection}{\numberline {1.8.13}Agrypnie}{47}{subsection.1.8.13}
+\contentsline {subsection}{\numberline {1.8.14}Behemoth}{47}{subsection.1.8.14}
+\contentsline {subsection}{\numberline {1.8.15}Belzebubs}{48}{subsection.1.8.15}
+\contentsline {subsection}{\numberline {1.8.16}Celtic Frost}{48}{subsection.1.8.16}
+\contentsline {subsection}{\numberline {1.8.17}Cradle Of Filth}{48}{subsection.1.8.17}
+\contentsline {subsection}{\numberline {1.8.18}Enslaved}{49}{subsection.1.8.18}
+\contentsline {subsection}{\numberline {1.8.19}Hypothermia}{49}{subsection.1.8.19}
+\contentsline {subsection}{\numberline {1.8.20}In Tenebriz}{49}{subsection.1.8.20}
+\contentsline {subsection}{\numberline {1.8.21}Moonspell}{50}{subsection.1.8.21}
+\contentsline {subsection}{\numberline {1.8.22}Primordial}{50}{subsection.1.8.22}
+\contentsline {subsection}{\numberline {1.8.23}Wode}{50}{subsection.1.8.23}
+\contentsline {subsection}{\numberline {1.8.24}Baise Ma Hache}{51}{subsection.1.8.24}
+\contentsline {section}{\numberline {1.9}Alternative Metal}{51}{section.1.9}
+\contentsline {subsection}{\numberline {1.9.1}Kvelertak}{51}{subsection.1.9.1}
+\contentsline {subsection}{\numberline {1.9.2}System Of A Down}{52}{subsection.1.9.2}
+\contentsline {subsection}{\numberline {1.9.3}Nothing More}{52}{subsection.1.9.3}
+\contentsline {subsection}{\numberline {1.9.4}Tempel}{53}{subsection.1.9.4}
+\contentsline {subsection}{\numberline {1.9.5}Alter Bridge}{53}{subsection.1.9.5}
+\contentsline {subsection}{\numberline {1.9.6}Avenged Sevenfold}{53}{subsection.1.9.6}
+\contentsline {subsection}{\numberline {1.9.7}Diablo Blvd}{54}{subsection.1.9.7}
+\contentsline {subsection}{\numberline {1.9.8}Disturbed}{54}{subsection.1.9.8}
+\contentsline {subsection}{\numberline {1.9.9}Five Finger Death Punch}{54}{subsection.1.9.9}
+\contentsline {subsection}{\numberline {1.9.10}Lindemann}{55}{subsection.1.9.10}
+\contentsline {subsection}{\numberline {1.9.11}Linkin Park}{55}{subsection.1.9.11}
+\contentsline {subsection}{\numberline {1.9.12}Mastodon}{56}{subsection.1.9.12}
+\contentsline {subsection}{\numberline {1.9.13}Pain}{56}{subsection.1.9.13}
+\contentsline {subsection}{\numberline {1.9.14}Rammstein}{56}{subsection.1.9.14}
+\contentsline {subsection}{\numberline {1.9.15}Raubtier}{57}{subsection.1.9.15}
+\contentsline {subsection}{\numberline {1.9.16}Rest, Repose}{57}{subsection.1.9.16}
+\contentsline {subsection}{\numberline {1.9.17}Scars On Broadway}{57}{subsection.1.9.17}
+\contentsline {subsection}{\numberline {1.9.18}Serj Tankian}{58}{subsection.1.9.18}
+\contentsline {subsection}{\numberline {1.9.19}Stepfather Fred}{58}{subsection.1.9.19}
+\contentsline {subsection}{\numberline {1.9.20}Volbeat}{59}{subsection.1.9.20}
+\contentsline {section}{\numberline {1.10}Thrash Metal, Oldschool \& others}{59}{section.1.10}
+\contentsline {subsection}{\numberline {1.10.1}ACDC}{59}{subsection.1.10.1}
+\contentsline {subsection}{\numberline {1.10.2}Deep Purple}{59}{subsection.1.10.2}
+\contentsline {subsection}{\numberline {1.10.3}Dire Straits}{60}{subsection.1.10.3}
+\contentsline {subsection}{\numberline {1.10.4}Airbourne}{60}{subsection.1.10.4}
+\contentsline {subsection}{\numberline {1.10.5}Ghost}{60}{subsection.1.10.5}
+\contentsline {subsection}{\numberline {1.10.6}Halestorm}{61}{subsection.1.10.6}
+\contentsline {subsection}{\numberline {1.10.7}Iron Maiden}{61}{subsection.1.10.7}
+\contentsline {subsection}{\numberline {1.10.8}Judas Priest}{61}{subsection.1.10.8}
+\contentsline {subsection}{\numberline {1.10.9}Kreator}{62}{subsection.1.10.9}
+\contentsline {subsection}{\numberline {1.10.10}Metallica}{62}{subsection.1.10.10}
+\contentsline {subsection}{\numberline {1.10.11}Mot\IeC {\"o}rhead}{62}{subsection.1.10.11}
+\contentsline {subsection}{\numberline {1.10.12}Pantera}{63}{subsection.1.10.12}
+\contentsline {subsection}{\numberline {1.10.13}Saxon}{63}{subsection.1.10.13}
+\contentsline {subsection}{\numberline {1.10.14}Van Halen}{63}{subsection.1.10.14}
+\contentsline {section}{\numberline {1.11}Rock, Punk, Ska etc.}{64}{section.1.11}
+\contentsline {subsection}{\numberline {1.11.1}Anathema}{64}{subsection.1.11.1}
+\contentsline {subsection}{\numberline {1.11.2}Billy Talent}{64}{subsection.1.11.2}
+\contentsline {subsection}{\numberline {1.11.3}Green Day}{64}{subsection.1.11.3}
+\contentsline {subsection}{\numberline {1.11.4}Sum 41}{65}{subsection.1.11.4}
+\contentsline {subsection}{\numberline {1.11.5}The Offspring}{65}{subsection.1.11.5}
+\contentsline {subsection}{\numberline {1.11.6}Rise Against}{65}{subsection.1.11.6}
+\contentsline {subsection}{\numberline {1.11.7}Anti-Flag}{66}{subsection.1.11.7}
+\contentsline {subsection}{\numberline {1.11.8}Dropkick Murphys}{66}{subsection.1.11.8}
+\contentsline {subsection}{\numberline {1.11.9}Buster Shuffle}{67}{subsection.1.11.9}
+\contentsline {subsection}{\numberline {1.11.10}Pvris}{67}{subsection.1.11.10}
+\contentsline {subsection}{\numberline {1.11.11}Audioslave}{67}{subsection.1.11.11}
+\contentsline {subsection}{\numberline {1.11.12}Stone Sour}{68}{subsection.1.11.12}
+\contentsline {subsection}{\numberline {1.11.13}Red Hot Chili Peppers}{68}{subsection.1.11.13}
+\contentsline {subsection}{\numberline {1.11.14}Various}{68}{subsection.1.11.14}
+\contentsline {subsection}{\numberline {1.11.15}Pink}{69}{subsection.1.11.15}
+\contentsline {subsection}{\numberline {1.11.16}Ledger}{69}{subsection.1.11.16}
+\contentsline {section}{\numberline {1.12}Atmospheric \& Nonmetal}{69}{section.1.12}
+\contentsline {subsection}{\numberline {1.12.1}Wardruna}{69}{subsection.1.12.1}
+\contentsline {subsection}{\numberline {1.12.2}Einar Selvik \& Ivar Bj\IeC {\o }rnson}{70}{subsection.1.12.2}
+\contentsline {subsection}{\numberline {1.12.3}If These Trees Could Talk}{70}{subsection.1.12.3}
+\contentsline {subsection}{\numberline {1.12.4}A Light In The Dark}{71}{subsection.1.12.4}
+\contentsline {subsection}{\numberline {1.12.5}Kauan}{71}{subsection.1.12.5}
+\contentsline {subsection}{\numberline {1.12.6}Skyforest}{71}{subsection.1.12.6}
+\contentsline {subsection}{\numberline {1.12.7}Ulvesang}{72}{subsection.1.12.7}
+\contentsline {section}{\numberline {1.13}Buckethead}{72}{section.1.13}
+\contentsline {section}{\numberline {1.14}Symphonic Metal}{73}{section.1.14}
+\contentsline {subsection}{\numberline {1.14.1}Nightwish}{73}{subsection.1.14.1}
+\contentsline {subsection}{\numberline {1.14.2}Epica}{73}{subsection.1.14.2}
+\contentsline {subsection}{\numberline {1.14.3}Within Temptation}{74}{subsection.1.14.3}
+\contentsline {subsection}{\numberline {1.14.4}EvaneScence}{74}{subsection.1.14.4}
+\contentsline {subsection}{\numberline {1.14.5}Beyond The Black}{74}{subsection.1.14.5}
+\contentsline {subsection}{\numberline {1.14.6}Blackbriar}{75}{subsection.1.14.6}
+\contentsline {subsection}{\numberline {1.14.7}Delain}{75}{subsection.1.14.7}
+\contentsline {subsection}{\numberline {1.14.8}Indica}{75}{subsection.1.14.8}
+\contentsline {subsection}{\numberline {1.14.9}Wildpath}{76}{subsection.1.14.9}
+\contentsline {subsection}{\numberline {1.14.10}Apocalyptica}{76}{subsection.1.14.10}
+\contentsline {section}{\numberline {1.15}Power Metal}{76}{section.1.15}
+\contentsline {subsection}{\numberline {1.15.1}Blind Guardian}{76}{subsection.1.15.1}
+\contentsline {subsection}{\numberline {1.15.2}Sabaton}{77}{subsection.1.15.2}
+\contentsline {subsection}{\numberline {1.15.3}Helloween}{78}{subsection.1.15.3}
+\contentsline {subsection}{\numberline {1.15.4}Powerwolf}{78}{subsection.1.15.4}
+\contentsline {subsection}{\numberline {1.15.5}Dragonforce}{79}{subsection.1.15.5}
+\contentsline {subsection}{\numberline {1.15.6}Gloryhammer}{79}{subsection.1.15.6}
+\contentsline {subsection}{\numberline {1.15.7}Hammerfall}{79}{subsection.1.15.7}
+\contentsline {subsection}{\numberline {1.15.8}Pentakill}{80}{subsection.1.15.8}
+\contentsline {section}{\numberline {1.16}Progressive Metal}{80}{section.1.16}
+\contentsline {subsection}{\numberline {1.16.1}Animals As Leaders}{80}{subsection.1.16.1}
+\contentsline {subsection}{\numberline {1.16.2}Earthside}{80}{subsection.1.16.2}
+\contentsline {subsection}{\numberline {1.16.3}Polyphia}{81}{subsection.1.16.3}
+\contentsline {subsection}{\numberline {1.16.4}Dream Theater}{81}{subsection.1.16.4}
+\contentsline {subsection}{\numberline {1.16.5}Sarah Longfield}{81}{subsection.1.16.5}
+\contentsline {subsection}{\numberline {1.16.6}Master Boot Record}{82}{subsection.1.16.6}
+\contentsline {section}{\numberline {1.17}Bandcamp Discoveries \& Sampler}{82}{section.1.17}
+\contentsline {subsection}{\numberline {1.17.1}Distant Dream}{82}{subsection.1.17.1}
+\contentsline {subsection}{\numberline {1.17.2}Shadow Universe}{82}{subsection.1.17.2}
+\contentsline {subsection}{\numberline {1.17.3}Cloudkicker}{83}{subsection.1.17.3}
+\contentsline {subsection}{\numberline {1.17.4}Earth Science}{83}{subsection.1.17.4}
+\contentsline {subsection}{\numberline {1.17.5}Hope For Heroes}{83}{subsection.1.17.5}
+\contentsline {subsection}{\numberline {1.17.6}Where The Good Way Lies}{84}{subsection.1.17.6}
+\contentsline {subsection}{\numberline {1.17.7}Dirtwire}{84}{subsection.1.17.7}
+\contentsline {subsection}{\numberline {1.17.8}Lulacruza}{84}{subsection.1.17.8}
+\contentsline {subsection}{\numberline {1.17.9}Doublestone}{85}{subsection.1.17.9}
+\contentsline {subsubsection}{Thenightyouleft}{85}{figure.caption.339}
+\contentsline {subsection}{\numberline {1.17.10}Relapse Records}{85}{subsection.1.17.10}
+\contentsline {subsection}{\numberline {1.17.11}Willowtip}{86}{subsection.1.17.11}
+\contentsline {subsection}{\numberline {1.17.12}Naturmacht Productions}{86}{subsection.1.17.12}
+\contentsline {subsection}{\numberline {1.17.13}Neckbeard Deathcamp}{87}{subsection.1.17.13}
+\contentsline {subsection}{\numberline {1.17.14}Rys}{87}{subsection.1.17.14}
+\contentsline {subsection}{\numberline {1.17.15}The Circle Pit Compilation}{87}{subsection.1.17.15}
+\contentsline {section}{\numberline {1.18}Noise}{88}{section.1.18}
+\contentsline {subsection}{\numberline {1.18.1}Frontierer}{88}{subsection.1.18.1}
+\contentsline {chapter}{\numberline {2}Non-Metal}{89}{chapter.2}
+\contentsline {section}{\numberline {2.1}Electronic}{89}{section.2.1}
+\contentsline {section}{\numberline {2.2}Hip Hop}{89}{section.2.2}
+\contentsline {section}{\numberline {2.3}Indie}{89}{section.2.3}
+\contentsline {section}{\numberline {2.4}Orchestral \& Instrumental}{89}{section.2.4}
+\contentsline {section}{\numberline {2.5}Pop}{90}{section.2.5}
+\contentsline {section}{\numberline {2.6}Reggae}{90}{section.2.6}
+\contentsline {section}{\numberline {2.7}Soundtrack}{90}{section.2.7}
+\contentsline {section}{\numberline {2.8}Klassik \& Jazz}{92}{section.2.8}
+\contentsline {section}{\numberline {2.9}Other Albums}{92}{section.2.9}
+\contentsline {subsubsection}{Bloodhound Gang}{92}{section.2.9}
+\contentsline {subsubsection}{L'Orchestra Cin\IeC {\'e}matique}{93}{figure.caption.355}
+\contentsline {subsubsection}{Hans Zimmer}{93}{figure.caption.356}
+\contentsline {subsubsection}{Ivan Torrent}{93}{figure.caption.357}
+\contentsline {subsubsection}{Eddie Van Der Meer}{94}{figure.caption.358}
+\contentsline {subsubsection}{Divinity Original Sin 2}{94}{figure.caption.359}
+\contentsline {subsubsection}{Rundfunktanzorchester Ehrenfeld \& Jan B\IeC {\"o}hmermann}{94}{figure.caption.360}
+\contentsline {subsubsection}{Polizistensohn aka Jan B\IeC {\"o}hmermann}{95}{figure.caption.361}
+\contentsline {subsubsection}{Dua Lipa}{95}{figure.caption.362}
+\contentsline {subsubsection}{Aurora}{95}{figure.caption.363}
+\contentsline {subsubsection}{Twenty One Pilots}{96}{figure.caption.364}
+\contentsline {subsubsection}{Paramore}{96}{figure.caption.365}
+\contentsline {subsubsection}{Kontra K}{96}{figure.caption.366}
+\contentsline {subsubsection}{Bliss N Eso}{97}{figure.caption.367}
+\contentsline {subsubsection}{K.I.Z}{97}{figure.caption.368}
+\contentsline {subsubsection}{Watsky}{97}{figure.caption.369}
+\contentsline {subsubsection}{Pertubator}{98}{figure.caption.370}
+\contentsline {subsubsection}{Parov Stelar}{98}{figure.caption.371}
+\contentsline {subsubsection}{Stranger Things}{98}{figure.caption.372}
+\contentsline {subsubsection}{Mitch Murder}{99}{figure.caption.373}
+\contentsline {subsubsection}{Danger Mode}{99}{figure.caption.374}
+\contentsline {subsubsection}{OSC}{99}{figure.caption.375}
+\contentsline {subsubsection}{Zenon Records}{100}{figure.caption.376}
+\contentsline {subsubsection}{Merkaba Music}{100}{figure.caption.377}
+\contentsline {subsubsection}{Evan Marc + Steve Hillage}{100}{figure.caption.378}
+\contentsline {subsection}{\numberline {2.9.1}Cover \& Mixtape}{101}{subsection.2.9.1}
+\contentsline {subsubsection}{Game Of Thrones}{101}{subsection.2.9.1}
+\contentsline {subsubsection}{Vladimir Zelentsov}{101}{figure.caption.381}
+\contentsline {subsection}{\numberline {2.9.2}Free}{101}{subsection.2.9.2}
+\contentsline {subsubsection}{Two Bears High-Fiving}{101}{subsection.2.9.2}
+\contentsline {section}{\numberline {2.10}Hip Hop \& R'n'B Mixtapes von Mixtapemonkey}{102}{section.2.10}
+\contentsline {chapter}{\numberline {3}Single Songs}{104}{chapter.3}
+\contentsline {section}{\numberline {3.1}Metal}{104}{section.3.1}
+\contentsline {section}{\numberline {3.2}Rock \& Pop}{110}{section.3.2}
+\contentsline {section}{\numberline {3.3}Klassik}{115}{section.3.3}
+\contentsline {section}{\numberline {3.4}DEMO Google Drive/ Facebook}{116}{section.3.4}
+\contentsline {section}{\numberline {3.5}Kostenlose Songs von Youtube etc.}{116}{section.3.5}
+\contentsline {section}{\numberline {3.6}Kostenlose Songs von Bandcamp etc.}{116}{section.3.6}
+\contentsline {chapter}{\numberline {4}Backing Tracks}{117}{chapter.4}
+\contentsline {subsection}{\numberline {4.0.1}Death Culture Studio}{117}{subsection.4.0.1}
+\contentsline {subsection}{\numberline {4.0.2}GuitarHero0650}{117}{subsection.4.0.2}
+\contentsline {subsection}{\numberline {4.0.3}Arthur Sowinski}{117}{subsection.4.0.3}
+\contentsline {subsection}{\numberline {4.0.4}Tore Fagerheim}{117}{subsection.4.0.4}
+\contentsline {chapter}{\numberline {5}Personal Favorites}{119}{chapter.5}
+\contentsline {section}{\numberline {5.1}Albums}{119}{section.5.1}
+\contentsline {section}{\numberline {5.2}Songs}{120}{section.5.2}
