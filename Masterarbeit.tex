@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For PDF/A generation
+%\pdfobjcompresslevel=0
+\pdfminorversion=7
+\pdfinclusioncopyfonts=1
 
 %% Basierend auf einer TeXnicCenter-Vorlage von Tino Weinkauf.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,6 +15,13 @@
 %	Papiergr��e: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
 % Duplex: oneside / twoside
 % Grundlegende Fontgr��en: 10pt / 11pt / 12pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For PDF/A generation
+\input{glyphtounicode.tex}
+\input{glyphtounicode-cmr.tex}
+\pdfgentounicode=1
+\usepackage{cmap}
 
 %% Zeilenabstand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{setspace}
@@ -97,21 +109,6 @@
 %% Unterstreichen
 \usepackage{ulem}
 
-%Hyperref Package f�r Links in der PDF
-\usepackage[pdftex,
-linktoc = all,			%Verlinkt sowohl text als auch Nummer im Inhaltsverzeichnis
-colorlinks=true,    %Bei false macht er einen h��lcihen roten Rahmen um die Links
-linkcolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
-citecolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
-bookmarks=true,     %Inhaltsverzeichnis auf der linken Seite beim �ffnen der PDF
-bookmarksopen=true,     	%Das Verzeichnis �ffnen
-bookmarksopenlevel=1,   	%�ffnungstiefe (chapter, section, subsection)
-pagebackref=false,      	%Aus Literaturverzeichnissen etc. auf die entsprechende Seite springen- NEINEINEIN!!1elf
-bookmarksnumbered=false, 	%Eintr�ge im Verzeichnis nummerieren
-pdfstartpage=1,         	%Startseite f�r die Anzeige festlegen
-pdfpagemode=UseOutlines,
-pdfstartview={XYZ null null 1.00}
-]{hyperref} 
 
 %% Andere Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{a4wide} %%Kleinere Seitenr�nder = mehr Text pro Zeile.
@@ -522,6 +519,37 @@ pdfstartview={XYZ null null 1.00}
 \newcommand{\toclesssubsection}[1]{\subsection*{#1}\addtocounter{subsection}{1}}
 
 \usepackage[final]{pdfpages}
+
+%Hyperref Package f�r Links in der PDF
+%\usepackage[pdftex,
+\usepackage[pdfa,
+linktoc = all,			%Verlinkt sowohl text als auch Nummer im Inhaltsverzeichnis
+colorlinks=true,    %Bei false macht er einen h��lcihen roten Rahmen um die Links
+linkcolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
+citecolor=black,    %Linkfarbe im PDF schwarz machen. F�r elektronische Version �ndern.
+bookmarks=true,     %Inhaltsverzeichnis auf der linken Seite beim �ffnen der PDF
+bookmarksopen=true,     	%Das Verzeichnis �ffnen
+bookmarksopenlevel=1,   	%�ffnungstiefe (chapter, section, subsection)
+pagebackref=false,      	%Aus Literaturverzeichnissen etc. auf die entsprechende Seite springen- NEINEINEIN!!1elf
+bookmarksnumbered=false, 	%Eintr�ge im Verzeichnis nummerieren
+pdfstartpage=1,         	%Startseite f�r die Anzeige festlegen
+pdfpagemode=UseOutlines,
+pdfstartview={XYZ null null 1.00}
+]{hyperref} 
+
+\usepackage{hyperxmp}
+%\usepackage[pdfa]{hyperref}
+\hypersetup{%
+	unicode,
+	pdfapart=2,
+	pdfaconformance=B,
+	pdfauthor={Johannes Schoder},
+	pdfdate={2020-01-22},
+	pdftitle={Music Similarity Analysis Using the Big Data Framework Spark},
+}
+
+\input{pdfacode}
+
 
 \begin{document}
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.

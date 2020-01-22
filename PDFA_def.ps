@@ -1,0 +1,28 @@
+/ICCProfile (sRGB.icc)
+def
+
+[/_objdef {icc_PDFA} /type /stream /OBJ pdfmark
+[{icc_PDFA}
+<<
+  /N currentpagedevice /ProcessColorModel known {
+    currentpagedevice /ProcessColorModel get dup /DeviceGray eq
+    {pop 1} {
+      /DeviceRGB eq
+      {3}{4} ifelse
+    } ifelse
+  } {
+    (ERROR, unable to determine ProcessColorModel) == flush
+  } ifelse
+>> /PUT pdfmark
+[{icc_PDFA} ICCProfile (r) file /PUT pdfmark
+
+[/_objdef {OutputIntent_PDFA} /type /dict /OBJ pdfmark
+[{OutputIntent_PDFA} <<
+  /Type /OutputIntent
+  /S /GTS_PDFA1
+  /DestOutputProfile {icc_PDFA}
+  /OutputConditionIdentifier (sRGB)
+  /Info(sRGB)
+  /RegistryName (http://www.color.org/)
+>> /PUT pdfmark
+[{Catalog} <</OutputIntents [ {OutputIntent_PDFA} ]>> /PUT pdfmark
